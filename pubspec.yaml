@@ -1,0 +1,109 @@
+name: fs_dart
+
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# version +1 home widget, +2 lockscreen /foto sesi widget, +3 home settings widget, +4 scan edit, +5 scan sesi
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0-384.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  english_words: ^4.0.0
+  provider: ^6.0.0
+  localstorage: ^4.0.0+1  
+  just_audio: ^0.9.38
+  
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  wave: ^0.2.2
+  animations: ^2.0.11
+  qr_flutter: ^4.1.0
+  mailer: ^6.1.0
+  http: ^1.2.1
+  qrscan: ^0.3.3
+  permission_handler: ^11.3.0
+
+  camera: ^0.11.0
+  # video_player: ^2.8.2
+  camera_windows: ^0.2.2
+  mysql1: ^0.20.0
+  image: ^4.1.7
+  screenshot: ^3.0.0
+  path_provider: ^2.1.2
+  pinput: ^4.0.0
+  file_picker: ^8.0.3
+  printing: ^5.12.0
+
+  floating_draggable_widget: ^2.1.5
+
+  font_awesome_flutter: '>= 4.7.0'
+  adaptive_dialog: ^2.1.0
+  panara_dialogs: ^0.1.4
+  zoom_widget: ^2.0.1
+  photo_view: ^0.15.0
+  just_audio_windows: ^0.2.1
+  carousel_slider: ^4.2.1
+  ionicons: ^0.2.2
+  window_manager: ^0.3.9
+  page_transition: ^2.1.0
+  virtual_keyboard_multi_language: ^1.0.3
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  url_launcher_platform_interface: ^2.1.1
+
+  build_runner:
+  flutter_gen_runner:
+  flutter_lints: ^4.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/audio/
+    - assets/props/
+    - assets/props/google/
+    - assets/props/hats/
+    - assets/props/eyewear/
+    - assets/props/food/
+    - assets/props/shapes/
+    - assets/ornament/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
