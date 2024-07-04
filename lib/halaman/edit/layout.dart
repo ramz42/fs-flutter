@@ -137,15 +137,17 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   List<dynamic> layouts = [];
 
   // colors...
-  Color color = const Color.fromARGB(255, 75, 196, 111);
+  Color color = const Color.fromARGB(255, 196, 75, 146);
 
   final double barHeight = 10.0;
+  
+  
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -619,12 +621,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -727,7 +729,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                 children: [
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: const Color.fromARGB(255, 196, 75, 146),
                     child: Column(
                       children: [
                         Padding(
@@ -1153,7 +1155,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -1166,7 +1168,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -1179,7 +1181,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -1192,7 +1194,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -1205,7 +1207,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -1218,7 +1220,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -1283,7 +1285,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -1296,7 +1298,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -1309,7 +1311,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -1322,7 +1324,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -1335,7 +1337,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -1348,7 +1350,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -1361,7 +1363,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -1374,7 +1376,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -2047,7 +2049,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -2060,7 +2062,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -2073,7 +2075,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -2086,7 +2088,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -2099,7 +2101,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -2112,7 +2114,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -2125,7 +2127,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -2135,7 +2137,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -2145,7 +2147,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                 boxShadow: [],
                                                                                                               ),
                                                                                                             )
@@ -2155,7 +2157,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                     boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
@@ -2165,7 +2167,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                         boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
@@ -2175,7 +2177,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                             boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
@@ -2185,7 +2187,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                 boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
@@ -2195,7 +2197,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                     boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
@@ -2205,7 +2207,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                         boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
@@ -2282,7 +2284,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -2295,7 +2297,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -2308,7 +2310,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -2321,7 +2323,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -2334,7 +2336,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -2347,7 +2349,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -2360,7 +2362,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -2373,7 +2375,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -2386,7 +2388,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                 boxShadow: [],
                                                                                                               ),
                                                                                                             )
@@ -2399,7 +2401,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                     boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
@@ -2412,7 +2414,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                         boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
@@ -2425,7 +2427,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                             boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
@@ -2436,7 +2438,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                 boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
@@ -2447,7 +2449,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                     boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
@@ -2458,7 +2460,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                         boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
@@ -2469,7 +2471,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                           height: width * 0.09,
                                                                                                                                           decoration: BoxDecoration(
                                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                                            color: const Color.fromARGB(255, 75, 196, 111),
+                                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
                                                                                                                                             boxShadow: [],
                                                                                                                                           ),
                                                                                                                                         )
@@ -2632,10 +2634,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: const Color.fromARGB(255, 75, 196, 111),
+                                color: const Color.fromARGB(255, 196, 75, 146),
                                 boxShadow: [
                                   const BoxShadow(
-                                    color: Color.fromARGB(255, 75, 196, 111),
+                                    color: Color.fromARGB(255, 196, 75, 146),
                                     spreadRadius: 5,
                                   ),
                                 ],
@@ -28711,7 +28713,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   // pilih layout / edit foto view
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: const Color.fromARGB(255, 196, 75, 146),
                     child: Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

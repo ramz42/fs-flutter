@@ -1,12 +1,8 @@
 // import 'package:camera/camera.dart';
 // ignore_for_file: override_on_non_overriding_member
 
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:fs_dart/halaman/edit/qr_scan.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:page_transition/page_transition.dart';
@@ -21,6 +17,8 @@ import 'package:localstorage/localstorage.dart';
 
 import '../../src/variables.g.dart';
 import '../edit/filter.dart';
+import 'dart:async';
+import 'dart:io';
 
 class HalamanAwal extends StatefulWidget {
   const HalamanAwal({super.key});
@@ -325,11 +323,11 @@ class _HalamanAwalState extends State<HalamanAwal> {
   final double barHeight = 10.0;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -559,7 +557,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 75, 196, 111),
+                      color: Color.fromARGB(255, 196, 75, 146),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
@@ -617,7 +615,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                       ),
                     ),
                     elevation: 1,
-                    color: Color.fromARGB(255, 24, 116, 59),
+                    color: Color.fromARGB(255, 196, 111, 160),
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");

@@ -36,12 +36,11 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
   var db = new Mysql();
 
   // colors wave
-  // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [

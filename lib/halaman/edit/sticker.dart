@@ -103,11 +103,11 @@ class _StickerWidgetState extends State<StickerWidget> {
   bool isChooseSticker = false;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -225,9 +225,10 @@ class _StickerWidgetState extends State<StickerWidget> {
     // print value drag item
     print("object drag item = $drag_item");
 
-    print("object nama = $nama");
+    print("object nama pada sticker page = $nama");
+    print("object title pada sitcker page = $title");
 
-    _getDataImages();
+    getAllImages();
     getStickers();
 
     super.initState();
@@ -286,11 +287,11 @@ class _StickerWidgetState extends State<StickerWidget> {
   //Create an instance of ScreenshotController
   ScreenshotController screenshotController = ScreenshotController();
 
-  _saveStorage(title, deskripsi, harga) async {
-    await storage.setItem('title', title);
-    await storage.setItem('deskripsi', deskripsi);
-    await storage.setItem('harga', harga);
-  }
+  // _saveStorage(title, deskripsi, harga) async {
+  //   await storage.setItem('title', title);
+  //   await storage.setItem('deskripsi', deskripsi);
+  //   await storage.setItem('harga', harga);
+  // }
 
   _isVisible() {
     setState(() {
@@ -410,7 +411,7 @@ class _StickerWidgetState extends State<StickerWidget> {
   // ...
   // end statements color waves
 
-  Future<void> _getDataImages() async {
+  Future<void> getAllImages() async {
     var request = http.MultipartRequest(
       'POST',
       Uri.parse(
@@ -424,222 +425,225 @@ class _StickerWidgetState extends State<StickerWidget> {
       },
     );
 
+    print(
+        "nama image pada background page : $nama-${DateTime.now().day}-${DateTime.now().hour}");
+
     http.Response response =
         await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 201) {
       stores = jsonDecode(response.body);
 
+      setState(() {});
       list.addAll(jsonDecode(response.body));
       setState(() {
         lengthDataImages = stores.length;
       });
 
       print("list images : $list");
-
+      // ......
+      // card 1
+      // ......
       if (title.toString().contains("Collage B") ||
           title.toString().contains("Paket B")) {
         // ignore: unnecessary_null_comparison
         if (choose_layout == "layout1" || choose_layout == "layout2") {
-          // ......
-          // card 1
-          // ......
           if (drag_item[0].isNotEmpty) {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("01") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("02") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("03") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("04") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("05") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("06") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("07") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("10") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("11") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("12") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("13") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("14") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("15") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("16") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("17") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
           // ......
           // card 2
           // ......
-          if (drag_item[1].isNotEmpty) {
+          if (drag_item2[1].isNotEmpty) {
             if (drag_item[1].toString().contains("00") &&
                 drag_item[1].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("01") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("02") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("03") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("04") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("05") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("06") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("07") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("10") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("11") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("12") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("13") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("14") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("15") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("16") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("17") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -650,97 +654,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[2].toString().contains("00") &&
                 drag_item[2].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("01") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("02") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("03") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("04") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("05") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("06") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("07") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("10") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("11") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("12") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("13") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("14") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("15") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("16") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("17") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -751,300 +755,296 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[3].toString().contains("00") &&
                 drag_item[3].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("01") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("02") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("03") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("04") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("05") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("06") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("07") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("10") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("11") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("12") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("13") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("14") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("15") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("16") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("17") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
           // ......
           // card 5
           // ......
-          if (drag_item[4].isNotEmpty) {
-            if (drag_item[4].toString().contains("00") &&
-                drag_item[4].toString().isNotEmpty) {
-              url_image_b1.add(list[0]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("01") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[1]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("02") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[2]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("03") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[3]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("04") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[4]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("05") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[5]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("06") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[6]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("07") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[7]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("10") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[8]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("11") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[9]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("12") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[10]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("13") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[11]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("14") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[12]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("15") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[13]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("16") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[14]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[4].toString().contains("17") &&
-                drag_item[4].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[15]);
-              print("url_image : $url_image");
-            }
+          if (drag_item[4].toString().contains("00") &&
+              drag_item[4].toString().isNotEmpty) {
+            url_image_b1.add(list[0]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("01") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[1]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("02") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[2]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("03") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[3]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("04") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[4]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("05") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[5]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("06") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[6]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("07") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[7]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("10") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[8]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("11") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[9]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("12") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[10]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("13") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[11]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("14") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[12]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("15") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[13]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("16") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[14]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[4].toString().contains("17") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[15]);
+            print("url_image_b1 : $url_image_b1");
           }
 
           // ......
           // card 6
           // ......
-          if (drag_item[5].isNotEmpty) {
-            if (drag_item[5].toString().contains("00") &&
-                drag_item[5].toString().isNotEmpty) {
-              url_image_b1.add(list[0]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("01") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[1]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("02") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[2]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("03") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[3]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("04") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[4]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("05") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[5]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("06") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[6]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("07") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[7]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("10") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[8]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("11") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[9]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("12") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[10]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("13") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[11]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("14") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[12]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("15") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[13]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("16") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[14]);
-              print("url_image : $url_image");
-            }
-            if (drag_item[5].toString().contains("17") &&
-                drag_item[5].toString().isNotEmpty) {
-              // ...
-              url_image_b1.add(list[15]);
-              print("url_image : $url_image");
-            }
+          if (drag_item[5].toString().contains("00") &&
+              drag_item[5].toString().isNotEmpty) {
+            url_image_b1.add(list[0]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("01") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[1]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("02") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[2]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("03") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[3]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("04") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[4]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("05") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[5]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("06") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[6]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("07") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[7]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("10") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[8]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("11") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[9]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("12") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[10]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("13") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[11]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("14") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[12]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("15") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[13]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("16") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[14]);
+            print("url_image_b1 : $url_image_b1");
+          }
+          if (drag_item[5].toString().contains("17") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[15]);
+            print("url_image_b1 : $url_image_b1");
           }
         }
 
@@ -1057,97 +1057,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("01") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("02") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("03") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("04") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("05") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("06") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("07") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("10") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("11") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("12") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("13") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("14") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("15") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("16") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("17") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1158,97 +1158,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[1].toString().contains("00") &&
                 drag_item[1].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("01") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("02") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("03") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("04") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("05") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("06") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("07") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("10") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("11") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("12") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("13") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("14") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("15") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("16") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("17") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1259,97 +1259,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[2].toString().contains("00") &&
                 drag_item[2].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("01") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("02") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("03") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("04") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("05") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("06") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("07") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("10") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("11") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("12") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("13") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("14") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("15") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("16") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("17") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1360,97 +1360,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[3].toString().contains("00") &&
                 drag_item[3].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("01") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("02") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("03") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("04") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("05") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("06") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("07") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("10") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("11") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("12") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("13") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("14") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("15") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("16") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("17") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
@@ -1464,97 +1464,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("01") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("02") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("03") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("04") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("05") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("06") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("07") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("10") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("11") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("12") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("13") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("14") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("15") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("16") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("17") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1565,97 +1565,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[1].toString().contains("00") &&
                 drag_item[1].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("01") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("02") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("03") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("04") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("05") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("06") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("07") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("10") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("11") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("12") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("13") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("14") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("15") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("16") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("17") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1666,97 +1666,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[2].toString().contains("00") &&
                 drag_item[2].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("01") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("02") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("03") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("04") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("05") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("06") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("07") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("10") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("11") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("12") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("13") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("14") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("15") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("16") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("17") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1767,97 +1767,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[3].toString().contains("00") &&
                 drag_item[3].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("01") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("02") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("03") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("04") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("05") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("06") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("07") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("10") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("11") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("12") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("13") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("14") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("15") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("16") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("17") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -1868,97 +1868,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[4].toString().contains("00") &&
                 drag_item[4].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("01") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("02") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("03") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("04") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("05") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("06") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("07") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("10") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("11") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("12") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("13") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("14") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("15") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("16") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("17") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
@@ -1972,97 +1972,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("01") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("02") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("03") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("04") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("05") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("06") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("07") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("10") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("11") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("12") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("13") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("14") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("15") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("16") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[0].toString().contains("17") &&
                 drag_item[0].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2073,97 +2073,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[1].toString().contains("00") &&
                 drag_item[1].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("01") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("02") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("03") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("04") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("05") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("06") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("07") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("10") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("11") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("12") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("13") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("14") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("15") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("16") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[1].toString().contains("17") &&
                 drag_item[1].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2174,97 +2174,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[2].toString().contains("00") &&
                 drag_item[2].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("01") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("02") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("03") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("04") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("05") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("06") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("07") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("10") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("11") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("12") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("13") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("14") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("15") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("16") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[2].toString().contains("17") &&
                 drag_item[2].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2275,97 +2275,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[3].toString().contains("00") &&
                 drag_item[3].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("01") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("02") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("03") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("04") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("05") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("06") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("07") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("10") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("11") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("12") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("13") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("14") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("15") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("16") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[3].toString().contains("17") &&
                 drag_item[3].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2376,97 +2376,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[4].toString().contains("00") &&
                 drag_item[4].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("01") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("02") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("03") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("04") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("05") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("06") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("07") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("10") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("11") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("12") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("13") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("14") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("15") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("16") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[4].toString().contains("17") &&
                 drag_item[4].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2477,97 +2477,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[5].toString().contains("00") &&
                 drag_item[5].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("01") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("02") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("03") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("04") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("05") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("06") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("07") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("10") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("11") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("12") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("13") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("14") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("15") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("16") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[5].toString().contains("17") &&
                 drag_item[5].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2578,97 +2578,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[6].toString().contains("00") &&
                 drag_item[6].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("01") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("02") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("03") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("04") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("05") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("06") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("07") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("10") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("11") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("12") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("13") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("14") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("15") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("16") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[6].toString().contains("17") &&
                 drag_item[6].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2679,97 +2679,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item[7].toString().contains("00") &&
                 drag_item[7].toString().isNotEmpty) {
               url_image_b1.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("01") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("02") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("03") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("04") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("05") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("06") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("07") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("10") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("11") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("12") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("13") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("14") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("15") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("16") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item[7].toString().contains("17") &&
                 drag_item[7].toString().isNotEmpty) {
               // ...
               url_image_b1.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
@@ -2777,105 +2777,105 @@ class _StickerWidgetState extends State<StickerWidget> {
         // ===========================================
         // ============== layout b 2 =================
         // ===========================================
-        if (choose_layout == "layout1" || choose_layout == "layout2") {
+        if (choose_layout2 == "layout1" || choose_layout2 == "layout2") {
           // ......
           // card 1
           // ......
-          if (drag_item[0].isNotEmpty) {
+          if (drag_item2[0].isNotEmpty) {
             if (drag_item2[0].toString().contains("00") &&
                 drag_item2[0].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("01") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("02") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("03") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("04") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("05") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("06") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("07") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("10") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("11") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("12") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("13") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("14") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("15") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("16") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("17") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2886,97 +2886,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[1].toString().contains("00") &&
                 drag_item2[1].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("01") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("02") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("03") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("04") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("05") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("06") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("07") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("10") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("11") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("12") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("13") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("14") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("15") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("16") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("17") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -2987,97 +2987,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[2].toString().contains("00") &&
                 drag_item2[2].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("01") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("02") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("03") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("04") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("05") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("06") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("07") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("10") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("11") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("12") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("13") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("14") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("15") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("16") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("17") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3088,97 +3088,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[3].toString().contains("00") &&
                 drag_item2[3].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("01") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("02") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("03") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("04") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("05") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("06") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("07") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("10") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("11") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("12") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("13") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("14") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("15") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("16") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("17") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3189,97 +3189,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[4].toString().contains("00") &&
                 drag_item2[4].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("01") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("02") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("03") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("04") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("05") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("06") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("07") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("10") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("11") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("12") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("13") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("14") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("15") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("16") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("17") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
 
             // ......
@@ -3288,97 +3288,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[5].toString().contains("00") &&
                 drag_item2[5].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("01") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("02") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("03") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("04") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("05") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("06") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("07") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("10") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("11") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("12") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("13") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("14") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("15") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("16") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("17") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3389,103 +3389,103 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[5].toString().contains("00") &&
                 drag_item2[5].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("01") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("02") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("03") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("04") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("05") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("06") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("07") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("10") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("11") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("12") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("13") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("14") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("15") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("16") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("17") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
 
         // layout 3
-        if (choose_layout == "layout3") {
+        if (choose_layout2 == "layout3") {
           // ......
           // card 1
           // ......
@@ -3493,97 +3493,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[0].toString().contains("00") &&
                 drag_item2[0].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("01") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("02") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("03") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("04") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("05") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("06") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("07") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("10") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("11") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("12") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("13") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("14") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("15") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("16") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("17") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3594,97 +3594,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[1].toString().contains("00") &&
                 drag_item2[1].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("01") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("02") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("03") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("04") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("05") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("06") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("07") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("10") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("11") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("12") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("13") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("14") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("15") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("16") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("17") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3695,97 +3695,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[2].toString().contains("00") &&
                 drag_item2[2].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("01") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("02") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("03") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("04") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("05") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("06") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("07") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("10") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("11") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("12") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("13") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("14") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("15") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("16") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("17") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -3796,103 +3796,103 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[3].toString().contains("00") &&
                 drag_item2[3].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("01") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("02") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("03") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("04") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("05") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("06") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("07") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("10") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("11") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("12") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("13") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("14") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("15") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("16") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("17") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
 
         // layout 4
-        if (choose_layout == "layout4") {
+        if (choose_layout2 == "layout4") {
           // ......
           // card 1
           // ......
@@ -3900,97 +3900,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[0].toString().contains("00") &&
                 drag_item2[0].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("01") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("02") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("03") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("04") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("05") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("06") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("07") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("10") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("11") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("12") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("13") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("14") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("15") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("16") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("17") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4001,97 +4001,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[1].toString().contains("00") &&
                 drag_item2[1].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("01") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("02") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("03") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("04") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("05") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("06") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("07") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("10") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("11") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("12") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("13") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("14") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("15") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("16") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("17") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4102,97 +4102,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[2].toString().contains("00") &&
                 drag_item2[2].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("01") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("02") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("03") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("04") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("05") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("06") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("07") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("10") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("11") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("12") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("13") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("14") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("15") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("16") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("17") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4203,97 +4203,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[3].toString().contains("00") &&
                 drag_item2[3].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("01") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("02") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("03") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("04") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("05") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("06") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("07") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("10") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("11") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("12") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("13") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("14") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("15") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("16") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("17") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4304,97 +4304,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[4].toString().contains("00") &&
                 drag_item2[4].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("01") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("02") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("03") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("04") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("05") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("06") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("07") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("10") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("11") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("12") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("13") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("14") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("15") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("16") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("17") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
 
             // ......
@@ -4403,103 +4403,103 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[5].toString().contains("00") &&
                 drag_item2[5].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("01") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("02") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("03") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("04") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("05") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("06") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("07") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("10") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("11") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("12") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("13") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("14") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("15") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("16") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("17") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
 
         // layout 5 dan 6
-        if (choose_layout == "layout5" || choose_layout == "layout6") {
+        if (choose_layout2 == "layout5" || choose_layout2 == "layout6") {
           // ......
           // card 1
           // ......
@@ -4507,97 +4507,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[0].toString().contains("00") &&
                 drag_item2[0].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("01") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("02") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("03") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("04") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("05") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("06") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("07") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("10") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("11") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("12") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("13") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("14") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("15") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("16") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[0].toString().contains("17") &&
                 drag_item2[0].toString().isNotEmpty) {
               // ...
               url_image.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4608,97 +4608,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[1].toString().contains("00") &&
                 drag_item2[1].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("01") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("02") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("03") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("04") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("05") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("06") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("07") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("10") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("11") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("12") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("13") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("14") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("15") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("16") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[1].toString().contains("17") &&
                 drag_item2[1].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4709,97 +4709,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[2].toString().contains("00") &&
                 drag_item2[2].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("01") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("02") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("03") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("04") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("05") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("06") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("07") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("10") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("11") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("12") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("13") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("14") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("15") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("16") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[2].toString().contains("17") &&
                 drag_item2[2].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4810,97 +4810,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[3].toString().contains("00") &&
                 drag_item2[3].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("01") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("02") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("03") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("04") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("05") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("06") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("07") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("10") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("11") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("12") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("13") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("14") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("15") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("16") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[3].toString().contains("17") &&
                 drag_item2[3].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -4911,97 +4911,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[4].toString().contains("00") &&
                 drag_item2[4].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("01") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("02") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("03") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("04") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("05") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("06") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("07") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("10") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("11") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("12") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("13") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("14") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("15") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("16") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[4].toString().contains("17") &&
                 drag_item2[4].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
 
             // ......
@@ -5010,97 +5010,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[5].toString().contains("00") &&
                 drag_item2[5].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("01") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("02") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("03") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("04") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("05") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("06") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("07") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("10") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("11") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("12") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("13") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("14") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("15") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("16") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("17") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -5111,97 +5111,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[5].toString().contains("00") &&
                 drag_item2[5].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("01") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("02") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("03") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("04") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("05") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("06") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("07") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("10") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("11") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("12") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("13") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("14") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("15") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("16") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[5].toString().contains("17") &&
                 drag_item2[5].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -5212,97 +5212,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[6].toString().contains("00") &&
                 drag_item2[6].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("01") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("02") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("03") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("04") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("05") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("06") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("07") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("10") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("11") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("12") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("13") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("14") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("15") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("16") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[6].toString().contains("17") &&
                 drag_item2[6].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
 
@@ -5313,97 +5313,97 @@ class _StickerWidgetState extends State<StickerWidget> {
             if (drag_item2[7].toString().contains("00") &&
                 drag_item2[7].toString().isNotEmpty) {
               url_image_b2.add(list[0]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("01") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[1]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("02") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[2]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("03") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[3]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("04") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[4]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("05") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[5]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("06") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[6]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("07") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[7]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("10") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[8]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("11") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[9]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("12") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[10]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("13") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[11]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("14") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[12]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("15") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[13]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("16") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[14]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
             if (drag_item2[7].toString().contains("17") &&
                 drag_item2[7].toString().isNotEmpty) {
               // ...
               url_image_b2.add(list[15]);
-              print("url_image : $url_image");
+              print("url_image_b1 : $url_image_b1");
             }
           }
         }
@@ -5420,51 +5420,49 @@ class _StickerWidgetState extends State<StickerWidget> {
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (list[6].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("12") &&
+              if (drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (list[7].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("13") &&
+              if (drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // ......
@@ -5475,51 +5473,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -5531,51 +5529,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -5587,51 +5585,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -5643,51 +5641,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
 
                 // ......
@@ -5697,51 +5695,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[5].toString().contains("01") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[5].toString().contains("02") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[5].toString().contains("03") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[5].toString().contains("10") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[5].toString().contains("11") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[5].toString().contains("12") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[5].toString().contains("13") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
             }
@@ -5754,50 +5752,54 @@ class _StickerWidgetState extends State<StickerWidget> {
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
-              if (drag_item[0].toString().contains("10") &&
+              if (list[4].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("11") &&
+              if (list[5].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("12") &&
+              if (list[6].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("13") &&
+              if (list[7].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // ......
@@ -5807,49 +5809,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[1].toString().contains("00") &&
                     drag_item[1].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -5860,50 +5866,54 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[2].toString().contains("00") &&
                     drag_item[2].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
 
-                if (drag_item[2].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -5914,50 +5924,54 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[3].toString().contains("00") &&
                     drag_item[3].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
 
-                if (drag_item[3].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
             }
@@ -5970,49 +5984,53 @@ class _StickerWidgetState extends State<StickerWidget> {
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("10") &&
+              if (list[4].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("11") &&
+              if (list[5].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("12") &&
+              if (list[6].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
-              if (drag_item[0].toString().contains("13") &&
+              if (list[7].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // ......
@@ -6023,49 +6041,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[1].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6077,49 +6099,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[2].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6131,49 +6157,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[3].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6185,49 +6215,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[4].toString().contains("10") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[4].toString().contains("11") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[4].toString().contains("12") &&
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
-                if (drag_item[4].toString().contains("13") &&
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
             }
@@ -6240,49 +6274,49 @@ class _StickerWidgetState extends State<StickerWidget> {
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // ......
@@ -6293,49 +6327,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6347,49 +6381,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6401,49 +6435,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6455,49 +6489,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
                 if (drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image : $url_image");
+                  print("url_image_b1 : $url_image_b1");
                 }
               }
 
@@ -6508,49 +6542,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("01") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("02") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("03") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("10") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("11") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("12") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[5].toString().contains("13") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // ......
@@ -6561,49 +6595,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("01") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("02") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("03") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("10") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("11") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("12") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[6].toString().contains("13") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
 
               // // ......
@@ -6613,49 +6647,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("01") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("02") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("03") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("10") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("11") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("12") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
               if (drag_item[7].toString().contains("13") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image : $url_image");
+                print("url_image_b1 : $url_image_b1");
               }
             }
           }
@@ -6703,11 +6737,11 @@ class _StickerWidgetState extends State<StickerWidget> {
                             Container(
                                 height: width * 0.015,
                                 width: width * 1,
-                                color: Color.fromARGB(255, 75, 196, 111)),
+                                color: Color.fromARGB(255, 196, 75, 146)),
                             Container(
                               height: width * 0.035,
                               width: width * 1,
-                              color: Color.fromARGB(255, 75, 196, 111),
+                              color: Color.fromARGB(255, 196, 75, 146),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -6828,7 +6862,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             visible: true,
                             child: Container(
                               width: width * 0.25,
-                              color: const Color.fromARGB(255, 75, 196, 111),
+                              color: const Color.fromARGB(255, 196, 75, 146),
                               child: Column(
                                 children: [
                                   Padding(
@@ -15033,7 +15067,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                   width: height * 0.015,
                                                 ),
                                                 choose_layout == "layout1" &&
-                                                        url_image.isNotEmpty
+                                                        url_image_b1.isNotEmpty
                                                     ? Center(
                                                         child: Container(
                                                         width: 384, // pixel
@@ -15315,7 +15349,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // ..................
                                                     choose_layout ==
                                                                 "layout2" &&
-                                                            url_image.isNotEmpty
+                                                            url_image_b1.isNotEmpty
                                                         ? Center(
                                                             child: Container(
                                                             width: 384, // pixel
@@ -15582,12 +15616,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         // ..................
                                                         choose_layout ==
                                                                     "layout3" &&
-                                                                (url_image
-                                                                        .isNotEmpty ||
-                                                                    url_image_b1
-                                                                        .isNotEmpty ||
-                                                                    url_image_b2
-                                                                        .isNotEmpty)
+                                                                (url_image_b1
+                                                                        .isNotEmpty )
                                                             ? Center(
                                                                 child:
                                                                     Container(
@@ -15786,7 +15816,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                             // ..................
                                                             choose_layout ==
                                                                         "layout4" &&
-                                                                    url_image
+                                                                    url_image_b1
                                                                         .isNotEmpty
                                                                 ? Center(
                                                                     child:
@@ -16073,7 +16103,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                 // ..................
                                                                 choose_layout ==
                                                                             "layout5" &&
-                                                                        url_image
+                                                                        url_image_b1
                                                                             .isNotEmpty
                                                                     ? Center(
                                                                         child:
@@ -16437,7 +16467,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     // ..................
                                                                     choose_layout ==
                                                                                 "layout6" &&
-                                                                            url_image.isNotEmpty
+                                                                            url_image_b1.isNotEmpty
                                                                         ? Center(
                                                                             child:
                                                                                 Container(
@@ -16794,7 +16824,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                 ),
 
                                                 choose_layout2 == "layout1" &&
-                                                        url_image.isNotEmpty
+                                                        url_image_b2.isNotEmpty
                                                     ? Center(
                                                         child: Container(
                                                         width: 384, // pixel
@@ -17076,7 +17106,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // ..................
                                                     choose_layout2 ==
                                                                 "layout2" &&
-                                                            url_image.isNotEmpty
+                                                            url_image_b2.isNotEmpty
                                                         ? Center(
                                                             child: Container(
                                                             width: 384, // pixel
@@ -17342,13 +17372,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         // layout 3 main view
                                                         // ..................
                                                         choose_layout2 ==
-                                                                    "layout3" &&
-                                                                (url_image
-                                                                        .isNotEmpty ||
-                                                                    url_image_b1
-                                                                        .isNotEmpty ||
-                                                                    url_image_b2
-                                                                        .isNotEmpty)
+                                                                    "layout3" && url_image_b2.isNotEmpty 
                                                             ? Center(
                                                                 child:
                                                                     Container(
@@ -17547,7 +17571,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                             // ..................
                                                             choose_layout2 ==
                                                                         "layout4" &&
-                                                                    url_image
+                                                                    url_image_b2
                                                                         .isNotEmpty
                                                                 ? Center(
                                                                     child:
@@ -17834,7 +17858,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                 // ..................
                                                                 choose_layout2 ==
                                                                             "layout5" &&
-                                                                        url_image
+                                                                        url_image_b2
                                                                             .isNotEmpty
                                                                     ? Center(
                                                                         child:
@@ -18198,7 +18222,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     // ..................
                                                                     choose_layout2 ==
                                                                                 "layout6" &&
-                                                                            url_image.isNotEmpty
+                                                                            url_image_b2.isNotEmpty
                                                                         ? Center(
                                                                             child:
                                                                                 Container(
@@ -18567,7 +18591,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             height: height * 0.9,
                             child: Container(
                               width: width * 0.25,
-                              color: const Color.fromARGB(255, 75, 196, 111),
+                              color: const Color.fromARGB(255, 196, 75, 146),
                               child: Column(
                                 children: [
                                   Padding(
@@ -19455,7 +19479,7 @@ class _StickerWidgetState extends State<StickerWidget> {
             child: Padding(
               padding: EdgeInsets.all(0),
               child: AlertDialog(
-                backgroundColor: Color.fromARGB(255, 75, 196, 111),
+                backgroundColor: Color.fromARGB(255, 196, 75, 146),
                 title: Padding(
                   padding: const EdgeInsets.only(top: 40, bottom: 50),
                   child: Text(

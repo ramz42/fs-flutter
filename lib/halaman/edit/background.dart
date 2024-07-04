@@ -77,11 +77,11 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
   String choose_background = '';
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -135,7 +135,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
     // TODO: implement initState
 
     print("title parameter pada background page = ${title.toString()}");
-    print("title parameter pada background page = ${title.toString().contains("Collage A")}");
+    print(
+        "title parameter pada background page = ${title.toString().contains("Collage A")}");
 
     print("choose layout 1 = $choose_layout");
     print("choose layout 2 = $choose_layout2");
@@ -143,7 +144,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
     print("drag item a / b 1 =========== : $drag_item");
     print("drag item b 2 =========== : $drag_item2");
 
-    print("folder name pada background page : $nama-${DateTime.now().day}-${DateTime.now().hour}");
+    print(
+        "folder name pada background page : $nama-${DateTime.now().day}-${DateTime.now().hour}");
 
     deleteFolderEditImages();
     getBackground();
@@ -208,6 +210,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       counter--;
       if (counter == 0) {
+        // get all images
         getAllImages();
       }
     });
@@ -256,87 +259,602 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
           title.toString().contains("Paket B")) {
         // ignore: unnecessary_null_comparison
         if (choose_layout == "layout1" || choose_layout == "layout2") {
-          // 0
-          if ((drag_item[0].toString().contains("00") ||
-                  drag_item[0].toString().contains("01") ||
-                  drag_item[0].toString().contains("02") ||
-                  drag_item[0].toString().contains("03") ||
-                  drag_item[0].toString().contains("10") ||
-                  drag_item[0].toString().contains("11") ||
-                  drag_item[0].toString().contains("12") ||
-                  drag_item[0].toString().contains("13")) &&
-              drag_item[0].toString().isNotEmpty) {
-            url_image.add(list[0]);
-            print("url_image : $url_image");
+          if (drag_item[0].isNotEmpty) {
+            if (drag_item[0].toString().contains("00") &&
+                drag_item[0].toString().isNotEmpty) {
+              url_image_b1.add(list[0]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("01") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[1]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("02") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[2]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("03") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[3]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("04") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[4]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("05") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[5]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("06") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[6]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("07") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[7]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("10") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[8]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("11") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[9]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("12") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[10]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("13") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[11]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("14") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[12]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("15") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[13]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("16") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[14]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[0].toString().contains("17") &&
+                drag_item[0].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[15]);
+              print("url_image : $url_image");
+            }
           }
 
-          // 1
-          if ((drag_item[1].toString().contains("00") ||
-                  drag_item[1].toString().contains("01") ||
-                  drag_item[1].toString().contains("02") ||
-                  drag_item[1].toString().contains("03") ||
-                  drag_item[1].toString().contains("10") ||
-                  drag_item[1].toString().contains("11") ||
-                  drag_item[1].toString().contains("12") ||
-                  drag_item[1].toString().contains("13")) &&
-              drag_item[1].toString().isNotEmpty) {
-            url_image.add(list[1]);
-            print("url_image : $url_image");
+          // ......
+          // card 2
+          // ......
+          if (drag_item2[1].isNotEmpty) {
+            if (drag_item[1].toString().contains("00") &&
+                drag_item[1].toString().isNotEmpty) {
+              url_image_b1.add(list[0]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("01") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[1]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("02") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[2]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("03") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[3]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("04") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[4]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("05") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[5]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("06") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[6]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("07") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[7]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("10") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[8]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("11") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[9]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("12") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[10]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("13") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[11]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("14") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[12]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("15") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[13]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("16") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[14]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[1].toString().contains("17") &&
+                drag_item[1].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[15]);
+              print("url_image : $url_image");
+            }
           }
 
-          // 2
-          if ((drag_item[2].toString().contains("00") ||
-                  drag_item[2].toString().contains("01") ||
-                  drag_item[2].toString().contains("02") ||
-                  drag_item[2].toString().contains("03") ||
-                  drag_item[2].toString().contains("10") ||
-                  drag_item[2].toString().contains("11") ||
-                  drag_item[2].toString().contains("12") ||
-                  drag_item[2].toString().contains("13")) &&
-              drag_item[2].toString().isNotEmpty) {
-            url_image.add(list[2]);
-            print("url_image : $url_image");
+          // ......
+          // card 3
+          // ......
+          if (drag_item[2].isNotEmpty) {
+            if (drag_item[2].toString().contains("00") &&
+                drag_item[2].toString().isNotEmpty) {
+              url_image_b1.add(list[0]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("01") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[1]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("02") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[2]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("03") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[3]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("04") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[4]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("05") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[5]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("06") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[6]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("07") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[7]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("10") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[8]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("11") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[9]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("12") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[10]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("13") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[11]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("14") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[12]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("15") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[13]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("16") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[14]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[2].toString().contains("17") &&
+                drag_item[2].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[15]);
+              print("url_image : $url_image");
+            }
           }
 
-          // 3
-          if ((drag_item[3].toString().contains("00") ||
-                  drag_item[3].toString().contains("01") ||
-                  drag_item[3].toString().contains("02") ||
-                  drag_item[3].toString().contains("03") ||
-                  drag_item[3].toString().contains("10") ||
-                  drag_item[3].toString().contains("11") ||
-                  drag_item[3].toString().contains("12") ||
-                  drag_item[3].toString().contains("13")) &&
-              drag_item[3].toString().isNotEmpty) {
-            url_image.add(list[3]);
-            print("url_image : $url_image");
+          // ......
+          // card 4
+          // ......
+          if (drag_item[3].isNotEmpty) {
+            if (drag_item[3].toString().contains("00") &&
+                drag_item[3].toString().isNotEmpty) {
+              url_image_b1.add(list[0]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("01") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[1]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("02") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[2]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("03") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[3]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("04") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[4]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("05") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[5]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("06") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[6]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("07") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[7]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("10") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[8]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("11") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[9]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("12") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[10]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("13") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[11]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("14") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[12]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("15") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[13]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("16") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[14]);
+              print("url_image : $url_image");
+            }
+            if (drag_item[3].toString().contains("17") &&
+                drag_item[3].toString().isNotEmpty) {
+              // ...
+              url_image_b1.add(list[15]);
+              print("url_image : $url_image");
+            }
           }
 
-          // 4
-          if ((drag_item[4].toString().contains("00") ||
-                  drag_item[4].toString().contains("01") ||
-                  drag_item[4].toString().contains("02") ||
-                  drag_item[4].toString().contains("03") ||
-                  drag_item[4].toString().contains("10") ||
-                  drag_item[4].toString().contains("11") ||
-                  drag_item[4].toString().contains("12") ||
-                  drag_item[4].toString().contains("13")) &&
+          // ......
+          // card 5
+          // ......
+          if (drag_item[4].toString().contains("00") &&
               drag_item[4].toString().isNotEmpty) {
-            url_image.add(list[4]);
+            url_image_b1.add(list[0]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("01") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[1]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("02") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[2]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("03") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[3]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("04") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[4]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("05") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[5]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("06") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[6]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("07") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[7]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("10") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[8]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("11") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[9]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("12") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[10]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("13") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[11]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("14") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[12]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("15") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[13]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("16") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[14]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[4].toString().contains("17") &&
+              drag_item[4].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[15]);
             print("url_image : $url_image");
           }
 
-          // 5
-          if ((drag_item[5].toString().contains("00") ||
-                  drag_item[5].toString().contains("01") ||
-                  drag_item[5].toString().contains("02") ||
-                  drag_item[5].toString().contains("03") ||
-                  drag_item[5].toString().contains("10") ||
-                  drag_item[5].toString().contains("11") ||
-                  drag_item[5].toString().contains("12") ||
-                  drag_item[5].toString().contains("13")) &&
+          // ......
+          // card 6
+          // ......
+          if (drag_item[5].toString().contains("00") &&
               drag_item[5].toString().isNotEmpty) {
-            url_image.add(list[5]);
+            url_image_b1.add(list[0]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("01") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[1]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("02") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[2]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("03") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[3]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("04") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[4]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("05") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[5]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("06") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[6]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("07") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[7]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("10") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[8]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("11") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[9]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("12") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[10]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("13") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[11]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("14") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[12]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("15") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[13]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("16") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[14]);
+            print("url_image : $url_image");
+          }
+          if (drag_item[5].toString().contains("17") &&
+              drag_item[5].toString().isNotEmpty) {
+            // ...
+            url_image_b1.add(list[15]);
             print("url_image : $url_image");
           }
         }
@@ -6029,11 +6547,11 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                       height: width * 0.015,
                       width: width * 1,
-                      color: Color.fromARGB(255, 75, 196, 111)),
+                      color: Color.fromARGB(255, 196, 75, 146)),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -6162,7 +6680,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   // ..........................................
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: const Color.fromARGB(255, 196, 75, 146),
                     child: Column(
                       children: [
                         Padding(
@@ -6226,7 +6744,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                       },
                                                       child: Container(
                                                         width: width * 0.095,
-                                                        height: height * 0.22,
+                                                        height: height * 0.23,
                                                         decoration:
                                                             BoxDecoration(
                                                           image:
@@ -6891,7 +7409,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                             width:
                                                                 width * 0.095,
                                                             height:
-                                                                height * 0.22,
+                                                                height * 0.23,
                                                             decoration:
                                                                 BoxDecoration(
                                                               image:
@@ -7530,7 +8048,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                 width: width *
                                                                     0.095,
                                                                 height: height *
-                                                                    0.22,
+                                                                    0.23,
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   image:
@@ -7944,7 +8462,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         0.095,
                                                                     height:
                                                                         height *
-                                                                            0.22,
+                                                                            0.23,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       image:
@@ -9532,7 +10050,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                       },
                                                       child: Container(
                                                         width: width * 0.093,
-                                                        height: height * 0.22,
+                                                        height: height * 0.23,
                                                         decoration:
                                                             BoxDecoration(
                                                           image:
@@ -10197,7 +10715,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                             width:
                                                                 width * 0.093,
                                                             height:
-                                                                height * 0.22,
+                                                                height * 0.23,
                                                             decoration:
                                                                 BoxDecoration(
                                                               image:
@@ -10807,7 +11325,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                               },
                                                               child: Container(
                                                                 width: width *
-                                                                    0.092,
+                                                                    0.091,
                                                                 height: height *
                                                                     0.21,
                                                                 decoration:
@@ -11211,7 +11729,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .all(
-                                                                        15.0),
+                                                                        5.0),
                                                                 child: InkWell(
                                                                   onTap:
                                                                       () async {
@@ -11220,10 +11738,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                   child:
                                                                       Container(
                                                                     width: width *
-                                                                        0.095,
+                                                                        0.091,
                                                                     height:
                                                                         height *
-                                                                            0.22,
+                                                                            0.23,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       image:
@@ -11476,7 +11994,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                       child:
                                                                           Container(
                                                                         width: width *
-                                                                            0.095,
+                                                                            0.092,
                                                                         height: height *
                                                                             0.23,
                                                                         decoration:
@@ -12137,7 +12655,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     ? Padding(
                                                                         padding: const EdgeInsets
                                                                             .all(
-                                                                            15.0),
+                                                                            5.0),
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
@@ -12147,7 +12665,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           child:
                                                                               Container(
                                                                             width:
-                                                                                width * 0.095,
+                                                                                width * 0.092,
                                                                             height:
                                                                                 height * 0.23,
                                                                             decoration:
@@ -12799,14 +13317,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                 ? Padding(
                                                     padding:
                                                         const EdgeInsets.all(
-                                                            15.0),
+                                                            5.0),
                                                     child: InkWell(
                                                       onTap: () async {
                                                         // ---
                                                       },
                                                       child: Container(
-                                                        width: width * 0.093,
-                                                        height: height * 0.22,
+                                                        width: width * 0.092,
+                                                        height: height * 0.23,
                                                         decoration:
                                                             BoxDecoration(
                                                           image:
@@ -13462,16 +13980,16 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                     ? Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                .all(15.0),
+                                                                .all(5.0),
                                                         child: InkWell(
                                                           onTap: () async {
                                                             // ---
                                                           },
                                                           child: Container(
                                                             width:
-                                                                width * 0.093,
+                                                                width * 0.092,
                                                             height:
-                                                                height * 0.22,
+                                                                height * 0.23,
                                                             decoration:
                                                                 BoxDecoration(
                                                               image:
@@ -14483,7 +15001,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .all(
-                                                                        15.0),
+                                                                        5.0),
                                                                 child: InkWell(
                                                                   onTap:
                                                                       () async {
@@ -14492,10 +15010,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                   child:
                                                                       Container(
                                                                     width: width *
-                                                                        0.095,
+                                                                        0.092,
                                                                     height:
                                                                         height *
-                                                                            0.22,
+                                                                            0.23,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       image:
@@ -14748,9 +15266,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                       child:
                                                                           Container(
                                                                         width: width *
-                                                                            0.095,
+                                                                            0.092,
                                                                         height: height *
-                                                                            0.22,
+                                                                            0.23,
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           image:
@@ -15409,7 +15927,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     ? Padding(
                                                                         padding: const EdgeInsets
                                                                             .all(
-                                                                            15.0),
+                                                                            5.0),
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
@@ -15419,9 +15937,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           child:
                                                                               Container(
                                                                             width:
-                                                                                width * 0.095,
+                                                                                width * 0.092,
                                                                             height:
-                                                                                height * 0.22,
+                                                                                height * 0.23,
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               image: DecorationImage(
@@ -16174,641 +16692,670 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                         choose_layout == "layout1" &&
                                                 url_image.isNotEmpty
                                             ? Container(
-                                                    width: width * 0.35,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                        // last visit code here
-                                                        image: AssetImage(choose_background ==
-                                                                'background1'
-                                                            ? "assets/ornament/ornament1.jpg"
+                                                width: width * 0.35,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    // last visit code here
+                                                    image: AssetImage(choose_background ==
+                                                            'background1'
+                                                        ? "assets/ornament/ornament1.jpg"
+                                                        : choose_background ==
+                                                                'background2'
+                                                            ? "assets/ornament/ornament2.jpg"
                                                             : choose_background ==
-                                                                    'background2'
-                                                                ? "assets/ornament/ornament2.jpg"
+                                                                    'background3'
+                                                                ? "assets/ornament/ornament3.jpg"
                                                                 : choose_background ==
-                                                                        'background3'
-                                                                    ? "assets/ornament/ornament3.jpg"
+                                                                        'background4'
+                                                                    ? "assets/ornament/ornament4.jpg"
                                                                     : choose_background ==
-                                                                            'background4'
-                                                                        ? "assets/ornament/ornament4.jpg"
+                                                                            'background5'
+                                                                        ? "assets/ornament/ornament5.jpg"
                                                                         : choose_background ==
-                                                                                'background5'
-                                                                            ? "assets/ornament/ornament5.jpg"
-                                                                            : choose_background == 'background6'
-                                                                                ? "assets/ornament/ornament6.jpg"
-                                                                                : choose_background == 'background7'
-                                                                                    ? "assets/ornament/ornament7.jpg"
-                                                                                    : choose_background == 'background8'
-                                                                                        ? "assets/ornament/ornament8.jpg"
-                                                                                        : choose_background == 'background9'
-                                                                                            ? "assets/ornament/ornament9.jpg"
-                                                                                            : "assets/ornament/ornament10.jpg"),
-                                                        fit: BoxFit.cover,
-                                                        colorFilter:
-                                                            new ColorFilter
-                                                                .mode(
-                                                                Colors
-                                                                    .transparent
-                                                                    .withOpacity(
-                                                                        0.4),
-                                                                BlendMode
-                                                                    .dstATop),
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      color: choose_background ==
-                                                              'background1'
+                                                                                'background6'
+                                                                            ? "assets/ornament/ornament6.jpg"
+                                                                            : choose_background == 'background7'
+                                                                                ? "assets/ornament/ornament7.jpg"
+                                                                                : choose_background == 'background8'
+                                                                                    ? "assets/ornament/ornament8.jpg"
+                                                                                    : choose_background == 'background9'
+                                                                                        ? "assets/ornament/ornament9.jpg"
+                                                                                        : "assets/ornament/ornament10.jpg"),
+                                                    fit: BoxFit.cover,
+                                                    colorFilter:
+                                                        new ColorFilter.mode(
+                                                            Colors.transparent
+                                                                .withOpacity(
+                                                                    0.4),
+                                                            BlendMode.dstATop),
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: choose_background ==
+                                                          'background1'
+                                                      ? Color.fromARGB(
+                                                          255, 255, 72, 72)
+                                                      : choose_background ==
+                                                              'background2'
                                                           ? Color.fromARGB(
-                                                              255, 255, 72, 72)
+                                                              255, 80, 242, 177)
                                                           : choose_background ==
-                                                                  'background2'
+                                                                  'background3'
                                                               ? Color.fromARGB(
                                                                   255,
-                                                                  80,
-                                                                  242,
-                                                                  177)
+                                                                  132,
+                                                                  91,
+                                                                  255)
                                                               : choose_background ==
-                                                                      'background3'
-                                                                  ? Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          132,
-                                                                          91,
-                                                                          255)
+                                                                      'background4'
+                                                                  ? Color.fromARGB(
+                                                                      255,
+                                                                      84,
+                                                                      230,
+                                                                      94)
                                                                   : choose_background ==
-                                                                          'background4'
+                                                                          'background5'
                                                                       ? Color.fromARGB(
                                                                           255,
                                                                           84,
-                                                                          230,
-                                                                          94)
+                                                                          138,
+                                                                          121)
                                                                       : choose_background ==
-                                                                              'background5'
-                                                                          ? Color.fromARGB(
+                                                                              'background6'
+                                                                          ? const Color.fromARGB(
                                                                               255,
-                                                                              84,
-                                                                              138,
-                                                                              121)
-                                                                          : choose_background == 'background6'
-                                                                              ? const Color.fromARGB(255, 152, 75, 75)
-                                                                              : Colors.white,
-                                                      boxShadow: [],
-                                                    ),
-                                                    child: Padding(
-                                                      padding: EdgeInsets.all(
-                                                        width * 0.0025,
-                                                      ),
-                                                      child: Column(
+                                                                              152,
+                                                                              75,
+                                                                              75)
+                                                                          : Colors
+                                                                              .white,
+                                                  boxShadow: [],
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(
+                                                    width * 0.0025,
+                                                  ),
+                                                  child: Column(
+                                                    children: [
+                                                      // .................................
+                                                      // layout row drag target main view
+                                                      // .................................
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
                                                         children: [
-                                                          // .................................
-                                                          // layout row drag target main view
-                                                          // .................................
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              // .............................
-                                                              // layout drag target main view
-                                                              // .............................
+                                                          // .............................
+                                                          // layout drag target main view
+                                                          // .............................
 
-                                                              // ============
-                                                              // kolom card 0
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
+                                                          // ============
+                                                          // kolom card 0
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
                                                                         ? const ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
+                                                                                229,
                                                                                 255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
+                                                                                247,
+                                                                                220),
                                                                             BlendMode.saturation,
                                                                           )
                                                                         : nama_filter ==
-                                                                                'classic negative'
+                                                                                'black white blur'
                                                                             ? const ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
-                                                                            : nama_filter == 'black white blur'
+                                                                            : nama_filter == 'mute'
                                                                                 ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                    Color.fromARGB(228, 151, 151, 151),
                                                                                     BlendMode.saturation,
                                                                                   )
-                                                                                : nama_filter == 'mute'
+                                                                                : nama_filter == 'webcore'
                                                                                     ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                        Color.fromARGB(228, 112, 89, 130),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  // ),
-                                                                ),
-                                                              ),
-
-                                                              // ============
-                                                              // kolom card 1
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
-                                                                        ? const ColorFilter
-                                                                            .mode(
-                                                                            Color.fromARGB(
-                                                                                255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
-                                                                            BlendMode.saturation,
-                                                                          )
-                                                                        : nama_filter ==
-                                                                                'classic negative'
-                                                                            ? const ColorFilter.mode(
-                                                                                Color.fromARGB(229, 255, 247, 220),
-                                                                                BlendMode.saturation,
-                                                                              )
-                                                                            : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
-                                                                                    BlendMode.saturation,
-                                                                                  )
-                                                                                : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
-                                                                                      )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
                                                                   ),
-                                                                  // ),
                                                                 ),
                                                               ),
-                                                            ],
+                                                              // ),
+                                                            ),
                                                           ),
 
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              // .............................
-                                                              // layout drag target main view
-                                                              // .............................
-
-                                                              // ============
-                                                              // kolom card 2
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
+                                                          // ============
+                                                          // kolom card 1
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
                                                                         ? const ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
+                                                                                229,
                                                                                 255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
+                                                                                247,
+                                                                                220),
                                                                             BlendMode.saturation,
                                                                           )
                                                                         : nama_filter ==
-                                                                                'classic negative'
+                                                                                'black white blur'
                                                                             ? const ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
-                                                                            : nama_filter == 'black white blur'
+                                                                            : nama_filter == 'mute'
                                                                                 ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                    Color.fromARGB(228, 151, 151, 151),
                                                                                     BlendMode.saturation,
                                                                                   )
-                                                                                : nama_filter == 'mute'
+                                                                                : nama_filter == 'webcore'
                                                                                     ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                        Color.fromARGB(228, 112, 89, 130),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  // ),
-                                                                ),
-                                                              ),
-
-                                                              // ============
-                                                              // kolom card 3
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
-                                                                        ? const ColorFilter
-                                                                            .mode(
-                                                                            Color.fromARGB(
-                                                                                255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
-                                                                            BlendMode.saturation,
-                                                                          )
-                                                                        : nama_filter ==
-                                                                                'classic negative'
-                                                                            ? const ColorFilter.mode(
-                                                                                Color.fromARGB(229, 255, 247, 220),
-                                                                                BlendMode.saturation,
-                                                                              )
-                                                                            : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
-                                                                                    BlendMode.saturation,
-                                                                                  )
-                                                                                : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
-                                                                                      )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
                                                                   ),
-                                                                  // ),
                                                                 ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              // .............................
-                                                              // layout drag target main view
-                                                              // .............................
-
-                                                              // ============
-                                                              // kolom card 4
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
-                                                                        ? const ColorFilter
-                                                                            .mode(
-                                                                            Color.fromARGB(
-                                                                                255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
-                                                                            BlendMode.saturation,
-                                                                          )
-                                                                        : nama_filter ==
-                                                                                'classic negative'
-                                                                            ? const ColorFilter.mode(
-                                                                                Color.fromARGB(229, 255, 247, 220),
-                                                                                BlendMode.saturation,
-                                                                              )
-                                                                            : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
-                                                                                    BlendMode.saturation,
-                                                                                  )
-                                                                                : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
-                                                                                        BlendMode.saturation,
-                                                                                      )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  // ),
-                                                                ),
-                                                              ),
-
-                                                              // ======================
-                                                              // kolom card 6 main view
-                                                              // ======================
-                                                              Container(
-                                                                width: width *
-                                                                    0.16,
-                                                                height: width *
-                                                                    0.14,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10),
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  boxShadow: [],
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0045,
-                                                                  ),
-                                                                  child:
-                                                                      ColorFiltered(
-                                                                    colorFilter: nama_filter ==
-                                                                            'greyscale'
-                                                                        ? const ColorFilter
-                                                                            .mode(
-                                                                            Color.fromARGB(
-                                                                                255,
-                                                                                139,
-                                                                                139,
-                                                                                139),
-                                                                            BlendMode.saturation,
-                                                                          )
-                                                                        : nama_filter ==
-                                                                                'classic negative'
-                                                                            ? const ColorFilter.mode(
-                                                                                Color.fromARGB(229, 255, 247, 220),
-                                                                                BlendMode.saturation,
-                                                                              )
-                                                                            : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
-                                                                                    Color.fromARGB(229, 255, 247, 220),
-                                                                                    BlendMode.saturation,
-                                                                                  )
-                                                                                : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
-                                                                                        Color.fromARGB(228, 151, 151, 151),
-                                                                                        BlendMode.saturation,
-                                                                                      )
-                                                                                    : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
-                                                                                            Color.fromARGB(228, 112, 89, 130),
-                                                                                            BlendMode.saturation,
-                                                                                          )
-                                                                                        : const ColorFilter.mode(
-                                                                                            Color.fromARGB(0, 255, 255, 255),
-                                                                                            BlendMode.saturation,
-                                                                                          ),
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.16,
-                                                                      height:
-                                                                          height *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  // ),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                              // ),
+                                                            ),
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                  )
+
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          // .............................
+                                                          // layout drag target main view
+                                                          // .............................
+
+                                                          // ============
+                                                          // kolom card 2
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
+                                                                        ? const ColorFilter
+                                                                            .mode(
+                                                                            Color.fromARGB(
+                                                                                229,
+                                                                                255,
+                                                                                247,
+                                                                                220),
+                                                                            BlendMode.saturation,
+                                                                          )
+                                                                        : nama_filter ==
+                                                                                'black white blur'
+                                                                            ? const ColorFilter.mode(
+                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                BlendMode.saturation,
+                                                                              )
+                                                                            : nama_filter == 'mute'
+                                                                                ? const ColorFilter.mode(
+                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                    BlendMode.saturation,
+                                                                                  )
+                                                                                : nama_filter == 'webcore'
+                                                                                    ? const ColorFilter.mode(
+                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                        BlendMode.saturation,
+                                                                                      )
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                        BlendMode.saturation,
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              // ),
+                                                            ),
+                                                          ),
+
+                                                          // ============
+                                                          // kolom card 3
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
+                                                                        ? const ColorFilter
+                                                                            .mode(
+                                                                            Color.fromARGB(
+                                                                                229,
+                                                                                255,
+                                                                                247,
+                                                                                220),
+                                                                            BlendMode.saturation,
+                                                                          )
+                                                                        : nama_filter ==
+                                                                                'black white blur'
+                                                                            ? const ColorFilter.mode(
+                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                BlendMode.saturation,
+                                                                              )
+                                                                            : nama_filter == 'mute'
+                                                                                ? const ColorFilter.mode(
+                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                    BlendMode.saturation,
+                                                                                  )
+                                                                                : nama_filter == 'webcore'
+                                                                                    ? const ColorFilter.mode(
+                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                        BlendMode.saturation,
+                                                                                      )
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                        BlendMode.saturation,
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              // ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          // .............................
+                                                          // layout drag target main view
+                                                          // .............................
+
+                                                          // ============
+                                                          // kolom card 4
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
+                                                                        ? const ColorFilter
+                                                                            .mode(
+                                                                            Color.fromARGB(
+                                                                                229,
+                                                                                255,
+                                                                                247,
+                                                                                220),
+                                                                            BlendMode.saturation,
+                                                                          )
+                                                                        : nama_filter ==
+                                                                                'black white blur'
+                                                                            ? const ColorFilter.mode(
+                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                BlendMode.saturation,
+                                                                              )
+                                                                            : nama_filter == 'mute'
+                                                                                ? const ColorFilter.mode(
+                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                    BlendMode.saturation,
+                                                                                  )
+                                                                                : nama_filter == 'webcore'
+                                                                                    ? const ColorFilter.mode(
+                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                        BlendMode.saturation,
+                                                                                      )
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                        BlendMode.saturation,
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              // ),
+                                                            ),
+                                                          ),
+
+                                                          // ======================
+                                                          // kolom card 6 main view
+                                                          // ======================
+                                                          Container(
+                                                            width: width * 0.16,
+                                                            height:
+                                                                width * 0.14,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              color: Colors
+                                                                  .transparent,
+                                                              boxShadow: [],
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0045,
+                                                              ),
+                                                              child:
+                                                                  ColorFiltered(
+                                                                colorFilter: nama_filter ==
+                                                                        'greyscale'
+                                                                    ? const ColorFilter
+                                                                        .mode(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            139,
+                                                                            139,
+                                                                            139),
+                                                                        BlendMode
+                                                                            .saturation,
+                                                                      )
+                                                                    : nama_filter ==
+                                                                            'classic negative'
+                                                                        ? const ColorFilter
+                                                                            .mode(
+                                                                            Color.fromARGB(
+                                                                                229,
+                                                                                255,
+                                                                                247,
+                                                                                220),
+                                                                            BlendMode.saturation,
+                                                                          )
+                                                                        : nama_filter ==
+                                                                                'black white blur'
+                                                                            ? const ColorFilter.mode(
+                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                BlendMode.saturation,
+                                                                              )
+                                                                            : nama_filter == 'mute'
+                                                                                ? const ColorFilter.mode(
+                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                    BlendMode.saturation,
+                                                                                  )
+                                                                                : nama_filter == 'webcore'
+                                                                                    ? const ColorFilter.mode(
+                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                        BlendMode.saturation,
+                                                                                      )
+                                                                                    : const ColorFilter.mode(
+                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                        BlendMode.saturation,
+                                                                                      ),
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.16,
+                                                                  height:
+                                                                      height *
+                                                                          0.14,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              // ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )
                                             :
 
                                             // ..................
@@ -26298,7 +26845,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   // pilih layout / edit foto view
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: const Color.fromARGB(255, 196, 75, 146),
                     child: Column(
                       children: [
                         Padding(

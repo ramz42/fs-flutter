@@ -138,20 +138,13 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
 
     return Material(
       child: Container(
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/bg2.jpeg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.12,
               width: width * 1,
-              color: const Color.fromARGB(255, 24, 116, 59),
+              color: Color.fromARGB(255, 116, 24, 55),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -255,7 +248,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                       ),
                     ),
                     elevation: 1,
-                    color: const Color.fromARGB(255, 13, 161, 124),
+                    color: Color.fromARGB(255, 161, 13, 62),
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");

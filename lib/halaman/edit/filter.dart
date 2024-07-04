@@ -66,12 +66,13 @@ class _FilterWidgetState extends State<FilterWidget> {
   int no_telp = 0;
   int harga = 0;
 
+  
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -656,12 +657,12 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -1738,7 +1739,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   ),
                   Container(
                     width: width * 0.35,
-                    color: Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                     child: Column(
                       children: [
                         Padding(
@@ -1837,7 +1838,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                         const BoxDecoration(
                                                       image: DecorationImage(
                                                         image: AssetImage(
-                                                          "assets/images/kerudung.PNG",
+                                                          "assets/images/man.jpg",
                                                         ),
                                                         colorFilter:
                                                             ColorFilter.mode(
@@ -1964,12 +1965,13 @@ class LockScreenFotoEditWidget extends StatefulWidget {
 class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   final double barHeight = 10.0;
 
+  
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -2150,7 +2152,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(0),
                 child: AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 24, 116, 59),
+                  backgroundColor: Color.fromARGB(255, 196, 75, 146),
                   title: Padding(
                     padding: const EdgeInsets.only(top: 40, bottom: 50),
                     child: Text(
@@ -2442,7 +2444,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                   ),
                   SizedBox(
                     height: height * 0.035,
@@ -2477,7 +2479,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     ),
                   ),
                   elevation: 1,
-                  color: Color.fromARGB(255, 24, 116, 59),
+                  color: Color.fromARGB(255, 196, 75, 146),
                   child: InkWell(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(

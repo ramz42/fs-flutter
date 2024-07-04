@@ -63,11 +63,14 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   int _startSnap = 5;
   int _start = 300;
 
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+
+  
+  // colors wave
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -79,6 +82,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
     0.90,
     0.70,
   ];
+  // end statements color waves
 
   String _cameraInfo = 'Unknown';
   List<CameraDescription> _cameras = <CameraDescription>[];
@@ -1598,7 +1602,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: const Color.fromARGB(255, 75, 196, 111),
+                    color: Color.fromARGB(255, 196, 75, 146),
                   ),
                   SizedBox(
                     height: height * 0.035,
@@ -1633,7 +1637,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     ),
                   ),
                   elevation: 1,
-                  color: Color.fromARGB(255, 24, 116, 59),
+                  color: Color.fromARGB(255, 196, 75, 146),
                   child: InkWell(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(

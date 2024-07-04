@@ -411,7 +411,7 @@ class _AddFilterState extends State<AddFilter> {
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                      "assets/images/kerudung.PNG",
+                                      "assets/images/man.jpg",
                                     ),
                                     colorFilter: ColorFilter.mode(
                                       Color.fromARGB(255, 255, 255, 255),

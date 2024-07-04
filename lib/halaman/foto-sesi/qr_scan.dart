@@ -78,11 +78,13 @@ class _QrCodeScanSesiWidgetState extends State<QrCodeScanSesiWidget> {
 
   var db = new Mysql();
   // colors wave
-  static const _backgroundColor = Colors.lightBlue;
+  
+  // colors wave
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 239, 107, 158),
-    Color.fromARGB(255, 255, 201, 251),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -91,8 +93,8 @@ class _QrCodeScanSesiWidgetState extends State<QrCodeScanSesiWidget> {
   ];
 
   static const _heightPercentages = [
-    0.50,
-    0.80,
+    0.90,
+    0.70,
   ];
   // end statements color waves
 

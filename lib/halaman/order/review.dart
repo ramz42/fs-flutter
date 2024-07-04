@@ -335,12 +335,13 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
 
   final double barHeight = 10.0;
 
+  
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -973,8 +974,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                             ? width * 0.35
                                             : 0,
                                         // width: width * 1,
-                                        color: const Color.fromARGB(
-                                            255, 32, 32, 32),
+                                        color: const Color.fromARGB(255, 196, 111, 160),
                                         child: VirtualKeyboard(
                                           reverseLayout: false,
                                           // Default height is 300

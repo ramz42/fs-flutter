@@ -109,11 +109,11 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
   final double barHeight = 10.0;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 75, 196, 111);
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   static const _colors = [
-    Color.fromARGB(255, 111, 212, 142),
-    Color.fromARGB(255, 175, 252, 198),
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -125,6 +125,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
     0.90,
     0.70,
   ];
+  // end statements color waves
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
