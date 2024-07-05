@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-background.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-layout.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-sticker.dart';
@@ -54,6 +55,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   String image_header = "";
   String image_background = "";
+
+  // create some values
+  Color bg_warna_wave = Color(0xff443a49);
+  Color warna1 = Color(0xff443a49);
+  Color warna2 = Color(0xff443a49);
+
   _SettingsWidgetState();
 
   @override
@@ -64,6 +71,110 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     getSettings();
     getUsers();
     super.initState();
+  }
+
+  // ValueChanged<Color> callback
+  void changeColorBgWarna(Color color) {
+    setState(() {
+      bg_warna_wave = color;
+    });
+    print("bg_warna_wave color : $bg_warna_wave");
+  }
+
+  // ValueChanged<Color> callback
+  void changeColorWarna1(Color color) {
+    setState(() {
+      warna1 = color;
+    });
+    print("warna1 color : $warna1");
+  }
+
+  // ValueChanged<Color> callback
+  void changeColorWarna2(Color color) {
+    setState(() {
+      warna2 = color;
+    });
+    print("warna2 color : $warna2");
+  }
+
+  _postWarna() async {
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('http://127.0.0.1:8000/api/store-main-color'));
+    request.fields.addAll({
+      'bg_warna_wave': "0x${bg_warna_wave.toHexString()}",
+      'warna1': "0x${warna1.toHexString()}",
+      'warna2': "0x${warna2.toHexString()}"
+    });
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 201) {
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Update'),
+          content: const Text('Update Warna Berhasil'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Kembali'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Navigator.pop(context, 'OK');
+                Navigator.of(context).pop();
+                // getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
+              },
+              child: const Text('Baik'),
+            ),
+          ],
+        ),
+      );
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  Future<void> _dialogChangeColor(type) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(type == "main"
+              ? 'Ambil warna primer'
+              : type == 1
+                  ? 'Ambil warna 1'
+                  : 'Ambil warna 2'),
+          content: SingleChildScrollView(
+            child: ColorPicker(
+              pickerColor: type == "main"
+                  ? bg_warna_wave
+                  : type == 1
+                      ? warna1
+                      : warna2,
+              onColorChanged: type == "main"
+                  ? changeColorBgWarna
+                  : type == 1
+                      ? changeColorWarna1
+                      : changeColorWarna2,
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: const Text('Got it'),
+              onPressed: () {
+                setState(() {
+                  // ...
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   // route animate on dialog
@@ -388,17 +499,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           padding: const EdgeInsets.all(15.0),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const HalamanAwalSettings(),
-                              //   ),
-                              // );
-
-                              // Navigator.of(context)
-                              //     .push(_routeAnimate(HalamanAwalSettings()));
-
                               Navigator.push(
                                 context,
                                 PageTransition(
@@ -426,7 +526,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               height: height * 0.1,
             ),
             SizedBox(
-              // color: Color.fromARGB(255, 255, 123, 145),
               height: width * 0.36,
               child: Column(
                 children: [
@@ -489,17 +588,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         color: Colors.blue[900],
                         child: InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const MenuWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(MenuWidget()));
                             Navigator.push(
                               context,
                               PageTransition(
@@ -550,24 +638,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         color: Colors.blue[900],
                         child: InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const ReportWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(ReportWidget()));
                             Navigator.push(
                               context,
                               PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: ReportWidget(),
-                                  inheritTheme: true,
-                                  ctx: context),
+                                type: PageTransitionType.fade,
+                                child: ReportWidget(),
+                                inheritTheme: true,
+                                ctx: context,
+                              ),
                             );
                           },
                           borderRadius: const BorderRadius.all(
@@ -596,7 +674,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ],
                   ),
-
                   SizedBox(
                     height: height * 0.05,
                   ),
@@ -612,14 +689,15 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Container(
-                            // height: height * 0.4,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // label menu settings
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      bottom: width * 0.01, left: width * 0.02),
+                                    bottom: width * 0.01,
+                                    left: width * 0.02,
+                                  ),
                                   child: SizedBox(
                                     width: width * 0.5,
                                     child: Text(
@@ -1210,6 +1288,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     ],
                                   ),
                                 ),
+
+                                // ...
                                 Padding(
                                   padding: EdgeInsets.only(
                                     top: width * 0.02,
@@ -1221,12 +1301,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           Color.fromARGB(255, 36, 36, 36),
                                     ),
                                     onPressed: () {
-                                      // Validate returns true if the form is valid, or false otherwise.
-                                      // if (_formKey.currentState!.validate()) {
-                                      // _postSettings();
-                                      // _postSettings();
                                       _postOrder();
-                                      // }
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.only(
@@ -1237,6 +1312,343 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       ),
                                       child: const Text(
                                         'Konfigurasi Halaman Order',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                // konfigurasi halaman main
+                                SizedBox(
+                                  height: height * 0.065,
+                                ),
+                                // label menu settings order
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: SizedBox(
+                                    width: width * 0.5,
+                                    child: Text(
+                                      "Konfigurasi Warna Halaman",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: width * 0.012,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // end label
+
+                                //
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.35,
+                                        // height: 200,
+                                        // child: Row(
+                                        //   children: [
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                          color: Colors.white,
+                                          child: TextFormField(
+                                            decoration: InputDecoration(
+                                              hintText:
+                                                  "Ambil Background Warna - Main",
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.grey),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                left: 15,
+                                                bottom: 11,
+                                                top: 11,
+                                                right: 15,
+                                              ),
+                                              label: Text(
+                                                // ignore: unnecessary_null_comparison
+                                                bg_warna_wave.toHexString(),
+                                                style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 53, 53, 53),
+                                                ),
+                                              ),
+                                              border: new OutlineInputBorder(
+                                                  borderSide: new BorderSide(
+                                                      color:
+                                                          Colors.transparent)),
+                                            ),
+                                            style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              // if (image.isEmpty) {
+                                              //   return 'coba ambil gambar';
+                                              // } else {
+                                              setState(() {
+                                                // image_header =
+                                                //     filePickHeader.toString();
+                                              });
+                                              // }
+                                            },
+                                          ),
+                                        ),
+
+                                        //   ],
+                                        // ),
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.15,
+                                        child: Card(
+                                          color: Colors.black,
+                                          child: InkWell(
+                                            onTap: () {
+                                              // pickFileOrderHeader();
+
+                                              _dialogChangeColor("main");
+                                              print("pick file header");
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                width * 0.0055,
+                                              ),
+                                              child: Icon(
+                                                Icons.colorize,
+                                                size: width * 0.014,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // ambil gambar background
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.35,
+                                        // height: 200,
+                                        // child: Row(
+                                        //   children: [
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                          color: Colors.white,
+                                          child: TextFormField(
+                                            decoration: InputDecoration(
+                                              hintText: "Ambil warna 1 - Main",
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.grey),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                left: 15,
+                                                bottom: 11,
+                                                top: 11,
+                                                right: 15,
+                                              ),
+                                              label: Text(
+                                                // ignore: unnecessary_null_comparison
+                                                warna1.toHexString(),
+                                                style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 53, 53, 53),
+                                                ),
+                                              ),
+                                              border: new OutlineInputBorder(
+                                                  borderSide: new BorderSide(
+                                                      color:
+                                                          Colors.transparent)),
+                                            ),
+                                            style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              // if (image.isEmpty) {
+                                              //   return 'coba ambil gambar';
+                                              // } else {
+                                              // setState(() {
+                                              //   image_background =
+                                              //       filePickBackground
+                                              //           .toString();
+                                              // });
+                                              // }
+                                            },
+                                          ),
+                                        ),
+
+                                        //   ],
+                                        // ),
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.15,
+                                        child: Card(
+                                          color: Colors.black,
+                                          child: InkWell(
+                                            onTap: () {
+                                              // pickFileOrderBg();
+
+                                              _dialogChangeColor(1);
+
+                                              print("pick file bg order");
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                width * 0.0055,
+                                              ),
+                                              child: Icon(
+                                                Icons.colorize,
+                                                size: width * 0.014,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // pilih warna background
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.35,
+                                        // height: 200,
+                                        // child: Row(
+                                        //   children: [
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                          color: Colors.white,
+                                          child: TextFormField(
+                                            decoration: InputDecoration(
+                                              hintText: "Ambil Warna 2 - Main",
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.grey),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                left: 15,
+                                                bottom: 11,
+                                                top: 11,
+                                                right: 15,
+                                              ),
+                                              label: Text(
+                                                // ignore: unnecessary_null_comparison
+                                                warna2.toHexString(),
+                                                style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 53, 53, 53),
+                                                ),
+                                              ),
+                                              border: new OutlineInputBorder(
+                                                  borderSide: new BorderSide(
+                                                      color:
+                                                          Colors.transparent)),
+                                            ),
+                                            style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              // if (image.isEmpty) {
+                                              //   return 'coba ambil gambar';
+                                              // } else {
+                                              setState(() {
+                                                // image_background =
+                                                //     filePickBackground
+                                                //         .toString();
+                                              });
+                                              // }
+                                            },
+                                          ),
+                                        ),
+
+                                        //   ],
+                                        // ),
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.15,
+                                        child: Card(
+                                          color: Colors.black,
+                                          child: InkWell(
+                                            onTap: () {
+                                              // pickFileOrderBg();
+                                              // changeColorWarna2(color);
+                                              _dialogChangeColor(2);
+
+                                              print("pick file bg order");
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                width * 0.0055,
+                                              ),
+                                              child: Icon(
+                                                Icons.colorize,
+                                                size: width * 0.014,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // ...
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: width * 0.02,
+                                    left: width * 0.02,
+                                  ),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 36, 36, 36),
+                                    ),
+                                    onPressed: () {
+                                      // _postOrder();
+                                      _postWarna();
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: width * 0.025,
+                                        right: width * 0.025,
+                                        top: width * 0.005,
+                                        bottom: width * 0.005,
+                                      ),
+                                      child: const Text(
+                                        'Konfigurasi Warna Halaman',
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Color.fromARGB(

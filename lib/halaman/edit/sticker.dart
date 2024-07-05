@@ -205,6 +205,7 @@ class _StickerWidgetState extends State<StickerWidget> {
   var db = new Mysql();
 
   List<dynamic> stickers = [];
+  List<dynamic> backgrounds = [];
 
   _StickerWidgetState(
     this.nama,
@@ -230,6 +231,7 @@ class _StickerWidgetState extends State<StickerWidget> {
 
     getAllImages();
     getStickers();
+    getBackground();
 
     super.initState();
   }
@@ -254,6 +256,21 @@ class _StickerWidgetState extends State<StickerWidget> {
   }
 
   // get background
+  getBackground() async {
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `background`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            backgrounds.add(row);
+          } // Finally, close the connection
+        }).then((value) => print("get background"));
+        return value.close();
+      },
+    );
+  }
+
+  // get sticker
   getStickers() async {
     db.getConnection().then(
       (value) {
@@ -6945,26 +6962,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -7321,25 +7320,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -7681,25 +7662,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -7957,25 +7920,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),
@@ -8129,25 +8074,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   decoration: BoxDecoration(
                                                                                     image: DecorationImage(
                                                                                       // last visit code here
-                                                                                      image: AssetImage(choose_background == 'background1'
-                                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                                          : choose_background == 'background2'
-                                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                                              : choose_background == 'background3'
-                                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                                  : choose_background == 'background4'
-                                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                                      : choose_background == 'background5'
-                                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                                          : choose_background == 'background6'
-                                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                                              : choose_background == 'background7'
-                                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                                  : choose_background == 'background8'
-                                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                                      : choose_background == 'background9'
-                                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                                       image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                       fit: BoxFit.cover,
                                                                                       colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                     ),
@@ -8568,25 +8495,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       decoration: BoxDecoration(
                                                                                         image: DecorationImage(
                                                                                           // last visit code here
-                                                                                          image: AssetImage(choose_background == 'background1'
-                                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                                              : choose_background == 'background2'
-                                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                                  : choose_background == 'background3'
-                                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                                      : choose_background == 'background4'
-                                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                                          : choose_background == 'background5'
-                                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                                              : choose_background == 'background6'
-                                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                                  : choose_background == 'background7'
-                                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                                      : choose_background == 'background8'
-                                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                                          : choose_background == 'background9'
-                                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                           fit: BoxFit.cover,
                                                                                           colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                         ),
@@ -9026,26 +8935,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -9402,25 +9293,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -9762,25 +9635,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -10038,25 +9893,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),
@@ -10210,25 +10047,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   decoration: BoxDecoration(
                                                                                     image: DecorationImage(
                                                                                       // last visit code here
-                                                                                      image: AssetImage(choose_background == 'background1'
-                                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                                          : choose_background == 'background2'
-                                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                                              : choose_background == 'background3'
-                                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                                  : choose_background == 'background4'
-                                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                                      : choose_background == 'background5'
-                                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                                          : choose_background == 'background6'
-                                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                                              : choose_background == 'background7'
-                                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                                  : choose_background == 'background8'
-                                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                                      : choose_background == 'background9'
-                                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                                       image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                       fit: BoxFit.cover,
                                                                                       colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                     ),
@@ -10649,25 +10468,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       decoration: BoxDecoration(
                                                                                         image: DecorationImage(
                                                                                           // last visit code here
-                                                                                          image: AssetImage(choose_background == 'background1'
-                                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                                              : choose_background == 'background2'
-                                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                                  : choose_background == 'background3'
-                                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                                      : choose_background == 'background4'
-                                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                                          : choose_background == 'background5'
-                                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                                              : choose_background == 'background6'
-                                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                                  : choose_background == 'background7'
-                                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                                      : choose_background == 'background8'
-                                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                                          : choose_background == 'background9'
-                                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                           fit: BoxFit.cover,
                                                                                           colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                         ),
@@ -11102,26 +10903,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -11478,25 +11261,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -11838,25 +11603,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -12114,25 +11861,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),
@@ -12286,25 +12015,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   decoration: BoxDecoration(
                                                                                     image: DecorationImage(
                                                                                       // last visit code here
-                                                                                      image: AssetImage(choose_background == 'background1'
-                                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                                          : choose_background == 'background2'
-                                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                                              : choose_background == 'background3'
-                                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                                  : choose_background == 'background4'
-                                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                                      : choose_background == 'background5'
-                                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                                          : choose_background == 'background6'
-                                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                                              : choose_background == 'background7'
-                                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                                  : choose_background == 'background8'
-                                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                                      : choose_background == 'background9'
-                                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                                       image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                       fit: BoxFit.cover,
                                                                                       colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                     ),
@@ -12725,25 +12436,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       decoration: BoxDecoration(
                                                                                         image: DecorationImage(
                                                                                           // last visit code here
-                                                                                          image: AssetImage(choose_background == 'background1'
-                                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                                              : choose_background == 'background2'
-                                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                                  : choose_background == 'background3'
-                                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                                      : choose_background == 'background4'
-                                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                                          : choose_background == 'background5'
-                                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                                              : choose_background == 'background6'
-                                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                                  : choose_background == 'background7'
-                                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                                      : choose_background == 'background8'
-                                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                                          : choose_background == 'background9'
-                                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                           fit: BoxFit.cover,
                                                                                           colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                         ),
@@ -13296,29 +12989,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                           image:
                                                               DecorationImage(
                                                             // last visit code here
-                                                            image: AssetImage(choose_background ==
-                                                                    'background1'
-                                                                ? "assets/ornament/ornament1.jpg"
-                                                                : choose_background ==
-                                                                        'background2'
-                                                                    ? "assets/ornament/ornament2.jpg"
-                                                                    : choose_background ==
-                                                                            'background3'
-                                                                        ? "assets/ornament/ornament3.jpg"
-                                                                        : choose_background ==
-                                                                                'background4'
-                                                                            ? "assets/ornament/ornament4.jpg"
-                                                                            : choose_background == 'background5'
-                                                                                ? "assets/ornament/ornament5.jpg"
-                                                                                : choose_background == 'background6'
-                                                                                    ? "assets/ornament/ornament6.jpg"
-                                                                                    : choose_background == 'background7'
-                                                                                        ? "assets/ornament/ornament7.jpg"
-                                                                                        : choose_background == 'background8'
-                                                                                            ? "assets/ornament/ornament8.jpg"
-                                                                                            : choose_background == 'background9'
-                                                                                                ? "assets/ornament/ornament9.jpg"
-                                                                                                : "assets/ornament/ornament10.jpg"),
+                                                             image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                             fit: BoxFit.cover,
                                                             colorFilter: new ColorFilter
                                                                 .mode(
@@ -13579,28 +13250,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               image:
                                                                   DecorationImage(
                                                                 // last visit code here
-                                                                image: AssetImage(choose_background ==
-                                                                        'background1'
-                                                                    ? "assets/ornament/ornament1.jpg"
-                                                                    : choose_background ==
-                                                                            'background2'
-                                                                        ? "assets/ornament/ornament2.jpg"
-                                                                        : choose_background ==
-                                                                                'background3'
-                                                                            ? "assets/ornament/ornament3.jpg"
-                                                                            : choose_background == 'background4'
-                                                                                ? "assets/ornament/ornament4.jpg"
-                                                                                : choose_background == 'background5'
-                                                                                    ? "assets/ornament/ornament5.jpg"
-                                                                                    : choose_background == 'background6'
-                                                                                        ? "assets/ornament/ornament6.jpg"
-                                                                                        : choose_background == 'background7'
-                                                                                            ? "assets/ornament/ornament7.jpg"
-                                                                                            : choose_background == 'background8'
-                                                                                                ? "assets/ornament/ornament8.jpg"
-                                                                                                : choose_background == 'background9'
-                                                                                                    ? "assets/ornament/ornament9.jpg"
-                                                                                                    : "assets/ornament/ornament10.jpg"),
+                                                                 image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                 fit: BoxFit
                                                                     .cover,
                                                                 colorFilter: new ColorFilter
@@ -13853,26 +13503,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -14053,25 +13685,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -14340,25 +13954,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -14699,25 +14295,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),
@@ -15077,29 +14655,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                           image:
                                                               DecorationImage(
                                                             // last visit code here
-                                                            image: AssetImage(choose_background ==
-                                                                    'background1'
-                                                                ? "assets/ornament/ornament1.jpg"
-                                                                : choose_background ==
-                                                                        'background2'
-                                                                    ? "assets/ornament/ornament2.jpg"
-                                                                    : choose_background ==
-                                                                            'background3'
-                                                                        ? "assets/ornament/ornament3.jpg"
-                                                                        : choose_background ==
-                                                                                'background4'
-                                                                            ? "assets/ornament/ornament4.jpg"
-                                                                            : choose_background == 'background5'
-                                                                                ? "assets/ornament/ornament5.jpg"
-                                                                                : choose_background == 'background6'
-                                                                                    ? "assets/ornament/ornament6.jpg"
-                                                                                    : choose_background == 'background7'
-                                                                                        ? "assets/ornament/ornament7.jpg"
-                                                                                        : choose_background == 'background8'
-                                                                                            ? "assets/ornament/ornament8.jpg"
-                                                                                            : choose_background == 'background9'
-                                                                                                ? "assets/ornament/ornament9.jpg"
-                                                                                                : "assets/ornament/ornament10.jpg"),
+                                                             image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                             fit: BoxFit.cover,
                                                             colorFilter: new ColorFilter
                                                                 .mode(
@@ -15349,7 +14905,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // ..................
                                                     choose_layout ==
                                                                 "layout2" &&
-                                                            url_image_b1.isNotEmpty
+                                                            url_image_b1
+                                                                .isNotEmpty
                                                         ? Center(
                                                             child: Container(
                                                             width: 384, // pixel
@@ -15360,28 +14917,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               image:
                                                                   DecorationImage(
                                                                 // last visit code here
-                                                                image: AssetImage(choose_background ==
-                                                                        'background1'
-                                                                    ? "assets/ornament/ornament1.jpg"
-                                                                    : choose_background ==
-                                                                            'background2'
-                                                                        ? "assets/ornament/ornament2.jpg"
-                                                                        : choose_background ==
-                                                                                'background3'
-                                                                            ? "assets/ornament/ornament3.jpg"
-                                                                            : choose_background == 'background4'
-                                                                                ? "assets/ornament/ornament4.jpg"
-                                                                                : choose_background == 'background5'
-                                                                                    ? "assets/ornament/ornament5.jpg"
-                                                                                    : choose_background == 'background6'
-                                                                                        ? "assets/ornament/ornament6.jpg"
-                                                                                        : choose_background == 'background7'
-                                                                                            ? "assets/ornament/ornament7.jpg"
-                                                                                            : choose_background == 'background8'
-                                                                                                ? "assets/ornament/ornament8.jpg"
-                                                                                                : choose_background == 'background9'
-                                                                                                    ? "assets/ornament/ornament9.jpg"
-                                                                                                    : "assets/ornament/ornament10.jpg"),
+                                                                 image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                 fit: BoxFit
                                                                     .cover,
                                                                 colorFilter: new ColorFilter
@@ -15617,7 +15153,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         choose_layout ==
                                                                     "layout3" &&
                                                                 (url_image_b1
-                                                                        .isNotEmpty )
+                                                                    .isNotEmpty)
                                                             ? Center(
                                                                 child:
                                                                     Container(
@@ -15630,26 +15166,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -15830,25 +15348,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -16117,25 +15617,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -16476,25 +15958,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),
@@ -16834,29 +16298,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                           image:
                                                               DecorationImage(
                                                             // last visit code here
-                                                            image: AssetImage(choose_background ==
-                                                                    'background1'
-                                                                ? "assets/ornament/ornament1.jpg"
-                                                                : choose_background ==
-                                                                        'background2'
-                                                                    ? "assets/ornament/ornament2.jpg"
-                                                                    : choose_background ==
-                                                                            'background3'
-                                                                        ? "assets/ornament/ornament3.jpg"
-                                                                        : choose_background ==
-                                                                                'background4'
-                                                                            ? "assets/ornament/ornament4.jpg"
-                                                                            : choose_background == 'background5'
-                                                                                ? "assets/ornament/ornament5.jpg"
-                                                                                : choose_background == 'background6'
-                                                                                    ? "assets/ornament/ornament6.jpg"
-                                                                                    : choose_background == 'background7'
-                                                                                        ? "assets/ornament/ornament7.jpg"
-                                                                                        : choose_background == 'background8'
-                                                                                            ? "assets/ornament/ornament8.jpg"
-                                                                                            : choose_background == 'background9'
-                                                                                                ? "assets/ornament/ornament9.jpg"
-                                                                                                : "assets/ornament/ornament10.jpg"),
+                                                             image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                             fit: BoxFit.cover,
                                                             colorFilter: new ColorFilter
                                                                 .mode(
@@ -17106,7 +16548,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // ..................
                                                     choose_layout2 ==
                                                                 "layout2" &&
-                                                            url_image_b2.isNotEmpty
+                                                            url_image_b2
+                                                                .isNotEmpty
                                                         ? Center(
                                                             child: Container(
                                                             width: 384, // pixel
@@ -17117,28 +16560,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               image:
                                                                   DecorationImage(
                                                                 // last visit code here
-                                                                image: AssetImage(choose_background ==
-                                                                        'background1'
-                                                                    ? "assets/ornament/ornament1.jpg"
-                                                                    : choose_background ==
-                                                                            'background2'
-                                                                        ? "assets/ornament/ornament2.jpg"
-                                                                        : choose_background ==
-                                                                                'background3'
-                                                                            ? "assets/ornament/ornament3.jpg"
-                                                                            : choose_background == 'background4'
-                                                                                ? "assets/ornament/ornament4.jpg"
-                                                                                : choose_background == 'background5'
-                                                                                    ? "assets/ornament/ornament5.jpg"
-                                                                                    : choose_background == 'background6'
-                                                                                        ? "assets/ornament/ornament6.jpg"
-                                                                                        : choose_background == 'background7'
-                                                                                            ? "assets/ornament/ornament7.jpg"
-                                                                                            : choose_background == 'background8'
-                                                                                                ? "assets/ornament/ornament8.jpg"
-                                                                                                : choose_background == 'background9'
-                                                                                                    ? "assets/ornament/ornament9.jpg"
-                                                                                                    : "assets/ornament/ornament10.jpg"),
+                                                                 image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                 fit: BoxFit
                                                                     .cover,
                                                                 colorFilter: new ColorFilter
@@ -17372,7 +16794,9 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         // layout 3 main view
                                                         // ..................
                                                         choose_layout2 ==
-                                                                    "layout3" && url_image_b2.isNotEmpty 
+                                                                    "layout3" &&
+                                                                url_image_b2
+                                                                    .isNotEmpty
                                                             ? Center(
                                                                 child:
                                                                     Container(
@@ -17385,26 +16809,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     image:
                                                                         DecorationImage(
                                                                       // last visit code here
-                                                                      image: AssetImage(choose_background ==
-                                                                              'background1'
-                                                                          ? "assets/ornament/ornament1.jpg"
-                                                                          : choose_background == 'background2'
-                                                                              ? "assets/ornament/ornament2.jpg"
-                                                                              : choose_background == 'background3'
-                                                                                  ? "assets/ornament/ornament3.jpg"
-                                                                                  : choose_background == 'background4'
-                                                                                      ? "assets/ornament/ornament4.jpg"
-                                                                                      : choose_background == 'background5'
-                                                                                          ? "assets/ornament/ornament5.jpg"
-                                                                                          : choose_background == 'background6'
-                                                                                              ? "assets/ornament/ornament6.jpg"
-                                                                                              : choose_background == 'background7'
-                                                                                                  ? "assets/ornament/ornament7.jpg"
-                                                                                                  : choose_background == 'background8'
-                                                                                                      ? "assets/ornament/ornament8.jpg"
-                                                                                                      : choose_background == 'background9'
-                                                                                                          ? "assets/ornament/ornament9.jpg"
-                                                                                                          : "assets/ornament/ornament10.jpg"),
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                       fit: BoxFit
                                                                           .cover,
                                                                       colorFilter: new ColorFilter
@@ -17585,25 +16991,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
-                                                                          image: AssetImage(choose_background == 'background1'
-                                                                              ? "assets/ornament/ornament1.jpg"
-                                                                              : choose_background == 'background2'
-                                                                                  ? "assets/ornament/ornament2.jpg"
-                                                                                  : choose_background == 'background3'
-                                                                                      ? "assets/ornament/ornament3.jpg"
-                                                                                      : choose_background == 'background4'
-                                                                                          ? "assets/ornament/ornament4.jpg"
-                                                                                          : choose_background == 'background5'
-                                                                                              ? "assets/ornament/ornament5.jpg"
-                                                                                              : choose_background == 'background6'
-                                                                                                  ? "assets/ornament/ornament6.jpg"
-                                                                                                  : choose_background == 'background7'
-                                                                                                      ? "assets/ornament/ornament7.jpg"
-                                                                                                      : choose_background == 'background8'
-                                                                                                          ? "assets/ornament/ornament8.jpg"
-                                                                                                          : choose_background == 'background9'
-                                                                                                              ? "assets/ornament/ornament9.jpg"
-                                                                                                              : "assets/ornament/ornament10.jpg"),
+                                                                           image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           colorFilter: new ColorFilter
@@ -17872,25 +17260,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: AssetImage(choose_background == 'background1'
-                                                                                  ? "assets/ornament/ornament1.jpg"
-                                                                                  : choose_background == 'background2'
-                                                                                      ? "assets/ornament/ornament2.jpg"
-                                                                                      : choose_background == 'background3'
-                                                                                          ? "assets/ornament/ornament3.jpg"
-                                                                                          : choose_background == 'background4'
-                                                                                              ? "assets/ornament/ornament4.jpg"
-                                                                                              : choose_background == 'background5'
-                                                                                                  ? "assets/ornament/ornament5.jpg"
-                                                                                                  : choose_background == 'background6'
-                                                                                                      ? "assets/ornament/ornament6.jpg"
-                                                                                                      : choose_background == 'background7'
-                                                                                                          ? "assets/ornament/ornament7.jpg"
-                                                                                                          : choose_background == 'background8'
-                                                                                                              ? "assets/ornament/ornament8.jpg"
-                                                                                                              : choose_background == 'background9'
-                                                                                                                  ? "assets/ornament/ornament9.jpg"
-                                                                                                                  : "assets/ornament/ornament10.jpg"),
+                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                               colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                             ),
@@ -18231,25 +17601,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
-                                                                                  image: AssetImage(choose_background == 'background1'
-                                                                                      ? "assets/ornament/ornament1.jpg"
-                                                                                      : choose_background == 'background2'
-                                                                                          ? "assets/ornament/ornament2.jpg"
-                                                                                          : choose_background == 'background3'
-                                                                                              ? "assets/ornament/ornament3.jpg"
-                                                                                              : choose_background == 'background4'
-                                                                                                  ? "assets/ornament/ornament4.jpg"
-                                                                                                  : choose_background == 'background5'
-                                                                                                      ? "assets/ornament/ornament5.jpg"
-                                                                                                      : choose_background == 'background6'
-                                                                                                          ? "assets/ornament/ornament6.jpg"
-                                                                                                          : choose_background == 'background7'
-                                                                                                              ? "assets/ornament/ornament7.jpg"
-                                                                                                              : choose_background == 'background8'
-                                                                                                                  ? "assets/ornament/ornament8.jpg"
-                                                                                                                  : choose_background == 'background9'
-                                                                                                                      ? "assets/ornament/ornament9.jpg"
-                                                                                                                      : "assets/ornament/ornament10.jpg"),
+                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                   colorFilter: new ColorFilter.mode(Colors.transparent.withOpacity(0.4), BlendMode.dstATop),
                                                                                 ),

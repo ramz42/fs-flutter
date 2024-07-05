@@ -60,7 +60,7 @@ class _OrderWidgetState extends State<OrderWidget> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[3];
+              bgImg = row[6];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -356,7 +356,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   padding:
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
-                                                    color: Color.fromARGB(255, 196, 111, 160),
+                                                    color: Color.fromARGB(
+                                                        255, 196, 111, 160),
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(

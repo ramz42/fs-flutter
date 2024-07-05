@@ -132,7 +132,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[3];
+              bgImg = row[6];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));

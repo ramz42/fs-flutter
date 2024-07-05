@@ -294,7 +294,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[3];
+              bgImg = row[6];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -335,7 +335,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
 
   final double barHeight = 10.0;
 
-  
   // colors wave
   static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
@@ -974,7 +973,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                             ? width * 0.35
                                             : 0,
                                         // width: width * 1,
-                                        color: const Color.fromARGB(255, 196, 111, 160),
+                                        color: const Color.fromARGB(
+                                            255, 196, 111, 160),
                                         child: VirtualKeyboard(
                                           reverseLayout: false,
                                           // Default height is 300

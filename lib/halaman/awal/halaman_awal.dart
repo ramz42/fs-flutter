@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:page_transition/page_transition.dart';
@@ -47,6 +48,14 @@ class _HalamanAwalState extends State<HalamanAwal> {
   late Timer _timer;
   int waktu_awal = 10;
 
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  // create some values
+  Color pickerColor = Color(0xff443a49);
+  Color currentColor = Color(0xff443a49);
+
   _HalamanAwalState();
 
   @override
@@ -61,15 +70,40 @@ class _HalamanAwalState extends State<HalamanAwal> {
     getStorageSerial();
     getOrderSettings();
     getUsers();
+    getWarnaBg();
 
     super.initState();
   }
 
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
+  }
+
   String headerImg = "";
   String bgImg = "";
+
   // ...
   getOrderSettings() async {
-    // print("get sesi data");
     db.getConnection().then(
       (value) {
         String sql = "select * from `halaman_order`";
@@ -77,7 +111,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[3];
+              bgImg = row[6];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -325,7 +359,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
   // colors wave
   static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
-  static const _colors = [
+  List<Color> _colors = [
     Color.fromARGB(255, 212, 111, 170),
     Color.fromARGB(255, 252, 175, 229),
   ];
@@ -402,7 +436,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         Container(
                           height: width * 0.035,
                           width: width * 1,
-                          color: Colors.transparent,
+                          color: bg_warna_main != ""
+                              ? Color(int.parse(bg_warna_main))
+                              : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -413,7 +449,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 2,
-                                      color: Colors.transparent,
+                                      color: bg_warna_main != ""
+                                          ? Color(int.parse(bg_warna_main))
+                                          : Colors.transparent,
                                     )),
                                 child: InkWell(
                                   onTap: () {
@@ -521,11 +559,18 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
-                              colors: _colors,
+                              colors: [
+                                warna1 != ""
+                                    ? Color(int.parse(warna1))
+                                    : Colors.transparent,
+                                warna2 != ""
+                                    ? Color(int.parse(warna2))
+                                    : Colors.transparent
+                              ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: Colors.transparent,
+                            backgroundColor: pickerColor,
                             size: const Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -557,7 +602,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 196, 75, 146),
+                      color: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
@@ -629,8 +676,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         //   ),
                         // );
 
-                        // Navigator.of(context)
-                        //     .push(_routeAnimate(LockScreenFotoEditWidget()));
+                        Navigator.of(context)
+                            .push(_routeAnimate(LockScreenFotoEditWidget()));
                         Navigator.push(
                           context,
                           PageTransition(
@@ -639,6 +686,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               inheritTheme: true,
                               ctx: context),
                         );
+                        // _dialogChangeColor();
                       },
                       borderRadius: const BorderRadius.all(
                         Radius.circular(
