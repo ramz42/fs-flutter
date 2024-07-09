@@ -94,7 +94,36 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
     // _saveStorage(title, deskripsi, nama, telp, email, ig, harga);
     getOrderSettings();
     _getStorage();
+    getWarnaBg();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   String headerImg = "";
@@ -109,7 +138,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -506,7 +535,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                           "Payment",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -518,11 +547,20 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                     // width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -575,7 +613,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        width: width * 0.35,
+                                        width: width * 0.42,
                                         child: Padding(
                                           padding: const EdgeInsets.all(15),
                                           child: InkWell(
@@ -589,8 +627,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                             //   );
                                             // },
                                             child: Card(
-                                              color:
-                                                  Color.fromARGB(255, 0, 0, 0),
+                                              color: Color.fromARGB(
+                                                  49, 39, 39, 39),
                                               elevation: 12,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -616,8 +654,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                       padding: EdgeInsets.only(
                                                         top: width * 0.02,
                                                         bottom: width * 0.02,
-                                                        right: width * 0.035,
-                                                        left: width * 0.035,
+                                                        right: width * 0.045,
+                                                        left: width * 0.045,
                                                       ),
                                                       child: Text(
                                                         "Qr Code / Cash"
@@ -649,7 +687,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Card(
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                  49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -717,7 +756,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                     width: 15,
                                                   ),
                                                   Card(
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                  49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -775,7 +815,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                     width: 15,
                                                   ),
                                                   Card(
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                  49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,

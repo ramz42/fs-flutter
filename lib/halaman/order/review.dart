@@ -92,7 +92,36 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
     // TODO: implement initState
 
     getOrderSettings();
+    getWarnaBg();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   _onKeyPressKeyboardVirutal(VirtualKeyboardKey key) {
@@ -294,7 +323,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -423,7 +452,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                           "Review",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -454,11 +483,20 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -973,8 +1011,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                             ? width * 0.35
                                             : 0,
                                         // width: width * 1,
-                                        color: const Color.fromARGB(
-                                            255, 196, 111, 160),
+                                        color: Colors.black,
                                         child: VirtualKeyboard(
                                           reverseLayout: false,
                                           // Default height is 300

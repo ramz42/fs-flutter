@@ -52,7 +52,36 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
 
     getSerialKey();
     getSettings();
+    getWarnaBg();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -248,7 +277,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                       ),
                     ),
                     elevation: 1,
-                    color: Color.fromARGB(255, 161, 13, 62),
+                    color:bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");

@@ -66,9 +66,12 @@ class _FilterWidgetState extends State<FilterWidget> {
   int no_telp = 0;
   int harga = 0;
 
-  
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+  // static const _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
 
   static const _colors = [
     Color.fromARGB(255, 212, 111, 170),
@@ -115,12 +118,37 @@ class _FilterWidgetState extends State<FilterWidget> {
 
     // init get filter from functions
     getFilter();
+    getWarnaBg();
 
     // test print logger nama dan tittle user
     print("nama initstate filterwidget : $nama");
     print("title pada initstate filterwidget : $title");
 
     super.initState();
+  }
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -326,6 +354,120 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController8
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-8"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // ...
+      // save on edit folder
+      // ...
+      if ((i == 0 && j == 0)) {
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-1"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+      if ((i == 0 && j == 1)) {
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-2"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 2)) {
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-3"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 3)) {
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-4"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 0)) {
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-5"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 1)) {
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-6"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 2)) {
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-7"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 3)) {
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
           fileName: "${"\\${DateTime.now().day}-8"}.png",
         )
             .then((capturedImage) async {
@@ -657,12 +799,12 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color:  bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -758,11 +900,18 @@ class _FilterWidgetState extends State<FilterWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: _backgroundColor,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -1739,7 +1888,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   ),
                   Container(
                     width: width * 0.35,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: Column(
                       children: [
                         Padding(
@@ -1965,9 +2114,8 @@ class LockScreenFotoEditWidget extends StatefulWidget {
 class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   final double barHeight = 10.0;
 
-  
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+  // static const _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
 
   static const _colors = [
     Color.fromARGB(255, 212, 111, 170),
@@ -1993,9 +2141,18 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   late Timer _timer;
   var counter = 600;
   var voucher = "";
-
   var db = new Mysql();
   bool isNavigate = true;
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  
+  List<dynamic> background = [];
+
+  String headerImg = "";
+  String bgImg = "";
 
   @override
   void initState() {
@@ -2006,7 +2163,57 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     setState(() {
       isNavigate = true;
     });
+
+    getWarnaBg();
+    
+    getOrderSettings();
+
     super.initState();
+  }
+
+  getOrderSettings() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      print("background : ${background}");
+      for (var element in background) {
+        print("background_image : ${element["background_image"]}");
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -2152,7 +2359,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(0),
                 child: AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 196, 75, 146),
+                  backgroundColor: Color.fromARGB(218, 33, 33, 33),
                   title: Padding(
                     padding: const EdgeInsets.only(top: 40, bottom: 50),
                     child: Text(
@@ -2433,7 +2640,13 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Material(
-      child: Container(
+      child: Container( decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             SizedBox(
@@ -2444,21 +2657,21 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                   ),
                   SizedBox(
                     height: height * 0.035,
                     width: width * 1,
-                    child: WaveWidget(
+                    child: bg_warna_main != "" ? WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [Color(int.parse(warna1)), Color(int.parse(warna2))],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: _backgroundColor,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
-                    ),
+                    ) : Container(),
                   ),
                 ],
               ),
@@ -2479,7 +2692,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     ),
                   ),
                   elevation: 1,
-                  color: Color.fromARGB(255, 196, 75, 146),
+                  color:  Color.fromARGB(218, 33, 33, 33),
                   child: InkWell(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(

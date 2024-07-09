@@ -44,6 +44,35 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
     _getStorage();
     getOrderSettings();
     super.initState();
+    getWarnaBg();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   String headerImg = "";
@@ -58,7 +87,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -155,7 +184,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/order/header-image/$bgImg"),
+                      "${Variables.ipv4_local}/storage/order/header-image/$headerImg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -196,7 +225,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                           "Review",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -227,11 +256,18 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),

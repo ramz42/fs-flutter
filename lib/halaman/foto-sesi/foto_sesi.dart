@@ -63,8 +63,6 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   int _startSnap = 5;
   int _start = 300;
 
-
-  
   // colors wave
   static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
@@ -95,6 +93,15 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   bool _recordAudio = true;
   bool _previewPaused = false;
   Size? _previewSize;
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  List<dynamic> background = [];
+
+  String headerImg = "";
+  String bgImg = "";
 
   List<dynamic> list = [];
   ResolutionPreset _resolutionPreset = ResolutionPreset.veryHigh;
@@ -127,6 +134,55 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
     _controller.forward();
     _startTimerClock();
     countTakePicture();
+
+    getWarnaBg();
+
+    getOrderSettings();
+  }
+
+  getOrderSettings() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      print("background : ${background}");
+      for (var element in background) {
+        print("background_image : ${element["background_image"]}");
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   postFotoSesi() async {
@@ -663,9 +719,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
         return Container(
           width: 100,
           height: 100,
-          color: Colors.transparent,
           child: Card(
-            color: Colors.transparent,
             // color: Colors.lightBlue,
             child: Padding(
               padding: const EdgeInsets.all(0),
@@ -767,12 +821,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
 
     return Material(
       child: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/bg2.jpeg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        color: Color.fromARGB(218, 33, 33, 33),
         child: Stack(
           children: [
             // Positioned(
@@ -793,20 +842,22 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                     child: Column(
                       children: [
                         Container(
-                          height: width * 0.025,
-                          width: width * 1,
-                          color: const Color.fromARGB(255, 75, 196, 111),
-                        ),
+                            height: width * 0.025,
+                            width: width * 1,
+                            color: Color(int.parse(bg_warna_main))),
                         Container(
                           height: height * 0.025,
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
-                              colors: _colors,
+                              colors: [
+                                Color(int.parse(warna1)),
+                                Color(int.parse(warna2))
+                              ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: _backgroundColor,
+                            backgroundColor: Color(int.parse(bg_warna_main)),
                             size: Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -822,6 +873,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                   Padding(
                     padding: const EdgeInsets.all(0.0),
                     child: Container(
+                      
                       height: height * 0.875,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -836,6 +888,13 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                           elevation: 1,
                           color: Color.fromARGB(255, 255, 255, 255),
                           child: Container(
+                            decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                             width: width * 1,
                             height: height * 1,
                             child: Row(
@@ -1209,6 +1268,15 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
   var db = new Mysql();
   bool isNavigate = true;
 
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  List<dynamic> background = [];
+
+  String headerImg = "";
+  String bgImg = "";
+
   @override
   void initState() {
     // TODO: implement initState
@@ -1216,7 +1284,55 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
     setState(() {
       isNavigate = true;
     });
+
+    getOrderSettings();
+    getWarnaBg();
     super.initState();
+  }
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
+  }
+
+  getOrderSettings() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      print("background : ${background}");
+      for (var element in background) {
+        print("background_image : ${element["background_image"]}");
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   Route _routeAnimate(halaman) {
@@ -1387,7 +1503,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(0),
                 child: AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 24, 116, 59),
+                  backgroundColor: Color.fromARGB(218, 33, 33, 33),
                   title: Padding(
                     padding: const EdgeInsets.only(top: 40, bottom: 50),
                     child: Text(
@@ -1592,6 +1708,13 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
     double height = MediaQuery.of(context).size.height;
     return Material(
       child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             SizedBox(
@@ -1602,21 +1725,30 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                   ),
                   SizedBox(
                     height: height * 0.035,
                     width: width * 1,
-                    child: WaveWidget(
-                      config: CustomConfig(
-                        colors: _colors,
-                        durations: _durations,
-                        heightPercentages: _heightPercentages,
-                      ),
-                      backgroundColor: _backgroundColor,
-                      size: const Size(double.infinity, double.infinity),
-                      waveAmplitude: 0,
-                    ),
+                    child: bg_warna_main != ""
+                        ? WaveWidget(
+                            config: CustomConfig(
+                              colors: [
+                                Color(int.parse(warna1)),
+                                Color(int.parse(warna2))
+                              ],
+                              durations: _durations,
+                              heightPercentages: _heightPercentages,
+                            ),
+                            backgroundColor: bg_warna_main != ""
+                                ? Color(int.parse(bg_warna_main))
+                                : Colors.transparent,
+                            size: const Size(double.infinity, double.infinity),
+                            waveAmplitude: 0,
+                          )
+                        : Container(),
                   ),
                 ],
               ),
@@ -1637,7 +1769,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     ),
                   ),
                   elevation: 1,
-                  color: Color.fromARGB(255, 196, 75, 146),
+                  color: Color.fromARGB(218, 33, 33, 33),
                   child: InkWell(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(

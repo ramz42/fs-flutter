@@ -1,6 +1,8 @@
 // import 'package:camera/camera.dart';
 // ignore_for_file: override_on_non_overriding_member
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -16,6 +18,7 @@ import 'package:window_manager/window_manager.dart';
 // localstorage
 import 'package:localstorage/localstorage.dart';
 
+import 'package:http/http.dart' as http;
 import '../../src/variables.g.dart';
 import '../edit/filter.dart';
 import 'dart:async';
@@ -36,9 +39,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
 
   var db = new Mysql();
   var pin = '';
-  // var serial_key = '';
+
   List<dynamic> serial_key = [];
   List<dynamic> key = [];
+
+  List<dynamic> main_color = [];
+  List<dynamic> background = [];
 
   bool isDialogSerialKey = true;
 
@@ -51,6 +57,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
   var bg_warna_main = "";
   var warna1 = "";
   var warna2 = "";
+
+  String headerImg = "";
+  String bgImg = "";
 
   // create some values
   Color pickerColor = Color(0xff443a49);
@@ -69,55 +78,93 @@ class _HalamanAwalState extends State<HalamanAwal> {
 
     getStorageSerial();
     getOrderSettings();
-    getUsers();
+    // getUsers();
     getWarnaBg();
 
     super.initState();
   }
 
-  getWarnaBg() async {
-    // print("get sesi data");
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `main_color`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {
-              bg_warna_main = row[1];
-              warna1 = row[2];
-              warna2 = row[3];
-            });
-          } // Finally, close the connection
-        }).then((value) {
-          // ...
-          print("bg main color : $bg_warna_main");
-          print("bg main color : $warna1");
-          print("bg main color : $warna2");
-        });
-        return value.close();
-      },
-    );
+  void getStorageSerial() async {
+    var ready = await storage.ready;
+
+    print("status ready storage : $ready");
+    if (ready == true) {
+      setState(() {});
+
+      serial_key_storage = await storage.getItem('serial_keys');
+
+      print("serial_key_storage : $serial_key_storage");
+      if (serial_key_storage == null) {
+        getSerialKey();
+      } else {
+        // ...
+        getSerialKey();
+      }
+    } else {
+      // ...
+    }
   }
 
-  String headerImg = "";
-  String bgImg = "";
+  getSerialKey() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/serial-key'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      serial_key.addAll(result);
+      // print("serial_key : ${serial_key}");
+      for (var element in serial_key) {
+        key.add(element["serial_key"]);
+      }
+      print("element serial key : ${key}");
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  getWarnaBg() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/main-color'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      main_color.addAll(result);
+      // print("main_color : ${main_color}");
+      for (var element in main_color) {
+        // print("element : ${element["bg_warna_wave"]}");
+        setState(() {
+          bg_warna_main = element["bg_warna_wave"];
+          warna1 = element["warna1"];
+          warna2 = element["warna2"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
 
   // ...
   getOrderSettings() async {
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `halaman_order`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {
-              headerImg = row[2];
-              bgImg = row[6];
-            });
-          } // Finally, close the connection
-        }).then((value) => print("object pin : $headerImg"));
-        return value.close();
-      },
-    );
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      print("background : ${background}");
+      for (var element in background) {
+        print("background_image : ${element["background_image"]}");
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   Future<void> timerPeriodFunc() async {
@@ -185,52 +232,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
     windowManager.waitUntilReadyToShow(windowOptions, () async {
       await windowManager.hide();
     });
-  }
-
-  void getStorageSerial() async {
-    var ready = await storage.ready;
-
-    print("status ready storage : $ready");
-    if (ready == true) {
-      setState(() {});
-
-      serial_key_storage = await storage.getItem('serial_keys');
-
-      print("serial_key_storage : $serial_key_storage");
-      if (serial_key_storage == null) {
-        getSerialKey();
-      } else {
-        // ...
-      }
-    } else {
-      // ...
-    }
-  }
-
-  getSerialKey() async {
-    // print("get sesi data");
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `serial_key`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {});
-            serial_key.add(row);
-          } // Finally, close the connection
-        }).then((value) {
-          print("object serial key : $serial_key");
-          print("serial key length : ${serial_key.length}");
-          for (var i = 0; i < serial_key.length; i++) {
-            print("serial key : ${serial_key[i][2]}");
-            key.add(serial_key[i][2]);
-          }
-        }).then((value) {
-          print("key : $key");
-          _dialogSerialKey(key);
-        });
-        return value.close();
-      },
-    );
   }
 
   Future<void> _dialogSerialKey(serialKey) async {
@@ -305,41 +306,36 @@ class _HalamanAwalState extends State<HalamanAwal> {
     );
   }
 
-  getUsers() async {
-    final conn = await MySqlConnection.connect(
-      ConnectionSettings(
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        db: 'foto_selfi',
-        password: 'rama4422',
-        // host: "217.21.72.2",
-        // port: 3306,
-        // user: 'n1575196_foto_selfie_flutter',
-        // db: 'n1575196_foto_selfie_flutter',
-        // password: '%;Eq}m3Wjy{&',
-      ),
-    ).whenComplete(
-      () {
-        // ignore: avoid_print
-        print('');
-      },
-    );
-    // // Query again database using a parameterized query
-    var results2 = await conn.query('SELECT * FROM `user_fotos`');
+  // getUsers() async {
+  //   final conn = await MySqlConnection.connect(
+  //     ConnectionSettings(
+  //       host: 'localhost',
+  //       port: 3306,
+  //       user: 'root',
+  //       db: 'foto_selfi',
+  //       password: 'rama4422',
+  //       // host: "217.21.72.2",
+  //       // port: 3306,
+  //       // user: 'n1575196_foto_selfie_flutter',
+  //       // db: 'n1575196_foto_selfie_flutter',
+  //       // password: '%;Eq}m3Wjy{&',
+  //     ),
+  //   ).whenComplete(
+  //     () {
+  //       // ignore: avoid_print
+  //       print('');
+  //     },
+  //   );
+  //   // // Query again database using a parameterized query
+  //   var results2 = await conn.query('SELECT * FROM `user_fotos`');
 
-    for (var row in results2) {
-      setState(() {
-        users = row;
-        // jumlahVoucher = count as int;
-      });
-      // print('Name: ${users[0]}, email: ${users[1]} age: ${users[2]}');
-    }
-
-    // for (var i = 0; i < users.length; i++) {
-    // print("users : ${users}");
-    // }
-  }
+  //   for (var row in results2) {
+  //     setState(() {
+  //       users = row;
+  //       // jumlahVoucher = count as int;
+  //     });
+  //   }
+  // }
 
   _clearStorage() async {
     await storage.clear();
@@ -602,9 +598,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
-                          : Colors.transparent,
+                      color: Color.fromARGB(218, 33, 33, 33),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
@@ -662,7 +656,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                       ),
                     ),
                     elevation: 1,
-                    color: Color.fromARGB(255, 196, 111, 160),
+                    color: Color.fromARGB(218, 33, 33, 33),
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");

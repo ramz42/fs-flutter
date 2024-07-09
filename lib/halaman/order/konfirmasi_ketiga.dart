@@ -64,6 +64,35 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
     // The alternative is to use oauth.
     _getStorage();
     getOrderSettings();
+    getWarnaBg();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   String headerImg = "";
@@ -78,7 +107,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -220,7 +249,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                           "Payment",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -232,11 +261,18 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -286,7 +322,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                   child: Text(
                                     "Terima Kasih",
                                     style: TextStyle(
-                                      color: Colors.black,
+                                     color: Colors.white,
                                       fontSize: width * 0.025,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -303,7 +339,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                     child: Text(
                                       "Terima kasih telah berbelanja produk di selly time. bukti pembayaran Qr Code kami kirimkan melalui email yang sudah anda daftarkan, periksa folder spam atau junk pada email anda jika pada beberapa saat ini anda belum juga menerima email dari kami.",
                                       style: TextStyle(
-                                        color: Colors.black,
+                                       color: Colors.white,
                                         fontSize: width * 0.015,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -321,7 +357,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                     child: Text(
                                       "Follow Social media kami untuk mendapatkan info promo - promo terbaru. \n\n @IG - @FB - @Twitter \n\n `Tagline`",
                                       style: TextStyle(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontSize: width * 0.015,
                                         fontWeight: FontWeight.normal,
                                       ),

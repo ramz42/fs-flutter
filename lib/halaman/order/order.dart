@@ -46,8 +46,37 @@ class _OrderWidgetState extends State<OrderWidget> {
   @override
   void initState() {
     getMenuOrder();
+    getWarnaBg();
     getOrderSettings();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   // ...
@@ -60,7 +89,7 @@ class _OrderWidgetState extends State<OrderWidget> {
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -223,7 +252,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                           "Order",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -273,11 +302,20 @@ class _OrderWidgetState extends State<OrderWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -356,8 +394,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   padding:
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
-                                                    color: Color.fromARGB(
-                                                        255, 196, 111, 160),
+                                                    color: Colors.transparent,
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(

@@ -136,14 +136,17 @@ class _LayoutWidgetState extends State<LayoutWidget> {
 
   List<dynamic> layouts = [];
 
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
   // colors...
-  Color color = const Color.fromARGB(255, 196, 75, 146);
+  // Color color =  bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
 
   final double barHeight = 10.0;
-  
-  
+
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+  // static  _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
 
   static const _colors = [
     Color.fromARGB(255, 212, 111, 170),
@@ -335,6 +338,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   }
 
   Future<void> _getDataImages() async {
+
+    list.clear();
+    print("get list : $list");
     print("get all images layout");
     var request = http.MultipartRequest(
       'POST',
@@ -352,8 +358,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
         await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 201) {
-      setState(() {
-      });
+      setState(() {});
       list.addAll(jsonDecode(response.body));
       stores = jsonDecode(response.body);
       print("response. length : ${stores.length}");
@@ -395,6 +400,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     _getDataImages();
     getLayout();
 
+    getWarnaBg();
+
     controller = PhotoViewController(initialScale: defScale)
       ..outputStateStream.listen(onController);
 
@@ -402,6 +409,30 @@ class _LayoutWidgetState extends State<LayoutWidget> {
       ..outputScaleStateStream.listen(onScaleState);
 
     super.initState();
+  }
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -621,12 +652,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -653,7 +684,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           "Layout",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Color.fromARGB(255, 49, 49, 49),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -703,11 +734,18 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: _backgroundColor,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -729,7 +767,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                 children: [
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: Column(
                       children: [
                         Padding(
@@ -1155,7 +1193,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -1168,7 +1206,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -1181,7 +1219,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -1194,7 +1232,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -1207,7 +1245,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -1220,7 +1258,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -1231,31 +1269,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         padding: EdgeInsets.all(width * 0.0045),
                                                                                                         child: ColorFiltered(
                                                                                                           colorFilter: nama_filter == 'greyscale'
-                                                                                                              ? const ColorFilter.mode(
+                                                                                                              ? ColorFilter.mode(
                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                   BlendMode.saturation,
                                                                                                                 )
                                                                                                               : nama_filter == 'classic negative'
-                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                  ? ColorFilter.mode(
                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                       BlendMode.saturation,
                                                                                                                     )
                                                                                                                   : nama_filter == 'black white blur'
-                                                                                                                      ? const ColorFilter.mode(
+                                                                                                                      ? ColorFilter.mode(
                                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                                           BlendMode.saturation,
                                                                                                                         )
                                                                                                                       : nama_filter == 'mute'
-                                                                                                                          ? const ColorFilter.mode(
+                                                                                                                          ? ColorFilter.mode(
                                                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                                                               BlendMode.saturation,
                                                                                                                             )
                                                                                                                           : nama_filter == 'webcore'
-                                                                                                                              ? const ColorFilter.mode(
+                                                                                                                              ? ColorFilter.mode(
                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                   BlendMode.saturation,
                                                                                                                                 )
-                                                                                                                              : const ColorFilter.mode(
+                                                                                                                              : ColorFilter.mode(
                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                   BlendMode.saturation,
                                                                                                                                 ),
@@ -1285,7 +1323,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -1298,7 +1336,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -1311,7 +1349,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -1324,7 +1362,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -1337,7 +1375,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -1350,7 +1388,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -1363,7 +1401,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -1376,7 +1414,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -1387,31 +1425,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             padding: EdgeInsets.all(width * 0.0045),
                                                                                                             child: ColorFiltered(
                                                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                  ? ColorFilter.mode(
                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                       BlendMode.saturation,
                                                                                                                     )
                                                                                                                   : nama_filter == 'classic negative'
-                                                                                                                      ? const ColorFilter.mode(
+                                                                                                                      ? ColorFilter.mode(
                                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                                           BlendMode.saturation,
                                                                                                                         )
                                                                                                                       : nama_filter == 'black white blur'
-                                                                                                                          ? const ColorFilter.mode(
+                                                                                                                          ? ColorFilter.mode(
                                                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                                                               BlendMode.saturation,
                                                                                                                             )
                                                                                                                           : nama_filter == 'mute'
-                                                                                                                              ? const ColorFilter.mode(
+                                                                                                                              ? ColorFilter.mode(
                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                   BlendMode.saturation,
                                                                                                                                 )
                                                                                                                               : nama_filter == 'webcore'
-                                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                                  ? ColorFilter.mode(
                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                       BlendMode.saturation,
                                                                                                                                     )
-                                                                                                                                  : const ColorFilter.mode(
+                                                                                                                                  : ColorFilter.mode(
                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                       BlendMode.saturation,
                                                                                                                                     ),
@@ -2049,7 +2087,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -2062,7 +2100,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -2075,7 +2113,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -2088,7 +2126,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -2101,7 +2139,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -2114,7 +2152,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -2127,7 +2165,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -2137,7 +2175,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -2147,7 +2185,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                 boxShadow: [],
                                                                                                               ),
                                                                                                             )
@@ -2157,7 +2195,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                     boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
@@ -2167,7 +2205,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                         boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
@@ -2177,7 +2215,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                             boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
@@ -2187,7 +2225,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                 boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
@@ -2197,7 +2235,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                     boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
@@ -2207,7 +2245,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                         boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
@@ -2223,31 +2261,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                         padding: EdgeInsets.all(width * 0.0045),
                                                                                                                                         child: ColorFiltered(
                                                                                                                                           colorFilter: nama_filter == 'greyscale'
-                                                                                                                                              ? const ColorFilter.mode(
+                                                                                                                                              ? ColorFilter.mode(
                                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                   BlendMode.saturation,
                                                                                                                                                 )
                                                                                                                                               : nama_filter == 'classic negative'
-                                                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                                                  ? ColorFilter.mode(
                                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                       BlendMode.saturation,
                                                                                                                                                     )
                                                                                                                                                   : nama_filter == 'black white blur'
-                                                                                                                                                      ? const ColorFilter.mode(
+                                                                                                                                                      ? ColorFilter.mode(
                                                                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                           BlendMode.saturation,
                                                                                                                                                         )
                                                                                                                                                       : nama_filter == 'mute'
-                                                                                                                                                          ? const ColorFilter.mode(
+                                                                                                                                                          ? ColorFilter.mode(
                                                                                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                               BlendMode.saturation,
                                                                                                                                                             )
                                                                                                                                                           : nama_filter == 'webcore'
-                                                                                                                                                              ? const ColorFilter.mode(
+                                                                                                                                                              ? ColorFilter.mode(
                                                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                                   BlendMode.saturation,
                                                                                                                                                                 )
-                                                                                                                                                              : const ColorFilter.mode(
+                                                                                                                                                              : ColorFilter.mode(
                                                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                                   BlendMode.saturation,
                                                                                                                                                                 ),
@@ -2284,7 +2322,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                 boxShadow: [],
                                                                               ),
                                                                             )
@@ -2297,7 +2335,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                 )
@@ -2310,7 +2348,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                     )
@@ -2323,7 +2361,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                             boxShadow: [],
                                                                                           ),
                                                                                         )
@@ -2336,7 +2374,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                             )
@@ -2349,7 +2387,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                     boxShadow: [],
                                                                                                   ),
                                                                                                 )
@@ -2362,7 +2400,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                         boxShadow: [],
                                                                                                       ),
                                                                                                     )
@@ -2375,7 +2413,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                             boxShadow: [],
                                                                                                           ),
                                                                                                         )
@@ -2388,7 +2426,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                 boxShadow: [],
                                                                                                               ),
                                                                                                             )
@@ -2401,7 +2439,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                     boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
@@ -2414,7 +2452,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                         boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
@@ -2427,7 +2465,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                             boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
@@ -2438,7 +2476,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                 boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
@@ -2449,7 +2487,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                     boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
@@ -2460,7 +2498,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                         boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
@@ -2471,7 +2509,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                           height: width * 0.09,
                                                                                                                                           decoration: BoxDecoration(
                                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                                            color: const Color.fromARGB(255, 196, 75, 146),
+                                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                                                                                                                             boxShadow: [],
                                                                                                                                           ),
                                                                                                                                         )
@@ -2487,31 +2525,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                             padding: EdgeInsets.all(width * 0.0045),
                                                                                                                                             child: ColorFiltered(
                                                                                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                                                  ? ColorFilter.mode(
                                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                       BlendMode.saturation,
                                                                                                                                                     )
                                                                                                                                                   : nama_filter == 'classic negative'
-                                                                                                                                                      ? const ColorFilter.mode(
+                                                                                                                                                      ? ColorFilter.mode(
                                                                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                           BlendMode.saturation,
                                                                                                                                                         )
                                                                                                                                                       : nama_filter == 'black white blur'
-                                                                                                                                                          ? const ColorFilter.mode(
+                                                                                                                                                          ? ColorFilter.mode(
                                                                                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                               BlendMode.saturation,
                                                                                                                                                             )
                                                                                                                                                           : nama_filter == 'mute'
-                                                                                                                                                              ? const ColorFilter.mode(
+                                                                                                                                                              ? ColorFilter.mode(
                                                                                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                                   BlendMode.saturation,
                                                                                                                                                                 )
                                                                                                                                                               : nama_filter == 'webcore'
-                                                                                                                                                                  ? const ColorFilter.mode(
+                                                                                                                                                                  ? ColorFilter.mode(
                                                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                                       BlendMode.saturation,
                                                                                                                                                                     )
-                                                                                                                                                                  : const ColorFilter.mode(
+                                                                                                                                                                  : ColorFilter.mode(
                                                                                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                                                                                       BlendMode.saturation,
                                                                                                                                                                     ),
@@ -2557,8 +2595,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                         OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor:
-                                const Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
                           ),
                           onPressed: () {
                             // do onpressed...
@@ -2595,8 +2632,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                     alignment: Alignment.centerLeft,
                                     child: Icon(
                                       Icons.arrow_circle_left_outlined,
-                                      color:
-                                          const Color.fromARGB(255, 96, 96, 96),
+                                      color: Color.fromARGB(255, 96, 96, 96),
                                       size: width * 0.015,
                                     ),
                                   ),
@@ -2607,8 +2643,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: width * 0.010,
-                                          color: const Color.fromARGB(
-                                              255, 96, 96, 96),
+                                          color:
+                                              Color.fromARGB(255, 96, 96, 96),
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ))
@@ -2634,10 +2670,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: const Color.fromARGB(255, 196, 75, 146),
+                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                 boxShadow: [
-                                  const BoxShadow(
-                                    color: Color.fromARGB(255, 196, 75, 146),
+                                   BoxShadow(
+                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                                     spreadRadius: 5,
                                   ),
                                 ],
@@ -2738,31 +2774,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -2849,31 +2885,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -2969,31 +3005,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -3082,31 +3118,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -3202,31 +3238,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -3315,31 +3351,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -3487,31 +3523,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -3577,31 +3613,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -3674,31 +3710,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -3764,31 +3800,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -3861,31 +3897,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -3951,31 +3987,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -4089,7 +4125,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -4151,7 +4187,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -4219,7 +4255,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -4281,7 +4317,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -4407,7 +4443,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -4469,7 +4505,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -4538,7 +4574,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -4600,7 +4636,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -4662,7 +4698,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -4785,7 +4821,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -4848,7 +4884,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -4916,7 +4952,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -4979,7 +5015,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -5047,7 +5083,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -5110,7 +5146,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -5178,7 +5214,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -5241,7 +5277,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -5355,7 +5391,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5418,7 +5454,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5486,7 +5522,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5549,7 +5585,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5617,7 +5653,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5680,7 +5716,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5748,7 +5784,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5811,7 +5847,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -5910,7 +5946,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       Text(
                                                                                         "Pilih\nKanvas",
                                                                                         style: TextStyle(
-                                                                                          color: const Color.fromARGB(255, 61, 61, 61),
+                                                                                          color: Color.fromARGB(255, 61, 61, 61),
                                                                                           fontSize: width * 0.012,
                                                                                           fontWeight: FontWeight.bold,
                                                                                         ),
@@ -6036,31 +6072,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6173,31 +6209,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6317,31 +6353,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6454,31 +6490,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6598,31 +6634,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6735,31 +6771,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -6901,31 +6937,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7009,31 +7045,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7124,31 +7160,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7232,31 +7268,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7347,31 +7383,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7455,31 +7491,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -7603,7 +7639,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -7676,7 +7712,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -7755,7 +7791,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -7828,7 +7864,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -7965,7 +8001,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -8038,7 +8074,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -8117,7 +8153,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -8190,7 +8226,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -8263,7 +8299,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -8395,7 +8431,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8467,7 +8503,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8544,7 +8580,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8616,7 +8652,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8693,7 +8729,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8765,7 +8801,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8842,7 +8878,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -8914,7 +8950,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -9037,7 +9073,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9109,7 +9145,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9186,7 +9222,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9258,7 +9294,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9335,7 +9371,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9407,7 +9443,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9484,7 +9520,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9556,7 +9592,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -9664,7 +9700,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       Text(
                                                                                         "Pilih\nKanvas",
                                                                                         style: TextStyle(
-                                                                                          color: const Color.fromARGB(255, 61, 61, 61),
+                                                                                          color: Color.fromARGB(255, 61, 61, 61),
                                                                                           fontSize: width * 0.012,
                                                                                           fontWeight: FontWeight.bold,
                                                                                         ),
@@ -9789,31 +9825,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -9926,31 +9962,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -10070,31 +10106,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -10207,31 +10243,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -10351,31 +10387,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -10488,31 +10524,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             child:
                                                                                 ColorFiltered(
                                                                               colorFilter: nama_filter == 'greyscale'
-                                                                                  ? const ColorFilter.mode(
+                                                                                  ? ColorFilter.mode(
                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                       BlendMode.saturation,
                                                                                     )
                                                                                   : nama_filter == 'classic negative'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'black white blur'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'mute'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'webcore'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
-                                                                                                  : const ColorFilter.mode(
+                                                                                                  : ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     ),
@@ -10654,31 +10690,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -10762,31 +10798,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -10877,31 +10913,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -10985,31 +11021,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -11100,31 +11136,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -11208,31 +11244,31 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ),
                                                                                 child: ColorFiltered(
                                                                                   colorFilter: nama_filter == 'greyscale'
-                                                                                      ? const ColorFilter.mode(
+                                                                                      ? ColorFilter.mode(
                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                           BlendMode.saturation,
                                                                                         )
                                                                                       : nama_filter == 'classic negative'
-                                                                                          ? const ColorFilter.mode(
+                                                                                          ? ColorFilter.mode(
                                                                                               Color.fromARGB(0, 255, 255, 255),
                                                                                               BlendMode.saturation,
                                                                                             )
                                                                                           : nama_filter == 'black white blur'
-                                                                                              ? const ColorFilter.mode(
+                                                                                              ? ColorFilter.mode(
                                                                                                   Color.fromARGB(0, 255, 255, 255),
                                                                                                   BlendMode.saturation,
                                                                                                 )
                                                                                               : nama_filter == 'mute'
-                                                                                                  ? const ColorFilter.mode(
+                                                                                                  ? ColorFilter.mode(
                                                                                                       Color.fromARGB(0, 255, 255, 255),
                                                                                                       BlendMode.saturation,
                                                                                                     )
                                                                                                   : nama_filter == 'webcore'
-                                                                                                      ? const ColorFilter.mode(
+                                                                                                      ? ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         )
-                                                                                                      : const ColorFilter.mode(
+                                                                                                      : ColorFilter.mode(
                                                                                                           Color.fromARGB(0, 255, 255, 255),
                                                                                                           BlendMode.saturation,
                                                                                                         ),
@@ -11356,7 +11392,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -11429,7 +11465,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -11508,7 +11544,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -11581,7 +11617,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       width * 0.0045,
                                                                                     ),
                                                                                     child: ColorFiltered(
-                                                                                      colorFilter: const ColorFilter.mode(
+                                                                                      colorFilter: ColorFilter.mode(
                                                                                         Color.fromARGB(
                                                                                           0,
                                                                                           158,
@@ -11718,7 +11754,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -11791,7 +11827,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -11870,7 +11906,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -11943,7 +11979,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -12016,7 +12052,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           width * 0.0045,
                                                                                         ),
                                                                                         child: ColorFiltered(
-                                                                                          colorFilter: const ColorFilter.mode(
+                                                                                          colorFilter: ColorFilter.mode(
                                                                                             Color.fromARGB(
                                                                                               0,
                                                                                               158,
@@ -12149,7 +12185,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12221,7 +12257,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12298,7 +12334,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12370,7 +12406,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12447,7 +12483,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12519,7 +12555,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12596,7 +12632,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12668,7 +12704,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               width * 0.0045,
                                                                                             ),
                                                                                             child: ColorFiltered(
-                                                                                              colorFilter: const ColorFilter.mode(
+                                                                                              colorFilter: ColorFilter.mode(
                                                                                                 Color.fromARGB(
                                                                                                   0,
                                                                                                   158,
@@ -12791,7 +12827,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -12863,7 +12899,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -12940,7 +12976,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13012,7 +13048,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13089,7 +13125,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13161,7 +13197,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13238,7 +13274,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13310,7 +13346,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0045,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: const ColorFilter.mode(
+                                                                                                  colorFilter: ColorFilter.mode(
                                                                                                     Color.fromARGB(
                                                                                                       0,
                                                                                                       158,
@@ -13418,7 +13454,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       Text(
                                                                                         "Pilih\nKanvas",
                                                                                         style: TextStyle(
-                                                                                          color: const Color.fromARGB(255, 61, 61, 61),
+                                                                                          color: Color.fromARGB(255, 61, 61, 61),
                                                                                           fontSize: width * 0.012,
                                                                                           fontWeight: FontWeight.bold,
                                                                                         ),
@@ -13579,7 +13615,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -13591,7 +13627,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -13602,21 +13638,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -13779,7 +13815,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -13791,7 +13827,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -13802,21 +13838,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -13992,7 +14028,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -14004,7 +14040,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -14015,21 +14051,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -14189,7 +14225,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -14201,7 +14237,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -14212,21 +14248,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -14402,7 +14438,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -14414,7 +14450,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -14425,21 +14461,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -14605,7 +14641,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -14617,7 +14653,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -14628,21 +14664,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -14849,7 +14885,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -14860,26 +14896,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -15051,7 +15087,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -15062,26 +15098,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -15267,7 +15303,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -15278,26 +15314,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -15466,7 +15502,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -15477,26 +15513,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -15682,7 +15718,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -15693,26 +15729,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -15887,7 +15923,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -15898,26 +15934,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -16129,7 +16165,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -16304,7 +16340,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -16493,7 +16529,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -16665,7 +16701,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -16858,7 +16894,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -17009,7 +17045,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -17167,7 +17203,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -17318,7 +17354,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -17469,7 +17505,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -17650,7 +17686,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -17775,7 +17811,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -17915,7 +17951,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18037,7 +18073,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18177,7 +18213,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18305,7 +18341,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18445,7 +18481,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18573,7 +18609,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -18742,7 +18778,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -18859,7 +18895,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -18991,7 +19027,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19105,7 +19141,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19237,7 +19273,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19357,7 +19393,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19489,7 +19525,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19609,7 +19645,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -19760,7 +19796,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -19857,7 +19893,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -19968,7 +20004,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -20062,7 +20098,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -20173,7 +20209,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -20272,7 +20308,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         width * 0.0045,
                                                                                       ),
                                                                                       child: ColorFiltered(
-                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                        colorFilter: ColorFilter.mode(
                                                                                           Color.fromARGB(
                                                                                             0,
                                                                                             158,
@@ -20419,7 +20455,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -20512,7 +20548,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -20617,7 +20653,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -20707,7 +20743,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -20812,7 +20848,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -20906,7 +20942,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             width * 0.0045,
                                                                                           ),
                                                                                           child: ColorFiltered(
-                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                            colorFilter: ColorFilter.mode(
                                                                                               Color.fromARGB(
                                                                                                 0,
                                                                                                 158,
@@ -21045,7 +21081,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 width * 0.0045,
                                                                                               ),
                                                                                               child: ColorFiltered(
-                                                                                                colorFilter: const ColorFilter.mode(
+                                                                                                colorFilter: ColorFilter.mode(
                                                                                                   Color.fromARGB(
                                                                                                     0,
                                                                                                     158,
@@ -21137,7 +21173,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 width * 0.0045,
                                                                                               ),
                                                                                               child: ColorFiltered(
-                                                                                                colorFilter: const ColorFilter.mode(
+                                                                                                colorFilter: ColorFilter.mode(
                                                                                                   Color.fromARGB(
                                                                                                     0,
                                                                                                     158,
@@ -21240,7 +21276,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 width * 0.0045,
                                                                                               ),
                                                                                               child: ColorFiltered(
-                                                                                                colorFilter: const ColorFilter.mode(
+                                                                                                colorFilter: ColorFilter.mode(
                                                                                                   Color.fromARGB(
                                                                                                     0,
                                                                                                     158,
@@ -21329,7 +21365,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 width * 0.0045,
                                                                                               ),
                                                                                               child: ColorFiltered(
-                                                                                                colorFilter: const ColorFilter.mode(
+                                                                                                colorFilter: ColorFilter.mode(
                                                                                                   Color.fromARGB(
                                                                                                     0,
                                                                                                     158,
@@ -21460,7 +21496,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     width * 0.0045,
                                                                                                   ),
                                                                                                   child: ColorFiltered(
-                                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                                    colorFilter: ColorFilter.mode(
                                                                                                       Color.fromARGB(
                                                                                                         0,
                                                                                                         158,
@@ -21553,7 +21589,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     width * 0.0045,
                                                                                                   ),
                                                                                                   child: ColorFiltered(
-                                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                                    colorFilter: ColorFilter.mode(
                                                                                                       Color.fromARGB(
                                                                                                         0,
                                                                                                         158,
@@ -21651,7 +21687,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     width * 0.0045,
                                                                                                   ),
                                                                                                   child: ColorFiltered(
-                                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                                    colorFilter: ColorFilter.mode(
                                                                                                       Color.fromARGB(
                                                                                                         0,
                                                                                                         158,
@@ -21744,7 +21780,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     width * 0.0045,
                                                                                                   ),
                                                                                                   child: ColorFiltered(
-                                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                                    colorFilter: ColorFilter.mode(
                                                                                                       Color.fromARGB(
                                                                                                         0,
                                                                                                         158,
@@ -21837,7 +21873,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     width * 0.0045,
                                                                                                   ),
                                                                                                   child: ColorFiltered(
-                                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                                    colorFilter: ColorFilter.mode(
                                                                                                       Color.fromARGB(
                                                                                                         0,
                                                                                                         158,
@@ -21974,7 +22010,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22067,7 +22103,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22171,7 +22207,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22261,7 +22297,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22365,7 +22401,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22459,7 +22495,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22563,7 +22599,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22657,7 +22693,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         width * 0.0045,
                                                                                                       ),
                                                                                                       child: ColorFiltered(
-                                                                                                        colorFilter: const ColorFilter.mode(
+                                                                                                        colorFilter: ColorFilter.mode(
                                                                                                           Color.fromARGB(
                                                                                                             0,
                                                                                                             158,
@@ -22794,7 +22830,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -22887,7 +22923,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -22991,7 +23027,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23081,7 +23117,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23185,7 +23221,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23279,7 +23315,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23383,7 +23419,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23477,7 +23513,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             width * 0.0045,
                                                                                                           ),
                                                                                                           child: ColorFiltered(
-                                                                                                            colorFilter: const ColorFilter.mode(
+                                                                                                            colorFilter: ColorFilter.mode(
                                                                                                               Color.fromARGB(
                                                                                                                 0,
                                                                                                                 158,
@@ -23648,7 +23684,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -23660,7 +23696,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -23671,21 +23707,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -23813,7 +23849,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color
                                                                             .fromARGB(
@@ -23827,7 +23863,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -23838,21 +23874,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -23995,7 +24031,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -24007,7 +24043,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -24018,21 +24054,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -24156,7 +24192,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -24168,7 +24204,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -24179,21 +24215,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -24333,7 +24369,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -24345,7 +24381,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -24356,21 +24392,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -24501,7 +24537,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ColorFiltered(
                                                                 colorFilter: nama_filter ==
                                                                         'greyscale'
-                                                                    ? const ColorFilter
+                                                                    ? ColorFilter
                                                                         .mode(
                                                                         Color.fromARGB(
                                                                             255,
@@ -24513,7 +24549,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       )
                                                                     : nama_filter ==
                                                                             'classic negative'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 229,
@@ -24524,21 +24560,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'black white blur'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(0, 255, 255, 255),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'mute'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'webcore'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
-                                                                                    : const ColorFilter.mode(
+                                                                                    : ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       ),
@@ -24707,7 +24743,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -24718,26 +24754,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -24873,7 +24909,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                               255,
@@ -24885,26 +24921,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -25057,7 +25093,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -25068,26 +25104,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -25219,7 +25255,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -25230,26 +25266,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -25398,7 +25434,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -25409,26 +25445,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -25567,7 +25603,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ColorFiltered(
                                                                     colorFilter: nama_filter ==
                                                                             'greyscale'
-                                                                        ? const ColorFilter
+                                                                        ? ColorFilter
                                                                             .mode(
                                                                             Color.fromARGB(
                                                                                 255,
@@ -25578,26 +25614,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           )
                                                                         : nama_filter ==
                                                                                 'classic negative'
-                                                                            ? const ColorFilter.mode(
+                                                                            ? ColorFilter.mode(
                                                                                 Color.fromARGB(229, 255, 247, 220),
                                                                                 BlendMode.saturation,
                                                                               )
                                                                             : nama_filter == 'black white blur'
-                                                                                ? const ColorFilter.mode(
+                                                                                ? ColorFilter.mode(
                                                                                     Color.fromARGB(0, 255, 255, 255),
                                                                                     BlendMode.saturation,
                                                                                   )
                                                                                 : nama_filter == 'mute'
-                                                                                    ? const ColorFilter.mode(
+                                                                                    ? ColorFilter.mode(
                                                                                         Color.fromARGB(0, 255, 255, 255),
                                                                                         BlendMode.saturation,
                                                                                       )
                                                                                     : nama_filter == 'webcore'
-                                                                                        ? const ColorFilter.mode(
+                                                                                        ? ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           )
-                                                                                        : const ColorFilter.mode(
+                                                                                        : ColorFilter.mode(
                                                                                             Color.fromARGB(0, 255, 255, 255),
                                                                                             BlendMode.saturation,
                                                                                           ),
@@ -25776,7 +25812,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -25913,7 +25949,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -26064,7 +26100,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -26198,7 +26234,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       child:
                                                                           ColorFiltered(
                                                                         colorFilter:
-                                                                            const ColorFilter.mode(
+                                                                            ColorFilter.mode(
                                                                           Color
                                                                               .fromARGB(
                                                                             0,
@@ -26361,7 +26397,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -26483,7 +26519,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -26612,7 +26648,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -26734,7 +26770,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -26856,7 +26892,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           child:
                                                                               ColorFiltered(
                                                                             colorFilter:
-                                                                                const ColorFilter.mode(
+                                                                                ColorFilter.mode(
                                                                               Color.fromARGB(
                                                                                 0,
                                                                                 158,
@@ -27014,7 +27050,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27117,7 +27153,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27235,7 +27271,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27336,7 +27372,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27454,7 +27490,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27560,7 +27596,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27678,7 +27714,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27784,7 +27820,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 width * 0.0045,
                                                                               ),
                                                                               child: ColorFiltered(
-                                                                                colorFilter: const ColorFilter.mode(
+                                                                                colorFilter: ColorFilter.mode(
                                                                                   Color.fromARGB(
                                                                                     0,
                                                                                     158,
@@ -27931,7 +27967,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28026,7 +28062,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28136,7 +28172,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28229,7 +28265,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28339,7 +28375,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28437,7 +28473,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28547,7 +28583,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28645,7 +28681,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     width * 0.0045,
                                                                                   ),
                                                                                   child: ColorFiltered(
-                                                                                    colorFilter: const ColorFilter.mode(
+                                                                                    colorFilter: ColorFilter.mode(
                                                                                       Color.fromARGB(
                                                                                         0,
                                                                                         158,
@@ -28713,7 +28749,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   // pilih layout / edit foto view
                   Container(
                     width: width * 0.25,
-                    color: const Color.fromARGB(255, 196, 75, 146),
+                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                     child: Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -29719,7 +29755,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       .textTheme
                                                       .labelLarge,
                                                   backgroundColor:
-                                                      const Color.fromARGB(
+                                                      Color.fromARGB(
                                                           255, 255, 255, 255),
                                                 ),
                                                 onPressed: () {
@@ -29747,9 +29783,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 ? Icons
                                                                     .arrow_circle_left_outlined
                                                                 : Icons.edit,
-                                                            color: const Color
-                                                                .fromARGB(255,
-                                                                96, 96, 96),
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
                                                             size: width * 0.015,
                                                           ),
                                                         ),
@@ -29763,9 +29802,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                             style: TextStyle(
                                                               fontSize:
                                                                   width * 0.010,
-                                                              color: const Color
-                                                                  .fromARGB(255,
-                                                                  96, 96, 96),
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      96,
+                                                                      96,
+                                                                      96),
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -29778,14 +29820,14 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                 ),
                                               ),
 
-                                              // simpan gambar
+                                              // simpan gambar button > functions ...
                                               OutlinedButton(
                                                 style: TextButton.styleFrom(
                                                   textStyle: Theme.of(context)
                                                       .textTheme
                                                       .labelLarge,
                                                   backgroundColor:
-                                                      const Color.fromARGB(
+                                                      Color.fromARGB(
                                                           255, 255, 255, 255),
                                                 ),
                                                 onPressed: () async {
@@ -29825,7 +29867,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   : foto_details == "13"
                                                                                       ? "${"\\${DateTime.now().day}-8"}.png"
                                                                                       : null,
-                                                      // fileName : "${"\\${DateTime.now().day}-1"}.png"
                                                     )
                                                         .then(
                                                             (capturedImage) async {
@@ -29896,6 +29937,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
 
                                                   print(
                                                       "foto_details : $foto_details");
+                                                      // get all images
+
+                                                  // _getDataImages();
                                                 },
                                                 child: Container(
                                                   // color: Colors.transparent,
@@ -29917,9 +29961,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 ? Icons
                                                                     .arrow_circle_right_outlined
                                                                 : Icons.edit,
-                                                            color: const Color
-                                                                .fromARGB(255,
-                                                                96, 96, 96),
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
                                                             size: width * 0.015,
                                                           ),
                                                         ),
@@ -29935,12 +29982,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
-                                                                color: const Color
+                                                                color: Color
                                                                     .fromARGB(
-                                                                    255,
-                                                                    96,
-                                                                    96,
-                                                                    96),
+                                                                        255,
+                                                                        96,
+                                                                        96,
+                                                                        96),
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -29958,9 +30005,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               textStyle: Theme.of(context)
                                                   .textTheme
                                                   .labelLarge,
-                                              backgroundColor:
-                                                  const Color.fromARGB(
-                                                      255, 255, 255, 255),
+                                              backgroundColor: Color.fromARGB(
+                                                  255, 255, 255, 255),
                                             ),
                                             onPressed: () async {
                                               if (title
@@ -30080,8 +30126,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       child: Icon(
                                                         Icons
                                                             .arrow_circle_right_outlined,
-                                                        color: const Color
-                                                            .fromARGB(
+                                                        color: Color.fromARGB(
                                                             255, 96, 96, 96),
                                                         size: width * 0.015,
                                                       ),
@@ -30096,9 +30141,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                           style: TextStyle(
                                                             fontSize:
                                                                 width * 0.010,
-                                                            color: const Color
-                                                                .fromARGB(255,
-                                                                96, 96, 96),
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),

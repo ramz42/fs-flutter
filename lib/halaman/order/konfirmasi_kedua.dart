@@ -118,6 +118,35 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     } else {}
 
     getOrderSettings();
+    getWarnaBg();
+  }
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   String headerImg = "";
@@ -132,7 +161,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
           for (var row in value) {
             setState(() {
               headerImg = row[2];
-              bgImg = row[6];
+              bgImg = row[3];
             });
           } // Finally, close the connection
         }).then((value) => print("object pin : $headerImg"));
@@ -431,7 +460,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                           "Payment",
                           style: TextStyle(
                             fontSize: width * 0.018,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -443,11 +472,18 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: _colors,
+                        colors: [
+                          warna1 != ""
+                              ? Color(int.parse(warna1))
+                              : Colors.transparent,
+                          warna2 != ""
+                              ? Color(int.parse(warna2))
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -763,8 +799,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                           ? "No Va - $virtual_account"
                                                           : "Step Pembayaran Ditempat / Cash",
                                                   style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 82, 82, 82),
+                                                    color: Colors.white,
                                                     fontSize: width * 0.012,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle: FontStyle.italic,
@@ -790,8 +825,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                           ? "Virutal Account - $virtual_account"
                                                           : "",
                                                   style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 82, 82, 82),
+                                                    color: Colors.white,
                                                     fontSize: width * 0.012,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle: FontStyle.italic,
@@ -820,8 +854,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                   child: Text(
                                                     "Untuk melakukan pembayaran\nanda bisa mengikuti step - step dibawah ini.",
                                                     style: TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 54, 54, 54),
+                                                      color: Colors.white,
                                                       fontSize: width * 0.010,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -851,8 +884,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             ? "1. Buka aplikasi m-banking di smartphone."
                                                             : "1. Melakukan Pembayaran Ditempat, Dengan Menggunakan Uang Cash",
                                                     style: TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 54, 54, 54),
+                                                     color: Colors.white,
                                                       fontSize: width * 0.010,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -876,12 +908,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                         child: Text(
                                                           "2. Masukkan username dan password.",
                                                           style: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    54,
-                                                                    54,
-                                                                    54),
+                                                            color: Colors.white,
                                                             fontSize:
                                                                 width * 0.010,
                                                             fontWeight:
@@ -909,12 +936,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                         child: Text(
                                                           "3. Pilih menu transfer : transfer VA \n( Virtual Account / Qris Payment ).",
                                                           style: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    54,
-                                                                    54,
-                                                                    54),
+                                                            color: Colors.white,
                                                             fontSize:
                                                                 width * 0.010,
                                                             fontWeight:
@@ -946,12 +968,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "4. Bayar Qris Id dengan scan Qris yang ada dan lakukan konfirmasi pembayaran.",
                                                               style: TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        54,
-                                                                        54,
-                                                                        54),
+                                                                color: Colors.white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -981,12 +998,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "4. Masukkan Nomor Virtual Account \npemesanan kamu yang terdapat \ndalam layar pemesanan.",
                                                               style: TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        54,
-                                                                        54,
-                                                                        54),
+                                                               color: Colors.white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1021,13 +1033,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "5. Lalu masukkan Pin Bank kamu.",
                                                               style: TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                  255,
-                                                                  54,
-                                                                  54,
-                                                                  54,
-                                                                ),
+                                                                color: Colors.white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1061,12 +1067,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "6. Setelah melakukan transfer / \npembayaran melalui VA bank, \ntekan tombol Pengecekan pembayaran.",
                                                               style: TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        54,
-                                                                        54,
-                                                                        54),
+                                                                color: Colors.white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1100,12 +1101,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "7. Bukti pembayaran akan anda terima \nmelalui email yang sudah anda daftarkan \n`pastikan amati` yang anda daftarkan sesuai ya.",
                                                               style: TextStyle(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        54,
-                                                                        54,
-                                                                        54),
+                                                                color: Colors.white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,

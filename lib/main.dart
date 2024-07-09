@@ -58,7 +58,7 @@ Future<void> main() async {
       scrollBehavior:
           MyCustomScrollBehavior(), // add custom scroll behavior class pada material app main app untuk dipakai global
       theme: ThemeData.light(),
-      home: HalamanAwalSettings(),
+      home: HalamanAwal(),
     ),
   );
 }
