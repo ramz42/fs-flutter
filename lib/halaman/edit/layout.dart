@@ -1193,8 +1193,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                    boxShadow: [],
                                                                                   ),
                                                                                 )
                                                                               :
@@ -1206,8 +1204,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                        boxShadow: [],
                                                                                       ),
                                                                                     )
                                                                                   :
@@ -1219,8 +1215,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                            boxShadow: [],
                                                                                           ),
                                                                                         )
                                                                                       :
@@ -1232,8 +1226,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                boxShadow: [],
                                                                                               ),
                                                                                             )
                                                                                           :
@@ -1245,8 +1237,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                    boxShadow: [],
                                                                                                   ),
                                                                                                 )
                                                                                               :
@@ -1258,8 +1248,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                        boxShadow: [],
                                                                                                       ),
                                                                                                     )
                                                                                                   : Container(
@@ -1267,37 +1255,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       child: Padding(
                                                                                                         padding: EdgeInsets.all(width * 0.0045),
-                                                                                                        child: ColorFiltered(
-                                                                                                          colorFilter: nama_filter == 'greyscale'
-                                                                                                              ? ColorFilter.mode(
-                                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                                  BlendMode.saturation,
-                                                                                                                )
-                                                                                                              : nama_filter == 'classic negative'
-                                                                                                                  ? ColorFilter.mode(
-                                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                                      BlendMode.saturation,
-                                                                                                                    )
-                                                                                                                  : nama_filter == 'black white blur'
-                                                                                                                      ? ColorFilter.mode(
-                                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                                          BlendMode.saturation,
-                                                                                                                        )
-                                                                                                                      : nama_filter == 'mute'
-                                                                                                                          ? ColorFilter.mode(
-                                                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                                                              BlendMode.saturation,
-                                                                                                                            )
-                                                                                                                          : nama_filter == 'webcore'
-                                                                                                                              ? ColorFilter.mode(
-                                                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                                                  BlendMode.saturation,
-                                                                                                                                )
-                                                                                                                              : ColorFilter.mode(
-                                                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                                                  BlendMode.saturation,
-                                                                                                                                ),
-                                                                                                          child: Container(
+                                                                                                        child: Container(
                                                                                                             width: width * 0.12,
                                                                                                             height: height * 0.3,
                                                                                                             child: Image.network(
@@ -1309,7 +1267,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               scale: 1,
                                                                                                             ),
                                                                                                           ),
-                                                                                                        ),
                                                                                                       ),
                                                                                                     ),
 
@@ -1323,8 +1280,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                boxShadow: [],
                                                                               ),
                                                                             )
                                                                           :
@@ -1336,8 +1291,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                    boxShadow: [],
                                                                                   ),
                                                                                 )
                                                                               :
@@ -1349,8 +1302,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                        boxShadow: [],
                                                                                       ),
                                                                                     )
                                                                                   :
@@ -1362,8 +1313,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                            boxShadow: [],
                                                                                           ),
                                                                                         )
                                                                                       :
@@ -1375,8 +1324,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                boxShadow: [],
                                                                                               ),
                                                                                             )
                                                                                           :
@@ -1388,8 +1335,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                    boxShadow: [],
                                                                                                   ),
                                                                                                 )
                                                                                               :
@@ -1401,8 +1346,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                        boxShadow: [],
                                                                                                       ),
                                                                                                     )
                                                                                                   :
@@ -1414,8 +1357,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                            boxShadow: [],
                                                                                                           ),
                                                                                                         )
                                                                                                       : Container(
@@ -2036,18 +1977,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                     height:
                                                                         width *
                                                                             0.09,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10),
-                                                                      color: Color.fromARGB(
-                                                                          255,
-                                                                          75,
-                                                                          196,
-                                                                          111),
-                                                                      boxShadow: [],
-                                                                    ),
+                                                                    
                                                                   ),
 
                                                                   feedback: (i ==
@@ -2067,12 +1997,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               BoxDecoration(
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
-                                                                            color: Color.fromARGB(
-                                                                                255,
-                                                                                75,
-                                                                                196,
-                                                                                111),
-                                                                            boxShadow: [],
+                                                                           
                                                                           ),
                                                                         )
                                                                       :
@@ -2087,8 +2012,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                boxShadow: [],
                                                                               ),
                                                                             )
                                                                           :
@@ -2100,8 +2023,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                    boxShadow: [],
                                                                                   ),
                                                                                 )
                                                                               :
@@ -2113,8 +2034,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                        boxShadow: [],
                                                                                       ),
                                                                                     )
                                                                                   :
@@ -2126,8 +2045,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                            boxShadow: [],
                                                                                           ),
                                                                                         )
                                                                                       :
@@ -2139,8 +2056,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                boxShadow: [],
                                                                                               ),
                                                                                             )
                                                                                           :
@@ -2152,8 +2067,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                    boxShadow: [],
                                                                                                   ),
                                                                                                 )
                                                                                               :
@@ -2165,8 +2078,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                        boxShadow: [],
                                                                                                       ),
                                                                                                     )
                                                                                                   : (i == 1 && j == 0 && dragItemB.isNotEmpty && dragItemB.contains("10"))
@@ -2175,8 +2086,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                            boxShadow: [],
                                                                                                           ),
                                                                                                         )
                                                                                                       : (i == 1 && j == 1 && dragItemB.isNotEmpty && dragItemB.contains("11"))
@@ -2185,8 +2094,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                boxShadow: [],
                                                                                                               ),
                                                                                                             )
                                                                                                           : (i == 1 && j == 2 && dragItemB.isNotEmpty && dragItemB.contains("12"))
@@ -2195,8 +2102,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                    boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
                                                                                                               : (i == 1 && j == 3 && dragItemB.isNotEmpty && dragItemB.contains("13"))
@@ -2205,8 +2110,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                        boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
                                                                                                                   : (i == 1 && j == 4 && dragItemB.isNotEmpty && dragItemB.contains("14"))
@@ -2215,8 +2118,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                            boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
                                                                                                                       : (i == 1 && j == 5 && dragItemB.isNotEmpty && dragItemB.contains("15"))
@@ -2225,8 +2126,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
                                                                                                                           : (i == 1 && j == 6 && dragItemB.isNotEmpty && dragItemB.contains("16"))
@@ -2235,8 +2134,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                    boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
                                                                                                                               : (i == 1 && j == 7 && dragItemB.isNotEmpty && dragItemB.contains("17"))
@@ -2245,8 +2142,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                        boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
                                                                                                                                   : Container(
@@ -2322,8 +2217,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.09,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                boxShadow: [],
                                                                               ),
                                                                             )
                                                                           :
@@ -2335,8 +2228,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.09,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                    boxShadow: [],
                                                                                   ),
                                                                                 )
                                                                               :
@@ -2348,8 +2239,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.09,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                        boxShadow: [],
                                                                                       ),
                                                                                     )
                                                                                   :
@@ -2361,8 +2250,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                           height: width * 0.09,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                            boxShadow: [],
                                                                                           ),
                                                                                         )
                                                                                       :
@@ -2374,8 +2261,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.09,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                boxShadow: [],
                                                                                               ),
                                                                                             )
                                                                                           :
@@ -2387,8 +2272,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   height: width * 0.09,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                    boxShadow: [],
                                                                                                   ),
                                                                                                 )
                                                                                               :
@@ -2400,8 +2283,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                       height: width * 0.09,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                        boxShadow: [],
                                                                                                       ),
                                                                                                     )
                                                                                                   :
@@ -2413,8 +2294,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                           height: width * 0.09,
                                                                                                           decoration: BoxDecoration(
                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                            boxShadow: [],
                                                                                                           ),
                                                                                                         )
                                                                                                       :
@@ -2426,8 +2305,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                               height: width * 0.09,
                                                                                                               decoration: BoxDecoration(
                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                boxShadow: [],
                                                                                                               ),
                                                                                                             )
                                                                                                           :
@@ -2439,8 +2316,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                   height: width * 0.09,
                                                                                                                   decoration: BoxDecoration(
                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                    boxShadow: [],
                                                                                                                   ),
                                                                                                                 )
                                                                                                               :
@@ -2452,8 +2327,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                       height: width * 0.09,
                                                                                                                       decoration: BoxDecoration(
                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                        boxShadow: [],
                                                                                                                       ),
                                                                                                                     )
                                                                                                                   :
@@ -2465,8 +2338,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                           height: width * 0.09,
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                            boxShadow: [],
                                                                                                                           ),
                                                                                                                         )
                                                                                                                       : // card 8
@@ -2476,8 +2347,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                               height: width * 0.09,
                                                                                                                               decoration: BoxDecoration(
                                                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                                                color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                boxShadow: [],
                                                                                                                               ),
                                                                                                                             )
                                                                                                                           : // card 8
@@ -2487,8 +2356,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                   height: width * 0.09,
                                                                                                                                   decoration: BoxDecoration(
                                                                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                                                                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                    boxShadow: [],
                                                                                                                                   ),
                                                                                                                                 )
                                                                                                                               : // card 8
@@ -2498,8 +2365,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                       height: width * 0.09,
                                                                                                                                       decoration: BoxDecoration(
                                                                                                                                         borderRadius: BorderRadius.circular(10),
-                                                                                                                                        color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                        boxShadow: [],
                                                                                                                                       ),
                                                                                                                                     )
                                                                                                                                   : // card 8
@@ -2509,8 +2374,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                                                           height: width * 0.09,
                                                                                                                                           decoration: BoxDecoration(
                                                                                                                                             borderRadius: BorderRadius.circular(10),
-                                                                                                                                            color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                                                                                                                                            boxShadow: [],
                                                                                                                                           ),
                                                                                                                                         )
                                                                                                                                       : Container(

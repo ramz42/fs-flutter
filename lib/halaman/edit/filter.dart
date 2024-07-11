@@ -189,6 +189,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           title.toString().contains(" a") ||
           title.toString().contains(" A") ||
           title.toString().contains("Paket A")) {
+        print("tipe a");
         screenCaptureImages(0, 0);
         screenCaptureImages(0, 1);
         screenCaptureImages(0, 2);
@@ -198,7 +199,13 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenCaptureImages(1, 1);
         screenCaptureImages(1, 2);
         screenCaptureImages(1, 3);
-      } else {
+      }
+      if (title.toString().contains("collage b") ||
+          title.toString().contains("Collage B") ||
+          title.toString().contains(" b") ||
+          title.toString().contains(" B") ||
+          title.toString().contains("Paket B")) {
+        print("tipe b");
         screenCaptureImages(0, 0);
         screenCaptureImages(0, 1);
         screenCaptureImages(0, 2);
@@ -799,12 +806,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color:  bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -911,7 +922,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -1888,7 +1901,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                   ),
                   Container(
                     width: width * 0.35,
-                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                     child: Column(
                       children: [
                         Padding(
@@ -2148,7 +2163,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   var warna1 = "";
   var warna2 = "";
 
-  
   List<dynamic> background = [];
 
   String headerImg = "";
@@ -2165,7 +2179,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     });
 
     getWarnaBg();
-    
+
     getOrderSettings();
 
     super.initState();
@@ -2640,7 +2654,8 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Material(
-      child: Container( decoration: BoxDecoration(
+      child: Container(
+        decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
                 "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
@@ -2657,21 +2672,30 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                   ),
                   SizedBox(
                     height: height * 0.035,
                     width: width * 1,
-                    child: bg_warna_main != "" ? WaveWidget(
-                      config: CustomConfig(
-                        colors: [Color(int.parse(warna1)), Color(int.parse(warna2))],
-                        durations: _durations,
-                        heightPercentages: _heightPercentages,
-                      ),
-                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
-                      size: const Size(double.infinity, double.infinity),
-                      waveAmplitude: 0,
-                    ) : Container(),
+                    child: bg_warna_main != ""
+                        ? WaveWidget(
+                            config: CustomConfig(
+                              colors: [
+                                Color(int.parse(warna1)),
+                                Color(int.parse(warna2))
+                              ],
+                              durations: _durations,
+                              heightPercentages: _heightPercentages,
+                            ),
+                            backgroundColor: bg_warna_main != ""
+                                ? Color(int.parse(bg_warna_main))
+                                : Colors.transparent,
+                            size: const Size(double.infinity, double.infinity),
+                            waveAmplitude: 0,
+                          )
+                        : Container(),
                   ),
                 ],
               ),
@@ -2692,7 +2716,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     ),
                   ),
                   elevation: 1,
-                  color:  Color.fromARGB(218, 33, 33, 33),
+                  color: Color.fromARGB(218, 33, 33, 33),
                   child: InkWell(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(

@@ -45,6 +45,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   String filePickHeader = "";
   String filePickBackground = "";
 
+  String filePickSticker = "";
+
   String judul = "";
   String deskripsi = "";
   String pin = "";
@@ -55,6 +57,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   String image_header = "";
   String image_background = "";
+
+  String nama_sticker = "";
+  String status_sticker = "";
 
   // create some values
   Color bg_warna_wave = Color(0xff443a49);
@@ -318,6 +323,50 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     }
   }
 
+  _postSticker() async {
+    print("object test post sticker value");
+    print("object nama : $nama_sticker");
+    print("object status : $status_sticker");
+    print(
+        "object nama sticker : ${filePickSticker.toString().replaceAll(r'\', r'/')}");
+
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('${Variables.ipv4_local}/api/add-sticker'));
+    request.fields.addAll({
+      'nama': nama_sticker,
+      'status': status_sticker,
+    });
+    request.files.add(await http.MultipartFile.fromPath(
+        'nama_img', filePickSticker.toString().replaceAll(r'\', r'/')));
+
+    http.Response response =
+        await http.Response.fromStream(await request.send());
+
+    Map<String, dynamic> data = jsonDecode(response.body);
+    print("object data $data");
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Update'),
+        content: const Text('Add Sticker Berhasil'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Cancel'),
+            child: const Text('Kembali'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Navigator.pop(context, 'OK');
+              Navigator.of(context).pop();
+              getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
+            },
+            child: const Text('Baik'),
+          ),
+        ],
+      ),
+    );
+  }
+
   pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
@@ -355,6 +404,21 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       File fileBackground = File(result2.files.single.path!);
       setState(() {
         filePickBackground = fileBackground.path;
+      });
+      // print("filePick : $filePick");
+    } else {
+      // User canceled the picker
+    }
+  }
+
+  pickFileSticker() async {
+    print("pick file sticker");
+    FilePickerResult? result1 = await FilePicker.platform.pickFiles();
+
+    if (result1 != null) {
+      File fileSticker = File(result1.files.single.path!);
+      setState(() {
+        filePickSticker = fileSticker.path;
       });
       // print("filePick : $filePick");
     } else {
@@ -949,8 +1013,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           setState(() {
                                             deskripsi = value.toString();
                                           });
-
-                                          // print("object waktu : $deskripsi");
                                         },
                                       ),
                                     ),
@@ -1057,7 +1119,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       // Validate returns true if the form is valid, or false otherwise.
                                       if (_formKey.currentState!.validate()) {
                                         _postSettings();
-                                        // _postSettings();
                                       }
                                     },
                                     child: Padding(
@@ -1658,6 +1719,286 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     ),
                                   ),
                                 ),
+
+                                // ...
+                                // konfigurasi sticker
+                                // ...
+                                SizedBox(
+                                  height: height * 0.065,
+                                ),
+
+                                // ...
+                                // label menu sticker
+                                // ...
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: SizedBox(
+                                    width: width * 0.5,
+                                    child: Text(
+                                      "Konfigurasi Sticker",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: width * 0.012,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // end label
+
+                                // input nama sticker
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: SizedBox(
+                                    width: width * 0.5,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                      color: Colors.white,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: new OutlineInputBorder(
+                                              borderSide: new BorderSide(
+                                                  color: Colors.transparent)),
+                                          hintText: 'Masukkan nama sticker',
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey),
+                                          contentPadding: EdgeInsets.only(
+                                            left: 15,
+                                            bottom: 11,
+                                            top: 11,
+                                            right: 15,
+                                          ),
+                                          focusColor: Colors.black,
+                                          fillColor: Colors.black,
+                                          label: Text(
+                                            "Nama Sticker",
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+                                          ),
+                                        ),
+                                        style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 53, 53, 53),
+                                        ),
+                                        // The validator receives the text that the user has entered.
+                                        validator: (value) {
+                                          setState(() {
+                                            // setstate value pin
+                                            nama_sticker = value.toString();
+                                          });
+                                          if (value == null || value.isEmpty) {
+                                            return 'masukkan nama sticker';
+                                          }
+                                        },
+
+                                        onChanged: (value) {
+                                          setState(() {
+                                            nama_sticker = value.toString();
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                // input status sticker
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: SizedBox(
+                                    width: width * 0.5,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                      color: Colors.white,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: new OutlineInputBorder(
+                                              borderSide: new BorderSide(
+                                                  color: Colors.transparent)),
+                                          hintText: 'Masukkan status sticker',
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey),
+                                          contentPadding: EdgeInsets.only(
+                                            left: 15,
+                                            bottom: 11,
+                                            top: 11,
+                                            right: 15,
+                                          ),
+                                          focusColor: Colors.black,
+                                          fillColor: Colors.black,
+                                          label: Text(
+                                            "Status Sticker",
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+                                          ),
+                                        ),
+                                        style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 53, 53, 53),
+                                        ),
+                                        // The validator receives the text that the user has entered.
+                                        validator: (value) {
+                                          setState(() {
+                                            // setstate value pin
+                                            status_sticker = value.toString();
+                                          });
+                                          if (value == null || value.isEmpty) {
+                                            return 'masukkan status sticker';
+                                          }
+                                        },
+
+                                        onChanged: (value) {
+                                          setState(() {
+                                            status_sticker = value.toString();
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                // ambil gambar sticker
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.35,
+                                        // height: 200,
+                                        // child: Row(
+                                        //   children: [
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                          color: Colors.white,
+                                          child: TextFormField(
+                                            decoration: InputDecoration(
+                                              hintText: "Ambil Gambar Sticker",
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.grey),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                left: 15,
+                                                bottom: 11,
+                                                top: 11,
+                                                right: 15,
+                                              ),
+                                              label: Text(
+                                                // ignore: unnecessary_null_comparison
+                                                filePickSticker.isNotEmpty
+                                                    ? filePickSticker.toString()
+                                                    : "Sticker Image",
+                                                style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 53, 53, 53),
+                                                ),
+                                              ),
+                                              border: new OutlineInputBorder(
+                                                  borderSide: new BorderSide(
+                                                      color:
+                                                          Colors.transparent)),
+                                            ),
+                                            style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              // if (image.isEmpty) {
+                                              //   return 'coba ambil gambar';
+                                              // } else {
+                                              setState(() {
+                                                filePickSticker =
+                                                    filePickSticker.toString();
+                                              });
+                                              // }
+                                            },
+                                          ),
+                                        ),
+
+                                        //   ],
+                                        // ),
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.15,
+                                        child: Card(
+                                          color: Colors.black,
+                                          child: InkWell(
+                                            onTap: () {
+                                              pickFileSticker();
+
+                                              print("pick file sticker");
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(
+                                                width * 0.0055,
+                                              ),
+                                              child: Icon(
+                                                Icons.image,
+                                                size: width * 0.014,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // ...
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: width * 0.02,
+                                    left: width * 0.02,
+                                  ),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 36, 36, 36),
+                                    ),
+                                    onPressed: () {
+                                      _postSticker();
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: width * 0.025,
+                                        right: width * 0.025,
+                                        top: width * 0.005,
+                                        bottom: width * 0.005,
+                                      ),
+                                      child: const Text(
+                                        'Tambah Sticker',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // ...
+                                // tambah sticker end statement ...
+                                // ...
                               ],
                             ),
                           ),
