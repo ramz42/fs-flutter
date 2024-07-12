@@ -1,10 +1,9 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
-import 'package:fs_dart/halaman/contoh/wrap.dart';
-// import 'package:fs_dart/halaman/foto-sesi/foto_sesi.dart';
 import 'package:fs_dart/halaman/settings/halaman_awal.dart';
 import 'package:fs_dart/halaman/settings/settings.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:fs_dart/halaman/contoh/wrap.dart';
 import 'halaman/contoh/contoh-slider-horizontal.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:fs_dart/halaman/edit/filter.dart';
@@ -58,7 +57,7 @@ Future<void> main() async {
       scrollBehavior:
           MyCustomScrollBehavior(), // add custom scroll behavior class pada material app main app untuk dipakai global
       theme: ThemeData.light(),
-      home: HalamanAwalSettings(),
+      home: HalamanAwal(), // ubah route dengan mengetik halaman
     ),
   );
 }

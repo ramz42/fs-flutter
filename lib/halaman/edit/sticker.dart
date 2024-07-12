@@ -11798,8 +11798,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         url_image.isNotEmpty
                                                     ? Center(
                                                         child: Container(
-                                                        width: 154, // pixel
-                                                        height: 374.5, // pixel
+                                                        width: 384, // pixel
+                                                        height: 576, // pixel
                                                         decoration:
                                                             BoxDecoration(
                                                           image:
