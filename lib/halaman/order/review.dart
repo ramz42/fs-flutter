@@ -22,15 +22,20 @@ late StreamSubscription<bool> keyboardSubscription;
 class ReviewPaymentWidget extends StatefulWidget {
   const ReviewPaymentWidget({
     super.key,
+    required this.backgrounds,
   });
 
+  final backgrounds;
+
   @override
-  State<ReviewPaymentWidget> createState() => _ReviewPaymentWidgetState();
+  State<ReviewPaymentWidget> createState() =>
+      _ReviewPaymentWidgetState(this.backgrounds);
 }
 
 class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
   // ...
   final LocalStorage storage = new LocalStorage('parameters');
+  final backgrounds;
   String title = "";
   String deskripsi = "";
   String nama_user = "";
@@ -86,6 +91,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
 
   String headerImg = "";
   String bgImg = "";
+
+  _ReviewPaymentWidgetState(this.backgrounds);
 
   @override
   void initState() {
@@ -935,7 +942,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                   PageTransition(
                                                       type: PageTransitionType
                                                           .fade,
-                                                      child: OrderWidget(),
+                                                      child: OrderWidget(
+                                                        backgrounds: bgImg,
+                                                      ),
                                                       inheritTheme: true,
                                                       ctx: context),
                                                 );
@@ -1063,7 +1072,10 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                   PageTransition(
                                                       type: PageTransitionType
                                                           .fade,
-                                                      child: PilihPembayaran(),
+                                                      child: PilihPembayaran(
+                                                        backgrounds:
+                                                            backgrounds,
+                                                      ),
                                                       inheritTheme: true,
                                                       ctx: context),
                                                 );

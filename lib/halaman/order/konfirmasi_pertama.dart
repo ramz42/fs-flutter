@@ -15,14 +15,22 @@ import 'pilih_pembayaran.dart';
 import 'review.dart';
 
 class ReviewKonfirmasiPertama extends StatefulWidget {
-  const ReviewKonfirmasiPertama({super.key});
+  const ReviewKonfirmasiPertama({
+    super.key,
+    required this.backgrounds,
+  });
+
+  final backgrounds;
 
   @override
   State<ReviewKonfirmasiPertama> createState() =>
-      _ReviewKonfirmasiPertamaState();
+      _ReviewKonfirmasiPertamaState(this.backgrounds);
 }
 
 class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
+  _ReviewKonfirmasiPertamaState(this.backgrounds);
+
+  final backgrounds;
   final LocalStorage storage = new LocalStorage('parameters');
   final LocalStorage storage2 = new LocalStorage('parameters2');
   String title = "";
@@ -32,6 +40,8 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
   String email_user = "";
   String ig = "";
   int harga = 0;
+  String headerImg = "";
+  String bgImg = "";
 
   var db = new Mysql();
 
@@ -75,8 +85,6 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
     );
   }
 
-  String headerImg = "";
-  String bgImg = "";
   // ...
   getOrderSettings() async {
     // print("get sesi data");
@@ -267,7 +275,9 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -466,7 +476,9 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                                                 PageTransition(
                                                     type:
                                                         PageTransitionType.fade,
-                                                    child: OrderWidget(),
+                                                    child: OrderWidget(
+                                                      backgrounds: bgImg,
+                                                    ),
                                                     inheritTheme: true,
                                                     ctx: context),
                                               );
@@ -563,7 +575,9 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                                                 PageTransition(
                                                     type:
                                                         PageTransitionType.fade,
-                                                    child: PilihPembayaran(),
+                                                    child: PilihPembayaran(
+                                                      backgrounds: backgrounds,
+                                                    ),
                                                     inheritTheme: true,
                                                     ctx: context),
                                               );

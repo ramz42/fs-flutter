@@ -1,43 +1,51 @@
 // ignore_for_file: duplicate_import, unused_import, unused_local_variable
 
-import '../awal/halaman_awal.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fs_dart/halaman/edit/layout.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:fs_dart/src/variables.g.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:fs_dart/src/variables.g.dart';
 import 'package:pinput/pinput.dart';
-import 'package:screenshot/screenshot.dart';
+import '../awal/halaman_awal.dart';
 import '../../src/database/db.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import 'dart:typed_data';
-import 'dart:async';
 import 'dart:convert';
-import 'dart:ui';
-import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
+import 'dart:async';
+import 'dart:async';
+import 'dart:io';
+import 'dart:ui';
 import 'dart:ui';
 
 class FilterWidget extends StatefulWidget {
-  FilterWidget({super.key, required this.nama, required this.title});
+  FilterWidget(
+      {super.key,
+      required this.nama,
+      required this.title,
+      required this.backgrounds});
   final nama;
   final title;
+  final backgrounds;
 
   @override
-  State<FilterWidget> createState() => _FilterWidgetState(nama, title);
+  State<FilterWidget> createState() =>
+      _FilterWidgetState(nama, title, backgrounds);
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  _FilterWidgetState(this.nama, this.title);
+  _FilterWidgetState(this.nama, this.title, this.backgrounds);
 
   final nama;
   final title;
+  final backgrounds;
   // ...
-  final LocalStorage storage = new LocalStorage('parameters');
+  // final LocalStorage storage = new LocalStorage('parameters');
   final double barHeight = 10.0;
 
   // variables varriable
@@ -69,6 +77,12 @@ class _FilterWidgetState extends State<FilterWidget> {
   var bg_warna_main = "";
   var warna1 = "";
   var warna2 = "";
+
+  // background image dan header variables
+  List<dynamic> background = [];
+  String headerImg = "";
+  String bgImg = "";
+  // ...
 
   // colors wave
   // static const _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
@@ -119,12 +133,35 @@ class _FilterWidgetState extends State<FilterWidget> {
     // init get filter from functions
     getFilter();
     getWarnaBg();
+    getOrderSettings();
 
     // test print logger nama dan tittle user
     print("nama initstate filterwidget : $nama");
     print("title pada initstate filterwidget : $title");
 
     super.initState();
+  }
+
+  // ...
+  getOrderSettings() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      print("background : ${background}");
+      for (var element in background) {
+        print("background_image : ${element["background_image"]}");
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   getWarnaBg() async {
@@ -225,6 +262,23 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenCaptureImages(3, 1);
         screenCaptureImages(3, 2);
         screenCaptureImages(3, 3);
+
+        screenCaptureImagesEdit(0, 0);
+        screenCaptureImagesEdit(0, 1);
+        screenCaptureImagesEdit(0, 2);
+        screenCaptureImagesEdit(0, 3);
+        screenCaptureImagesEdit(1, 0);
+        screenCaptureImagesEdit(1, 1);
+        screenCaptureImagesEdit(1, 2);
+        screenCaptureImagesEdit(1, 3);
+        screenCaptureImagesEdit(2, 0);
+        screenCaptureImagesEdit(2, 1);
+        screenCaptureImagesEdit(2, 2);
+        screenCaptureImagesEdit(2, 3);
+        screenCaptureImagesEdit(3, 0);
+        screenCaptureImagesEdit(3, 1);
+        screenCaptureImagesEdit(3, 2);
+        screenCaptureImagesEdit(3, 3);
       }
 
       // ...
@@ -234,11 +288,21 @@ class _FilterWidgetState extends State<FilterWidget> {
         if (counter == 0) {
           print('Cancel timer');
           timer.cancel();
-          Navigator.of(context).push(_routeAnimate(LayoutWidget(
-            nama: nama,
-            title: title,
-            nama_filter: nama_filter, // parameter dari filter
-          )));
+
+          Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.fade,
+                child: LayoutWidget(
+                  nama: nama,
+                  title: title,
+                  nama_filter: nama_filter, // parameter dari filter
+
+                  backgrounds: backgrounds,
+                ),
+                inheritTheme: true,
+                ctx: context),
+          );
         }
       });
     } else {
@@ -714,6 +778,374 @@ class _FilterWidgetState extends State<FilterWidget> {
     }
   }
 
+  screenCaptureImagesEdit(i, j) async {
+    final directory =
+        (await getApplicationDocumentsDirectory()); //from path_provide package
+
+    var fileName = "\\${DateTime.now().day}-1";
+    var path = '$directory';
+
+    if (title.toString().contains("Collage A") ||
+        title.toString().contains("collage a") ||
+        title.toString().contains("Strip A") ||
+        title.toString().contains("strip a") ||
+        title.toString().contains("Paket A")) {
+      //
+      if ((i == 0 && j == 0)) {
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-1"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+      if ((i == 0 && j == 1)) {
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-2"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 2)) {
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-3"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 3)) {
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-4"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 0)) {
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-5"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 1)) {
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-6"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 2)) {
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-7"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 3)) {
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-8"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+    } else {
+      // baris pertama
+      if ((i == 0 && j == 0)) {
+        // ...
+
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-a"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 1)) {
+        // ...
+
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-b"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 2)) {
+        // ...
+
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-c"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 0 && j == 3)) {
+        // ...
+
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-d"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // baris ke 2
+      if ((i == 1 && j == 0)) {
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-e"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 1)) {
+        // ...
+
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-f"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 2)) {
+        // ...
+
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-g"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 1 && j == 3)) {
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-h"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // baris ke 3
+      if ((i == 2 && j == 0)) {
+        // ...
+
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-i"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 2 && j == 1)) {
+        // ...
+
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-j"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 2 && j == 2)) {
+        // ...
+
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-k"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 2 && j == 3)) {
+        // ...
+
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-l"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // baris ke 3
+      if ((i == 3 && j == 0)) {
+        // ...
+
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-m"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 3 && j == 1)) {
+        // ...
+
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-n"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 3 && j == 2)) {
+        // ...
+
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-o"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      if ((i == 3 && j == 3)) {
+        // ...
+
+        screenshotController16
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "${"\\${DateTime.now().day}-p"}.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+    }
+  }
+
   // get filter functions
   getFilter() async {
     // print("get edit data");
@@ -731,11 +1163,11 @@ class _FilterWidgetState extends State<FilterWidget> {
   }
 
   // save storage functions
-  _saveStorage(title, deskripsi, harga) async {
-    await storage.setItem('title', title);
-    await storage.setItem('deskripsi', deskripsi);
-    await storage.setItem('harga', harga);
-  }
+  // _saveStorage(title, deskripsi, harga) async {
+  //   await storage.setItem('title', title);
+  //   await storage.setItem('deskripsi', deskripsi);
+  //   await storage.setItem('harga', harga);
+  // }
 
   // filter beauty functions
   void filterBeauty() async {
@@ -746,6 +1178,7 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // get data images functions from laravel api and folders
   Future<void> _getAllImages() async {
+    List<dynamic> _list = [];
     // get all images
     print("get all images $nama-${DateTime.now().day}-${DateTime.now().hour}");
     var request = http.MultipartRequest(
@@ -763,15 +1196,34 @@ class _FilterWidgetState extends State<FilterWidget> {
     http.Response response =
         await http.Response.fromStream(await request.send());
 
+    _list.addAll(jsonDecode(response.body));
+
     if (response.statusCode == 201) {
-      list.addAll(jsonDecode(response.body));
       stores = jsonDecode(response.body);
-      print("response. length : ${stores.length}");
+      print("response length : ${stores.length}");
       setState(() {
         lengthDataImages = stores.length;
       });
-      for (var i = 0; i < stores.length; i++) {
-        print("object $i ${list[i]}");
+
+      if (title.toString().contains("collage a") ||
+          title.toString().contains("Collage A") ||
+          title.toString().contains(" a") ||
+          title.toString().contains(" A") ||
+          title.toString().contains("Paket A")) {
+        for (var i = 0; i < lengthDataImages - 8; i++) {
+          // ...
+          print("object _list collage A $i ${_list[i]}");
+          list.add(_list[i]);
+        }
+      }
+      if (title.toString().contains("Collage B") ||
+          title.toString().contains("Paket B")) {
+        // list.addAll(_list[i]);
+        for (var i = 0; i < lengthDataImages; i++) {
+          // ...
+          print("object _list collage B $i ${_list[i]}");
+          list.add(_list[i]);
+        }
       }
     } else {
       print(response.reasonPhrase);
@@ -791,6 +1243,13 @@ class _FilterWidgetState extends State<FilterWidget> {
 
     return Material(
       child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -940,7 +1399,14 @@ class _FilterWidgetState extends State<FilterWidget> {
             // --------------------------
             // body page view filter page
             // --------------------------
-            SizedBox(
+            Container(
+              //       decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: NetworkImage(
+              //         "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
               width: width * 1,
               height: height * 0.88,
               child: Row(
@@ -1850,14 +2316,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                               ),
                               onPressed: () {
                                 // do onpressed... last
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => const HalamanAwal(),
-                                //   ),
-                                // );
-                                Navigator.of(context)
-                                    .push(_routeAnimate(HalamanAwal()));
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: HalamanAwal(
+                                        backgrounds: backgrounds,
+                                      ),
+                                      inheritTheme: true,
+                                      ctx: context),
+                                );
                               },
                               child: SizedBox(
                                 // color: Colors.transparent,
@@ -2119,14 +2587,17 @@ class _FilterWidgetState extends State<FilterWidget> {
 }
 
 class LockScreenFotoEditWidget extends StatefulWidget {
-  const LockScreenFotoEditWidget({super.key});
+  LockScreenFotoEditWidget({super.key, required this.background});
 
+  final background;
   @override
   State<LockScreenFotoEditWidget> createState() =>
-      _LockScreenFotoEditWidgetState();
+      _LockScreenFotoEditWidgetState(this.background);
 }
 
 class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
+  _LockScreenFotoEditWidgetState(this.background);
+  final background;
   final double barHeight = 10.0;
 
   // colors wave
@@ -2163,26 +2634,41 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   var warna1 = "";
   var warna2 = "";
 
-  List<dynamic> background = [];
+  List<dynamic> backgrounds = [];
 
   String headerImg = "";
   String bgImg = "";
+
+  final LocalStorage storage = new LocalStorage('serial_key');
 
   @override
   void initState() {
     // TODO: implement initState
     // timerPeriodFunc(); // timer periodic functions
 
-    print("title : $title");
+    print("title pada filter page : $title");
     setState(() {
       isNavigate = true;
     });
 
     getWarnaBg();
-
     getOrderSettings();
+    getStorage();
 
     super.initState();
+  }
+
+  void getStorage() async {
+    var ready = await storage.ready;
+
+    print("status ready storage : $ready");
+    if (ready == true) {
+      setState(() {});
+
+      bgImg = await storage.getItem('background_images');
+
+      print("background_storage : $bgImg");
+    }
   }
 
   getOrderSettings() async {
@@ -2192,8 +2678,8 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     var response = await http.Response.fromStream(streamedResponse);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
-      background.addAll(result);
-      print("background : ${background}");
+      backgrounds.addAll(result);
+      print("background : ${backgrounds}");
       for (var element in background) {
         print("background_image : ${element["background_image"]}");
         setState(() {
@@ -2286,25 +2772,22 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                         title = edit[3];
                         isNavigate = false;
                       }),
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => FilterWidget(
-                      //       nama: nama,
-                      //       title: title,
-                      //     ),
-                      //   ),
-                      // )
-                      Navigator.of(context).push(_routeAnimate(FilterWidget(
-                        nama: nama,
-                        title: title,
-                      )))
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: FilterWidget(
+                              nama: nama,
+                              title: title,
+                              backgrounds: bgImg,
+                            ),
+                            inheritTheme: true,
+                            ctx: context),
+                      ),
                     }
                   : null;
-            } else {
-              // print("object : status foto edit belum 'buka'");
             }
-          } // Finally, close the connection
+          }
         });
         return value.close();
       },
@@ -2337,19 +2820,19 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
               title = row[4];
             });
             print("object title : $title");
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => FilterWidget(
-            //       nama: row[1],
-            //       title: row[6],
-            //     ),
-            //   ),
-            // );
-            Navigator.of(context).push(_routeAnimate(FilterWidget(
-              nama: row[1],
-              title: title,
-            )));
+
+            Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.fade,
+                  child: FilterWidget(
+                    nama: row[1],
+                    title: title,
+                    backgrounds: background,
+                  ),
+                  inheritTheme: true,
+                  ctx: context),
+            );
           }
           print(" value : $value");
         });
@@ -2561,15 +3044,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                           onPressed: () async {
                             // ...
                             _updateVoucher(nama, voucher);
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => FilterWidget(
-                            //       nama: nama,
-                            //       title: title,
-                            //     ),
-                            //   ),
-                            // );
                           },
                         ),
                       ],
@@ -2611,21 +3085,18 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     onCompleted: (voucher) {
                       print(voucher);
                       if (voucher == voucher.toString()) {
-                        Navigator.of(context).push(_routeAnimate(
-                          FilterWidget(
-                            nama: nama,
-                            title: title,
-                          ),
-                        ));
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => FilterWidget(
-                        //       nama: nama,
-                        //       title: title,
-                        //     ),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: FilterWidget(
+                                nama: nama,
+                                title: title,
+                                backgrounds: background,
+                              ),
+                              inheritTheme: true,
+                              ctx: context),
+                        );
                       } else {
                         Navigator.of(context).pop();
                       }
@@ -2658,7 +3129,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                "${Variables.ipv4_local}/storage/order/background-image/$background"),
             fit: BoxFit.cover,
           ),
         ),

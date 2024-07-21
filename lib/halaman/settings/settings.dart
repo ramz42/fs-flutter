@@ -241,6 +241,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     request.files.add(await http.MultipartFile.fromPath(
         'image', image.toString().replaceAll(r'\', r'/')));
 
+    print("image : ${image.toString().replaceAll(r'\', r'/')}");
+
     http.Response response =
         await http.Response.fromStream(await request.send());
 
@@ -276,8 +278,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   _postOrder() async {
     var jsonResponse;
-    print("object image_header : $filePickHeader");
-    print("object image_background : $filePickBackground");
+    // print("object image_header : $filePickHeader");
+    // print("object image_background : $filePickBackground");
 
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variables.ipv4_local}/api/order'));
@@ -290,13 +292,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     request.files.add(await http.MultipartFile.fromPath('background_image',
         filePickBackground.toString().replaceAll(r'\', r'/')));
 
+    print(
+        "filePickBackground : ${filePickBackground.toString().replaceAll(r'\', r'/')}");
+
     http.Response response =
         await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 200) {
       // print(await response.bodyBytes);
       Map<String, dynamic> data = jsonDecode(response.body);
-      print("object data $data");
+      // print("object data $data");
       showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(

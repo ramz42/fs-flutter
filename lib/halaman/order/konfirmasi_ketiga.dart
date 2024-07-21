@@ -15,14 +15,21 @@ import '../awal/halaman_awal.dart';
 import 'pilih_pembayaran.dart';
 
 class KonfirmasiKetiga extends StatefulWidget {
-  const KonfirmasiKetiga({super.key});
+  const KonfirmasiKetiga({
+    super.key,
+    required this.backgrounds,
+  });
+
+  final backgrounds;
 
   @override
-  State<KonfirmasiKetiga> createState() => _KonfirmasiKetigaState();
+  State<KonfirmasiKetiga> createState() =>
+      _KonfirmasiKetigaState(this.backgrounds);
 }
 
 class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
   final LocalStorage storage = new LocalStorage('parameters');
+  final backgrounds;
 
   String title = "";
   String deskripsi = "";
@@ -52,6 +59,8 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
     0.90,
     0.70,
   ];
+
+  _KonfirmasiKetigaState(this.backgrounds);
   // end statements color waves
 
   @override
@@ -272,7 +281,9 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -322,7 +333,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                   child: Text(
                                     "Terima Kasih",
                                     style: TextStyle(
-                                     color: Colors.white,
+                                      color: Colors.white,
                                       fontSize: width * 0.025,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -339,7 +350,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                     child: Text(
                                       "Terima kasih telah berbelanja produk di selly time. bukti pembayaran Qr Code kami kirimkan melalui email yang sudah anda daftarkan, periksa folder spam atau junk pada email anda jika pada beberapa saat ini anda belum juga menerima email dari kami.",
                                       style: TextStyle(
-                                       color: Colors.white,
+                                        color: Colors.white,
                                         fontSize: width * 0.015,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -396,29 +407,14 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                       ),
                                       onPressed: () {
                                         // do onpressed...
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) => HalamanAwal(),
-                                        //   ),
-                                        // );
-                                        // Navigator.of(context)
-                                        //     .push(_routeAnimate(HalamanAwal()));
-
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) => HalamanAwal(),
-                                        //   ),
-                                        // );
-                                        // Navigator.of(context)
-                                        //     .push(_routeAnimate(HalamanAwal()));
 
                                         Navigator.push(
                                           context,
                                           PageTransition(
                                               type: PageTransitionType.fade,
-                                              child: HalamanAwal(),
+                                              child: HalamanAwal(
+                                                backgrounds: backgrounds,
+                                              ),
                                               inheritTheme: true,
                                               ctx: context),
                                         );

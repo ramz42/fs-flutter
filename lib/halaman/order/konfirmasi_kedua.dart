@@ -28,12 +28,14 @@ class KonfirmasiKedua extends StatefulWidget {
     required this.qris_request_date,
     required this.qris_invoiceid,
     required this.jenis_pembayaran,
+    required this.backgrounds,
   });
 
   final qris_content;
   final qris_request_date;
   final qris_invoiceid;
   final jenis_pembayaran;
+  final backgrounds;
 
   @override
   State<KonfirmasiKedua> createState() => _KonfirmasiKeduaState(
@@ -41,14 +43,16 @@ class KonfirmasiKedua extends StatefulWidget {
         qris_request_date,
         qris_invoiceid,
         jenis_pembayaran,
+        backgrounds,
       );
 }
 
 class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     with SingleTickerProviderStateMixin {
   _KonfirmasiKeduaState(this.qris_content, this.qris_request_date,
-      this.qris_invoiceid, this.jenis_pembayaran);
+      this.qris_invoiceid, this.jenis_pembayaran, this.backgrounds);
 
+  final backgrounds;
   final qris_content;
   final qris_request_date;
   final qris_invoiceid;
@@ -111,7 +115,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
         context,
         PageTransition(
             type: PageTransitionType.fade,
-            child: KonfirmasiKetiga(),
+            child: KonfirmasiKetiga(
+              backgrounds: backgrounds,
+            ),
             inheritTheme: true,
             ctx: context),
       );
@@ -483,7 +489,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main))
+                          : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -884,7 +892,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             ? "1. Buka aplikasi m-banking di smartphone."
                                                             : "1. Melakukan Pembayaran Ditempat, Dengan Menggunakan Uang Cash",
                                                     style: TextStyle(
-                                                     color: Colors.white,
+                                                      color: Colors.white,
                                                       fontSize: width * 0.010,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -968,7 +976,8 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "4. Bayar Qris Id dengan scan Qris yang ada dan lakukan konfirmasi pembayaran.",
                                                               style: TextStyle(
-                                                                color: Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -998,7 +1007,8 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "4. Masukkan Nomor Virtual Account \npemesanan kamu yang terdapat \ndalam layar pemesanan.",
                                                               style: TextStyle(
-                                                               color: Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1033,7 +1043,8 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "5. Lalu masukkan Pin Bank kamu.",
                                                               style: TextStyle(
-                                                                color: Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1067,7 +1078,8 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "6. Setelah melakukan transfer / \npembayaran melalui VA bank, \ntekan tombol Pengecekan pembayaran.",
                                                               style: TextStyle(
-                                                                color: Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1101,7 +1113,8 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             child: Text(
                                                               "7. Bukti pembayaran akan anda terima \nmelalui email yang sudah anda daftarkan \n`pastikan amati` yang anda daftarkan sesuai ya.",
                                                               style: TextStyle(
-                                                                color: Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
@@ -1180,7 +1193,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                               context,
                                               PageTransition(
                                                   type: PageTransitionType.fade,
-                                                  child: PilihPembayaran(),
+                                                  child: PilihPembayaran(
+                                                    backgrounds: backgrounds,
+                                                  ),
                                                   inheritTheme: true,
                                                   ctx: context),
                                             );
@@ -1267,7 +1282,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                               context,
                                               PageTransition(
                                                   type: PageTransitionType.fade,
-                                                  child: KonfirmasiKetiga(),
+                                                  child: KonfirmasiKetiga(
+                                                    backgrounds: backgrounds,
+                                                  ),
                                                   inheritTheme: true,
                                                   ctx: context),
                                             );

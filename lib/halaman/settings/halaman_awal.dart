@@ -277,7 +277,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                       ),
                     ),
                     elevation: 1,
-                    color:bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent,
+                    color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");
@@ -351,7 +353,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                         context,
                         PageTransition(
                             type: PageTransitionType.fade,
-                            child: HalamanAwal(),
+                            child: HalamanAwal(
+                              backgrounds: '',
+                            ),
                             inheritTheme: true,
                             ctx: context),
                       );

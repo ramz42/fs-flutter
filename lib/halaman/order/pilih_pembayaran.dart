@@ -19,14 +19,17 @@ import 'package:http/http.dart' as http;
 import '../../../src/database/db.dart';
 
 class PilihPembayaran extends StatefulWidget {
-  const PilihPembayaran({super.key});
+  const PilihPembayaran({super.key, required this.backgrounds});
 
+  final backgrounds;
   @override
-  State<PilihPembayaran> createState() => _ReviewKonfirmasiPertamaState();
+  State<PilihPembayaran> createState() =>
+      _ReviewKonfirmasiPertamaState(this.backgrounds);
 }
 
 class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
   final LocalStorage storage = new LocalStorage('parameters');
+  final backgrounds;
   String title = "";
   String deskripsi = "";
   String nama_user = "";
@@ -87,6 +90,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
   var jenis_transaksi = "";
 
   var jenis_pembayaran = "";
+
+  _ReviewKonfirmasiPertamaState(this.backgrounds);
 
   @override
   void initState() {
@@ -361,6 +366,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
               qris_request_date: qris_request_date,
               qris_invoiceid: qris_invoiceid, // parameter dari filter
               jenis_pembayaran: jenis_pembayaran,
+              backgrounds: backgrounds,
             ),
             inheritTheme: true,
             ctx: context),
@@ -428,6 +434,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
               qris_request_date: qris_request_date,
               qris_invoiceid: qris_invoiceid, // parameter dari filter
               jenis_pembayaran: jenis_pembayaran,
+              backgrounds: backgrounds,
             ),
             inheritTheme: true,
             ctx: context),
@@ -688,7 +695,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                 children: [
                                                   Card(
                                                     color: Color.fromARGB(
-                                                  49, 39, 39, 39),
+                                                        49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -757,7 +764,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                   ),
                                                   Card(
                                                     color: Color.fromARGB(
-                                                  49, 39, 39, 39),
+                                                        49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -816,7 +823,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                   ),
                                                   Card(
                                                     color: Color.fromARGB(
-                                                  49, 39, 39, 39),
+                                                        49, 39, 39, 39),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -899,6 +906,8 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                                       qris_invoiceid, // parameter dari filter
                                                                   jenis_pembayaran:
                                                                       "bayar ditempat",
+                                                                  backgrounds:
+                                                                      backgrounds,
                                                                 ),
                                                                 inheritTheme:
                                                                     true,
@@ -997,7 +1006,9 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                               context,
                                               PageTransition(
                                                   type: PageTransitionType.fade,
-                                                  child: ReviewPaymentWidget(),
+                                                  child: ReviewPaymentWidget(
+                                                    backgrounds: backgrounds,
+                                                  ),
                                                   inheritTheme: true,
                                                   ctx: context),
                                             );
@@ -1107,6 +1118,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                         qris_invoiceid, // parameter dari filter
                                                     jenis_pembayaran:
                                                         jenis_pembayaran,
+                                                    backgrounds: backgrounds,
                                                   ),
                                                   inheritTheme: true,
                                                   ctx: context),

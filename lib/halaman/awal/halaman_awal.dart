@@ -1,90 +1,90 @@
 // import 'package:camera/camera.dart';
 // ignore_for_file: override_on_non_overriding_member
 
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fs_dart/halaman/order/order.dart';
-import 'package:mysql1/mysql1.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:window_manager/window_manager.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mysql1/mysql1.dart';
 import 'package:pinput/pinput.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import '../../src/database/db.dart';
-import 'package:window_manager/window_manager.dart';
-
-// localstorage
-import 'package:localstorage/localstorage.dart';
-
 import 'package:http/http.dart' as http;
 import '../../src/variables.g.dart';
 import '../edit/filter.dart';
+import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 
 class HalamanAwal extends StatefulWidget {
-  const HalamanAwal({super.key});
+  const HalamanAwal({super.key, required this.backgrounds});
 
+  final backgrounds;
   // final CameraDescription camera;
   @override
-  State<HalamanAwal> createState() => _HalamanAwalState();
+  State<HalamanAwal> createState() => _HalamanAwalState(this.backgrounds);
 }
 
 class _HalamanAwalState extends State<HalamanAwal> {
+  final backgrounds;
   // ...
   // final CameraDescription camera;
   final LocalStorage storage = new LocalStorage('serial_key');
 
+  late Timer _timer;
+
   var db = new Mysql();
   var pin = '';
-
-  List<dynamic> serial_key = [];
-  List<dynamic> key = [];
-
-  List<dynamic> main_color = [];
-  List<dynamic> background = [];
-
-  bool isDialogSerialKey = true;
-
   var users;
   var serial_key_storage;
-
-  late Timer _timer;
-  int waktu_awal = 10;
-
   var bg_warna_main = "";
   var warna1 = "";
   var warna2 = "";
 
+  List<dynamic> serial_key = [];
+  List<dynamic> key = [];
+  List<dynamic> main_color = [];
+  List<dynamic> background = [];
+
   String headerImg = "";
   String bgImg = "";
+  String background_storage = "";
+
+  bool isDialogSerialKey = true;
+  int waktu_awal = 10;
 
   // create some values
   Color pickerColor = Color(0xff443a49);
   Color currentColor = Color(0xff443a49);
 
-  _HalamanAwalState();
+  _HalamanAwalState(this.backgrounds);
+
+  void _dartPad() async{
+    String s = "uploads/images/rama-20-0/20-5.png";
+
+     String result = s.replaceAll(
+      'uploads/images/rama-${DateTime.now().day}-${DateTime.now().hour}/',
+      '');
+    print("result replace strings : $result");
+  }
 
   @override
   void initState() {
     // TODO: implement initState
-    // timerPeriodFunc();
-    _saveStorage();
-    // _clearStorage();
 
-    // initFullScreen();
-
-    getStorageSerial();
-    getOrderSettings();
-    // getUsers();
     getWarnaBg();
+    getStorage();
+    getOrderSettings();
+    // _strings();
 
     super.initState();
   }
 
-  void getStorageSerial() async {
+  void getStorage() async {
     var ready = await storage.ready;
 
     print("status ready storage : $ready");
@@ -92,16 +92,14 @@ class _HalamanAwalState extends State<HalamanAwal> {
       setState(() {});
 
       serial_key_storage = await storage.getItem('serial_keys');
+      bgImg = await storage.getItem('background_images');
 
       print("serial_key_storage : $serial_key_storage");
-      if (serial_key_storage == null) {
+      print("background_storage : $bgImg");
+      if (serial_key_storage == null || bgImg == "") {
         getSerialKey();
-      } else {
-        // ...
-        getSerialKey();
+        getOrderSettings();
       }
-    } else {
-      // ...
     }
   }
 
@@ -155,12 +153,14 @@ class _HalamanAwalState extends State<HalamanAwal> {
       final result = jsonDecode(response.body) as List<dynamic>;
       background.addAll(result);
       print("background : ${background}");
+
       for (var element in background) {
         print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
         });
+        _saveStorageBg(element["background_image"], element["header_image"]);
       }
     } else {
       print(response.reasonPhrase);
@@ -275,7 +275,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           setState(() {
                             isDialogSerialKey = false;
                           });
-                          _saveStorageSerialKey(keys);
+                          _saveStorage(keys);
 
                           Navigator.of(context).pop();
                           // Navigator.push(
@@ -341,13 +341,21 @@ class _HalamanAwalState extends State<HalamanAwal> {
     await storage.clear();
   }
 
-  _saveStorage() async {
-    await storage.setItem('title', "Title parameter dari localstorage");
-  }
+  // _saveStorage() async {
+  //   await storage.setItem('title', "Title parameter dari localstorage");
+  // }
 
-  _saveStorageSerialKey(key) async {
+  _saveStorage(key) async {
     print("save storage serial keys : $key");
     await storage.setItem('serial_keys', "$key");
+  }
+
+  _saveStorageBg(element, element2) async {
+    print("save storage background : $element");
+    // print("save storage serial keys : $key");
+    // await storage.setItem('serial_keys', "$key");
+    await storage.setItem('background_images', "$element");
+    await storage.setItem('header)images', "$element2");
   }
 
   final double barHeight = 10.0;
@@ -606,23 +614,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const OrderWidget(),
-                          //   ),
-                          // );
-
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(OrderWidget()));
-
                           Navigator.push(
                             context,
                             PageTransition(
-                                type: PageTransitionType.fade,
-                                child: OrderWidget(),
-                                inheritTheme: true,
-                                ctx: context),
+                              type: PageTransitionType.fade,
+                              child: OrderWidget(
+                                backgrounds: bgImg,
+                              ),
+                              inheritTheme: true,
+                              ctx: context,
+                            ),
                           );
                         },
                         child: Padding(
@@ -660,23 +661,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         const LockScreenFotoEditWidget(
-                        //             // camera: camera,
-                        //             ),
-                        //   ),
-                        // );
-
-                        Navigator.of(context)
-                            .push(_routeAnimate(LockScreenFotoEditWidget()));
                         Navigator.push(
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: LockScreenFotoEditWidget(),
+                              child:
+                                  LockScreenFotoEditWidget(background: bgImg),
                               inheritTheme: true,
                               ctx: context),
                         );

@@ -15,15 +15,23 @@ import '../../src/database/db.dart';
 import '../awal/halaman_awal.dart';
 
 class OrderWidget extends StatefulWidget {
-  const OrderWidget({super.key});
+  OrderWidget({
+    super.key,
+    required this.backgrounds,
+  });
+
+  final backgrounds;
 
   @override
-  State<OrderWidget> createState() => _OrderWidgetState();
+  State<OrderWidget> createState() => _OrderWidgetState(
+        this.backgrounds,
+      );
 }
 
 class _OrderWidgetState extends State<OrderWidget> {
+  _OrderWidgetState(this.backgrounds);
   // ...
-
+  final backgrounds;
   var db = new Mysql();
   // ...
   final LocalStorage storage = new LocalStorage('parameters');
@@ -38,10 +46,10 @@ class _OrderWidgetState extends State<OrderWidget> {
   String nama_user = "";
   int no_telp = 0;
   String email_user = "";
+  int lengthMenu = 0;
   String ig = "";
 
   var menu;
-  int lengthMenu = 0;
 
   @override
   void initState() {
@@ -422,7 +430,10 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                                   PageTransitionType
                                                                       .fade,
                                                               child:
-                                                                  ReviewPaymentWidget(),
+                                                                  ReviewPaymentWidget(
+                                                                backgrounds:
+                                                                    backgrounds,
+                                                              ),
                                                               inheritTheme:
                                                                   true,
                                                               ctx: context),
@@ -605,7 +616,9 @@ class _OrderWidgetState extends State<OrderWidget> {
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.fade,
-                                      child: HalamanAwal(),
+                                      child: HalamanAwal(
+                                        backgrounds: backgrounds,
+                                      ),
                                       inheritTheme: true,
                                       ctx: context),
                                 );
