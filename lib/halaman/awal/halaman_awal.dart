@@ -63,12 +63,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
 
   _HalamanAwalState(this.backgrounds);
 
-  void _dartPad() async{
+  void _dartPad() async {
     String s = "uploads/images/rama-20-0/20-5.png";
 
-     String result = s.replaceAll(
-      'uploads/images/rama-${DateTime.now().day}-${DateTime.now().hour}/',
-      '');
+    String result = s.replaceAll(
+        'uploads/images/rama-${DateTime.now().day}-${DateTime.now().hour}/',
+        '');
     print("result replace strings : $result");
   }
 
@@ -77,8 +77,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
     // TODO: implement initState
 
     getWarnaBg();
-    getStorage();
     getOrderSettings();
+    getStorage();
     // _strings();
 
     super.initState();

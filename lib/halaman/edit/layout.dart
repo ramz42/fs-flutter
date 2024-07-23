@@ -79,6 +79,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   List acceptedData6 = [];
   List acceptedData7 = [];
   List acceptedData8 = [];
+  List acceptedData9 = [];
 
   List acceptedData1_1 = [];
   List acceptedData1_2 = [];
@@ -88,6 +89,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   List acceptedData1_6 = [];
   List acceptedData1_7 = [];
   List acceptedData1_8 = [];
+  List acceptedData1_9 = [];
 
   final nama_filter;
   final nama;
@@ -2244,7 +2246,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                             // ...
                                             // tipe A atau strip a
                                             // ...
-                                            isLayout1 == true &&
+                                            choose1 == "layout 1" &&
                                                     isChoose1 == true
                                                 ? Padding(
                                                     padding:
@@ -2254,9 +2256,13 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       onTap: () async {
                                                         // ---
                                                         setState(() {
-                                                          isChoose1 =
-                                                              !isChoose1;
+                                                          isChoose1 = true;
                                                         });
+
+                                                        print(
+                                                            "ischoose 1 : $isChoose1");
+                                                        print(
+                                                            "choose1 : $choose1");
                                                       },
                                                       child: Container(
                                                         width: width * 0.095,
@@ -3008,9 +3014,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       ),
                                                     ),
                                                   )
-                                                : isLayout2 == true &&
-                                                        isChoose1 ==
-                                                            true // .. last visit code here ...
+                                                : choose1 == "layout 2" &&
+                                                        isChoose1 == true
                                                     ? Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -3019,9 +3024,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                           onTap: () async {
                                                             // ---
                                                             setState(() {
-                                                              isChoose1 =
-                                                                  !isChoose1;
+                                                              isChoose1 = true;
                                                             });
+                                                            print(
+                                                                "ischoose 1 : $isChoose1");
                                                           },
                                                           child: Container(
                                                             width:
@@ -3040,15 +3046,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsets.all(
-                                                                      width *
-                                                                          0.0),
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                width * 0.0,
+                                                              ),
                                                               child: Column(
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .spaceEvenly,
                                                                 children: [
-                                                                  // ...
                                                                   Row(
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
@@ -3075,35 +3081,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   width * 0.0,
                                                                                 ),
                                                                                 child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
+                                                                                  colorFilter: ColorFilter.mode(
+                                                                                    Color.fromARGB(
+                                                                                      0,
+                                                                                      158,
+                                                                                      158,
+                                                                                      158,
+                                                                                    ),
+                                                                                    BlendMode.saturation,
+                                                                                  ),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3133,11 +3119,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                // ),
                                                                               ),
                                                                             )
                                                                           : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              padding: const EdgeInsets.all(2.0),
                                                                               child: Container(
                                                                                 width: width * 0.03,
                                                                                 height: width * 0.03,
@@ -3165,35 +3150,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   width * 0.0,
                                                                                 ),
                                                                                 child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
+                                                                                  colorFilter: ColorFilter.mode(
+                                                                                    Color.fromARGB(
+                                                                                      0,
+                                                                                      158,
+                                                                                      158,
+                                                                                      158,
+                                                                                    ),
+                                                                                    BlendMode.saturation,
+                                                                                  ),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3223,11 +3188,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                // ),
                                                                               ),
                                                                             )
                                                                           : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              padding: const EdgeInsets.all(2.0),
                                                                               child: Container(
                                                                                 width: width * 0.03,
                                                                                 height: width * 0.03,
@@ -3236,8 +3200,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             ),
                                                                     ],
                                                                   ),
-
-                                                                  // ...
                                                                   Row(
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
@@ -3264,35 +3226,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   width * 0.0,
                                                                                 ),
                                                                                 child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
+                                                                                  colorFilter: ColorFilter.mode(
+                                                                                    Color.fromARGB(
+                                                                                      0,
+                                                                                      158,
+                                                                                      158,
+                                                                                      158,
+                                                                                    ),
+                                                                                    BlendMode.saturation,
+                                                                                  ),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3322,11 +3264,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                // ),
                                                                               ),
                                                                             )
                                                                           : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              padding: const EdgeInsets.all(2.0),
                                                                               child: Container(
                                                                                 width: width * 0.03,
                                                                                 height: width * 0.03,
@@ -3354,35 +3295,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   width * 0.0,
                                                                                 ),
                                                                                 child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
+                                                                                  colorFilter: ColorFilter.mode(
+                                                                                    Color.fromARGB(
+                                                                                      0,
+                                                                                      158,
+                                                                                      158,
+                                                                                      158,
+                                                                                    ),
+                                                                                    BlendMode.saturation,
+                                                                                  ),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3412,198 +3333,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                // ),
                                                                               ),
                                                                             )
                                                                           : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
-                                                                              child: Container(
-                                                                                width: width * 0.03,
-                                                                                height: width * 0.03,
-                                                                                color: Colors.grey[300],
-                                                                              ),
-                                                                            ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceEvenly,
-                                                                    children: [
-                                                                      acceptedData5.contains("00") ||
-                                                                              acceptedData5.contains("01") ||
-                                                                              acceptedData5.contains("02") ||
-                                                                              acceptedData5.contains("03") ||
-                                                                              acceptedData5.contains("10") ||
-                                                                              acceptedData5.contains("11") ||
-                                                                              acceptedData5.contains("12") ||
-                                                                              acceptedData5.contains("13")
-                                                                          ? Container(
-                                                                              width: width * 0.03,
-                                                                              height: width * 0.03,
-                                                                              decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.white,
-                                                                                boxShadow: [],
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0,
-                                                                                ),
-                                                                                child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
-                                                                                  child: Container(
-                                                                                    width: width * 0.03,
-                                                                                    height: width * 0.03,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(10),
-                                                                                      image: DecorationImage(
-                                                                                        image: NetworkImage(
-                                                                                          acceptedData5.contains("00")
-                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                              : acceptedData5.contains("01")
-                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                  : acceptedData5.contains("02")
-                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                      : acceptedData5.contains("03")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                          : acceptedData5.contains("10")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                              : acceptedData5.contains("11")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                  : acceptedData5.contains("12")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                          scale: 1,
-                                                                                        ),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                // ),
-                                                                              ),
-                                                                            )
-                                                                          : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
-                                                                              child: Container(
-                                                                                width: width * 0.03,
-                                                                                height: width * 0.03,
-                                                                                color: Colors.grey[300],
-                                                                              ),
-                                                                            ),
-                                                                      acceptedData6.contains("00") ||
-                                                                              acceptedData6.contains("01") ||
-                                                                              acceptedData6.contains("02") ||
-                                                                              acceptedData6.contains("03") ||
-                                                                              acceptedData6.contains("10") ||
-                                                                              acceptedData6.contains("11") ||
-                                                                              acceptedData6.contains("12") ||
-                                                                              acceptedData6.contains("13")
-                                                                          ? Container(
-                                                                              width: width * 0.03,
-                                                                              height: width * 0.03,
-                                                                              decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.white,
-                                                                                boxShadow: [],
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0,
-                                                                                ),
-                                                                                child: ColorFiltered(
-                                                                                  colorFilter: nama_filter == 'greyscale'
-                                                                                      ? ColorFilter.mode(
-                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                          BlendMode.saturation,
-                                                                                        )
-                                                                                      : nama_filter == 'classic negative'
-                                                                                          ? ColorFilter.mode(
-                                                                                              Color.fromARGB(0, 255, 255, 255),
-                                                                                              BlendMode.saturation,
-                                                                                            )
-                                                                                          : nama_filter == 'black white blur'
-                                                                                              ? ColorFilter.mode(
-                                                                                                  Color.fromARGB(0, 255, 255, 255),
-                                                                                                  BlendMode.saturation,
-                                                                                                )
-                                                                                              : nama_filter == 'mute'
-                                                                                                  ? ColorFilter.mode(
-                                                                                                      Color.fromARGB(0, 255, 255, 255),
-                                                                                                      BlendMode.saturation,
-                                                                                                    )
-                                                                                                  : nama_filter == 'webcore'
-                                                                                                      ? ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        )
-                                                                                                      : ColorFilter.mode(
-                                                                                                          Color.fromARGB(0, 255, 255, 255),
-                                                                                                          BlendMode.saturation,
-                                                                                                        ),
-                                                                                  child: Container(
-                                                                                    width: width * 0.03,
-                                                                                    height: width * 0.03,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(10),
-                                                                                      image: DecorationImage(
-                                                                                        image: NetworkImage(
-                                                                                          acceptedData6.contains("00")
-                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                              : acceptedData6.contains("01")
-                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                  : acceptedData6.contains("02")
-                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                      : acceptedData6.contains("03")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                          : acceptedData6.contains("10")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                              : acceptedData6.contains("11")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                  : acceptedData6.contains("12")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                          scale: 1,
-                                                                                        ),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                // ),
-                                                                              ),
-                                                                            )
-                                                                          : Padding(
-                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              padding: const EdgeInsets.all(2.0),
                                                                               child: Container(
                                                                                 width: width * 0.03,
                                                                                 height: width * 0.03,
@@ -3618,7 +3351,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                           ),
                                                         ),
                                                       )
-                                                    : isLayout3 == true &&
+                                                    : choose1 == "layout 3" &&
                                                             isChoose1 == true
                                                         ? Padding(
                                                             padding:
@@ -3629,10 +3362,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 // ---
                                                                 setState(() {
                                                                   isChoose1 =
-                                                                      !isChoose1;
+                                                                      true;
                                                                 });
                                                                 print(
-                                                                    "is choose card pilih kanvas menu 1, layout 3");
+                                                                    "ischoose 1 : $isChoose1");
+                                                                print(
+                                                                    "choose1 : $choose1");
                                                               },
                                                               child: Container(
                                                                 width: width *
@@ -3655,19 +3390,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           .all(
                                                                     width * 0.0,
                                                                   ),
-                                                                  child: Column(
+                                                                  child: Row(
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
                                                                             .spaceEvenly,
                                                                     children: [
-                                                                      Row(
+                                                                      Column(
                                                                         mainAxisAlignment:
                                                                             MainAxisAlignment.spaceEvenly,
                                                                         children: [
+                                                                          // ---
                                                                           acceptedData1.contains("00") || acceptedData1.contains("01") || acceptedData1.contains("02") || acceptedData1.contains("03") || acceptedData1.contains("10") || acceptedData1.contains("11") || acceptedData1.contains("12") || acceptedData1.contains("13")
                                                                               ? Container(
-                                                                                  width: width * 0.03,
-                                                                                  height: width * 0.03,
+                                                                                  width: width * 0.04,
+                                                                                  height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                     color: Colors.white,
@@ -3688,8 +3424,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         BlendMode.saturation,
                                                                                       ),
                                                                                       child: Container(
-                                                                                        width: width * 0.03,
-                                                                                        height: width * 0.03,
+                                                                                        width: width * 0.04,
+                                                                                        height: width * 0.04,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
                                                                                           image: DecorationImage(
@@ -3721,15 +3457,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               : Padding(
                                                                                   padding: const EdgeInsets.all(2.0),
                                                                                   child: Container(
-                                                                                    width: width * 0.03,
-                                                                                    height: width * 0.03,
+                                                                                    width: width * 0.04,
+                                                                                    height: width * 0.04,
                                                                                     color: Colors.grey[300],
                                                                                   ),
                                                                                 ),
                                                                           acceptedData2.contains("00") || acceptedData2.contains("01") || acceptedData2.contains("02") || acceptedData2.contains("03") || acceptedData2.contains("10") || acceptedData2.contains("11") || acceptedData2.contains("12") || acceptedData2.contains("13")
                                                                               ? Container(
-                                                                                  width: width * 0.03,
-                                                                                  height: width * 0.03,
+                                                                                  width: width * 0.04,
+                                                                                  height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                     color: Colors.white,
@@ -3750,8 +3486,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         BlendMode.saturation,
                                                                                       ),
                                                                                       child: Container(
-                                                                                        width: width * 0.03,
-                                                                                        height: width * 0.03,
+                                                                                        width: width * 0.04,
+                                                                                        height: width * 0.04,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
                                                                                           image: DecorationImage(
@@ -3783,17 +3519,18 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               : Padding(
                                                                                   padding: const EdgeInsets.all(2.0),
                                                                                   child: Container(
-                                                                                    width: width * 0.03,
-                                                                                    height: width * 0.03,
+                                                                                    width: width * 0.04,
+                                                                                    height: width * 0.04,
                                                                                     color: Colors.grey[300],
                                                                                   ),
                                                                                 ),
                                                                         ],
                                                                       ),
-                                                                      Row(
+                                                                      Column(
                                                                         mainAxisAlignment:
                                                                             MainAxisAlignment.spaceEvenly,
                                                                         children: [
+                                                                          // ---
                                                                           acceptedData3.contains("00") || acceptedData3.contains("01") || acceptedData3.contains("02") || acceptedData3.contains("03") || acceptedData3.contains("10") || acceptedData3.contains("11") || acceptedData3.contains("12") || acceptedData3.contains("13")
                                                                               ? Container(
                                                                                   width: width * 0.03,
@@ -3849,7 +3586,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   ),
                                                                                 )
                                                                               : Padding(
-                                                                                  padding: const EdgeInsets.all(2.0),
+                                                                                  padding: const EdgeInsets.all(5.0),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3911,7 +3648,69 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   ),
                                                                                 )
                                                                               : Padding(
-                                                                                  padding: const EdgeInsets.all(2.0),
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.03,
+                                                                                    height: width * 0.03,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                          acceptedData5.contains("00") || acceptedData5.contains("01") || acceptedData5.contains("02") || acceptedData5.contains("03") || acceptedData5.contains("10") || acceptedData5.contains("11") || acceptedData5.contains("12") || acceptedData5.contains("13")
+                                                                              ? Container(
+                                                                                  width: width * 0.03,
+                                                                                  height: width * 0.03,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    color: Colors.white,
+                                                                                    boxShadow: [],
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsets.all(
+                                                                                      width * 0.0,
+                                                                                    ),
+                                                                                    child: ColorFiltered(
+                                                                                      colorFilter: ColorFilter.mode(
+                                                                                        Color.fromARGB(
+                                                                                          0,
+                                                                                          158,
+                                                                                          158,
+                                                                                          158,
+                                                                                        ),
+                                                                                        BlendMode.saturation,
+                                                                                      ),
+                                                                                      child: Container(
+                                                                                        width: width * 0.03,
+                                                                                        height: width * 0.03,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(10),
+                                                                                          image: DecorationImage(
+                                                                                            image: NetworkImage(
+                                                                                              acceptedData5.contains("00")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                  : acceptedData5.contains("01")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                      : acceptedData5.contains("02")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                          : acceptedData5.contains("03")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                              : acceptedData5.contains("10")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                  : acceptedData5.contains("11")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                      : acceptedData5.contains("12")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                          : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
+                                                                                              scale: 1,
+                                                                                            ),
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                )
+                                                                              : Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
                                                                                   child: Container(
                                                                                     width: width * 0.03,
                                                                                     height: width * 0.03,
@@ -3926,10 +3725,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               ),
                                                             ),
                                                           )
-                                                        : isLayout4 == true &&
+                                                        : choose1 ==
+                                                                    "layout 4" &&
                                                                 isChoose1 ==
                                                                     true
                                                             ? Padding(
+                                                                // last visit code .... #4
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .all(
@@ -3941,10 +3742,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                     setState(
                                                                         () {
                                                                       isChoose1 =
-                                                                          !isChoose1;
+                                                                          true;
                                                                     });
                                                                     print(
-                                                                        "is choose card pilih kanvas menu 2, layout 4");
+                                                                        "ischoose 1 : $isChoose1");
+                                                                    print(
+                                                                        "choose1 : $choose1");
                                                                   },
                                                                   child:
                                                                       Container(
@@ -3971,19 +3774,19 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             0.0,
                                                                       ),
                                                                       child:
-                                                                          Row(
+                                                                          Column(
                                                                         mainAxisAlignment:
                                                                             MainAxisAlignment.spaceEvenly,
                                                                         children: [
-                                                                          Column(
+                                                                          // row 1
+                                                                          Row(
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
                                                                             children: [
-                                                                              // ---
                                                                               acceptedData1.contains("00") || acceptedData1.contains("01") || acceptedData1.contains("02") || acceptedData1.contains("03") || acceptedData1.contains("10") || acceptedData1.contains("11") || acceptedData1.contains("12") || acceptedData1.contains("13")
                                                                                   ? Container(
-                                                                                      width: width * 0.04,
-                                                                                      height: width * 0.04,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         color: Colors.white,
@@ -4004,8 +3807,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             BlendMode.saturation,
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: width * 0.04,
-                                                                                            height: width * 0.04,
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
                                                                                               image: DecorationImage(
@@ -4032,20 +3835,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                        // ),
                                                                                       ),
                                                                                     )
                                                                                   : Padding(
                                                                                       padding: const EdgeInsets.all(2.0),
                                                                                       child: Container(
-                                                                                        width: width * 0.04,
-                                                                                        height: width * 0.04,
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
                                                                                         color: Colors.grey[300],
                                                                                       ),
                                                                                     ),
                                                                               acceptedData2.contains("00") || acceptedData2.contains("01") || acceptedData2.contains("02") || acceptedData2.contains("03") || acceptedData2.contains("10") || acceptedData2.contains("11") || acceptedData2.contains("12") || acceptedData2.contains("13")
                                                                                   ? Container(
-                                                                                      width: width * 0.04,
-                                                                                      height: width * 0.04,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         color: Colors.white,
@@ -4066,8 +3870,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             BlendMode.saturation,
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: width * 0.04,
-                                                                                            height: width * 0.04,
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
                                                                                               image: DecorationImage(
@@ -4094,27 +3898,29 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                        // ),
                                                                                       ),
                                                                                     )
                                                                                   : Padding(
                                                                                       padding: const EdgeInsets.all(2.0),
                                                                                       child: Container(
-                                                                                        width: width * 0.04,
-                                                                                        height: width * 0.04,
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
                                                                                         color: Colors.grey[300],
                                                                                       ),
                                                                                     ),
                                                                             ],
                                                                           ),
-                                                                          Column(
+
+                                                                          // row 2
+                                                                          Row(
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
                                                                             children: [
-                                                                              // ---
                                                                               acceptedData3.contains("00") || acceptedData3.contains("01") || acceptedData3.contains("02") || acceptedData3.contains("03") || acceptedData3.contains("10") || acceptedData3.contains("11") || acceptedData3.contains("12") || acceptedData3.contains("13")
                                                                                   ? Container(
-                                                                                      width: width * 0.03,
-                                                                                      height: width * 0.03,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         color: Colors.white,
@@ -4135,8 +3941,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             BlendMode.saturation,
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: width * 0.03,
-                                                                                            height: width * 0.03,
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
                                                                                               image: DecorationImage(
@@ -4163,20 +3969,21 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                        // ),
                                                                                       ),
                                                                                     )
                                                                                   : Padding(
-                                                                                      padding: const EdgeInsets.all(5.0),
+                                                                                      padding: const EdgeInsets.all(2.0),
                                                                                       child: Container(
-                                                                                        width: width * 0.03,
-                                                                                        height: width * 0.03,
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
                                                                                         color: Colors.grey[300],
                                                                                       ),
                                                                                     ),
                                                                               acceptedData4.contains("00") || acceptedData4.contains("01") || acceptedData4.contains("02") || acceptedData4.contains("03") || acceptedData4.contains("10") || acceptedData4.contains("11") || acceptedData4.contains("12") || acceptedData4.contains("13")
                                                                                   ? Container(
-                                                                                      width: width * 0.03,
-                                                                                      height: width * 0.03,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         color: Colors.white,
@@ -4197,8 +4004,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             BlendMode.saturation,
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: width * 0.03,
-                                                                                            height: width * 0.03,
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
                                                                                               image: DecorationImage(
@@ -4225,20 +4032,29 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                        // ),
                                                                                       ),
                                                                                     )
                                                                                   : Padding(
-                                                                                      padding: const EdgeInsets.all(5.0),
+                                                                                      padding: const EdgeInsets.all(2.0),
                                                                                       child: Container(
-                                                                                        width: width * 0.03,
-                                                                                        height: width * 0.03,
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
                                                                                         color: Colors.grey[300],
                                                                                       ),
                                                                                     ),
+                                                                            ],
+                                                                          ),
+
+                                                                          // row 3
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
                                                                               acceptedData5.contains("00") || acceptedData5.contains("01") || acceptedData5.contains("02") || acceptedData5.contains("03") || acceptedData5.contains("10") || acceptedData5.contains("11") || acceptedData5.contains("12") || acceptedData5.contains("13")
                                                                                   ? Container(
-                                                                                      width: width * 0.03,
-                                                                                      height: width * 0.03,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         color: Colors.white,
@@ -4259,8 +4075,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             BlendMode.saturation,
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: width * 0.03,
-                                                                                            height: width * 0.03,
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
                                                                                               image: DecorationImage(
@@ -4287,13 +4103,211 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                        // ),
                                                                                       ),
                                                                                     )
                                                                                   : Padding(
-                                                                                      padding: const EdgeInsets.all(5.0),
+                                                                                      padding: const EdgeInsets.all(2.0),
                                                                                       child: Container(
-                                                                                        width: width * 0.03,
-                                                                                        height: width * 0.03,
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
+                                                                                        color: Colors.grey[300],
+                                                                                      ),
+                                                                                    ),
+                                                                              acceptedData6.contains("00") || acceptedData6.contains("01") || acceptedData6.contains("02") || acceptedData6.contains("03") || acceptedData6.contains("10") || acceptedData6.contains("11") || acceptedData6.contains("12") || acceptedData6.contains("13")
+                                                                                  ? Container(
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
+                                                                                      decoration: BoxDecoration(
+                                                                                        borderRadius: BorderRadius.circular(10),
+                                                                                        color: Colors.white,
+                                                                                        boxShadow: [],
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(
+                                                                                          width * 0.0,
+                                                                                        ),
+                                                                                        child: ColorFiltered(
+                                                                                          colorFilter: ColorFilter.mode(
+                                                                                            Color.fromARGB(
+                                                                                              0,
+                                                                                              158,
+                                                                                              158,
+                                                                                              158,
+                                                                                            ),
+                                                                                            BlendMode.saturation,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
+                                                                                            decoration: BoxDecoration(
+                                                                                              borderRadius: BorderRadius.circular(10),
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage(
+                                                                                                  acceptedData6.contains("00")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                      : acceptedData6.contains("01")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                          : acceptedData6.contains("02")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                              : acceptedData6.contains("03")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                                  : acceptedData6.contains("10")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                      : acceptedData6.contains("11")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                          : acceptedData6.contains("12")
+                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                              : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
+                                                                                                  scale: 1,
+                                                                                                ),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        // ),
+                                                                                      ),
+                                                                                    )
+                                                                                  : Padding(
+                                                                                      padding: const EdgeInsets.all(2.0),
+                                                                                      child: Container(
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
+                                                                                        color: Colors.grey[300],
+                                                                                      ),
+                                                                                    ),
+                                                                            ],
+                                                                          ),
+
+                                                                          // row 4
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
+                                                                              acceptedData7.contains("00") || acceptedData7.contains("01") || acceptedData7.contains("02") || acceptedData7.contains("03") || acceptedData7.contains("10") || acceptedData7.contains("11") || acceptedData7.contains("12") || acceptedData7.contains("13")
+                                                                                  ? Container(
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
+                                                                                      decoration: BoxDecoration(
+                                                                                        borderRadius: BorderRadius.circular(10),
+                                                                                        color: Colors.white,
+                                                                                        boxShadow: [],
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(
+                                                                                          width * 0.0,
+                                                                                        ),
+                                                                                        child: ColorFiltered(
+                                                                                          colorFilter: ColorFilter.mode(
+                                                                                            Color.fromARGB(
+                                                                                              0,
+                                                                                              158,
+                                                                                              158,
+                                                                                              158,
+                                                                                            ),
+                                                                                            BlendMode.saturation,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
+                                                                                            decoration: BoxDecoration(
+                                                                                              borderRadius: BorderRadius.circular(10),
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage(
+                                                                                                  acceptedData7.contains("00")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                      : acceptedData7.contains("01")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                          : acceptedData7.contains("02")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                              : acceptedData7.contains("03")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                                  : acceptedData7.contains("10")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                      : acceptedData7.contains("11")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                          : acceptedData7.contains("12")
+                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                              : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
+                                                                                                  scale: 1,
+                                                                                                ),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        // ),
+                                                                                      ),
+                                                                                    )
+                                                                                  : Padding(
+                                                                                      padding: const EdgeInsets.all(2.0),
+                                                                                      child: Container(
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
+                                                                                        color: Colors.grey[300],
+                                                                                      ),
+                                                                                    ),
+                                                                              acceptedData8.contains("00") || acceptedData8.contains("01") || acceptedData8.contains("02") || acceptedData8.contains("03") || acceptedData8.contains("10") || acceptedData8.contains("11") || acceptedData8.contains("12") || acceptedData8.contains("13")
+                                                                                  ? Container(
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
+                                                                                      decoration: BoxDecoration(
+                                                                                        borderRadius: BorderRadius.circular(10),
+                                                                                        color: Colors.white,
+                                                                                        boxShadow: [],
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(
+                                                                                          width * 0.0,
+                                                                                        ),
+                                                                                        child: ColorFiltered(
+                                                                                          colorFilter: ColorFilter.mode(
+                                                                                            Color.fromARGB(
+                                                                                              0,
+                                                                                              158,
+                                                                                              158,
+                                                                                              158,
+                                                                                            ),
+                                                                                            BlendMode.saturation,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.025,
+                                                                                            height: width * 0.025,
+                                                                                            decoration: BoxDecoration(
+                                                                                              borderRadius: BorderRadius.circular(10),
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage(
+                                                                                                  acceptedData8.contains("00")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                      : acceptedData8.contains("01")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                          : acceptedData8.contains("02")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                              : acceptedData8.contains("03")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                                  : acceptedData8.contains("10")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                      : acceptedData8.contains("11")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                          : acceptedData8.contains("12")
+                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                              : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
+                                                                                                  scale: 1,
+                                                                                                ),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        // ),
+                                                                                      ),
+                                                                                    )
+                                                                                  : Padding(
+                                                                                      padding: const EdgeInsets.all(2.0),
+                                                                                      child: Container(
+                                                                                        width: width * 0.025,
+                                                                                        height: width * 0.025,
                                                                                         color: Colors.grey[300],
                                                                                       ),
                                                                                     ),
@@ -4305,12 +4319,11 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ),
                                                                 ),
                                                               )
-                                                            : isLayout5 ==
-                                                                        true &&
+                                                            : choose1 ==
+                                                                        "layout 5" &&
                                                                     isChoose1 ==
                                                                         true
                                                                 ? Padding(
-                                                                    // last visit code .... #4
                                                                     padding:
                                                                         const EdgeInsets
                                                                             .all(
@@ -4323,10 +4336,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                         setState(
                                                                             () {
                                                                           isChoose1 =
-                                                                              !isChoose1;
+                                                                              true;
                                                                         });
                                                                         print(
-                                                                            "is choose card pilih kanvas menu 2, layout 5");
+                                                                            "ischoose 1 : $isChoose1");
                                                                       },
                                                                       child:
                                                                           Container(
@@ -4350,17 +4363,17 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 0.0,
                                                                           ),
                                                                           child:
-                                                                              Column(
+                                                                              Row(
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
                                                                             children: [
-                                                                              Row(
+                                                                              Column(
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                 children: [
                                                                                   acceptedData1.contains("00") || acceptedData1.contains("01") || acceptedData1.contains("02") || acceptedData1.contains("03") || acceptedData1.contains("10") || acceptedData1.contains("11") || acceptedData1.contains("12") || acceptedData1.contains("13")
                                                                                       ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
+                                                                                          width: width * 0.03,
+                                                                                          height: width * 0.03,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             color: Colors.white,
@@ -4381,8 +4394,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 BlendMode.saturation,
                                                                                               ),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.03,
+                                                                                                height: width * 0.03,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
                                                                                                   image: DecorationImage(
@@ -4409,21 +4422,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 ),
                                                                                               ),
                                                                                             ),
-                                                                                            // ),
                                                                                           ),
                                                                                         )
                                                                                       : Padding(
                                                                                           padding: const EdgeInsets.all(2.0),
                                                                                           child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
+                                                                                            width: width * 0.03,
+                                                                                            height: width * 0.03,
                                                                                             color: Colors.grey[300],
                                                                                           ),
                                                                                         ),
                                                                                   acceptedData2.contains("00") || acceptedData2.contains("01") || acceptedData2.contains("02") || acceptedData2.contains("03") || acceptedData2.contains("10") || acceptedData2.contains("11") || acceptedData2.contains("12") || acceptedData2.contains("13")
                                                                                       ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
+                                                                                          width: width * 0.03,
+                                                                                          height: width * 0.03,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             color: Colors.white,
@@ -4444,8 +4456,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 BlendMode.saturation,
                                                                                               ),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.03,
+                                                                                                height: width * 0.03,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
                                                                                                   image: DecorationImage(
@@ -4472,26 +4484,27 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 ),
                                                                                               ),
                                                                                             ),
-                                                                                            // ),
                                                                                           ),
                                                                                         )
                                                                                       : Padding(
                                                                                           padding: const EdgeInsets.all(2.0),
                                                                                           child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
+                                                                                            width: width * 0.03,
+                                                                                            height: width * 0.03,
                                                                                             color: Colors.grey[300],
                                                                                           ),
                                                                                         ),
+                                                                                  SizedBox(height: 20),
                                                                                 ],
                                                                               ),
-                                                                              Row(
+                                                                              Column(
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                 children: [
+                                                                                  SizedBox(height: 20),
                                                                                   acceptedData3.contains("00") || acceptedData3.contains("01") || acceptedData3.contains("02") || acceptedData3.contains("03") || acceptedData3.contains("10") || acceptedData3.contains("11") || acceptedData3.contains("12") || acceptedData3.contains("13")
                                                                                       ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
+                                                                                          width: width * 0.03,
+                                                                                          height: width * 0.03,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             color: Colors.white,
@@ -4512,8 +4525,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 BlendMode.saturation,
                                                                                               ),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.03,
+                                                                                                height: width * 0.03,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
                                                                                                   image: DecorationImage(
@@ -4540,21 +4553,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 ),
                                                                                               ),
                                                                                             ),
-                                                                                            // ),
                                                                                           ),
                                                                                         )
                                                                                       : Padding(
                                                                                           padding: const EdgeInsets.all(2.0),
                                                                                           child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
+                                                                                            width: width * 0.03,
+                                                                                            height: width * 0.03,
                                                                                             color: Colors.grey[300],
                                                                                           ),
                                                                                         ),
                                                                                   acceptedData4.contains("00") || acceptedData4.contains("01") || acceptedData4.contains("02") || acceptedData4.contains("03") || acceptedData4.contains("10") || acceptedData4.contains("11") || acceptedData4.contains("12") || acceptedData4.contains("13")
                                                                                       ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
+                                                                                          width: width * 0.03,
+                                                                                          height: width * 0.03,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             color: Colors.white,
@@ -4575,8 +4587,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 BlendMode.saturation,
                                                                                               ),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.03,
+                                                                                                height: width * 0.03,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
                                                                                                   image: DecorationImage(
@@ -4603,276 +4615,13 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 ),
                                                                                               ),
                                                                                             ),
-                                                                                            // ),
                                                                                           ),
                                                                                         )
                                                                                       : Padding(
                                                                                           padding: const EdgeInsets.all(2.0),
                                                                                           child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
-                                                                                            color: Colors.grey[300],
-                                                                                          ),
-                                                                                        ),
-                                                                                ],
-                                                                              ),
-                                                                              Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  acceptedData5.contains("00") || acceptedData5.contains("01") || acceptedData5.contains("02") || acceptedData5.contains("03") || acceptedData5.contains("10") || acceptedData5.contains("11") || acceptedData5.contains("12") || acceptedData5.contains("13")
-                                                                                      ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Colors.white,
-                                                                                            boxShadow: [],
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: ColorFiltered(
-                                                                                              colorFilter: ColorFilter.mode(
-                                                                                                Color.fromARGB(
-                                                                                                  0,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                ),
-                                                                                                BlendMode.saturation,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage(
-                                                                                                      acceptedData5.contains("00")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                                          : acceptedData5.contains("01")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                              : acceptedData5.contains("02")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                                  : acceptedData5.contains("03")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                                      : acceptedData5.contains("10")
-                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                                          : acceptedData5.contains("11")
-                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                              : acceptedData5.contains("12")
-                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                                  : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                                      scale: 1,
-                                                                                                    ),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        )
-                                                                                      : Padding(
-                                                                                          padding: const EdgeInsets.all(2.0),
-                                                                                          child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
-                                                                                            color: Colors.grey[300],
-                                                                                          ),
-                                                                                        ),
-                                                                                  acceptedData6.contains("00") || acceptedData6.contains("01") || acceptedData6.contains("02") || acceptedData6.contains("03") || acceptedData6.contains("10") || acceptedData6.contains("11") || acceptedData6.contains("12") || acceptedData6.contains("13")
-                                                                                      ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Colors.white,
-                                                                                            boxShadow: [],
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: ColorFiltered(
-                                                                                              colorFilter: ColorFilter.mode(
-                                                                                                Color.fromARGB(
-                                                                                                  0,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                ),
-                                                                                                BlendMode.saturation,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage(
-                                                                                                      acceptedData6.contains("00")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                                          : acceptedData6.contains("01")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                              : acceptedData6.contains("02")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                                  : acceptedData6.contains("03")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                                      : acceptedData6.contains("10")
-                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                                          : acceptedData6.contains("11")
-                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                              : acceptedData6.contains("12")
-                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                                  : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                                      scale: 1,
-                                                                                                    ),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        )
-                                                                                      : Padding(
-                                                                                          padding: const EdgeInsets.all(2.0),
-                                                                                          child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
-                                                                                            color: Colors.grey[300],
-                                                                                          ),
-                                                                                        ),
-                                                                                ],
-                                                                              ),
-                                                                              Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  acceptedData7.contains("00") || acceptedData7.contains("01") || acceptedData7.contains("02") || acceptedData7.contains("03") || acceptedData7.contains("10") || acceptedData7.contains("11") || acceptedData7.contains("12") || acceptedData7.contains("13")
-                                                                                      ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Colors.white,
-                                                                                            boxShadow: [],
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: ColorFiltered(
-                                                                                              colorFilter: ColorFilter.mode(
-                                                                                                Color.fromARGB(
-                                                                                                  0,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                ),
-                                                                                                BlendMode.saturation,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage(
-                                                                                                      acceptedData7.contains("00")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                                          : acceptedData7.contains("01")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                              : acceptedData7.contains("02")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                                  : acceptedData7.contains("03")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                                      : acceptedData7.contains("10")
-                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                                          : acceptedData7.contains("11")
-                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                              : acceptedData7.contains("12")
-                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                                  : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                                      scale: 1,
-                                                                                                    ),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        )
-                                                                                      : Padding(
-                                                                                          padding: const EdgeInsets.all(2.0),
-                                                                                          child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
-                                                                                            color: Colors.grey[300],
-                                                                                          ),
-                                                                                        ),
-                                                                                  acceptedData8.contains("00") || acceptedData8.contains("01") || acceptedData8.contains("02") || acceptedData8.contains("03") || acceptedData8.contains("10") || acceptedData8.contains("11") || acceptedData8.contains("12") || acceptedData8.contains("13")
-                                                                                      ? Container(
-                                                                                          width: width * 0.025,
-                                                                                          height: width * 0.025,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Colors.white,
-                                                                                            boxShadow: [],
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: ColorFiltered(
-                                                                                              colorFilter: ColorFilter.mode(
-                                                                                                Color.fromARGB(
-                                                                                                  0,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                  158,
-                                                                                                ),
-                                                                                                BlendMode.saturation,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage(
-                                                                                                      acceptedData8.contains("00")
-                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                                          : acceptedData8.contains("01")
-                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                                              : acceptedData8.contains("02")
-                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                                                  : acceptedData8.contains("03")
-                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                                                      : acceptedData8.contains("10")
-                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                                          : acceptedData8.contains("11")
-                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                                              : acceptedData8.contains("12")
-                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                                                  : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
-                                                                                                      scale: 1,
-                                                                                                    ),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        )
-                                                                                      : Padding(
-                                                                                          padding: const EdgeInsets.all(2.0),
-                                                                                          child: Container(
-                                                                                            width: width * 0.025,
-                                                                                            height: width * 0.025,
+                                                                                            width: width * 0.03,
+                                                                                            height: width * 0.03,
                                                                                             color: Colors.grey[300],
                                                                                           ),
                                                                                         ),
@@ -4884,12 +4633,11 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ),
                                                                     ),
                                                                   )
-                                                                : isLayout6 ==
-                                                                            true &&
+                                                                : choose1 ==
+                                                                            "layout 6" &&
                                                                         isChoose1 ==
                                                                             true
                                                                     ? Padding(
-                                                                        // last visit code .... #4
                                                                         padding: const EdgeInsets
                                                                             .all(
                                                                             15.0),
@@ -4899,9 +4647,11 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               () async {
                                                                             // ---
                                                                             setState(() {
-                                                                              isChoose1 = !isChoose1;
+                                                                              isChoose1 = true;
                                                                             });
-                                                                            print("is choose card pilih kanvas menu 2, layout 5");
+
+                                                                            print("ischoose 1 : $isChoose1");
+                                                                            print("choose1 : $choose1");
                                                                           },
                                                                           child:
                                                                               Container(
@@ -4912,46 +4662,64 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.white,
-                                                                              boxShadow: [],
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsets.all(
-                                                                                width * 0.0,
-                                                                              ),
-                                                                              child: Column(
+                                                                              padding: EdgeInsets.all(width * 0.0001),
+                                                                              child: Row(
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                 children: [
-                                                                                  Row(
+                                                                                  // row 1
+                                                                                  Column(
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                     children: [
                                                                                       acceptedData1.contains("00") || acceptedData1.contains("01") || acceptedData1.contains("02") || acceptedData1.contains("03") || acceptedData1.contains("10") || acceptedData1.contains("11") || acceptedData1.contains("12") || acceptedData1.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
+                                                                                                  width * 0.00,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
                                                                                                       image: DecorationImage(
@@ -4982,20 +4750,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
                                                                                       acceptedData2.contains("00") || acceptedData2.contains("01") || acceptedData2.contains("02") || acceptedData2.contains("03") || acceptedData2.contains("10") || acceptedData2.contains("11") || acceptedData2.contains("12") || acceptedData2.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5003,20 +4771,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData2.contains("00")
@@ -5045,25 +4835,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
-                                                                                    ],
-                                                                                  ),
-                                                                                  Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
                                                                                       acceptedData3.contains("00") || acceptedData3.contains("01") || acceptedData3.contains("02") || acceptedData3.contains("03") || acceptedData3.contains("10") || acceptedData3.contains("11") || acceptedData3.contains("12") || acceptedData3.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5071,20 +4856,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData3.contains("00")
@@ -5113,20 +4920,27 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
+                                                                                    ],
+                                                                                  ),
+
+                                                                                  // row 2
+                                                                                  Column(
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                    children: [
                                                                                       acceptedData4.contains("00") || acceptedData4.contains("01") || acceptedData4.contains("02") || acceptedData4.contains("03") || acceptedData4.contains("10") || acceptedData4.contains("11") || acceptedData4.contains("12") || acceptedData4.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5134,20 +4948,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData4.contains("00")
@@ -5176,25 +5012,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
-                                                                                    ],
-                                                                                  ),
-                                                                                  Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
                                                                                       acceptedData5.contains("00") || acceptedData5.contains("01") || acceptedData5.contains("02") || acceptedData5.contains("03") || acceptedData5.contains("10") || acceptedData5.contains("11") || acceptedData5.contains("12") || acceptedData5.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5202,20 +5033,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.grey[100],
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData5.contains("00")
@@ -5244,20 +5097,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
                                                                                       acceptedData6.contains("00") || acceptedData6.contains("01") || acceptedData6.contains("02") || acceptedData6.contains("03") || acceptedData6.contains("10") || acceptedData6.contains("11") || acceptedData6.contains("12") || acceptedData6.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5265,20 +5118,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.grey[100],
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData6.contains("00")
@@ -5307,25 +5182,27 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
                                                                                     ],
                                                                                   ),
-                                                                                  Row(
+
+                                                                                  // row 3
+                                                                                  Column(
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                     children: [
                                                                                       acceptedData7.contains("00") || acceptedData7.contains("01") || acceptedData7.contains("02") || acceptedData7.contains("03") || acceptedData7.contains("10") || acceptedData7.contains("11") || acceptedData7.contains("12") || acceptedData7.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5333,20 +5210,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData7.contains("00")
@@ -5375,20 +5274,20 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
                                                                                       acceptedData8.contains("00") || acceptedData8.contains("01") || acceptedData8.contains("02") || acceptedData8.contains("03") || acceptedData8.contains("10") || acceptedData8.contains("11") || acceptedData8.contains("12") || acceptedData8.contains("13")
                                                                                           ? Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.white,
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5396,20 +5295,42 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: ColorFiltered(
-                                                                                                  colorFilter: ColorFilter.mode(
-                                                                                                    Color.fromARGB(
-                                                                                                      0,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                      158,
-                                                                                                    ),
-                                                                                                    BlendMode.saturation,
-                                                                                                  ),
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
                                                                                                   child: Container(
-                                                                                                    width: width * 0.025,
-                                                                                                    height: width * 0.025,
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
                                                                                                           acceptedData8.contains("00")
@@ -5434,14 +5355,97 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
-                                                                                                // ),
                                                                                               ),
                                                                                             )
                                                                                           : Padding(
-                                                                                              padding: const EdgeInsets.all(2.0),
+                                                                                              padding: const EdgeInsets.all(5.0),
                                                                                               child: Container(
-                                                                                                width: width * 0.025,
-                                                                                                height: width * 0.025,
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
+                                                                                                color: Colors.grey[300],
+                                                                                              ),
+                                                                                            ),
+                                                                                      acceptedData9.contains("00") || acceptedData9.contains("01") || acceptedData9.contains("02") || acceptedData9.contains("03") || acceptedData9.contains("10") || acceptedData9.contains("11") || acceptedData9.contains("12") || acceptedData9.contains("13")
+                                                                                          ? Container(
+                                                                                              width: width * 0.021,
+                                                                                              height: width * 0.021,
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                                color: Colors.grey[100],
+                                                                                                boxShadow: [],
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsets.all(
+                                                                                                  width * 0.0,
+                                                                                                ),
+                                                                                                child: ColorFiltered(
+                                                                                                  colorFilter: nama_filter == 'greyscale'
+                                                                                                      ? ColorFilter.mode(
+                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                          BlendMode.saturation,
+                                                                                                        )
+                                                                                                      : nama_filter == 'classic negative'
+                                                                                                          ? ColorFilter.mode(
+                                                                                                              Color.fromARGB(0, 255, 255, 255),
+                                                                                                              BlendMode.saturation,
+                                                                                                            )
+                                                                                                          : nama_filter == 'black white blur'
+                                                                                                              ? ColorFilter.mode(
+                                                                                                                  Color.fromARGB(0, 255, 255, 255),
+                                                                                                                  BlendMode.saturation,
+                                                                                                                )
+                                                                                                              : nama_filter == 'mute'
+                                                                                                                  ? ColorFilter.mode(
+                                                                                                                      Color.fromARGB(0, 255, 255, 255),
+                                                                                                                      BlendMode.saturation,
+                                                                                                                    )
+                                                                                                                  : nama_filter == 'webcore'
+                                                                                                                      ? ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        )
+                                                                                                                      : ColorFilter.mode(
+                                                                                                                          Color.fromARGB(0, 255, 255, 255),
+                                                                                                                          BlendMode.saturation,
+                                                                                                                        ),
+                                                                                                  child: Container(
+                                                                                                    width: width * 0.021,
+                                                                                                    height: width * 0.021,
+                                                                                                    decoration: BoxDecoration(
+                                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                                      color: Colors.white,
+                                                                                                      boxShadow: [],
+                                                                                                      image: DecorationImage(
+                                                                                                        image: NetworkImage(
+                                                                                                          acceptedData9.contains("00")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                              : acceptedData9.contains("01")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                                  : acceptedData9.contains("02")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                                      : acceptedData9.contains("03")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                                          : acceptedData9.contains("10")
+                                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                              : acceptedData9.contains("11")
+                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                                  : acceptedData9.contains("12")
+                                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}",
+                                                                                                          scale: 1,
+                                                                                                        ),
+                                                                                                        fit: BoxFit.cover,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            )
+                                                                                          : Padding(
+                                                                                              padding: const EdgeInsets.all(5.0),
+                                                                                              child: Container(
+                                                                                                width: width * 0.021,
+                                                                                                height: width * 0.021,
                                                                                                 color: Colors.grey[300],
                                                                                               ),
                                                                                             ),
@@ -5468,9 +5472,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               onTap: () async {
                                                                                 // ---
                                                                                 setState(() {
-                                                                                  isChoose1 = !isChoose1;
+                                                                                  isChoose1 = true;
                                                                                 });
-                                                                                print("is choose card pilih kanvas menu 1");
+                                                                                print("ischoose 1 : $isChoose1");
                                                                               },
                                                                               child: Container(
                                                                                 width: width * 0.095,
@@ -5524,7 +5528,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                             // ...
                                             // tipe collage b atau strip b
                                             // ...
-                                            isLayout1 == true &&
+                                            choose1 == "layout 1" &&
                                                     isChoose1 == true
                                                 ? Padding(
                                                     padding:
@@ -6252,7 +6256,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       ),
                                                     ),
                                                   )
-                                                : isLayout2 == true &&
+                                                : choose1 == "layout 2" &&
                                                         isChoose1 ==
                                                             true // .. last visit code here ...
                                                     ? Padding(
@@ -6809,7 +6813,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                           ),
                                                         ),
                                                       )
-                                                    : isLayout3 == true &&
+                                                    : choose1 == "layout 3" &&
                                                             isChoose1 == true
                                                         ? Padding(
                                                             padding:
@@ -7132,7 +7136,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               ),
                                                             ),
                                                           )
-                                                        : isLayout4 == true &&
+                                                        : choose1 ==
+                                                                    "layout 4" &&
                                                                 isChoose1 ==
                                                                     true
                                                             ? Padding(
@@ -7536,8 +7541,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ),
                                                                 ),
                                                               )
-                                                            : isLayout5 ==
-                                                                        true &&
+                                                            : choose1 ==
+                                                                        "layout 5" &&
                                                                     isChoose1 ==
                                                                         true
                                                                 ? Padding(
@@ -8147,8 +8152,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ),
                                                                     ),
                                                                   )
-                                                                : isLayout6 ==
-                                                                            true &&
+                                                                : choose1 ==
+                                                                            "layout 6" &&
                                                                         isChoose1 ==
                                                                             true
                                                                     ? Padding(
@@ -11140,8 +11145,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   ),
                                                                 ),
                                                               )
-                                                            : isLayout5 == true &&
-                                                                        true
+                                                            : isLayout5 ==
+                                                                        true &&
+                                                                    true
                                                                 ? Padding(
                                                                     padding:
                                                                         const EdgeInsets
@@ -11789,7 +11795,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       ),
                                                                     ),
                                                                   )
-                                                                : isLayout6 == true &&
+                                                                : isLayout6 ==
+                                                                            true &&
                                                                         isChoose2 ==
                                                                             true
                                                                     ? Padding(
@@ -13432,7 +13439,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                   :
 
                                   // ..................
-                                  // layout 3 main view B
+                                  // layout 2 main view B
                                   // ..................
                                   isLayout2 == true && isChoose1 == true
                                       ? Container(
@@ -15066,8 +15073,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                           // ..................
                                           // layout 4 main view B
                                           // ..................
-                                          isLayout4 == true &&
-                                                  isChoose1 == true
+                                          isLayout4 == true && isChoose1 == true
                                               ? Container(
                                                   width: width * 0.25,
                                                   height: width * 0.3,
@@ -16308,7 +16314,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               :
 
                                               // ..........................
-                                              //    choose 2, main view B
+                                              //    choose 5, main view B
                                               // ..........................
                                               isLayout1 == true &&
                                                       isChoose2 == true
@@ -17081,7 +17087,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                   :
 
                                                   // ..................
-                                                  // layout 2 main view B
+                                                  // layout 6 main view B
                                                   // ..................
 
                                                   isLayout2 == true &&
@@ -18888,7 +18894,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                               // ..................
                               // layout 1 main view A
                               // ..................
-                              isLayout1 == true && isChoose1 == true
+                              choose1 == "layout 1" && isChoose1 == true
                                   ? Container(
                                       width: width * 0.25,
                                       height: width * 0.3,
@@ -19888,7 +19894,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                   // ..................
                                   // layout 2 main view A
                                   // ..................
-                                  isLayout2 == true && isChoose1 == true
+                                  choose1 == "layout 2" && isChoose1 == true
                                       ? Container(
                                           width: width * 0.25,
                                           height: width * 0.3,
@@ -20443,7 +20449,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                       // ..................
                                       // layout 3 main view A
                                       // ..................
-                                      isLayout3 == true && isChoose1 == true
+                                      choose1 == "layout 3" && isChoose1 == true
                                           ? Container(
                                               width: width * 0.25,
                                               height: width * 0.3,
@@ -21109,7 +21115,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                           // ..................
                                           // layout 4 main view A
                                           // ..................
-                                          isLayout4 == true && isChoose1 == true
+                                          choose1 == "layout 4" &&
+                                                  isChoose1 == true
                                               ? Container(
                                                   width: width * 0.25,
                                                   height: width * 0.3,
@@ -22072,7 +22079,1503 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     ),
                                                   ),
                                                 )
-                                              : Container(),
+                                              : choose1 == "layout 5" &&
+                                                      isChoose1 == true
+                                                  ? Container(
+                                                      width: width * 0.25,
+                                                      height: width * 0.3,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        color: Colors.grey[100],
+                                                        boxShadow: [],
+                                                      ),
+                                                      child: Padding(
+                                                        padding: EdgeInsets.all(
+                                                          width * 0.0055,
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            // .................................
+                                                            // layout row drag target main view
+                                                            // .................................
+                                                            Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                // .............................
+                                                                // layout drag target main view
+                                                                // .............................
+
+                                                                // ============
+                                                                // dragtarget 1
+                                                                DragTarget<
+                                                                    String>(
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    // setstate sebelum add data
+                                                                    setState(
+                                                                        () {});
+
+                                                                    acceptedData1
+                                                                        .add(
+                                                                            data);
+                                                                    dragItemB1
+                                                                        .add(
+                                                                            data);
+
+                                                                    // Timer(Duration(seconds: 1), () {
+                                                                    //   // print(
+                                                                    //   //     "Yeah, this line is printed after 3 seconds");
+                                                                    //   acceptedDatas.add(data);
+                                                                    // });
+                                                                  },
+                                                                  builder: (BuildContext context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      List<dynamic>
+                                                                          rejectedData) {
+                                                                    // ====================
+                                                                    // value index / card 1
+                                                                    // ====================
+                                                                    return acceptedData1.contains("00") ||
+                                                                            acceptedData1.contains("01") ||
+                                                                            acceptedData1.contains("02") ||
+                                                                            acceptedData1.contains("03") ||
+                                                                            acceptedData1.contains("10") ||
+                                                                            acceptedData1.contains("11") ||
+                                                                            acceptedData1.contains("12") ||
+                                                                            acceptedData1.contains("13")
+                                                                        ? Container(
+                                                                            width:
+                                                                                width * 0.1,
+                                                                            height:
+                                                                                width * 0.1,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              color: Colors.grey[100],
+                                                                            ),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsets.all(
+                                                                                width * 0.0,
+                                                                              ),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                decoration: BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage(acceptedData1.contains("00")
+                                                                                        ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                        : acceptedData1.contains("01")
+                                                                                            ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                            : acceptedData1.contains("02")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                : acceptedData1.contains("03")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                    : acceptedData1.contains("10")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                        : acceptedData1.contains("11")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                            : acceptedData1.contains("12")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              // ),
+                                                                            ),
+                                                                          )
+                                                                        : Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(5.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                color: Colors.grey[300],
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                  },
+                                                                ),
+
+                                                                // ============
+                                                                // dragtarget 2
+                                                                DragTarget<
+                                                                    String>(
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    // setstate sebelum add data
+                                                                    setState(
+                                                                        () {});
+                                                                    dragItemB1
+                                                                        .add(
+                                                                            data);
+                                                                    acceptedData2
+                                                                        .add(
+                                                                            data);
+                                                                  },
+                                                                  builder: (BuildContext context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      List<dynamic>
+                                                                          rejectedData) {
+                                                                    // =============
+                                                                    // value index 2
+                                                                    // =============
+                                                                    return acceptedData2.contains("00") ||
+                                                                            acceptedData2.contains("01") ||
+                                                                            acceptedData2.contains("02") ||
+                                                                            acceptedData2.contains("03") ||
+                                                                            acceptedData2.contains("10") ||
+                                                                            acceptedData2.contains("11") ||
+                                                                            acceptedData2.contains("12") ||
+                                                                            acceptedData2.contains("13")
+                                                                        ? Container(
+                                                                            width:
+                                                                                width * 0.1,
+                                                                            height:
+                                                                                width * 0.1,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              color: Colors.grey[100],
+                                                                            ),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsets.all(
+                                                                                width * 0.0,
+                                                                              ),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                decoration: BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage(acceptedData2.contains("00")
+                                                                                        ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                        : acceptedData2.contains("01")
+                                                                                            ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                            : acceptedData2.contains("02")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                : acceptedData2.contains("03")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                    : acceptedData2.contains("10")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                        : acceptedData2.contains("11")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                            : acceptedData2.contains("12")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        : Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(5.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                color: Colors.grey[300],
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                  },
+                                                                ),
+                                                                SizedBox(
+                                                                    height: 25),
+                                                              ],
+                                                            ),
+
+                                                            // row 2
+                                                            Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                SizedBox(
+                                                                    height: 25),
+                                                                // ...............................
+                                                                // layout drag target main view
+                                                                // .............................
+                                                                DragTarget<
+                                                                    String>(
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    // setstate sebelum add data
+                                                                    setState(
+                                                                        () {});
+                                                                    dragItemB1
+                                                                        .add(
+                                                                            data);
+                                                                    acceptedData3
+                                                                        .add(
+                                                                            data);
+                                                                  },
+                                                                  onWillAccept:
+                                                                      (data) {
+                                                                    print(
+                                                                        "object data onWillAccept card 3 : $data");
+                                                                    return true;
+                                                                  },
+                                                                  builder: (BuildContext context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      List<dynamic>
+                                                                          rejectedData) {
+                                                                    // =============
+                                                                    // value index 1
+                                                                    // =============
+                                                                    return acceptedData3.contains("00") ||
+                                                                            acceptedData3.contains("01") ||
+                                                                            acceptedData3.contains("02") ||
+                                                                            acceptedData3.contains("03") ||
+                                                                            acceptedData3.contains("10") ||
+                                                                            acceptedData3.contains("11") ||
+                                                                            acceptedData3.contains("12") ||
+                                                                            acceptedData3.contains("13")
+                                                                        ? Container(
+                                                                            width:
+                                                                                width * 0.1,
+                                                                            height:
+                                                                                width * 0.1,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              color: Colors.grey[100],
+                                                                            ),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsets.all(
+                                                                                width * 0.0,
+                                                                              ),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                decoration: BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage(acceptedData3.contains("00")
+                                                                                        ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                        : acceptedData3.contains("01")
+                                                                                            ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                            : acceptedData3.contains("02")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                : acceptedData3.contains("03")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                    : acceptedData3.contains("10")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                        : acceptedData3.contains("11")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                            : acceptedData3.contains("12")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        : Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(5.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                color: Colors.grey[300],
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                  },
+                                                                ),
+                                                                DragTarget<
+                                                                    String>(
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    // setstate sebelum add data
+                                                                    setState(
+                                                                        () {});
+                                                                    dragItemB1
+                                                                        .add(
+                                                                            data);
+                                                                    acceptedData4
+                                                                        .add(
+                                                                            data);
+                                                                  },
+                                                                  builder: (BuildContext context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      List<dynamic>
+                                                                          rejectedData) {
+                                                                    // =============
+                                                                    // value index 2
+                                                                    // =============
+                                                                    return acceptedData4.contains("00") ||
+                                                                            acceptedData4.contains("01") ||
+                                                                            acceptedData4.contains("02") ||
+                                                                            acceptedData4.contains("03") ||
+                                                                            acceptedData4.contains("10") ||
+                                                                            acceptedData4.contains("11") ||
+                                                                            acceptedData4.contains("12") ||
+                                                                            acceptedData4.contains("13")
+                                                                        ? Container(
+                                                                            width:
+                                                                                width * 0.1,
+                                                                            height:
+                                                                                width * 0.1,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              color: Colors.grey[100],
+                                                                            ),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsets.all(
+                                                                                width * 0.0,
+                                                                              ),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                decoration: BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage(acceptedData4.contains("00")
+                                                                                        ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                        : acceptedData4.contains("01")
+                                                                                            ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                            : acceptedData4.contains("02")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                : acceptedData4.contains("03")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                    : acceptedData4.contains("10")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                        : acceptedData4.contains("11")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                            : acceptedData4.contains("12")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        : Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(5.0),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.1,
+                                                                                height: width * 0.1,
+                                                                                color: Colors.grey[300],
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : choose1 == "layout 6" &&
+                                                          isChoose1 ==
+                                                              true // last code main view
+                                                      ? Container(
+                                                          width: width * 0.25,
+                                                          height: width * 0.3,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            color: Colors
+                                                                .grey[100],
+                                                            boxShadow: [],
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                              width * 0.0055,
+                                                            ),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                // .................................
+                                                                // layout row drag target main view
+                                                                // .................................
+                                                                Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    // .............................
+                                                                    // layout drag target main view
+                                                                    // .............................
+
+                                                                    // ============
+                                                                    // dragtarget 1
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData1
+                                                                            .add(data);
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // ====================
+                                                                        // value index / card 1
+                                                                        // ====================
+                                                                        return acceptedData1.contains("00") ||
+                                                                                acceptedData1.contains("01") ||
+                                                                                acceptedData1.contains("02") ||
+                                                                                acceptedData1.contains("03") ||
+                                                                                acceptedData1.contains("10") ||
+                                                                                acceptedData1.contains("11") ||
+                                                                                acceptedData1.contains("12") ||
+                                                                                acceptedData1.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: Container(
+                                                                                    // last code here
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage(acceptedData1.contains("00")
+                                                                                            ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                            : acceptedData1.contains("01")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                : acceptedData1.contains("02")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                    : acceptedData1.contains("03")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                        : acceptedData1.contains("10")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                            : acceptedData1.contains("11")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                : acceptedData1.contains("12")
+                                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                    : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                    width: width * 0.09,
+                                                                                    height: width * 0.09,
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+
+                                                                    // ============
+                                                                    // dragtarget 2
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData2
+                                                                            .add(data);
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 2
+                                                                        // =============
+                                                                        return acceptedData2.contains("00") ||
+                                                                                acceptedData2.contains("01") ||
+                                                                                acceptedData2.contains("02") ||
+                                                                                acceptedData2.contains("03") ||
+                                                                                acceptedData2.contains("10") ||
+                                                                                acceptedData2.contains("11") ||
+                                                                                acceptedData2.contains("12") ||
+                                                                                acceptedData2.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(
+                                                                                              255,
+                                                                                              139,
+                                                                                              139,
+                                                                                              139,
+                                                                                            ),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      child: Container(
+                                                                                        // last code here
+                                                                                        decoration: BoxDecoration(
+                                                                                          image: DecorationImage(
+                                                                                            image: NetworkImage(acceptedData2.contains("00")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                : acceptedData2.contains("01")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                    : acceptedData2.contains("02")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                        : acceptedData2.contains("03")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                            : acceptedData2.contains("10")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                : acceptedData2.contains("11")
+                                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                    : acceptedData2.contains("12")
+                                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                        : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    // ),
+                                                                                  ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData3
+                                                                            .add(data);
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 2
+                                                                        // =============
+                                                                        return acceptedData3.contains("00") ||
+                                                                                acceptedData3.contains("01") ||
+                                                                                acceptedData3.contains("02") ||
+                                                                                acceptedData3.contains("03") ||
+                                                                                acceptedData3.contains("10") ||
+                                                                                acceptedData3.contains("11") ||
+                                                                                acceptedData3.contains("12") ||
+                                                                                acceptedData3.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(
+                                                                                              255,
+                                                                                              139,
+                                                                                              139,
+                                                                                              139,
+                                                                                            ),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      child: Container(
+                                                                                        // last code here
+                                                                                        decoration: BoxDecoration(
+                                                                                          image: DecorationImage(
+                                                                                            image: NetworkImage(acceptedData3.contains("00")
+                                                                                                ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                                : acceptedData3.contains("01")
+                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                    : acceptedData3.contains("02")
+                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                        : acceptedData3.contains("03")
+                                                                                                            ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                            : acceptedData3.contains("10")
+                                                                                                                ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                                : acceptedData3.contains("11")
+                                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                    : acceptedData3.contains("12")
+                                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                        : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    // ),
+                                                                                  ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                  ],
+                                                                ),
+
+                                                                // row 2
+                                                                Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    // ...............................
+                                                                    // layout drag target main view
+                                                                    // .............................
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData4
+                                                                            .add(data);
+                                                                      },
+                                                                      onWillAccept:
+                                                                          (data) {
+                                                                        print(
+                                                                            "object data onWillAccept card 3 : $data");
+                                                                        return true;
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 1
+                                                                        // =============
+                                                                        return acceptedData4.contains("00") ||
+                                                                                acceptedData4.contains("01") ||
+                                                                                acceptedData4.contains("02") ||
+                                                                                acceptedData4.contains("03") ||
+                                                                                acceptedData4.contains("10") ||
+                                                                                acceptedData4.contains("11") ||
+                                                                                acceptedData4.contains("12") ||
+                                                                                acceptedData4.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData4.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData4.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData4.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData4.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData4.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData4.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData4.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData5
+                                                                            .add(data);
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 2
+                                                                        // =============
+                                                                        return acceptedData5.contains("00") ||
+                                                                                acceptedData5.contains("01") ||
+                                                                                acceptedData5.contains("02") ||
+                                                                                acceptedData5.contains("03") ||
+                                                                                acceptedData5.contains("10") ||
+                                                                                acceptedData5.contains("11") ||
+                                                                                acceptedData5.contains("12") ||
+                                                                                acceptedData5.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData5.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData5.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData5.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData5.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData5.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData5.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData5.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData6
+                                                                            .add(data);
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 2
+                                                                        // =============
+                                                                        return acceptedData6.contains("00") ||
+                                                                                acceptedData6.contains("01") ||
+                                                                                acceptedData6.contains("02") ||
+                                                                                acceptedData6.contains("03") ||
+                                                                                acceptedData6.contains("10") ||
+                                                                                acceptedData6.contains("11") ||
+                                                                                acceptedData6.contains("12") ||
+                                                                                acceptedData6.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData6.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData6.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData6.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData6.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData6.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData6.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData6.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                  ],
+                                                                ),
+
+                                                                // row 3
+                                                                Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    // ...............................
+                                                                    // layout drag target main view
+                                                                    // .............................
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData7
+                                                                            .add(data);
+                                                                      },
+                                                                      onWillAccept:
+                                                                          (data) {
+                                                                        print(
+                                                                            "data on will accept $data");
+                                                                        return true;
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 1
+                                                                        // =============
+                                                                        return acceptedData7.contains("00") ||
+                                                                                acceptedData7.contains("01") ||
+                                                                                acceptedData7.contains("02") ||
+                                                                                acceptedData7.contains("03") ||
+                                                                                acceptedData7.contains("10") ||
+                                                                                acceptedData7.contains("11") ||
+                                                                                acceptedData7.contains("12") ||
+                                                                                acceptedData7.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData7.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData7.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData7.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData7.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData7.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData7.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData7.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData8
+                                                                            .add(data);
+
+                                                                        // dragItemB1.add(data);
+                                                                      },
+                                                                      onWillAccept:
+                                                                          (data) {
+                                                                        print(
+                                                                            "data on will accept $data");
+                                                                        return true;
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 1
+                                                                        // =============
+                                                                        return acceptedData8.contains("00") ||
+                                                                                acceptedData8.contains("01") ||
+                                                                                acceptedData8.contains("02") ||
+                                                                                acceptedData8.contains("03") ||
+                                                                                acceptedData8.contains("10") ||
+                                                                                acceptedData8.contains("11") ||
+                                                                                acceptedData8.contains("12") ||
+                                                                                acceptedData8.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData8.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData8.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData8.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData8.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData8.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData8.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData8.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+
+                                                                    DragTarget<
+                                                                        String>(
+                                                                      onAccept:
+                                                                          (data) {
+                                                                        // setstate sebelum add data
+                                                                        setState(
+                                                                            () {});
+
+                                                                        acceptedData9
+                                                                            .add(data);
+
+                                                                        // dragItemB1.add(data);
+                                                                      },
+                                                                      onWillAccept:
+                                                                          (data) {
+                                                                        print(
+                                                                            "data on will accept $data");
+                                                                        return true;
+                                                                      },
+                                                                      builder: (BuildContext context,
+                                                                          List<Object?>
+                                                                              candidateData,
+                                                                          List<dynamic>
+                                                                              rejectedData) {
+                                                                        // =============
+                                                                        // value index 1
+                                                                        // =============
+                                                                        return acceptedData9.contains("00") ||
+                                                                                acceptedData9.contains("01") ||
+                                                                                acceptedData9.contains("02") ||
+                                                                                acceptedData9.contains("03") ||
+                                                                                acceptedData9.contains("10") ||
+                                                                                acceptedData9.contains("11") ||
+                                                                                acceptedData9.contains("12") ||
+                                                                                acceptedData9.contains("13")
+                                                                            ? Container(
+                                                                                width: width * 0.065,
+                                                                                height: width * 0.065,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  color: Colors.grey[100],
+                                                                                  boxShadow: [],
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(
+                                                                                    width * 0.0,
+                                                                                  ),
+                                                                                  child: ColorFiltered(
+                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                        ? ColorFilter.mode(
+                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                            BlendMode.saturation,
+                                                                                          )
+                                                                                        : nama_filter == 'classic negative'
+                                                                                            ? ColorFilter.mode(
+                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                BlendMode.saturation,
+                                                                                              )
+                                                                                            : nama_filter == 'black white blur'
+                                                                                                ? ColorFilter.mode(
+                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'mute'
+                                                                                                    ? ColorFilter.mode(
+                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'webcore'
+                                                                                                        ? ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : ColorFilter.mode(
+                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                            BlendMode.saturation,
+                                                                                                          ),
+                                                                                    child: Container(
+                                                                                      width: width * 0.065,
+                                                                                      height: width * 0.065,
+                                                                                      decoration: BoxDecoration(
+                                                                                        image: DecorationImage(
+                                                                                          image: NetworkImage(acceptedData9.contains("00")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
+                                                                                              : acceptedData9.contains("01")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
+                                                                                                  : acceptedData9.contains("02")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
+                                                                                                      : acceptedData9.contains("03")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
+                                                                                                          : acceptedData9.contains("10")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
+                                                                                                              : acceptedData9.contains("11")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
+                                                                                                                  : acceptedData9.contains("12")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
+                                                                                                                      : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                                          fit: BoxFit.cover,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  // ),
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.all(5.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.065,
+                                                                                    height: width * 0.065,
+                                                                                    color: Colors.grey[300],
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                      },
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container(),
                           // ========================
                           // ===== end layout =======
                           // ========================
@@ -22099,7 +23602,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                             child: Text(
                               foto_details != "" ? "Edit Foto" : "Pilih Layout",
                               style: TextStyle(
-                                fontSize: width * 0.018,
+                                fontSize: width * 0.021,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -22241,6 +23744,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 !isLayout1;
                                                                             isLayout2 =
@@ -22259,6 +23764,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 !isLayout1;
                                                                             isLayout2 =
@@ -22273,6 +23780,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 false;
                                                                           });
                                                                         }
+
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
 
                                                                       // --- layout 2
@@ -22283,6 +23793,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22301,6 +23813,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22315,6 +23829,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 false;
                                                                           });
                                                                         }
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
 
                                                                       // --- layout 3
@@ -22325,6 +23841,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22343,6 +23861,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22357,6 +23877,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 false;
                                                                           });
                                                                         }
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
 
                                                                       // --- layout 4
@@ -22367,6 +23889,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22385,6 +23909,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22399,6 +23925,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 false;
                                                                           });
                                                                         }
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
 
                                                                       // --- layout 5
@@ -22409,6 +23937,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22427,6 +23957,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22441,6 +23973,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 false;
                                                                           });
                                                                         }
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
 
                                                                       // --- layout 6
@@ -22451,6 +23985,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose2 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22469,6 +24005,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             true) {
                                                                           setState(
                                                                               () {
+                                                                            choose1 =
+                                                                                layout["nama"];
                                                                             isLayout1 =
                                                                                 false;
                                                                             isLayout2 =
@@ -22483,6 +24021,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 !isLayout6;
                                                                           });
                                                                         }
+                                                                        print(
+                                                                            "choose1 : $choose1");
                                                                       }
                                                                     },
                                                                     child: layout["nama"] ==

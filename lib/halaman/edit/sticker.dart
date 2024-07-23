@@ -703,7 +703,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         // ...
 
         // ignore: unnecessary_null_comparison
-        if (choose_layout == "layout1") {
+        if (choose_layout == "layout 1") {
           if (drag_item[0].isNotEmpty) {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
@@ -1305,7 +1305,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 2
-        if (choose_layout == "layout2") {
+        if (choose_layout == "layout 2") {
           // ......
           // card 1
           // ......
@@ -1712,7 +1712,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 3
-        if (choose_layout == "layout3") {
+        if (choose_layout == "layout 3") {
           // ......
           // card 1
           // ......
@@ -2220,7 +2220,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 4
-        if (choose_layout == "layout4") {
+        if (choose_layout == "layout 4") {
           // ......
           // card 1
           // ......
@@ -3033,7 +3033,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         // ===========================================
         // ============== layout b 2 =================
         // ===========================================
-        if (choose_layout2 == "layout1") {
+        if (choose_layout2 == "layout 1") {
           // ......
           // card 1
           // ......
@@ -3741,7 +3741,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 2
-        if (choose_layout2 == "layout2") {
+        if (choose_layout2 == "layout 2") {
           // ......
           // card 1
           // ......
@@ -4148,7 +4148,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 3
-        if (choose_layout2 == "layout3") {
+        if (choose_layout2 == "layout 3") {
           // ......
           // card 1
           // ......
@@ -4755,7 +4755,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
 
         // layout 4
-        if (choose_layout2 == "layout4") {
+        if (choose_layout2 == "layout 4") {
           // ......
           // card 1
           // ......
@@ -5669,56 +5669,56 @@ class _StickerWidgetState extends State<StickerWidget> {
         if (list.isNotEmpty) {
           if (drag_item.isNotEmpty) {
             // layout 1
-            if (choose_layout == "layout1") {
+            if (choose_layout == "layout 1") {
               // ......
               // card 1
               // ......
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // ......
@@ -5729,51 +5729,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -5785,51 +5785,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -5841,51 +5841,51 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -5897,136 +5897,138 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
+              }
 
-                // ......
-                // card 6
-                // ......
+              // ......
+              // card 6
+              // ......
+              if (drag_item[5].isNotEmpty) {
                 if (drag_item[5].toString().contains("00") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[5].toString().contains("01") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[5].toString().contains("02") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[5].toString().contains("03") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[5].toString().contains("10") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[5].toString().contains("11") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[5].toString().contains("12") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[5].toString().contains("13") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
             }
 
             // layout 2
-            if (choose_layout == "layout2") {
+            if (choose_layout == "layout 2") {
               // ......
               // card 1
               // ......
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               if (list[4].toString().isNotEmpty &&
@@ -6034,28 +6036,28 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[5].toString().isNotEmpty &&
                   drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[6].toString().isNotEmpty &&
                   drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[7].toString().isNotEmpty &&
                   drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // ......
@@ -6065,53 +6067,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[1].toString().contains("00") &&
                     drag_item[1].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[4].toString().isNotEmpty &&
                     drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6122,25 +6124,25 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[2].toString().contains("00") &&
                     drag_item[2].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
 
                 if (list[4].toString().isNotEmpty &&
@@ -6148,28 +6150,28 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6180,25 +6182,25 @@ class _StickerWidgetState extends State<StickerWidget> {
                 if (drag_item[3].toString().contains("00") &&
                     drag_item[3].toString().isNotEmpty) {
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
 
                 if (list[4].toString().isNotEmpty &&
@@ -6206,87 +6208,87 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
             }
 
             // layout 3
-            if (choose_layout == "layout3") {
+            if (choose_layout == "layout 3") {
               // ......
               // card 1
               // ......
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[4].toString().isNotEmpty &&
                   drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[5].toString().isNotEmpty &&
                   drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[6].toString().isNotEmpty &&
                   drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (list[7].toString().isNotEmpty &&
                   drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // ......
@@ -6297,53 +6299,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[4].toString().isNotEmpty &&
                     drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6355,53 +6357,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[4].toString().isNotEmpty &&
                     drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6413,53 +6415,53 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[4].toString().isNotEmpty &&
                     drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6471,108 +6473,108 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[4].toString().isNotEmpty &&
                     drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[5].toString().isNotEmpty &&
                     drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[6].toString().isNotEmpty &&
                     drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (list[7].toString().isNotEmpty &&
                     drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
             }
 
             // layout 4
-            if (choose_layout == "layout4") {
+            if (choose_layout == "layout 4") {
               // ......
               // card 1
               // ......
               if (drag_item[0].toString().contains("00") &&
                   drag_item[0].toString().isNotEmpty) {
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("01") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("02") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("10") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("11") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("12") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[0].toString().contains("13") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // ......
@@ -6583,49 +6585,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("01") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("02") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6637,49 +6639,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("01") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("02") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6691,49 +6693,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("01") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("02") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6745,49 +6747,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[0]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("01") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("02") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
                 if (drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
-                  print("url_image_b1 : $url_image_b1");
+                  print("url_image : $url_image");
                 }
               }
 
@@ -6798,49 +6800,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("01") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("02") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("03") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("10") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("11") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("12") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[5].toString().contains("13") &&
                   drag_item[5].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // ......
@@ -6851,49 +6853,49 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("01") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("02") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("03") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("10") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("11") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("12") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[6].toString().contains("13") &&
                   drag_item[6].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
 
               // // ......
@@ -6903,49 +6905,760 @@ class _StickerWidgetState extends State<StickerWidget> {
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[0]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("01") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[1]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("02") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[2]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("03") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[3]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("10") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[4]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("11") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[5]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("12") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[6]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
               }
               if (drag_item[7].toString().contains("13") &&
                   drag_item[7].toString().isNotEmpty) {
                 // ...
                 url_image.add(list[7]);
-                print("url_image_b1 : $url_image_b1");
+                print("url_image : $url_image");
+              }
+            }
+
+            // layout 5
+            if (choose_layout == "layout 5") {
+              // ......
+              // card 1
+              // ......
+              if (drag_item[0].toString().contains("00") &&
+                  drag_item[0].toString().isNotEmpty) {
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("01") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("02") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("03") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+
+              if (list[4].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("10") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (list[5].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("11") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (list[6].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("12") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (list[7].toString().isNotEmpty &&
+                  drag_item[0].toString().contains("13") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
+              }
+
+              // ......
+              // card 2
+              // ......
+              if (drag_item[1].isNotEmpty) {
+                if (drag_item[1].toString().contains("00") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("01") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("02") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("03") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 3
+              // ......
+              if (drag_item[2].isNotEmpty) {
+                if (drag_item[2].toString().contains("00") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("01") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("02") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("03") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 4
+              // ......
+              if (drag_item[3].isNotEmpty) {
+                if (drag_item[3].toString().contains("00") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("01") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("02") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("03") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (list[7].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+            }
+
+            // layout 4
+            if (choose_layout == "layout 6") {
+              // ......
+              // card 1
+              // ......
+              if (drag_item[0].toString().contains("00") &&
+                  drag_item[0].toString().isNotEmpty) {
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("01") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("02") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("03") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("10") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("11") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("12") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[0].toString().contains("13") &&
+                  drag_item[0].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
+              }
+
+              // ......
+              // card 2
+              // ......
+              if (drag_item[1].isNotEmpty) {
+                if (drag_item[1].toString().contains("00") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("01") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("02") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("03") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("10") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("11") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("12") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[1].toString().contains("13") &&
+                    drag_item[1].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 3
+              // ......
+              if (drag_item[2].isNotEmpty) {
+                if (drag_item[2].toString().contains("00") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("01") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("02") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("03") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("10") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("11") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("12") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("13") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 4
+              // ......
+              if (drag_item[3].isNotEmpty) {
+                if (drag_item[3].toString().contains("00") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("01") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("02") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("03") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("10") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("11") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("12") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[3].toString().contains("13") &&
+                    drag_item[3].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 5
+              // ......
+              if (drag_item[4].isNotEmpty) {
+                if (drag_item[4].toString().contains("00") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("01") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("02") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("03") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("10") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("11") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("12") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[4].toString().contains("13") &&
+                    drag_item[4].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+              }
+
+              // ......
+              // card 6
+              // ......
+              if (drag_item[5].toString().contains("00") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("01") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("02") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("03") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("10") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("11") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("12") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[5].toString().contains("13") &&
+                  drag_item[5].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
+              }
+
+              // ......
+              // card 7
+              // ......
+              // // if (title.toString().contains("A") == false) {
+              if (drag_item[6].toString().contains("00") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("01") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("02") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("03") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("10") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("11") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("12") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[6].toString().contains("13") &&
+                  drag_item[6].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
+              }
+
+              // // ......
+              // // card 8
+              // // ......
+              if (drag_item[7].toString().contains("00") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("01") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("02") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("03") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("10") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("11") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("12") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[7].toString().contains("13") &&
+                  drag_item[7].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
+              }
+
+              // // ......
+              // // card 9
+              // // ......
+              if (drag_item[8].toString().contains("00") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[0]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("01") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[1]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("02") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[2]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("03") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[3]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("10") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[4]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("11") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[5]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("12") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[6]);
+                print("url_image : $url_image");
+              }
+              if (drag_item[8].toString().contains("13") &&
+                  drag_item[8].toString().isNotEmpty) {
+                // ...
+                url_image.add(list[7]);
+                print("url_image : $url_image");
               }
             }
           }
@@ -7198,7 +7911,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                       // tipe collage a atau strip a
                                                       // ...
                                                       choose_layout ==
-                                                                  "layout1" &&
+                                                                  "layout 1" &&
                                                               url_image
                                                                   .isNotEmpty
                                                           ? Padding(
@@ -7214,26 +7927,26 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                 child:
                                                                     Container(
                                                                   width: width *
-                                                                      0.092,
+                                                                      0.095,
                                                                   height:
                                                                       height *
                                                                           0.23,
                                                                   decoration:
-                                                                      BoxDecoration(
-                                                                    image:
-                                                                        DecorationImage(
-                                                                      // last visit code here
-                                                                      image: NetworkImage(
-                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
+                                                                      choose_background !=
+                                                                              ""
+                                                                          ? BoxDecoration(
+                                                                              image: DecorationImage(
+                                                                                // last visit code here
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(5),
+                                                                              color: Colors.white,
+                                                                            )
+                                                                          : BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(5),
+                                                                              color: Colors.white,
+                                                                            ),
                                                                   child:
                                                                       Padding(
                                                                     padding:
@@ -7264,16 +7977,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7298,16 +8010,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7341,16 +8052,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7375,16 +8085,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7418,16 +8127,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7453,16 +8161,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             Container(
                                                                               width: width * 0.025,
                                                                               height: width * 0.025,
-                                                                              // decoration: BoxDecoration(
-                                                                              //   image: DecorationImage(
-                                                                              //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              //     fit: BoxFit.cover,
-                                                                              //   ),
-                                                                              //   borderRadius: BorderRadius.circular(5),
-                                                                              // ),
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : null,
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.00,
+                                                                                  width * 0.0,
                                                                                 ),
                                                                                 child: Container(
                                                                                   width: width * 0.042,
@@ -7490,7 +8197,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               ),
                                                             )
                                                           : choose_layout ==
-                                                                      "layout2" &&
+                                                                      "layout 2" &&
                                                                   url_image
                                                                       .isNotEmpty
                                                               ? Padding(
@@ -7507,31 +8214,31 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     child:
                                                                         Container(
                                                                       width: width *
-                                                                          0.092,
+                                                                          0.095,
                                                                       height:
                                                                           height *
                                                                               0.23,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          // last visit code here
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
+                                                                      decoration: choose_background !=
+                                                                              ""
+                                                                          ? BoxDecoration(
+                                                                              image: DecorationImage(
+                                                                                // last visit code here
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(5),
+                                                                              color: Colors.white,
+                                                                            )
+                                                                          : BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(5),
+                                                                              color: Colors.white,
+                                                                            ),
                                                                       child:
                                                                           Padding(
                                                                         padding:
                                                                             EdgeInsets.all(
                                                                           width *
-                                                                              0.0025,
+                                                                              0.0,
                                                                         ),
                                                                         child:
                                                                             Column(
@@ -7551,19 +8258,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 // ============
                                                                                 // kolom card 0
                                                                                 Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
+                                                                                  width: width * 0.035,
+                                                                                  height: width * 0.035,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsets.all(
-                                                                                      width * 0.00,
+                                                                                      width * 0.0,
                                                                                     ),
                                                                                     child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
+                                                                                      width: width * 0.035,
+                                                                                      height: width * 0.035,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         image: DecorationImage(
@@ -7582,19 +8285,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 // ============
                                                                                 // kolom card 1
                                                                                 Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
+                                                                                  width: width * 0.035,
+                                                                                  height: width * 0.035,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsets.all(
-                                                                                      width * 0.00,
+                                                                                      width * 0.0,
                                                                                     ),
                                                                                     child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
+                                                                                      width: width * 0.035,
+                                                                                      height: width * 0.035,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         image: DecorationImage(
@@ -7606,6 +8305,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                       ),
                                                                                     ),
+                                                                                    // ),
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -7621,19 +8321,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 // ============
                                                                                 // kolom card 2
                                                                                 Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
+                                                                                  width: width * 0.035,
+                                                                                  height: width * 0.035,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsets.all(
-                                                                                      width * 0.00,
+                                                                                      width * 0.0,
                                                                                     ),
                                                                                     child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
+                                                                                      width: width * 0.035,
+                                                                                      height: width * 0.035,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         image: DecorationImage(
@@ -7645,26 +8341,21 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                    // ),
                                                                                   ),
                                                                                 ),
 
                                                                                 // ============
                                                                                 // kolom card 3
                                                                                 Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
+                                                                                  width: width * 0.035,
+                                                                                  height: width * 0.035,
                                                                                   child: Padding(
                                                                                     padding: EdgeInsets.all(
-                                                                                      width * 0.00,
+                                                                                      width * 0.0,
                                                                                     ),
                                                                                     child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
+                                                                                      width: width * 0.035,
+                                                                                      height: width * 0.035,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                         image: DecorationImage(
@@ -7676,78 +8367,6 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                            Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                              children: [
-                                                                                // .............................
-                                                                                // layout drag target main view
-                                                                                // .............................
-
-                                                                                // ============
-                                                                                // kolom card 4
-                                                                                Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.00,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage(
-                                                                                            "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                            scale: 1,
-                                                                                          ),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-
-                                                                                // ======================
-                                                                                // kolom card 6 main view
-                                                                                // ======================
-                                                                                Container(
-                                                                                  width: width * 0.025,
-                                                                                  height: width * 0.025,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    color: Color(int.parse(warna1)),
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.00,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.0375,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage(
-                                                                                            "${Variables.ipv4_local}/storage/${url_image[5].toString()}",
-                                                                                            scale: 1,
-                                                                                          ),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -7759,7 +8378,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                   ),
                                                                 )
                                                               : choose_layout ==
-                                                                          "layout3" &&
+                                                                          "layout 3" &&
                                                                       url_image
                                                                           .isNotEmpty
                                                                   ? Padding(
@@ -7775,48 +8394,43 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         child:
                                                                             Container(
                                                                           width:
-                                                                              width * 0.092,
+                                                                              width * 0.095,
                                                                           height:
                                                                               height * 0.23,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              // last visit code here
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
+                                                                          decoration: choose_background != ""
+                                                                              ? BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    // last visit code here
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                )
+                                                                              : BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                ),
                                                                           child:
                                                                               Padding(
                                                                             padding:
                                                                                 EdgeInsets.all(
-                                                                              width * 0.00,
+                                                                              width * 0.0,
                                                                             ),
                                                                             child:
-                                                                                Column(
+                                                                                Row(
                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                               children: [
-                                                                                // .................................
-                                                                                // layout row drag target main view
-                                                                                // .................................
-                                                                                Row(
+                                                                                Column(
                                                                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                   children: [
-                                                                                    // .............................
-                                                                                    // layout drag target main view
-                                                                                    // .............................
-
-                                                                                    // ============
-                                                                                    // kolom card 0
+                                                                                    // ---
                                                                                     Container(
-                                                                                      width: width * 0.034,
-                                                                                      height: width * 0.034,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        color: Colors.transparent,
+                                                                                        borderRadius: BorderRadius.circular(5),
+                                                                                        color: Colors.white,
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(
@@ -7824,7 +8438,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                         child: Container(
                                                                                           width: width * 0.034,
-                                                                                          height: width * 0.034,
+                                                                                          height: width * 0.042,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             image: DecorationImage(
@@ -7836,18 +8450,14 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                        // ),
                                                                                       ),
                                                                                     ),
-
-                                                                                    // ============
-                                                                                    // kolom card 1
                                                                                     Container(
-                                                                                      width: width * 0.034,
-                                                                                      height: width * 0.034,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        color: Colors.transparent,
+                                                                                        borderRadius: BorderRadius.circular(5),
+                                                                                        color: Colors.white,
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(
@@ -7855,7 +8465,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                         child: Container(
                                                                                           width: width * 0.034,
-                                                                                          height: width * 0.034,
+                                                                                          height: width * 0.042,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             image: DecorationImage(
@@ -7867,27 +8477,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                        // ),
                                                                                       ),
                                                                                     ),
                                                                                   ],
                                                                                 ),
-
-                                                                                Row(
+                                                                                Column(
                                                                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                   children: [
-                                                                                    // .............................
-                                                                                    // layout drag target main view
-                                                                                    // .............................
-
-                                                                                    // ============
-                                                                                    // kolom card 2
+                                                                                    // ---
                                                                                     Container(
-                                                                                      width: width * 0.034,
-                                                                                      height: width * 0.034,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        color: Colors.transparent,
+                                                                                        borderRadius: BorderRadius.circular(5),
+                                                                                        color: Colors.white,
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(
@@ -7895,7 +8498,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                         child: Container(
                                                                                           width: width * 0.034,
-                                                                                          height: width * 0.034,
+                                                                                          height: width * 0.042,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             image: DecorationImage(
@@ -7909,15 +8512,12 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                       ),
                                                                                     ),
-
-                                                                                    // ============
-                                                                                    // kolom card 3
                                                                                     Container(
-                                                                                      width: width * 0.034,
-                                                                                      height: width * 0.034,
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
                                                                                       decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        color: Colors.transparent,
+                                                                                        borderRadius: BorderRadius.circular(5),
+                                                                                        color: Colors.white,
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(
@@ -7925,12 +8525,39 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                         child: Container(
                                                                                           width: width * 0.034,
-                                                                                          height: width * 0.034,
+                                                                                          height: width * 0.042,
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.circular(10),
                                                                                             image: DecorationImage(
                                                                                               image: NetworkImage(
                                                                                                 "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
+                                                                                                scale: 1,
+                                                                                              ),
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      width: width * 0.025,
+                                                                                      height: width * 0.025,
+                                                                                      decoration: BoxDecoration(
+                                                                                        borderRadius: BorderRadius.circular(5),
+                                                                                        color: Colors.white,
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(
+                                                                                          width * 0.0,
+                                                                                        ),
+                                                                                        child: Container(
+                                                                                          width: width * 0.034,
+                                                                                          height: width * 0.042,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(10),
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage(
+                                                                                                "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
                                                                                                 scale: 1,
                                                                                               ),
                                                                                               fit: BoxFit.cover,
@@ -7948,7 +8575,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       ),
                                                                     )
                                                                   : choose_layout ==
-                                                                              "layout4" &&
+                                                                              "layout 4" &&
                                                                           url_image
                                                                               .isNotEmpty
                                                                       ? Padding(
@@ -7963,33 +8590,47 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             },
                                                                             child:
                                                                                 Container(
-                                                                              width: width * 0.092,
-                                                                              height: height * 0.23,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  // last visit code here
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(5),
-                                                                              ),
+                                                                              width: width * 0.095,
+                                                                              height: height * 0.24,
+                                                                              decoration: choose_background != ""
+                                                                                  ? BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        // last visit code here
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    )
+                                                                                  : BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(5),
+                                                                                      color: Colors.white,
+                                                                                    ),
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(
-                                                                                  width * 0.0,
+                                                                                  width * 0.0025,
                                                                                 ),
-                                                                                child: Row(
+                                                                                child: Column(
                                                                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                   children: [
-                                                                                    Column(
+                                                                                    // .................................
+                                                                                    // layout row drag target main view
+                                                                                    // .................................
+                                                                                    Row(
                                                                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                       children: [
-                                                                                        // ---
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // kolom card 0
                                                                                         Container(
                                                                                           width: width * 0.025,
                                                                                           height: width * 0.025,
                                                                                           decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Color(int.parse(warna1)),
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
                                                                                           ),
                                                                                           child: Padding(
                                                                                             padding: EdgeInsets.all(
@@ -8011,12 +8652,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+
+                                                                                        // ============
+                                                                                        // kolom card 1
                                                                                         Container(
                                                                                           width: width * 0.025,
                                                                                           height: width * 0.025,
                                                                                           decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Color(int.parse(warna1)),
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
                                                                                           ),
                                                                                           child: Padding(
                                                                                             padding: EdgeInsets.all(
@@ -8040,16 +8684,22 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                         ),
                                                                                       ],
                                                                                     ),
-                                                                                    Column(
+
+                                                                                    Row(
                                                                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                       children: [
-                                                                                        // ---
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // kolom card 2
                                                                                         Container(
                                                                                           width: width * 0.025,
                                                                                           height: width * 0.025,
                                                                                           decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Color(int.parse(warna1)),
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
                                                                                           ),
                                                                                           child: Padding(
                                                                                             padding: EdgeInsets.all(
@@ -8071,12 +8721,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+
+                                                                                        // ============
+                                                                                        // kolom card 3
                                                                                         Container(
                                                                                           width: width * 0.025,
                                                                                           height: width * 0.025,
                                                                                           decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Color(int.parse(warna1)),
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
                                                                                           ),
                                                                                           child: Padding(
                                                                                             padding: EdgeInsets.all(
@@ -8098,12 +8751,23 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+                                                                                      ],
+                                                                                    ),
+                                                                                    Row(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // kolom card 4
                                                                                         Container(
                                                                                           width: width * 0.025,
                                                                                           height: width * 0.025,
                                                                                           decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            color: Color(int.parse(warna1)),
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
                                                                                           ),
                                                                                           child: Padding(
                                                                                             padding: EdgeInsets.all(
@@ -8125,6 +8789,107 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             ),
                                                                                           ),
                                                                                         ),
+
+                                                                                        // ======================
+                                                                                        // kolom card 6 main view
+                                                                                        // ======================
+                                                                                        Container(
+                                                                                          width: width * 0.025,
+                                                                                          height: width * 0.025,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsets.all(
+                                                                                              width * 0.0,
+                                                                                            ),
+                                                                                            child: Container(
+                                                                                              width: width * 0.034,
+                                                                                              height: width * 0.042,
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                                image: DecorationImage(
+                                                                                                  image: NetworkImage(
+                                                                                                    "${Variables.ipv4_local}/storage/${url_image[5].toString()}",
+                                                                                                    scale: 1,
+                                                                                                  ),
+                                                                                                  fit: BoxFit.cover,
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+
+                                                                                    Row(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // kolom card 4
+                                                                                        Container(
+                                                                                          width: width * 0.025,
+                                                                                          height: width * 0.025,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsets.all(
+                                                                                              width * 0.0,
+                                                                                            ),
+                                                                                            child: Container(
+                                                                                              width: width * 0.034,
+                                                                                              height: width * 0.042,
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                                image: DecorationImage(
+                                                                                                  image: NetworkImage(
+                                                                                                    "${Variables.ipv4_local}/storage/${url_image[6].toString()}",
+                                                                                                    scale: 1,
+                                                                                                  ),
+                                                                                                  fit: BoxFit.cover,
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+
+                                                                                        // ======================
+                                                                                        // kolom card 6 main view
+                                                                                        // ======================
+                                                                                        Container(
+                                                                                          width: width * 0.025,
+                                                                                          height: width * 0.025,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(5),
+                                                                                            color: Colors.white,
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsets.all(
+                                                                                              width * 0.0,
+                                                                                            ),
+                                                                                            child: Container(
+                                                                                              width: width * 0.034,
+                                                                                              height: width * 0.042,
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                                image: DecorationImage(
+                                                                                                  image: NetworkImage(
+                                                                                                    "${Variables.ipv4_local}/storage/${url_image[7].toString()}",
+                                                                                                    scale: 1,
+                                                                                                  ),
+                                                                                                  fit: BoxFit.cover,
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
                                                                                       ],
                                                                                     ),
                                                                                   ],
@@ -8133,7 +8898,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             ),
                                                                           ),
                                                                         )
-                                                                      : choose_layout == "layout5" &&
+                                                                      : choose_layout == "layout 5" &&
                                                                               url_image.isNotEmpty
                                                                           ? Padding(
                                                                               padding: const EdgeInsets.all(15.0),
@@ -8142,27 +8907,33 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   // ---
                                                                                 },
                                                                                 child: Container(
-                                                                                  width: width * 0.092,
-                                                                                  height: height * 0.24,
-                                                                                  decoration: BoxDecoration(
-                                                                                    image: DecorationImage(
-                                                                                      // last visit code here
-                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                  ),
+                                                                                  width: width * 0.095,
+                                                                                  height: height * 0.23,
+                                                                                  decoration: choose_background != ""
+                                                                                      ? BoxDecoration(
+                                                                                          image: DecorationImage(
+                                                                                            // last visit code here
+                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                            fit: BoxFit.cover,
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        )
+                                                                                      : BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
                                                                                   child: Padding(
                                                                                     padding: EdgeInsets.all(
-                                                                                      width * 0.0025,
+                                                                                      width * 0.0,
                                                                                     ),
-                                                                                    child: Column(
+                                                                                    child: Row(
                                                                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                       children: [
                                                                                         // .................................
                                                                                         // layout row drag target main view
                                                                                         // .................................
-                                                                                        Row(
+                                                                                        Column(
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                           children: [
                                                                                             // .............................
@@ -8172,19 +8943,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             // ============
                                                                                             // kolom card 0
                                                                                             Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
+                                                                                              width: width * 0.035,
+                                                                                              height: width * 0.035,
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsets.all(
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
+                                                                                                  width: width * 0.035,
+                                                                                                  height: width * 0.035,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                                     image: DecorationImage(
@@ -8196,25 +8963,22 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
+                                                                                                // ),
                                                                                               ),
                                                                                             ),
 
                                                                                             // ============
                                                                                             // kolom card 1
                                                                                             Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
+                                                                                              width: width * 0.035,
+                                                                                              height: width * 0.035,
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsets.all(
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
+                                                                                                  width: width * 0.035,
+                                                                                                  height: width * 0.035,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                                     image: DecorationImage(
@@ -8226,14 +8990,17 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
+                                                                                                // ),
                                                                                               ),
                                                                                             ),
+                                                                                            SizedBox(height: 15),
                                                                                           ],
                                                                                         ),
 
-                                                                                        Row(
+                                                                                        Column(
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                           children: [
+                                                                                            SizedBox(height: 15),
                                                                                             // .............................
                                                                                             // layout drag target main view
                                                                                             // .............................
@@ -8241,19 +9008,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             // ============
                                                                                             // kolom card 2
                                                                                             Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
+                                                                                              width: width * 0.035,
+                                                                                              height: width * 0.035,
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsets.all(
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
+                                                                                                  width: width * 0.035,
+                                                                                                  height: width * 0.035,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                                     image: DecorationImage(
@@ -8271,163 +9034,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                             // ============
                                                                                             // kolom card 3
                                                                                             Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
+                                                                                              width: width * 0.035,
+                                                                                              height: width * 0.035,
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsets.all(
                                                                                                   width * 0.0,
                                                                                                 ),
                                                                                                 child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
+                                                                                                  width: width * 0.035,
+                                                                                                  height: width * 0.035,
                                                                                                   decoration: BoxDecoration(
                                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                                     image: DecorationImage(
                                                                                                       image: NetworkImage(
                                                                                                         "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                        scale: 1,
-                                                                                                      ),
-                                                                                                      fit: BoxFit.cover,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                        Row(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          children: [
-                                                                                            // .............................
-                                                                                            // layout drag target main view
-                                                                                            // .............................
-
-                                                                                            // ============
-                                                                                            // kolom card 4
-                                                                                            Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
-                                                                                                ),
-                                                                                                child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    image: DecorationImage(
-                                                                                                      image: NetworkImage(
-                                                                                                        "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                                        scale: 1,
-                                                                                                      ),
-                                                                                                      fit: BoxFit.cover,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-
-                                                                                            // ======================
-                                                                                            // kolom card 6 main view
-                                                                                            // ======================
-                                                                                            Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
-                                                                                                ),
-                                                                                                child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    image: DecorationImage(
-                                                                                                      image: NetworkImage(
-                                                                                                        "${Variables.ipv4_local}/storage/${url_image[5].toString()}",
-                                                                                                        scale: 1,
-                                                                                                      ),
-                                                                                                      fit: BoxFit.cover,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-
-                                                                                        Row(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          children: [
-                                                                                            // .............................
-                                                                                            // layout drag target main view
-                                                                                            // .............................
-
-                                                                                            // ============
-                                                                                            // kolom card 4
-                                                                                            Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
-                                                                                                ),
-                                                                                                child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    image: DecorationImage(
-                                                                                                      image: NetworkImage(
-                                                                                                        "${Variables.ipv4_local}/storage/${url_image[6].toString()}",
-                                                                                                        scale: 1,
-                                                                                                      ),
-                                                                                                      fit: BoxFit.cover,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-
-                                                                                            // ======================
-                                                                                            // kolom card 6 main view
-                                                                                            // ======================
-                                                                                            Container(
-                                                                                              width: width * 0.025,
-                                                                                              height: width * 0.025,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                color: Color(int.parse(warna1)),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
-                                                                                                ),
-                                                                                                child: Container(
-                                                                                                  width: width * 0.034,
-                                                                                                  height: width * 0.042,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    image: DecorationImage(
-                                                                                                      image: NetworkImage(
-                                                                                                        "${Variables.ipv4_local}/storage/${url_image[7].toString()}",
                                                                                                         scale: 1,
                                                                                                       ),
                                                                                                       fit: BoxFit.cover,
@@ -8444,7 +9064,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 ),
                                                                               ),
                                                                             )
-                                                                          : choose_layout == "layout6" && url_image.isNotEmpty
+                                                                          : choose_layout == "layout 6" && url_image.isNotEmpty
                                                                               ? Padding(
                                                                                   padding: const EdgeInsets.all(15.0),
                                                                                   child: InkWell(
@@ -8452,27 +9072,33 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       // ---
                                                                                     },
                                                                                     child: Container(
-                                                                                      width: width * 0.092,
-                                                                                      height: height * 0.24,
-                                                                                      decoration: BoxDecoration(
-                                                                                        image: DecorationImage(
-                                                                                          // last visit code here
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                      ),
+                                                                                      width: width * 0.095,
+                                                                                      height: height * 0.23,
+                                                                                      decoration: choose_background != ""
+                                                                                          ? BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                // last visit code here
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                              borderRadius: BorderRadius.circular(5),
+                                                                                              color: Colors.white,
+                                                                                            )
+                                                                                          : BoxDecoration(
+                                                                                              borderRadius: BorderRadius.circular(5),
+                                                                                              color: Colors.white,
+                                                                                            ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(
                                                                                           width * 0.0025,
                                                                                         ),
-                                                                                        child: Column(
+                                                                                        child: Row(
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                           children: [
                                                                                             // .................................
                                                                                             // layout row drag target main view
                                                                                             // .................................
-                                                                                            Row(
+                                                                                            Column(
                                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                               children: [
                                                                                                 // .............................
@@ -8482,19 +9108,21 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                 // ============
                                                                                                 // kolom card 0
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8506,25 +9134,28 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
 
                                                                                                 // ============
                                                                                                 // kolom card 1
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8538,32 +9169,23 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
-                                                                                              ],
-                                                                                            ),
 
-                                                                                            Row(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              children: [
-                                                                                                // .............................
-                                                                                                // layout drag target main view
-                                                                                                // .............................
-
-                                                                                                // ============
-                                                                                                // kolom card 2
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8577,23 +9199,34 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
+                                                                                              ],
+                                                                                            ),
+
+                                                                                            Column(
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                              children: [
+                                                                                                // .............................
+                                                                                                // layout drag target main view
+                                                                                                // .............................
 
                                                                                                 // ============
-                                                                                                // kolom card 3
+                                                                                                // kolom card 2
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8605,33 +9238,28 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            Row(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              children: [
-                                                                                                // .............................
-                                                                                                // layout drag target main view
-                                                                                                // .............................
 
                                                                                                 // ============
-                                                                                                // kolom card 4
+                                                                                                // kolom card 3
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8643,26 +9271,26 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
 
-                                                                                                // ======================
-                                                                                                // kolom card 6 main view
-                                                                                                // ======================
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8674,12 +9302,13 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ],
                                                                                             ),
 
-                                                                                            Row(
+                                                                                            Column(
                                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                               children: [
                                                                                                 // .............................
@@ -8689,19 +9318,21 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                 // ============
                                                                                                 // kolom card 4
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8713,6 +9344,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
 
@@ -8720,19 +9352,21 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                 // kolom card 6 main view
                                                                                                 // ======================
                                                                                                 Container(
-                                                                                                  width: width * 0.025,
-                                                                                                  height: width * 0.025,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                    color: Color(int.parse(warna1)),
-                                                                                                  ),
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
                                                                                                   child: Padding(
                                                                                                     padding: EdgeInsets.all(
                                                                                                       width * 0.0,
                                                                                                     ),
                                                                                                     child: Container(
-                                                                                                      width: width * 0.034,
-                                                                                                      height: width * 0.042,
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
                                                                                                       decoration: BoxDecoration(
                                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                                         image: DecorationImage(
@@ -8744,6 +9378,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
+                                                                                                    // ),
+                                                                                                  ),
+                                                                                                ),
+
+                                                                                                Container(
+                                                                                                  width: width * 0.017,
+                                                                                                  height: width * 0.017,
+                                                                                                  decoration: choose_background != ""
+                                                                                                      ? BoxDecoration(
+                                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                                          color: Colors.white,
+                                                                                                        )
+                                                                                                      : null,
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsets.all(
+                                                                                                      width * 0.0,
+                                                                                                    ),
+                                                                                                    child: Container(
+                                                                                                      width: width * 0.017,
+                                                                                                      height: width * 0.017,
+                                                                                                      decoration: BoxDecoration(
+                                                                                                        borderRadius: BorderRadius.circular(10),
+                                                                                                        image: DecorationImage(
+                                                                                                          image: NetworkImage(
+                                                                                                            "${Variables.ipv4_local}/storage/${url_image[8].toString()}",
+                                                                                                            scale: 1,
+                                                                                                          ),
+                                                                                                          fit: BoxFit.cover,
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    // ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ],
@@ -8761,7 +9427,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                       // tipe collage b atau strip b
                                                       // ...
                                                       choose_layout ==
-                                                                  "layout1" &&
+                                                                  "layout 1" &&
                                                               url_image_b1
                                                                   .isNotEmpty
                                                           ? Padding(
@@ -9053,7 +9719,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               ),
                                                             )
                                                           : choose_layout ==
-                                                                      "layout2" &&
+                                                                      "layout 2" &&
                                                                   url_image_b1
                                                                       .isNotEmpty
                                                               ? Padding(
@@ -9322,7 +9988,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                   ),
                                                                 )
                                                               : choose_layout ==
-                                                                          "layout3" &&
+                                                                          "layout 3" &&
                                                                       url_image_b1
                                                                           .isNotEmpty
                                                                   ? Padding(
@@ -9511,7 +10177,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       ),
                                                                     )
                                                                   : choose_layout ==
-                                                                              "layout4" &&
+                                                                              "layout 4" &&
                                                                           url_image_b1
                                                                               .isNotEmpty
                                                                       ? Padding(
@@ -10319,7 +10985,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 )
                                                                               : Container(),
                                                       choose_layout2 ==
-                                                                  "layout1" &&
+                                                                  "layout 1" &&
                                                               url_image_b2
                                                                   .isNotEmpty
                                                           ? Padding(
@@ -10611,7 +11277,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               ),
                                                             )
                                                           : choose_layout2 ==
-                                                                      "layout2" &&
+                                                                      "layout 2" &&
                                                                   url_image_b2
                                                                       .isNotEmpty
                                                               ? Padding(
@@ -10880,7 +11546,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                   ),
                                                                 )
                                                               : choose_layout2 ==
-                                                                          "layout3" &&
+                                                                          "layout 3" &&
                                                                       url_image_b2
                                                                           .isNotEmpty
                                                                   ? Padding(
@@ -11071,7 +11737,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       ),
                                                                     )
                                                                   : choose_layout2 ==
-                                                                              "layout4" &&
+                                                                              "layout 4" &&
                                                                           url_image_b2
                                                                               .isNotEmpty
                                                                       ? Padding(
@@ -12006,325 +12672,358 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                 // ..................
                                                 // layout 1 main view
                                                 // ..................
-                                                choose_layout == "layout1" &&
+                                                choose_layout == "layout 1" &&
                                                         url_image.isNotEmpty
-                                                    ? Center(
-                                                        child: AnimatedOpacity(
-                                                          opacity:
-                                                              isVisibleAnimatedOpacity
-                                                                  ? 1.0
-                                                                  : 0.0,
-                                                          duration:
-                                                              const Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          child: Container(
-                                                            width: 384, // pixel
-                                                            height:
-                                                                576, // pixel
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              image:
-                                                                  DecorationImage(
-                                                                // last visit code here
-                                                                image: NetworkImage(
-                                                                    "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(
-                                                                width * 0.0,
-                                                              ),
-                                                              child: Column(
+                                                    ? Container(
+                                                        width: width * 0.35,
+                                                        height: width * 0.45,
+                                                        decoration:
+                                                            choose_background !=
+                                                                    ""
+                                                                ? BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      // last visit code here
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(5),
+                                                                    color: Colors
+                                                                        .white,
+                                                                  )
+                                                                : BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(5),
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                            width * 0.0025,
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            children: [
+                                                              // .................................
+                                                              // layout row drag target main view
+                                                              // .................................
+                                                              Row(
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .spaceEvenly,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
                                                                 children: [
-                                                                  // .................................
-                                                                  // layout row drag target main view
-                                                                  // .................................
-                                                                  Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceEvenly,
-                                                                    children: [
-                                                                      // .............................
-                                                                      // layout drag target main view
-                                                                      // .............................
+                                                                  // .............................
+                                                                  // layout drag target main view
+                                                                  // .............................
 
-                                                                      // ============
-                                                                      // kolom card 0
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-
-                                                                      // ============
-                                                                      // kolom card 1
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-
-                                                                  Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceEvenly,
-                                                                    children: [
-                                                                      // .............................
-                                                                      // layout drag target main view
-                                                                      // .............................
-
-                                                                      // ============
-                                                                      // kolom card 2
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-
-                                                                      // ============
-                                                                      // kolom card 3
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceEvenly,
-                                                                    children: [
-                                                                      // .............................
-                                                                      // layout drag target main view
-                                                                      // .............................
-
-                                                                      // ============
-                                                                      // kolom card 4
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-
-                                                                      // ======================
-                                                                      // kolom card 6 main view
-                                                                      // ======================
-                                                                      Container(
-                                                                        width: width *
-                                                                            0.07,
-                                                                        height: width *
-                                                                            0.07,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.07,
-                                                                            height:
-                                                                                height * 0.07,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          // ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-
+                                                                  // ============
+                                                                  // kolom card 0
                                                                   Container(
-                                                                    child: Text(
-                                                                        "Photobooth text",
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              24,
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        )),
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // ============
+                                                                  // kolom card 1
+                                                                  Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
+
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                children: [
+                                                                  // .............................
+                                                                  // layout drag target main view
+                                                                  // .............................
+
+                                                                  // ============
+                                                                  // kolom card 2
+                                                                  Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // ============
+                                                                  // kolom card 3
+                                                                  Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                children: [
+                                                                  // .............................
+                                                                  // layout drag target main view
+                                                                  // .............................
+
+                                                                  // ============
+                                                                  // kolom card 4
+                                                                  Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // ======================
+                                                                  // kolom card 6 main view
+                                                                  // ======================
+                                                                  Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.10,
+                                                                    height:
+                                                                        width *
+                                                                            0.10,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5),
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0001,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.12,
+                                                                        height: height *
+                                                                            0.12,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            image:
+                                                                                NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      // ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       )
@@ -12334,375 +13033,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // layout 2 main view
                                                     // ..................
                                                     choose_layout ==
-                                                                "layout2" &&
+                                                                "layout 2" &&
                                                             url_image.isNotEmpty
-                                                        ? Center(
-                                                            child:
-                                                                AnimatedOpacity(
-                                                            opacity:
-                                                                isVisibleAnimatedOpacity
-                                                                    ? 1.0
-                                                                    : 0.0,
-                                                            duration:
-                                                                const Duration(
-                                                                    milliseconds:
-                                                                        500),
-                                                            child: Container(
-                                                              width:
-                                                                  384, // pixel
-                                                              height:
-                                                                  576, // pixel
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                image:
-                                                                    DecorationImage(
-                                                                  // last visit code here
-                                                                  image: NetworkImage(
-                                                                      "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                  width * 0.0,
-                                                                ),
-                                                                child: Column(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceEvenly,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    // .................................
-                                                                    // layout row drag target main view
-                                                                    // .................................
-                                                                    Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceEvenly,
-                                                                      children: [
-                                                                        // .............................
-                                                                        // layout drag target main view
-                                                                        // .............................
-
-                                                                        // ============
-                                                                        // kolom card 0
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-
-                                                                        // ============
-                                                                        // kolom card 1
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-
-                                                                    Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceEvenly,
-                                                                      children: [
-                                                                        // .............................
-                                                                        // layout drag target main view
-                                                                        // .............................
-
-                                                                        // ============
-                                                                        // kolom card 2
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-
-                                                                        // ============
-                                                                        // kolom card 3
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceEvenly,
-                                                                      children: [
-                                                                        // .............................
-                                                                        // layout drag target main view
-                                                                        // .............................
-
-                                                                        // ============
-                                                                        // kolom card 4
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-
-                                                                        // ======================
-                                                                        // kolom card 6 main view
-                                                                        // ======================
-                                                                        Container(
-                                                                          width:
-                                                                              width * 0.07,
-                                                                          height:
-                                                                              width * 0.07,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.07,
-                                                                              height: height * 0.07,
-                                                                              decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            // ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-
-                                                                    Container(
-                                                                      child: Text(
-                                                                          "Photobooth text",
-                                                                          style:
-                                                                              TextStyle(
-                                                                            fontSize:
-                                                                                24,
-                                                                            color:
-                                                                                Colors.white,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          )),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ))
-                                                        :
-
-                                                        // ..................
-                                                        // layout 3 main view
-                                                        // ..................
-                                                        choose_layout ==
-                                                                    "layout3" &&
-                                                                (url_image
-                                                                        .isNotEmpty ||
-                                                                    url_image_b1
-                                                                        .isNotEmpty ||
-                                                                    url_image_b2
-                                                                        .isNotEmpty)
-                                                            ? Center(
-                                                                child:
-                                                                    AnimatedOpacity(
-                                                                  opacity:
-                                                                      isVisibleAnimatedOpacity
-                                                                          ? 1.0
-                                                                          : 0.0,
-                                                                  duration: const Duration(
-                                                                      milliseconds:
-                                                                          500),
-                                                                  child:
-                                                                      AnimatedOpacity(
-                                                                    opacity:
-                                                                        isVisibleAnimatedOpacity
-                                                                            ? 1.0
-                                                                            : 0.0,
-                                                                    duration: const Duration(
-                                                                        milliseconds:
-                                                                            500),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          384, // pixel
-                                                                      height:
-                                                                          576, // pixel
-                                                                      decoration:
-                                                                          BoxDecoration(
+                                                        ? Container(
+                                                            width: width * 0.35,
+                                                            height:
+                                                                width * 0.45,
+                                                            decoration:
+                                                                choose_background !=
+                                                                        ""
+                                                                    ? BoxDecoration(
                                                                         image:
                                                                             DecorationImage(
                                                                           // last visit code here
@@ -12713,383 +13053,547 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         ),
                                                                         borderRadius:
                                                                             BorderRadius.circular(5),
+                                                                        color: Colors
+                                                                            .white,
+                                                                      )
+                                                                    : BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        color: Colors
+                                                                            .white,
                                                                       ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                // .................................
+                                                                // layout row drag target main view
+                                                                // .................................
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    // .............................
+                                                                    // layout drag target main view
+                                                                    // .............................
+
+                                                                    // ============
+                                                                    // dragtarget 1
+                                                                    Container(
+                                                                      width: width *
+                                                                          0.15,
+                                                                      height:
                                                                           width *
-                                                                              0.0,
+                                                                              0.15,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          // last visit code here
+                                                                          image:
+                                                                              NetworkImage(
+                                                                            "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
+                                                                            // "${Variables.ipv4_local}/storage/background-image/edit-photo/1720117923_bg1.jpg",
+                                                                            scale:
+                                                                                1,
+                                                                          ),
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
-                                                                        child:
-                                                                            Column(
+                                                                      ),
+                                                                    ),
+
+                                                                    // ============
+                                                                    // dragtarget 2
+                                                                    Container(
+                                                                      width: width *
+                                                                          0.15,
+                                                                      height:
+                                                                          width *
+                                                                              0.15,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          image: NetworkImage(
+                                                                              "${Variables.ipv4_local}/storage/${url_image[1].toString()}"
+
+                                                                              // "${Variables.ipv4_local}/storage/background-image/edit-photo/1720117923_bg1.jpg",
+                                                                              ),
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+
+                                                                // row 2
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    // ...............................
+                                                                    // layout drag target main view
+                                                                    // .............................
+                                                                    Container(
+                                                                      width: width *
+                                                                          0.15,
+                                                                      height:
+                                                                          width *
+                                                                              0.15,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          image:
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                          scale:
+                                                                              1,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+
+                                                                    Container(
+                                                                      width: width *
+                                                                          0.15,
+                                                                      height:
+                                                                          width *
+                                                                              0.15,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          image:
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        :
+
+                                                        // ..................
+                                                        // layout 3 main view
+                                                        // ..................
+                                                        choose_layout ==
+                                                                    "layout 3" &&
+                                                                url_image
+                                                                    .isNotEmpty
+                                                            ? Center(
+                                                                child:
+                                                                    Container(
+                                                                  width:
+                                                                        width *
+                                                                            0.35,
+                                                                    height:
+                                                                        width *
+                                                                            0.45,
+                                                                  decoration:
+                                                            choose_background !=
+                                                                    ""
+                                                                ? BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      // last visit code here
+                                                                      image: NetworkImage(
+                                                                          "${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(5),
+                                                                    color: Colors
+                                                                        .white,
+                                                                  )
+                                                                : BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(5),
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .all(
+                                                                      width *
+                                                                          0.0025,
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
+                                                                      children: [
+                                                                        Column(
                                                                           mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
+                                                                              MainAxisAlignment.spaceAround,
                                                                           children: [
-                                                                            // .................................
-                                                                            // layout row drag target main view
-                                                                            // .................................
-                                                                            Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                              children: [
-                                                                                // .............................
-                                                                                // layout drag target main view
-                                                                                // .............................
-
-                                                                                // ============
-                                                                                // dragtarget 1
-                                                                                Container(
-                                                                                  width: width * 0.08,
-                                                                                  height: width * 0.08,
-                                                                                  // decoration: BoxDecoration(
-                                                                                  //   image: DecorationImage(
-                                                                                  //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                  //     fit: BoxFit.cover,
-                                                                                  //   ),
-                                                                                  //   borderRadius: BorderRadius.circular(5),
-                                                                                  // ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.08,
-                                                                                      height: height * 0.08,
-                                                                                      decoration: BoxDecoration(
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(25),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
+                                                                            // ---
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(2.0),
+                                                                              child: Container(
+                                                                                width: width * 0.12,
+                                                                                height: width * 0.12,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Colors.transparent,
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                                    fit: BoxFit.cover,
                                                                                   ),
                                                                                 ),
-
-                                                                                // ============
-                                                                                // dragtarget 2
-                                                                                Container(
-                                                                                  width: width * 0.08,
-                                                                                  height: width * 0.08,
-                                                                                  // decoration: BoxDecoration(
-                                                                                  //   image: DecorationImage(
-                                                                                  //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                  //     fit: BoxFit.cover,
-                                                                                  //   ),
-                                                                                  //   borderRadius: BorderRadius.circular(5),
-                                                                                  // ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.08,
-                                                                                      height: height * 0.08,
-                                                                                      decoration: BoxDecoration(
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(25),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
+                                                                              ),
                                                                             ),
-
-                                                                            // row 2
-                                                                            Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                              children: [
-                                                                                // ...............................
-                                                                                // layout drag target main view
-                                                                                // .............................
-                                                                                Container(
-                                                                                  width: width * 0.08,
-                                                                                  height: width * 0.08,
-                                                                                  // decoration: BoxDecoration(
-                                                                                  //   image: DecorationImage(
-                                                                                  //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                  //     fit: BoxFit.cover,
-                                                                                  //   ),
-                                                                                  //   borderRadius: BorderRadius.circular(5),
-                                                                                  // ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.08,
-                                                                                      height: height * 0.08,
-                                                                                      decoration: BoxDecoration(
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(25),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(2.0),
+                                                                              child: Container(
+                                                                                width: width * 0.12,
+                                                                                height: width * 0.12,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Colors.transparent,
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                                    fit: BoxFit.cover,
                                                                                   ),
-                                                                                ),
-                                                                                Container(
-                                                                                  width: width * 0.08,
-                                                                                  height: width * 0.08,
-                                                                                  // decoration: BoxDecoration(
-                                                                                  //   image: DecorationImage(
-                                                                                  //     image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                  //     fit: BoxFit.cover,
-                                                                                  //   ),
-                                                                                  //   borderRadius: BorderRadius.circular(5),
-                                                                                  // ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.08,
-                                                                                      height: height * 0.08,
-                                                                                      decoration: BoxDecoration(
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                        borderRadius: BorderRadius.circular(25),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-
-                                                                            Container(
-                                                                              child: Text(
-                                                                                "Photobooth text",
-                                                                                style: TextStyle(
-                                                                                  fontSize: 24,
-                                                                                  color: Colors.white,
-                                                                                  fontWeight: FontWeight.bold,
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                           ],
                                                                         ),
-                                                                      ),
+                                                                        Column(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            // ---
+
+                                                                            // ...
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.10,
+                                                                                height: width * 0.10,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Colors.transparent,
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // ...
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.10,
+                                                                                height: width * 0.10,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Colors.transparent,
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // ...
+                                                                            Padding(
+                                                                              padding: const EdgeInsets.all(5.0),
+                                                                              child: Container(
+                                                                                width: width * 0.10,
+                                                                                height: width * 0.10,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: Colors.transparent,
+                                                                                  image: DecorationImage(
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
                                                                     ),
                                                                   ),
                                                                 ),
                                                               )
-                                                            // Container(child: Text("layout 3"))
                                                             :
 
                                                             // ..................
                                                             // layout 4 main view
                                                             // ..................
                                                             choose_layout ==
-                                                                        "layout4" &&
+                                                                        "layout 4" &&
                                                                     url_image
                                                                         .isNotEmpty
-                                                                ? Center(
-                                                                    child:
-                                                                        AnimatedOpacity(
-                                                                      opacity: isVisibleAnimatedOpacity
-                                                                          ? 1.0
-                                                                          : 0.0,
-                                                                      duration: const Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            384, // pixel
-                                                                        height:
-                                                                            576, // pixel
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          image:
-                                                                              DecorationImage(
-                                                                            // last visit code here
+                                                                ? Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.35,
+                                                                    height:
+                                                                        width *
+                                                                            0.45,
+                                                                    decoration: choose_background !=
+                                                                            ""
+                                                                        ? BoxDecoration(
                                                                             image:
-                                                                                NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                            fit:
-                                                                                BoxFit.cover,
+                                                                                DecorationImage(
+                                                                              // last visit code here
+                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                              fit: BoxFit.cover,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5),
+                                                                            color:
+                                                                                Colors.white,
+                                                                          )
+                                                                        : BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5),
+                                                                            color:
+                                                                                Colors.white,
                                                                           ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5),
-                                                                          boxShadow: [],
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(
-                                                                            width *
-                                                                                0.0,
-                                                                          ),
-                                                                          child:
-                                                                              Column(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .all(
+                                                                        width *
+                                                                            0.0025,
+                                                                      ),
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceEvenly,
+                                                                        children: [
+                                                                          // .................................
+                                                                          // layout row drag target main view
+                                                                          // .................................
+                                                                          Row(
                                                                             mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceAround,
+                                                                                MainAxisAlignment.spaceEvenly,
                                                                             children: [
-                                                                              Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                children: [
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                    children: [
-                                                                                      // ---
-                                                                                      Padding(
-                                                                                        padding: EdgeInsets.all(width * 0.01),
-                                                                                        child: Container(
-                                                                                          width: width * 0.08,
-                                                                                          height: width * 0.09,
-                                                                                          decoration: BoxDecoration(
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.08,
-                                                                                            height: width * 0.09,
-                                                                                            decoration: BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsets.all(width * 0.01),
-                                                                                        child: Container(
-                                                                                          width: width * 0.08,
-                                                                                          height: width * 0.09,
-                                                                                          decoration: BoxDecoration(
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.08,
-                                                                                            height: width * 0.09,
-                                                                                            decoration: BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                    children: [
-                                                                                      // ---
+                                                                              // .............................
+                                                                              // layout drag target main view
+                                                                              // .............................
 
-                                                                                      // ...
-                                                                                      Padding(
-                                                                                        padding: EdgeInsets.all(width * 0.01),
-                                                                                        child: Container(
-                                                                                          width: width * 0.06,
-                                                                                          height: width * 0.06,
-                                                                                          decoration: BoxDecoration(
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.06,
-                                                                                            height: width * 0.06,
-                                                                                            decoration: BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-
-                                                                                      // ...
-                                                                                      Padding(
-                                                                                        padding: EdgeInsets.all(width * 0.01),
-                                                                                        child: Container(
-                                                                                          width: width * 0.06,
-                                                                                          height: width * 0.06,
-                                                                                          decoration: BoxDecoration(
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.06,
-                                                                                            height: width * 0.06,
-                                                                                            decoration: BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-
-                                                                                      // ...
-                                                                                      Padding(
-                                                                                        padding: EdgeInsets.all(width * 0.01),
-                                                                                        child: Container(
-                                                                                          width: width * 0.06,
-                                                                                          height: width * 0.06,
-                                                                                          decoration: BoxDecoration(
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.06,
-                                                                                            height: width * 0.06,
-                                                                                            decoration: BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ],
-                                                                              ),
+                                                                              // ============
+                                                                              // kolom card 0
                                                                               Container(
-                                                                                child: Text(
-                                                                                  "Photobooth text",
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 24,
-                                                                                    color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.095,
+                                                                                    height: width * 0.095,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+
+                                                                              // ============
+                                                                              // kolom card 1
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                             ],
                                                                           ),
-                                                                        ),
+
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
+                                                                              // .............................
+                                                                              // layout drag target main view
+                                                                              // .............................
+
+                                                                              // ============
+                                                                              // kolom card 2
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+
+                                                                              // ============
+                                                                              // kolom card 3
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
+                                                                              // .............................
+                                                                              // layout drag target main view
+                                                                              // .............................
+
+                                                                              // ============
+                                                                              // kolom card 4
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+
+                                                                              // ======================
+                                                                              // kolom card 6 main view
+                                                                              // ======================
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
+                                                                              // .............................
+                                                                              // layout drag target main view
+                                                                              // .............................
+
+                                                                              // ============
+                                                                              // kolom card 4
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+
+                                                                              // ======================
+                                                                              // kolom card 6 main view
+                                                                              // ======================
+                                                                              Container(
+                                                                                width: width * 0.095,
+                                                                                height: width * 0.095,
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(5.0),
+                                                                                  child: Container(
+                                                                                    width: width * 0.15,
+                                                                                    height: width * 0.25,
+                                                                                    decoration: BoxDecoration(
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[7].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ],
                                                                       ),
                                                                     ),
                                                                   )
@@ -13099,534 +13603,419 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                 // layout 5 main view
                                                                 // ..................
                                                                 choose_layout ==
-                                                                            "layout5" &&
+                                                                            "layout 5" &&
                                                                         url_image
                                                                             .isNotEmpty
-                                                                    ? Center(
-                                                                        child:
-                                                                            AnimatedOpacity(
-                                                                          opacity: isVisibleAnimatedOpacity
-                                                                              ? 1.0
-                                                                              : 0.0,
-                                                                          duration:
-                                                                              const Duration(milliseconds: 500),
-                                                                          child:
-                                                                              AnimatedOpacity(
-                                                                            opacity: isVisibleAnimatedOpacity
-                                                                                ? 1.0
-                                                                                : 0.0,
-                                                                            duration:
-                                                                                const Duration(milliseconds: 500),
-                                                                            child:
-                                                                                Container(
-                                                                              width: 384, // pixel
-                                                                              height: 576, // pixel
-                                                                              decoration: BoxDecoration(
+                                                                    ? Container(
+                                                                        width: width *
+                                                                            0.35,
+                                                                        height: width *
+                                                                            0.45,
+                                                                        decoration: choose_background !=
+                                                                                ""
+                                                                            ? BoxDecoration(
                                                                                 image: DecorationImage(
                                                                                   // last visit code here
                                                                                   image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                                   fit: BoxFit.cover,
                                                                                 ),
                                                                                 borderRadius: BorderRadius.circular(5),
+                                                                                color: Colors.white,
+                                                                              )
+                                                                            : BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(5),
+                                                                                color: Colors.white,
                                                                               ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0025,
-                                                                                ),
-                                                                                child: Column(
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                  children: [
-                                                                                    // .................................
-                                                                                    // layout row drag target main view
-                                                                                    // .................................
-                                                                                    Row(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        // .............................
-                                                                                        // layout drag target main view
-                                                                                        // .............................
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceEvenly,
+                                                                          children: [
+                                                                            // .................................
+                                                                            // layout row drag target main view
+                                                                            // .................................
+                                                                            Column(
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                              children: [
+                                                                                // .............................
+                                                                                // layout drag target main view
+                                                                                // .............................
 
-                                                                                        // ============
-                                                                                        // kolom card 0
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ============
-                                                                                        // kolom card 1
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-
-                                                                                    Row(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        // .............................
-                                                                                        // layout drag target main view
-                                                                                        // .............................
-
-                                                                                        // ============
-                                                                                        // kolom card 2
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ============
-                                                                                        // kolom card 3
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                    Row(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        // .............................
-                                                                                        // layout drag target main view
-                                                                                        // .............................
-
-                                                                                        // ============
-                                                                                        // kolom card 4
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ======================
-                                                                                        // kolom card 6 main view
-                                                                                        // ======================
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-
-                                                                                    Row(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        // .............................
-                                                                                        // layout drag target main view
-                                                                                        // .............................
-
-                                                                                        // ============
-                                                                                        // kolom card 4
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ======================
-                                                                                        // kolom card 6 main view
-                                                                                        // ======================
-                                                                                        Container(
-                                                                                          width: width * 0.05,
-                                                                                          height: width * 0.05,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0025,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.05,
-                                                                                              height: width * 0.05,
-                                                                                              decoration: BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[7].toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                    Container(
-                                                                                      child: Text(
-                                                                                        "Photobooth text",
-                                                                                        style: TextStyle(
-                                                                                          fontSize: 24,
-                                                                                          color: Colors.white,
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                        ),
+                                                                                // ============
+                                                                                // dragtarget 1
+                                                                                Container(
+                                                                                  width: width * 0.15,
+                                                                                  height: width * 0.15,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Colors.transparent,
+                                                                                    image: DecorationImage(
+                                                                                      // last visit code here
+                                                                                      image: NetworkImage(
+                                                                                        "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
+                                                                                        // "${Variables.ipv4_local}/storage/background-image/edit-photo/1720117923_bg1.jpg",
+                                                                                        scale: 1,
                                                                                       ),
+                                                                                      fit: BoxFit.cover,
                                                                                     ),
-                                                                                  ],
+                                                                                  ),
                                                                                 ),
-                                                                              ),
+
+                                                                                // ============
+                                                                                // dragtarget 2
+                                                                                Container(
+                                                                                  width: width * 0.15,
+                                                                                  height: width * 0.15,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Colors.transparent,
+                                                                                    image: DecorationImage(
+                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"
+
+                                                                                          // "${Variables.ipv4_local}/storage/background-image/edit-photo/1720117923_bg1.jpg",
+                                                                                          ),
+                                                                                      fit: BoxFit.cover,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+
+                                                                                SizedBox(height: 15),
+                                                                              ],
                                                                             ),
-                                                                          ),
+
+                                                                            // row 2
+                                                                            Column(
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                              children: [
+                                                                                SizedBox(height: 15),
+                                                                                // ...............................
+                                                                                // layout drag target main view
+                                                                                // .............................
+                                                                                Container(
+                                                                                  width: width * 0.15,
+                                                                                  height: width * 0.15,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Colors.transparent,
+                                                                                    image: DecorationImage(
+                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                      scale: 1,
+                                                                                      fit: BoxFit.cover,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+
+                                                                                Container(
+                                                                                  width: width * 0.15,
+                                                                                  height: width * 0.15,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Colors.transparent,
+                                                                                    image: DecorationImage(
+                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                      fit: BoxFit.cover,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       )
-                                                                    :
-
-                                                                    // ..................
-                                                                    // layout 6 main view
-                                                                    // ..................
-                                                                    choose_layout ==
-                                                                                "layout6" &&
+                                                                    : choose_layout ==
+                                                                                "layout 6" &&
                                                                             url_image.isNotEmpty
-                                                                        ? Center(
+                                                                        ? Container(
+                                                                            width:
+                                                                                width * 0.35,
+                                                                            height:
+                                                                                width * 0.45,
+                                                                            decoration: choose_background != ""
+                                                                                ? BoxDecoration(
+                                                                                    image: DecorationImage(
+                                                                                      // last visit code here
+                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                      fit: BoxFit.cover,
+                                                                                    ),
+                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                    color: Colors.white,
+                                                                                  )
+                                                                                : BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                    color: Colors.white,
+                                                                                  ),
                                                                             child:
-                                                                                AnimatedOpacity(
-                                                                              opacity: isVisibleAnimatedOpacity ? 1.0 : 0.0,
-                                                                              duration: const Duration(milliseconds: 500),
-                                                                              child: Container(
-                                                                                width: 384, // pixel
-                                                                                height: 576, // pixel
-                                                                                decoration: BoxDecoration(
-                                                                                  image: DecorationImage(
-                                                                                    // last visit code here
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                    fit: BoxFit.cover,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                ),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.all(
-                                                                                    width * 0.0025,
-                                                                                  ),
-                                                                                  child: Column(
+                                                                                Padding(
+                                                                              padding: EdgeInsets.all(
+                                                                                width * 0.0025,
+                                                                              ),
+                                                                              child: Row(
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                children: [
+                                                                                  // .................................
+                                                                                  // layout row drag target main view
+                                                                                  // .................................
+                                                                                  Column(
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                     children: [
-                                                                                      // .................................
-                                                                                      // layout row drag target main view
-                                                                                      // .................................
-                                                                                      Row(
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                        children: [
-                                                                                          // .............................
-                                                                                          // layout drag target main view
-                                                                                          // .............................
+                                                                                      // .............................
+                                                                                      // layout drag target main view
+                                                                                      // .............................
 
-                                                                                          // ============
-                                                                                          // kolom card 0
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-
-                                                                                          // ============
-                                                                                          // kolom card 1
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-
-                                                                                      Row(
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                        children: [
-                                                                                          // .............................
-                                                                                          // layout drag target main view
-                                                                                          // .............................
-
-                                                                                          // ============
-                                                                                          // kolom card 2
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-
-                                                                                          // ============
-                                                                                          // kolom card 3
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                      Row(
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                        children: [
-                                                                                          // .............................
-                                                                                          // layout drag target main view
-                                                                                          // .............................
-
-                                                                                          // ============
-                                                                                          // kolom card 4
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-
-                                                                                          // ======================
-                                                                                          // kolom card 6 main view
-                                                                                          // ======================
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-
-                                                                                      Row(
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                        children: [
-                                                                                          // .............................
-                                                                                          // layout drag target main view
-                                                                                          // .............................
-
-                                                                                          // ============
-                                                                                          // kolom card 4
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-
-                                                                                          // ======================
-                                                                                          // kolom card 6 main view
-                                                                                          // ======================
-                                                                                          Container(
-                                                                                            width: width * 0.05,
-                                                                                            height: width * 0.05,
-                                                                                            child: Padding(
-                                                                                              padding: EdgeInsets.all(
-                                                                                                width * 0.0025,
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: width * 0.05,
-                                                                                                height: width * 0.05,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[7].toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
+                                                                                      // ============
+                                                                                      // kolom card 0
                                                                                       Container(
-                                                                                        child: Text(
-                                                                                          "Photobooth text",
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 24,
-                                                                                            color: Colors.white,
-                                                                                            fontWeight: FontWeight.bold,
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
                                                                                           ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      // ============
+                                                                                      // kolom card 1
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
                                                                                         ),
                                                                                       ),
                                                                                     ],
                                                                                   ),
-                                                                                ),
+
+                                                                                  Column(
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                    children: [
+                                                                                      // .............................
+                                                                                      // layout drag target main view
+                                                                                      // .............................
+
+                                                                                      // ============
+                                                                                      // kolom card 2
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      // ============
+                                                                                      // kolom card 3
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+
+                                                                                  Column(
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                    children: [
+                                                                                      // .............................
+                                                                                      // layout drag target main view
+                                                                                      // .............................
+
+                                                                                      // ============
+                                                                                      // kolom card 4
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      // ======================
+                                                                                      // kolom card 6 main view
+                                                                                      // ======================
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[7].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      Container(
+                                                                                        width: width * 0.07,
+                                                                                        height: width * 0.07,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(5),
+                                                                                          color: Colors.white,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(
+                                                                                            width * 0.0001,
+                                                                                          ),
+                                                                                          child: Container(
+                                                                                            width: width * 0.07,
+                                                                                            height: height * 0.07,
+                                                                                            decoration: BoxDecoration(
+                                                                                              image: DecorationImage(
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[8].toString()}"),
+                                                                                                fit: BoxFit.cover,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          // ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ],
                                                                               ),
                                                                             ),
                                                                           )
@@ -13654,7 +14043,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                 SizedBox(
                                                   width: height * 0.015,
                                                 ),
-                                                choose_layout == "layout1" &&
+                                                choose_layout == "layout 1" &&
                                                         url_image_b1.isNotEmpty
                                                     ? Visibility(
                                                         visible:
@@ -13944,7 +14333,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         visible:
                                                             isVisibleMainViewB1,
                                                         child: choose_layout ==
-                                                                    "layout2" &&
+                                                                    "layout 2" &&
                                                                 url_image_b1
                                                                     .isNotEmpty
                                                             ? Center(
@@ -14177,7 +14566,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                             // layout 3 main view
                                                             // ..................
                                                             choose_layout ==
-                                                                        "layout3" &&
+                                                                        "layout 3" &&
                                                                     (url_image_b1
                                                                         .isNotEmpty)
                                                                 ? Visibility(
@@ -14339,7 +14728,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                 // layout 4 main view
                                                                 // ..................
                                                                 choose_layout ==
-                                                                            "layout4" &&
+                                                                            "layout 4" &&
                                                                         url_image_b1
                                                                             .isNotEmpty
                                                                     ? Visibility(
@@ -15097,7 +15486,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                   height: height * 0.015,
                                                 ),
 
-                                                choose_layout2 == "layout1" &&
+                                                choose_layout2 == "layout 1" &&
                                                         url_image_b2.isNotEmpty
                                                     ? Visibility(
                                                         visible:
@@ -15388,7 +15777,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     // layout 2 main view
                                                     // ..................
                                                     choose_layout2 ==
-                                                                "layout2" &&
+                                                                "layout 2" &&
                                                             url_image_b2
                                                                 .isNotEmpty
                                                         ? Visibility(
@@ -15643,7 +16032,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                         // layout 3 main view
                                                         // ..................
                                                         choose_layout2 ==
-                                                                    "layout3" &&
+                                                                    "layout 3" &&
                                                                 url_image_b2
                                                                     .isNotEmpty
                                                             ? Visibility(
@@ -15809,7 +16198,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                             // layout 4 main view
                                                             // ..................
                                                             choose_layout2 ==
-                                                                        "layout4" &&
+                                                                        "layout 4" &&
                                                                     url_image_b2
                                                                         .isNotEmpty
                                                                 ? Visibility(
