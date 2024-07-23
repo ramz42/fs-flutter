@@ -703,7 +703,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         // ...
 
         // ignore: unnecessary_null_comparison
-        if (choose_layout == "layout1" || choose_layout == "layout2") {
+        if (choose_layout == "layout1") {
           if (drag_item[0].isNotEmpty) {
             if (drag_item[0].toString().contains("00") &&
                 drag_item[0].toString().isNotEmpty) {
@@ -1304,8 +1304,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 3
-        if (choose_layout == "layout3") {
+        // layout 2
+        if (choose_layout == "layout2") {
           // ......
           // card 1
           // ......
@@ -1711,8 +1711,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 4
-        if (choose_layout == "layout4") {
+        // layout 3
+        if (choose_layout == "layout3") {
           // ......
           // card 1
           // ......
@@ -2219,8 +2219,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 5 dan 6
-        if (choose_layout == "layout5" || choose_layout == "layout6") {
+        // layout 4
+        if (choose_layout == "layout4") {
           // ......
           // card 1
           // ......
@@ -3033,7 +3033,7 @@ class _StickerWidgetState extends State<StickerWidget> {
         // ===========================================
         // ============== layout b 2 =================
         // ===========================================
-        if (choose_layout2 == "layout1" || choose_layout2 == "layout2") {
+        if (choose_layout2 == "layout1") {
           // ......
           // card 1
           // ......
@@ -3740,8 +3740,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 3
-        if (choose_layout2 == "layout3") {
+        // layout 2
+        if (choose_layout2 == "layout2") {
           // ......
           // card 1
           // ......
@@ -4147,8 +4147,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 4
-        if (choose_layout2 == "layout4") {
+        // layout 3
+        if (choose_layout2 == "layout3") {
           // ......
           // card 1
           // ......
@@ -4754,8 +4754,8 @@ class _StickerWidgetState extends State<StickerWidget> {
           }
         }
 
-        // layout 5 dan 6
-        if (choose_layout2 == "layout5" || choose_layout2 == "layout6") {
+        // layout 4
+        if (choose_layout2 == "layout4") {
           // ......
           // card 1
           // ......
@@ -5668,8 +5668,8 @@ class _StickerWidgetState extends State<StickerWidget> {
       } else {
         if (list.isNotEmpty) {
           if (drag_item.isNotEmpty) {
-            // layout 1 dan 2
-            if (choose_layout == "layout1" || choose_layout == "layout2") {
+            // layout 1
+            if (choose_layout == "layout1") {
               // ......
               // card 1
               // ......
@@ -6000,8 +6000,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 3
-            if (choose_layout == "layout3") {
+            // layout 2
+            if (choose_layout == "layout2") {
               // ......
               // card 1
               // ......
@@ -6232,8 +6232,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 4
-            if (choose_layout == "layout4") {
+            // layout 3
+            if (choose_layout == "layout3") {
               // ......
               // card 1
               // ......
@@ -6522,8 +6522,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 5 dan 6
-            if (choose_layout == "layout5" || choose_layout == "layout6") {
+            // layout 4
+            if (choose_layout == "layout4") {
               // ......
               // card 1
               // ......

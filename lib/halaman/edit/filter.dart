@@ -130,6 +130,8 @@ class _FilterWidgetState extends State<FilterWidget> {
     // init get all images from functions
     _getAllImages();
 
+    print(
+        "title contains a pada filter page : ${title.toString().contains("Collage A")}");
     // init get filter from functions
     getFilter();
     getWarnaBg();
@@ -151,9 +153,9 @@ class _FilterWidgetState extends State<FilterWidget> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       background.addAll(result);
-      print("background : ${background}");
+      // print("background : ${background}");
       for (var element in background) {
-        print("background_image : ${element["background_image"]}");
+        // print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
@@ -1196,21 +1198,20 @@ class _FilterWidgetState extends State<FilterWidget> {
     http.Response response =
         await http.Response.fromStream(await request.send());
 
-    _list.addAll(jsonDecode(response.body));
-
     if (response.statusCode == 201) {
       stores = jsonDecode(response.body);
+      _list.addAll(jsonDecode(response.body));
       print("response length : ${stores.length}");
+      print("response _list : ${_list}");
       setState(() {
         lengthDataImages = stores.length;
       });
 
-      if (title.toString().contains("collage a") ||
-          title.toString().contains("Collage A") ||
-          title.toString().contains(" a") ||
-          title.toString().contains(" A") ||
+      if (title.toString().contains("Collage A") ||
           title.toString().contains("Paket A")) {
-        for (var i = 0; i < lengthDataImages - 8; i++) {
+        print("list a");
+        for (var i = 0; i < 8; i++) {
+          print("list a for loop");
           // ...
           print("object _list collage A $i ${_list[i]}");
           list.add(_list[i]);
@@ -1219,7 +1220,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       if (title.toString().contains("Collage B") ||
           title.toString().contains("Paket B")) {
         // list.addAll(_list[i]);
-        for (var i = 0; i < lengthDataImages; i++) {
+        for (var i = 0; i < 16; i++) {
           // ...
           print("object _list collage B $i ${_list[i]}");
           list.add(_list[i]);
@@ -2644,9 +2645,8 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   @override
   void initState() {
     // TODO: implement initState
-    // timerPeriodFunc(); // timer periodic functions
+    // timerPeriodFunc(); // timer periodic functions\
 
-    print("title pada filter page : $title");
     setState(() {
       isNavigate = true;
     });
@@ -2667,7 +2667,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
 
       bgImg = await storage.getItem('background_images');
 
-      print("background_storage : $bgImg");
+      // print("background_storage : $bgImg");
     }
   }
 
@@ -2679,9 +2679,9 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       backgrounds.addAll(result);
-      print("background : ${backgrounds}");
+      // print("background : ${backgrounds}");
       for (var element in background) {
-        print("background_image : ${element["background_image"]}");
+        // print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
@@ -2707,9 +2707,9 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
           } // Finally, close the connection
         }).then((value) {
           // ...
-          print("bg main color : $bg_warna_main");
-          print("bg main color : $warna1");
-          print("bg main color : $warna2");
+          // print("bg main color : $bg_warna_main");
+          // print("bg main color : $warna1");
+          // print("bg main color : $warna2");
         });
         return value.close();
       },
