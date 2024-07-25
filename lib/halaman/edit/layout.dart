@@ -5472,9 +5472,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               onTap: () async {
                                                                                 // ---
                                                                                 setState(() {
-                                                                                  isChoose1 = true;
+                                                                                  isChoose1 = !isChoose1;
                                                                                 });
-                                                                                print("ischoose 1 : $isChoose1");
+                                                                                print("ischoose 1 pilih kanvas : $isChoose1");
                                                                               },
                                                                               child: Container(
                                                                                 width: width * 0.095,
@@ -5537,14 +5537,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         // ---
-                                                        setState(() {
-                                                          isChoose1 = true;
-                                                        });
-
                                                         print(
                                                             "ischoose 1 : $isChoose1");
                                                         print(
                                                             "choose1 : $choose1");
+
+                                                        isChoose1 = !isChoose1;
                                                       },
                                                       child: Container(
                                                         width: width * 0.095,
@@ -5581,13 +5579,29 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           acceptedData1.contains(
                                                                               "03") ||
                                                                           acceptedData1.contains(
+                                                                              "04") ||
+                                                                          acceptedData1.contains(
+                                                                              "05") ||
+                                                                          acceptedData1.contains(
+                                                                              "06") ||
+                                                                          acceptedData1.contains(
+                                                                              "07") ||
+                                                                          acceptedData1.contains(
                                                                               "10") ||
                                                                           acceptedData1.contains(
                                                                               "11") ||
                                                                           acceptedData1.contains(
                                                                               "12") ||
                                                                           acceptedData1
-                                                                              .contains("13")
+                                                                              .contains("13") ||
+                                                                          acceptedData1
+                                                                              .contains("14")||
+                                                                          acceptedData1
+                                                                              .contains("15")||
+                                                                          acceptedData1
+                                                                              .contains("16")||
+                                                                          acceptedData1
+                                                                              .contains("17")
                                                                       ? Container(
                                                                           width:
                                                                               width * 0.03,
@@ -6305,9 +6319,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                         child: InkWell(
                                                           onTap: () async {
                                                             // ---
-                                                            setState(() {
-                                                              isChoose1 = true;
-                                                            });
+                                                            isChoose1 =
+                                                                !isChoose1;
                                                             print(
                                                                 "ischoose 1 : $isChoose1");
                                                           },
@@ -6642,10 +6655,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                             child: InkWell(
                                                               onTap: () async {
                                                                 // ---
-                                                                setState(() {
-                                                                  isChoose1 =
-                                                                      true;
-                                                                });
+                                                                isChoose1 =
+                                                                    !isChoose1;
                                                                 print(
                                                                     "ischoose 1 : $isChoose1");
                                                                 print(
@@ -7021,11 +7032,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   onTap:
                                                                       () async {
                                                                     // ---
-                                                                    setState(
-                                                                        () {
-                                                                      isChoose1 =
-                                                                          true;
-                                                                    });
+                                                                    isChoose1 =
+                                                                        !isChoose1;
                                                                     print(
                                                                         "ischoose 1 : $isChoose1");
                                                                     print(
@@ -7618,7 +7626,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                         setState(
                                                                             () {
                                                                           isChoose1 =
-                                                                              true;
+                                                                              !isChoose1;
                                                                         });
                                                                         print(
                                                                             "ischoose 1 : $isChoose1");
@@ -7929,7 +7937,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               () async {
                                                                             // ---
                                                                             setState(() {
-                                                                              isChoose1 = true;
+                                                                              isChoose1 = !isChoose1;
                                                                             });
 
                                                                             print("ischoose 1 : $isChoose1");
@@ -8754,16 +8762,16 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               onTap: () async {
                                                                                 // ---
                                                                                 setState(() {
-                                                                                  isChoose1 = true;
+                                                                                  isChoose1 = !isChoose1;
                                                                                 });
-                                                                                print("ischoose 1 : $isChoose1");
+                                                                                print("ischoose 1 pilih kanvas b : $isChoose1");
                                                                               },
                                                                               child: Container(
                                                                                 width: width * 0.095,
                                                                                 // height: height * 0.35,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(5),
-                                                                                  color: isChoose1 == true ? Colors.grey[200] : Colors.white,
+                                                                                  color: isChoose1 == true ? Colors.grey[400] : Colors.white,
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -12031,16 +12039,16 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               onTap: () async {
                                                                                 // ---
                                                                                 setState(() {
-                                                                                  isChoose2 = true;
+                                                                                  isChoose2 = !isChoose2;
                                                                                 });
-                                                                                print("ischoose 1 : $isChoose1");
+                                                                                print("isChoose2 pilih kanvas : $isChoose2");
                                                                               },
                                                                               child: Container(
                                                                                 width: width * 0.095,
                                                                                 // height: height * 0.35,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(5),
-                                                                                  color: isChoose1 == true ? Colors.grey[200] : Colors.white,
+                                                                                  color: isChoose2 == true ? Colors.grey[400] : Colors.white,
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -12099,9 +12107,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           title.toString().contains("Collage B") ||
                                   title.toString().contains("Paket B")
                               ? (
-                                  // ..................
+                                  // ....................
                                   // layout 1 main view B
-                                  // ..................
+                                  // ....................
                                   choose1 == "layout 1" && isChoose1 == true
                                       ? Container(
                                           width: width * 0.25,
@@ -12446,21 +12454,40 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             BoxDecoration(
                                                                           image:
                                                                               DecorationImage(
-                                                                            image: NetworkImage(acceptedData2.contains("00")
-                                                                                ? "${Variables.ipv4_local}/storage/${listA[0].toString()}"
-                                                                                : acceptedData2.contains("01")
-                                                                                    ? "${Variables.ipv4_local}/storage/${listA[1].toString()}"
-                                                                                    : acceptedData2.contains("02")
-                                                                                        ? "${Variables.ipv4_local}/storage/${listA[2].toString()}"
-                                                                                        : acceptedData2.contains("03")
-                                                                                            ? "${Variables.ipv4_local}/storage/${listA[3].toString()}"
-                                                                                            : acceptedData2.contains("10")
-                                                                                                ? "${Variables.ipv4_local}/storage/${listA[4].toString()}"
-                                                                                                : acceptedData2.contains("11")
-                                                                                                    ? "${Variables.ipv4_local}/storage/${listA[5].toString()}"
-                                                                                                    : acceptedData2.contains("12")
-                                                                                                        ? "${Variables.ipv4_local}/storage/${listA[6].toString()}"
-                                                                                                        : "${Variables.ipv4_local}/storage/${listA[7].toString()}"),
+                                                                            image:
+                                                                                NetworkImage(
+                                                                              acceptedData1_2.contains("00")
+                                                                                  ? "${Variables.ipv4_local}/storage/${listB[0].toString()}"
+                                                                                  : acceptedData1_2.contains("01")
+                                                                                      ? "${Variables.ipv4_local}/storage/${listB[1].toString()}"
+                                                                                      : acceptedData1_2.contains("02")
+                                                                                          ? "${Variables.ipv4_local}/storage/${listB[2].toString()}"
+                                                                                          : acceptedData1_2.contains("03")
+                                                                                              ? "${Variables.ipv4_local}/storage/${listB[3].toString()}"
+                                                                                              : acceptedData1_2.contains("04")
+                                                                                                  ? "${Variables.ipv4_local}/storage/${listB[4].toString()}"
+                                                                                                  : acceptedData1_2.contains("05")
+                                                                                                      ? "${Variables.ipv4_local}/storage/${listB[5].toString()}"
+                                                                                                      : acceptedData1_2.contains("06")
+                                                                                                          ? "${Variables.ipv4_local}/storage/${listB[6].toString()}"
+                                                                                                          : acceptedData1_2.contains("07")
+                                                                                                              ? "${Variables.ipv4_local}/storage/${listB[7].toString()}"
+                                                                                                              : acceptedData1_2.contains("10")
+                                                                                                                  ? "${Variables.ipv4_local}/storage/${listB[8].toString()}"
+                                                                                                                  : acceptedData1_2.contains("11")
+                                                                                                                      ? "${Variables.ipv4_local}/storage/${listB[9].toString()}"
+                                                                                                                      : acceptedData1_2.contains("12")
+                                                                                                                          ? "${Variables.ipv4_local}/storage/${listB[10].toString()}"
+                                                                                                                          : acceptedData1_2.contains("13")
+                                                                                                                              ? "${Variables.ipv4_local}/storage/${listB[11].toString()}"
+                                                                                                                              : acceptedData1_2.contains("14")
+                                                                                                                                  ? "${Variables.ipv4_local}/storage/${listB[12].toString()}"
+                                                                                                                                  : acceptedData1_2.contains("15")
+                                                                                                                                      ? "${Variables.ipv4_local}/storage/${listB[13].toString()}"
+                                                                                                                                      : acceptedData1_2.contains("16")
+                                                                                                                                          ? "${Variables.ipv4_local}/storage/${listB[14].toString()}"
+                                                                                                                                          : "${Variables.ipv4_local}/storage/${listB[15].toString()}",
+                                                                            ),
                                                                             fit:
                                                                                 BoxFit.cover,
                                                                           ),
@@ -13297,9 +13324,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                         )
                                       :
 
-                                      // ..................
+                                      // ....................
                                       // layout 2 main view B
-                                      // ..................
+                                      // ....................
                                       choose1 == "layout 2" && isChoose1 == true
                                           ? Container(
                                               width: width * 0.25,
@@ -14077,9 +14104,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                             )
                                           :
 
-                                          // ..................
+                                          // ....................
                                           // layout 3 main view B
-                                          // ..................
+                                          // ....................
                                           choose1 == "layout 3" &&
                                                   isChoose1 == true
                                               ? Container(
@@ -14894,9 +14921,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                 )
                                               :
 
-                                              // ..................
+                                              // ....................
                                               // layout 4 main view B
-                                              // ..................
+                                              // ....................
                                               choose1 == "layout 4" &&
                                                       isChoose1 == true
                                                   ? Container(
@@ -15761,9 +15788,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     )
                                                   :
 
-                                                  // ..................
+                                                  // ....................
                                                   // layout 4 main view B
-                                                  // ..................
+                                                  // ....................
                                                   choose1 == "layout 5" &&
                                                           isChoose1 == true
                                                       ? Container(
@@ -16325,9 +16352,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                         )
                                                       :
 
-                                                      // ..................
+                                                      // ....................
                                                       // layout 6 main view B
-                                                      // ..................
+                                                      // ....................
                                                       choose1 == "layout 6" &&
                                                               isChoose1 ==
                                                                   true // last code main view
@@ -17397,9 +17424,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                             )
                                                           :
 
-                                                          // ..................
+                                                          // ....................
                                                           // layout 1 main view B
-                                                          // ..................
+                                                          // ....................
                                                           choose2 == "layout 1" &&
                                                                   isChoose2 ==
                                                                       true
@@ -18094,9 +18121,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 )
                                                               :
 
-                                                              // ..................
+                                                              // ....................
                                                               // layout 2 main view B
-                                                              // ..................
+                                                              // ....................
                                                               choose2 == "layout 2" &&
                                                                       isChoose2 ==
                                                                           true
@@ -18554,9 +18581,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                     )
                                                                   :
 
-                                                                  // ..................
+                                                                  // ....................
                                                                   // layout 3 main view B
-                                                                  // ..................
+                                                                  // ....................
                                                                   choose2 == "layout 3" &&
                                                                           isChoose2 ==
                                                                               true
@@ -19080,9 +19107,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                         )
                                                                       :
 
-                                                                      // ..................
+                                                                      // ....................
                                                                       // layout 4 main view B
-                                                                      // ..................
+                                                                      // ....................
                                                                       choose2 == "layout 4" &&
                                                                               isChoose2 ==
                                                                                   true
@@ -19758,9 +19785,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             )
                                                                           :
 
-                                                                          // ..................
+                                                                          // ....................
                                                                           // layout 5 main view B
-                                                                          // ..................
+                                                                          // ....................
                                                                           choose2 == "layout 5" &&
                                                                                   isChoose2 ==
                                                                                       true
@@ -20209,9 +20236,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 )
                                                                               :
 
-                                                                              // ..................
+                                                                              // ....................
                                                                               // layout 6 main view B
-                                                                              // ..................
+                                                                              // ....................
                                                                               choose2 == "layout 6" &&
                                                                                       isChoose2 ==
                                                                                           true // last code main view
@@ -21224,12 +21251,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     )
                                                                                   : Container())
                               :
-                              // .....
+                              // ....................
                               // title contains A,
-                              // .....
-                              // ..................
+                              // ....................
+                              // ....................
                               // layout 1 main view A
-                              // ..................
+                              // ....................
                               choose1 == "layout 1" && isChoose1 == true
                                   ? Container(
                                       width: width * 0.25,
@@ -26074,295 +26101,39 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                     "aktif")
                                                                   InkWell(
                                                                     onTap: () {
+                                                                      // ============
                                                                       // --- layout 1
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 1") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                !isLayout1;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                !isLayout1;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
+                                                                      // ============
 
-                                                                        print(
-                                                                            "choose1 : $choose1");
+                                                                      if (isChoose2 ==
+                                                                          true) {
+                                                                        setState(
+                                                                            () {
+                                                                          choose2 =
+                                                                              layout["nama"];
+                                                                          isChoose2 =
+                                                                              !isChoose2;
+                                                                        });
+                                                                      }
+                                                                      if (isChoose1 ==
+                                                                          true) {
+                                                                        setState(
+                                                                            () {
+                                                                          choose1 =
+                                                                              layout["nama"];
+                                                                          isLayout1 =
+                                                                              !isLayout1;
+                                                                          isChoose1 =
+                                                                              !isChoose1;
+                                                                        });
                                                                       }
 
-                                                                      // --- layout 2
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 2") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                !isLayout2;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                !isLayout2;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        print(
-                                                                            "choose1 : $choose1");
-                                                                      }
-
-                                                                      // --- layout 3
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 3") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                !isLayout3;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                !isLayout2;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        print(
-                                                                            "choose1 : $choose1");
-                                                                      }
-
-                                                                      // --- layout 4
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 4") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                !isLayout4;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                !isLayout4;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        print(
-                                                                            "choose1 : $choose1");
-                                                                      }
-
-                                                                      // --- layout 5
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 5") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                !isLayout5;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                !isLayout5;
-                                                                            isLayout6 =
-                                                                                false;
-                                                                          });
-                                                                        }
-                                                                        print(
-                                                                            "choose1 : $choose1");
-                                                                      }
-
-                                                                      // --- layout 6
-                                                                      if (layout[
-                                                                              "nama"] ==
-                                                                          "layout 6") {
-                                                                        if (isChoose2 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose2 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                !isLayout6;
-                                                                          });
-                                                                        }
-                                                                        if (isChoose1 ==
-                                                                            true) {
-                                                                          setState(
-                                                                              () {
-                                                                            choose1 =
-                                                                                layout["nama"];
-                                                                            isLayout1 =
-                                                                                false;
-                                                                            isLayout2 =
-                                                                                false;
-                                                                            isLayout3 =
-                                                                                false;
-                                                                            isLayout4 =
-                                                                                false;
-                                                                            isLayout5 =
-                                                                                false;
-                                                                            isLayout6 =
-                                                                                !isLayout6;
-                                                                          });
-                                                                        }
-                                                                        print(
-                                                                            "choose1 : $choose1");
-                                                                      }
+                                                                      print(
+                                                                          "choose1 : $choose1");
+                                                                      print(
+                                                                          "choose2 : $choose2");
                                                                     },
+                                                                    //
                                                                     child: layout["nama"] ==
                                                                             "layout 1"
                                                                         ? Container(
