@@ -54,6 +54,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   String type = "";
   String server_key = "";
   String image = "";
+  String image_settings = "";
+  String string_logo = "";
 
   String image_header = "";
   String image_background = "";
@@ -227,8 +229,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   );
 
   _postSettings() async {
-    var jsonResponse;
-    print("object test post settings value");
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variables.ipv4_local}/api/settings'));
     request.fields.addAll({
@@ -236,50 +236,88 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       'deskripsi': deskripsi,
       'pin': pin,
       'type': "main",
-      'server_key': server_key
+      'server_key': server_key,
+      'string_logo': string_logo
     });
     request.files.add(await http.MultipartFile.fromPath(
-        'image', image.toString().replaceAll(r'\', r'/')));
-
-    print("image : ${image.toString().replaceAll(r'\', r'/')}");
+        'image', filePick.toString().replaceAll(r'\', r'/')));
 
     http.Response response =
         await http.Response.fromStream(await request.send());
 
-    if (response.statusCode == 201) {
-      // print(await response.bodyBytes);
-      Map<String, dynamic> data = jsonDecode(response.body);
-      print("object data $data");
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Update'),
-          content: const Text('Update Settings Berhasil'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Kembali'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Navigator.pop(context, 'OK');
-                Navigator.of(context).pop();
-                getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
-              },
-              child: const Text('Baik'),
-            ),
-          ],
-        ),
-      );
-    } else {
-      print(response.reasonPhrase);
-    }
+    Map<String, dynamic> data = jsonDecode(response.body);
+    print("object data $data");
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Update'),
+        content: const Text('Update Settings Berhasil'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Cancel'),
+            child: const Text('Kembali'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Navigator.pop(context, 'OK');
+              Navigator.of(context).pop();
+              getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
+            },
+            child: const Text('Baik'),
+          ),
+        ],
+      ),
+    );
+
+    // print("post settings");
+
+    // var request = http.MultipartRequest(
+    //     'POST', Uri.parse('http://127.0.0.1:8000/api/settings'));
+    // request.fields.addAll({
+    //   'judul': judul,
+    //   'deskripsi': deskripsi,
+    //   'pin': pin,
+    //   'type': "main",
+    //   'server_key': server_key,
+    //   'string_logo': string_logo
+    // });
+
+    // print("filePick : $filePick");
+    // request.files.add(await http.MultipartFile.fromPath(
+    //     'image', filePick.toString().replaceAll(r'\', r'/')));
+
+    // http.Response response =
+    //     await http.Response.fromStream(await request.send());
+    // print("post settings response status code : ${response.statusCode}");
+    // if (response.statusCode == 201) {
+    //   showDialog<String>(
+    //     context: context,
+    //     builder: (BuildContext context) => AlertDialog(
+    //       title: const Text('Update'),
+    //       content: const Text('Update Settings Berhasil'),
+    //       actions: <Widget>[
+    //         TextButton(
+    //           onPressed: () => Navigator.pop(context, 'Cancel'),
+    //           child: const Text('Kembali'),
+    //         ),
+    //         TextButton(
+    //           onPressed: () {
+    //             // Navigator.pop(context, 'OK');
+    //             Navigator.of(context).pop();
+    //             getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
+    //           },
+    //           child: const Text('Baik'),
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // } else {
+    //   print(response.reasonPhrase);
+    // }
   }
 
   _postOrder() async {
     var jsonResponse;
-    // print("object image_header : $filePickHeader");
-    // print("object image_background : $filePickBackground");
 
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variables.ipv4_local}/api/order'));
@@ -329,12 +367,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   }
 
   _postSticker() async {
-    print("object test post sticker value");
-    print("object nama : $nama_sticker");
-    print("object status : $status_sticker");
-    print(
-        "object nama sticker : ${filePickSticker.toString().replaceAll(r'\', r'/')}");
-
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variables.ipv4_local}/api/add-sticker'));
     request.fields.addAll({
@@ -770,7 +802,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   child: SizedBox(
                                     width: width * 0.5,
                                     child: Text(
-                                      "Konfigurasi Halaman Settings",
+                                      "Halaman Settings",
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: width * 0.012,
@@ -839,6 +871,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           // }
                                           // return null;
                                         },
+
+                                        onChanged: (value) {
+                                          setState(() {
+                                            pin = value.toString();
+                                          });
+                                        },
                                       ),
                                     ),
                                   ),
@@ -892,6 +930,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               "object server key $server_key");
                                           // return null;
                                         },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            server_key = value.toString();
+                                          });
+                                        },
                                       ),
                                     ),
                                   ),
@@ -937,24 +980,24 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               Color.fromARGB(255, 53, 53, 53),
                                         ),
                                         // The validator receives the text that the user has entered.
-                                        validator: (value) {
-                                          setState(() {
-                                            judul = value.toString();
-                                          });
+                                        // validator: (value) {
+                                        //   setState(() {
+                                        //     judul = value.toString();
+                                        //   });
 
-                                          print("object judul : $judul");
-                                          if (value == null || value.isEmpty) {
-                                            return 'coba masukkan judul';
-                                          }
-                                          return null;
-                                        },
+                                        //   print("object judul : $judul");
+                                        //   if (value == null || value.isEmpty) {
+                                        //     return 'coba masukkan judul';
+                                        //   }
+                                        //   return null;
+                                        // },
 
                                         onChanged: (value) {
                                           setState(() {
                                             judul = value.toString();
                                           });
 
-                                          print("object waktu : $judul");
+                                          print("object judul : $judul");
                                         },
                                       ),
                                     ),
@@ -1007,9 +1050,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             deskripsi = value.toString();
                                           });
 
-                                          print("object judul : $deskripsi");
+                                          print(
+                                              "object deskripsi : $deskripsi");
                                           if (value == null || value.isEmpty) {
-                                            return 'coba masukkan judul';
+                                            return 'coba masukkan deskripsi';
                                           }
                                           return null;
                                         },
@@ -1017,6 +1061,71 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         onChanged: (value) {
                                           setState(() {
                                             deskripsi = value.toString();
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                                // string logo
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      bottom: width * 0.01, left: width * 0.02),
+                                  child: SizedBox(
+                                    width: width * 0.5,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                      color: Colors.white,
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: 'Ganti String Logo',
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey),
+                                          contentPadding: EdgeInsets.only(
+                                            left: 15,
+                                            bottom: 11,
+                                            top: 11,
+                                            right: 15,
+                                          ),
+                                          focusColor: Colors.black,
+                                          fillColor: Colors.black,
+                                          label: Text(
+                                            "String Logo",
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 53, 53, 53),
+                                            ),
+                                          ),
+                                          border: new OutlineInputBorder(
+                                              borderSide: new BorderSide(
+                                                  color: Colors.transparent)),
+                                        ),
+                                        style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 53, 53, 53),
+                                        ),
+                                        // The validator receives the text that the user has entered.
+                                        validator: (value) {
+                                          setState(() {
+                                            string_logo = value.toString();
+                                          });
+
+                                          print(
+                                              "object string logo : $deskripsi");
+                                          if (value == null || value.isEmpty) {
+                                            return 'coba masukkan string logo';
+                                          }
+                                          return null;
+                                        },
+
+                                        onChanged: (value) {
+                                          setState(() {
+                                            string_logo = value.toString();
                                           });
                                         },
                                       ),
@@ -1075,10 +1184,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             ),
 
                                             // The validator receives the text that the user has entered.
-                                            validator: (value) {
-                                              // if (image.isEmpty) {
-                                              //   return 'coba ambil gambar';
-                                              // } else {
+                                            // validator: (value) {
+                                            //   // if (image.isEmpty) {
+                                            //   //   return 'coba ambil gambar';
+                                            //   // } else {
+                                            // },
+                                            onChanged: (value) {
                                               setState(() {
                                                 image = filePick.toString();
                                               });
@@ -1121,10 +1232,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           Color.fromARGB(255, 36, 36, 36),
                                     ),
                                     onPressed: () {
-                                      // Validate returns true if the form is valid, or false otherwise.
-                                      if (_formKey.currentState!.validate()) {
-                                        _postSettings();
-                                      }
+                                      _postSettings();
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.only(
@@ -1134,7 +1242,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         bottom: width * 0.005,
                                       ),
                                       child: const Text(
-                                        'Konfigurasi Halaman Settings',
+                                        'Simpan Settings',
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Color.fromARGB(
@@ -1155,7 +1263,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   child: SizedBox(
                                     width: width * 0.5,
                                     child: Text(
-                                      "Konfigurasi Halaman Order",
+                                      "Halaman Order",
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: width * 0.012,
@@ -1377,7 +1485,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         bottom: width * 0.005,
                                       ),
                                       child: const Text(
-                                        'Konfigurasi Halaman Order',
+                                        'Simpan Settings Order',
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Color.fromARGB(
@@ -1388,7 +1496,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   ),
                                 ),
 
-                                // konfigurasi halaman main
+                                // halaman main
                                 SizedBox(
                                   height: height * 0.065,
                                 ),
@@ -1399,7 +1507,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   child: SizedBox(
                                     width: width * 0.5,
                                     child: Text(
-                                      "Konfigurasi Warna Halaman",
+                                      "Warna Halaman",
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: width * 0.012,
@@ -1714,7 +1822,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         bottom: width * 0.005,
                                       ),
                                       child: const Text(
-                                        'Konfigurasi Warna Halaman',
+                                        'Simpan Warna Halaman',
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Color.fromARGB(
@@ -1726,7 +1834,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 ),
 
                                 // ...
-                                // konfigurasi sticker
+                                // sticker
                                 // ...
                                 SizedBox(
                                   height: height * 0.065,
@@ -1741,7 +1849,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   child: SizedBox(
                                     width: width * 0.5,
                                     child: Text(
-                                      "Konfigurasi Sticker",
+                                      "Sticker",
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: width * 0.012,
