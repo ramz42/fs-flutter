@@ -43,6 +43,8 @@ class StickerWidget extends StatefulWidget {
     required this.drag_item2,
     required this.choose_background,
     required this.backgrounds,
+    required this.pilih_background1,
+    required this.pilih_background2,
   });
   final nama;
   final title;
@@ -53,6 +55,9 @@ class StickerWidget extends StatefulWidget {
   final drag_item2;
   final choose_background;
   final backgrounds;
+
+  final pilih_background1;
+  final pilih_background2;
 
   @override
   State<StickerWidget> createState() => _StickerWidgetState(
@@ -65,6 +70,8 @@ class StickerWidget extends StatefulWidget {
         this.drag_item2,
         this.choose_background,
         this.backgrounds,
+        this.pilih_background1,
+        this.pilih_background2,
       );
 }
 
@@ -78,6 +85,9 @@ class _StickerWidgetState extends State<StickerWidget> {
   final drag_item2;
   final choose_background;
   final backgrounds;
+
+  final pilih_background1;
+  final pilih_background2;
 
   // ...
   // final LocalStorage storage = LocalStorage('parameters');
@@ -262,6 +272,8 @@ class _StickerWidgetState extends State<StickerWidget> {
     this.drag_item2,
     this.choose_background,
     this.backgrounds,
+    this.pilih_background1,
+    this.pilih_background2,
   );
 
   Uint8List? _imageFile;
@@ -9681,7 +9693,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -9967,7 +9979,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -10145,7 +10157,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               ? BoxDecoration(
                                                                                   image: DecorationImage(
                                                                                     // last visit code here
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                     fit: BoxFit.cover,
                                                                                   ),
                                                                                   borderRadius: BorderRadius.circular(5),
@@ -10340,7 +10352,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   ? BoxDecoration(
                                                                                       image: DecorationImage(
                                                                                         // last visit code here
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                         fit: BoxFit.cover,
                                                                                       ),
                                                                                       borderRadius: BorderRadius.circular(5),
@@ -10657,7 +10669,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       ? BoxDecoration(
                                                                                           image: DecorationImage(
                                                                                             // last visit code here
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                             fit: BoxFit.cover,
                                                                                           ),
                                                                                           borderRadius: BorderRadius.circular(5),
@@ -10822,7 +10834,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                           ? BoxDecoration(
                                                                                               image: DecorationImage(
                                                                                                 // last visit code here
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                                 fit: BoxFit.cover,
                                                                                               ),
                                                                                               borderRadius: BorderRadius.circular(5),
@@ -11192,7 +11204,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -11478,7 +11490,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -11656,7 +11668,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               ? BoxDecoration(
                                                                                   image: DecorationImage(
                                                                                     // last visit code here
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                     fit: BoxFit.cover,
                                                                                   ),
                                                                                   borderRadius: BorderRadius.circular(5),
@@ -11851,7 +11863,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   ? BoxDecoration(
                                                                                       image: DecorationImage(
                                                                                         // last visit code here
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                         fit: BoxFit.cover,
                                                                                       ),
                                                                                       borderRadius: BorderRadius.circular(5),
@@ -12168,7 +12180,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       ? BoxDecoration(
                                                                                           image: DecorationImage(
                                                                                             // last visit code here
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                             fit: BoxFit.cover,
                                                                                           ),
                                                                                           borderRadius: BorderRadius.circular(5),
@@ -12333,7 +12345,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                           ? BoxDecoration(
                                                                                               image: DecorationImage(
                                                                                                 // last visit code here
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                                 fit: BoxFit.cover,
                                                                                               ),
                                                                                               borderRadius: BorderRadius.circular(5),
@@ -12764,7 +12776,6 @@ class _StickerWidgetState extends State<StickerWidget> {
                           Container(
                             width: width * 0.5,
                             height: height * 0.8,
-                            // color: Colors.grey,
                             child: Center(
                               child: ScrollConfiguration(
                                 behavior: ScrollConfiguration.of(context)
@@ -14379,7 +14390,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             DecorationImage(
                                                                           // last visit code here
                                                                           image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         ),
@@ -14747,7 +14758,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               ? BoxDecoration(
                                                                                   image: DecorationImage(
                                                                                     // last visit code here
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                     fit: BoxFit.cover,
                                                                                   ),
                                                                                   borderRadius: BorderRadius.circular(5),
@@ -14894,7 +14905,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                             ),
                                                                             borderRadius:
@@ -15073,7 +15084,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -15338,142 +15349,141 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         visible:
                                                                             isVisibleMainViewB1,
                                                                         child:
+                                                                            Container(
+                                                                          width:
+                                                                              600,
+                                                                          height:
+                                                                              900,
+                                                                          decoration: choose_background != ""
+                                                                              ? BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    // last visit code here
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                )
+                                                                              : BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
                                                                               Container(
-                                                                            width:
-                                                                                600,
-                                                                            height:
-                                                                                900,
-                                                                            decoration: choose_background != ""
-                                                                                ? BoxDecoration(
-                                                                                    image: DecorationImage(
-                                                                                      // last visit code here
-                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  )
-                                                                                : BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  ),
-                                                                            child:
-                                                                            Column(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
-                                                                          children: [
-                                                                            Container(width:
-                                                                                600,
-                                                                            height:
-                                                                                650,
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  // .................................
-                                                                                  // layout row drag target main view
-                                                                                  // .................................
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      // .............................
-                                                                                      // layout drag target main view
-                                                                                      // .............................
-                                                                              
-                                                                                      // ============
-                                                                                      // dragtarget 1
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage(
-                                                                                              "${Variables.ipv4_local}/storage/${url_image_b1[0].toString()}",
-                                                                                              scale: 1,
+                                                                                width: 600,
+                                                                                height: 650,
+                                                                                child: Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                  children: [
+                                                                                    // .................................
+                                                                                    // layout row drag target main view
+                                                                                    // .................................
+                                                                                    Column(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // dragtarget 1
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage(
+                                                                                                "${Variables.ipv4_local}/storage/${url_image_b1[0].toString()}",
+                                                                                                scale: 1,
+                                                                                              ),
+                                                                                              fit: BoxFit.cover,
                                                                                             ),
-                                                                                            fit: BoxFit.cover,
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                              
-                                                                                      // ============
-                                                                                      // dragtarget 2
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[1].toString()}"),
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        // ============
+                                                                                        // dragtarget 2
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[1].toString()}"),
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                      
-                                                                                      SizedBox(height: height * 0.04),
-                                                                                    ],
-                                                                                  ),
-                                                                              
-                                                                                  // row 2
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      SizedBox(height: height * 0.04),
-                                                                                      // ...............................
-                                                                                      // layout drag target main view
-                                                                                      // .............................
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[2].toString()}"),
-                                                                                            scale: 1,
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        SizedBox(height: height * 0.04),
+                                                                                      ],
+                                                                                    ),
+
+                                                                                    // row 2
+                                                                                    Column(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        SizedBox(height: height * 0.04),
+                                                                                        // ...............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[2].toString()}"),
+                                                                                              scale: 1,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                              
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[3].toString()}"),
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b1[3].toString()}"),
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ],
+                                                                                      ],
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            // SizedBox(height: 15),
-                                                                            Center(
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(15.0),
-                                                                                child: Container(
-                                                                                  child: Text(
-                                                                                    string_logo != "" ? string_logo : "Photobooth Text",
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 72,
-                                                                                      color: Colors.grey,
+                                                                              // SizedBox(height: 15),
+                                                                              Center(
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(15.0),
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                      style: TextStyle(
+                                                                                        fontSize: 72,
+                                                                                        color: Colors.white,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                            SizedBox(height: height * 0.01),
-                                                                          ],
-                                                                        ),
+                                                                              SizedBox(height: height * 0.01),
+                                                                            ],
                                                                           ),
+                                                                        ),
                                                                       )
                                                                     :
 
@@ -15495,7 +15505,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                     ? BoxDecoration(
                                                                                         image: DecorationImage(
                                                                                           // last visit code here
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background1.toString()}"),
                                                                                           fit: BoxFit.cover,
                                                                                         ),
                                                                                         borderRadius: BorderRadius.circular(5),
@@ -15848,7 +15858,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             DecorationImage(
                                                                           // last visit code here
                                                                           image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         ),
@@ -16218,7 +16228,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -16385,7 +16395,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                             ),
                                                                             borderRadius:
@@ -16563,7 +16573,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           ? BoxDecoration(
                                                                               image: DecorationImage(
                                                                                 // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                               borderRadius: BorderRadius.circular(5),
@@ -16827,142 +16837,141 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         visible:
                                                                             isVisibleMainViewB2,
                                                                         child:
+                                                                            Container(
+                                                                          width:
+                                                                              600,
+                                                                          height:
+                                                                              900,
+                                                                          decoration: choose_background != ""
+                                                                              ? BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    // last visit code here
+                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                )
+                                                                              : BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(5),
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceEvenly,
+                                                                            children: [
                                                                               Container(
-                                                                            width:
-                                                                                600,
-                                                                            height:
-                                                                                900,
-                                                                            decoration: choose_background != ""
-                                                                                ? BoxDecoration(
-                                                                                    image: DecorationImage(
-                                                                                      // last visit code here
-                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  )
-                                                                                : BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  ),
-                                                                            child:
-                                                                            Column(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
-                                                                          children: [
-                                                                            Container(width:
-                                                                                600,
-                                                                            height:
-                                                                                650,
-                                                                              child: Row(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  // .................................
-                                                                                  // layout row drag target main view
-                                                                                  // .................................
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      // .............................
-                                                                                      // layout drag target main view
-                                                                                      // .............................
-                                                                              
-                                                                                      // ============
-                                                                                      // dragtarget 1
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage(
-                                                                                              "${Variables.ipv4_local}/storage/${url_image_b2[0].toString()}",
-                                                                                              scale: 1,
+                                                                                width: 600,
+                                                                                height: 650,
+                                                                                child: Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                  children: [
+                                                                                    // .................................
+                                                                                    // layout row drag target main view
+                                                                                    // .................................
+                                                                                    Column(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        // .............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+
+                                                                                        // ============
+                                                                                        // dragtarget 1
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage(
+                                                                                                "${Variables.ipv4_local}/storage/${url_image_b2[0].toString()}",
+                                                                                                scale: 1,
+                                                                                              ),
+                                                                                              fit: BoxFit.cover,
                                                                                             ),
-                                                                                            fit: BoxFit.cover,
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                              
-                                                                                      // ============
-                                                                                      // dragtarget 2
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[1].toString()}"),
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        // ============
+                                                                                        // dragtarget 2
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[1].toString()}"),
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                      
-                                                                                      SizedBox(height: height * 0.04),
-                                                                                    ],
-                                                                                  ),
-                                                                              
-                                                                                  // row 2
-                                                                                  Column(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      SizedBox(height: height * 0.04),
-                                                                                      // ...............................
-                                                                                      // layout drag target main view
-                                                                                      // .............................
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[2].toString()}"),
-                                                                                            scale: 1,
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        SizedBox(height: height * 0.04),
+                                                                                      ],
+                                                                                    ),
+
+                                                                                    // row 2
+                                                                                    Column(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        SizedBox(height: height * 0.04),
+                                                                                        // ...............................
+                                                                                        // layout drag target main view
+                                                                                        // .............................
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[2].toString()}"),
+                                                                                              scale: 1,
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                              
-                                                                                      Container(
-                                                                                        width: width * 0.10,
-                                                                                        height: width * 0.10,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(15),
-                                                                                          color: Colors.transparent,
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[3].toString()}"),
-                                                                                            fit: BoxFit.cover,
+
+                                                                                        Container(
+                                                                                          width: width * 0.10,
+                                                                                          height: width * 0.10,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Colors.transparent,
+                                                                                            image: DecorationImage(
+                                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/${url_image_b2[3].toString()}"),
+                                                                                              fit: BoxFit.cover,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ],
+                                                                                      ],
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            // SizedBox(height: 15),
-                                                                            Center(
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(15.0),
-                                                                                child: Container(
-                                                                                  child: Text(
-                                                                                    string_logo != "" ? string_logo : "Photobooth Text",
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 72,
-                                                                                      color: Colors.grey,
+                                                                              // SizedBox(height: 15),
+                                                                              Center(
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(15.0),
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                      style: TextStyle(
+                                                                                        fontSize: 72,
+                                                                                        color: Colors.white,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                            SizedBox(height: height * 0.01),
-                                                                          ],
-                                                                        ),
+                                                                              SizedBox(height: height * 0.01),
+                                                                            ],
                                                                           ),
+                                                                        ),
                                                                       )
                                                                     :
 
@@ -16984,7 +16993,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                     ? BoxDecoration(
                                                                                         image: DecorationImage(
                                                                                           // last visit code here
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
+                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${pilih_background2.toString()}"),
                                                                                           fit: BoxFit.cover,
                                                                                         ),
                                                                                         borderRadius: BorderRadius.circular(5),
@@ -17306,9 +17315,6 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           )
                                                                         : Container(),
 
-                                                SizedBox(
-                                                  height: height * 0.015,
-                                                ),
                                                 // =======================
                                                 // === end main layout ===
                                                 // =======================

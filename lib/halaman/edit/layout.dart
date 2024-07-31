@@ -521,31 +521,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     );
   }
 
-  Route _routeAnimate(halaman) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => halaman,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
-
   screenCaptureImages(i, j) async {
     final directory =
         (await getApplicationDocumentsDirectory()); //from path_provide package
-
-    // var fileName = "\\${DateTime.now().day}-1";
-    // var path = '$directory';
 
     if ((i == 0 && j == 0)) {
       // ...
@@ -706,12 +684,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   _clearStorage() async {
     await storage.clear();
     print("object clear storage");
-  }
-
-  pilihKanvas(layout) {
-    Timer(Duration(seconds: 1), () {
-      // isi ...
-    });
   }
 
   @override
@@ -2215,7 +2187,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                               // ===========================================================================================
                               // ========== row pilih kanvas menu tengah kecil, A dan B fix 1 dan 2 menu ===================
                               // ===========================================================================================
-                              // update disini
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -5505,7 +5476,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                           ]
                                         : [
                                             // ...
-                                            // tipe collage b atau strip b
+                                            // tipe collage b atau strip b, pilih kanvas
                                             // ...
                                             choose2 == "layout 1" &&
                                                     isChoose2 == true
@@ -5516,10 +5487,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         // ---
-                                                        print(
-                                                            "ischoose 1 : $isChoose1");
-                                                        print(
-                                                            "choose1 : $choose1");
 
                                                         setState(() {
                                                           isChoose2 =
@@ -6968,10 +6935,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   isChoose2 =
                                                                       !isChoose2;
                                                                 });
-                                                                print(
-                                                                    "ischoose 1 : $isChoose1");
-                                                                print(
-                                                                    "choose1 : $choose1");
                                                               },
                                                               child: Container(
                                                                 width: width *
@@ -7528,8 +7491,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       isChoose2 =
                                                                           !isChoose2;
                                                                     });
-                                                                    print(
-                                                                        "isChoose2 1 : $isChoose2");
                                                                   },
                                                                   child:
                                                                       Container(
@@ -8240,8 +8201,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           isChoose2 =
                                                                               !isChoose2;
                                                                         });
-                                                                        print(
-                                                                            "ischoose 1 : $isChoose1");
                                                                       },
                                                                       child:
                                                                           Container(
@@ -8615,9 +8574,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             setState(() {
                                                                               isChoose2 = !isChoose2;
                                                                             });
-
-                                                                            print("ischoose 1 : $isChoose1");
-                                                                            print("choose1 : $choose1");
                                                                           },
                                                                           child:
                                                                               Container(
@@ -9616,10 +9572,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         // ---
-                                                        print(
-                                                            "ischoose 1 : $isChoose1");
-                                                        print(
-                                                            "choose1 : $choose1");
 
                                                         setState(() {
                                                           isChoose1 =
@@ -10550,8 +10502,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               isChoose1 =
                                                                   !isChoose1;
                                                             });
-                                                            print(
-                                                                "ischoose 1 : $isChoose1");
                                                           },
                                                           child: Container(
                                                             width:
@@ -11068,10 +11018,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   isChoose1 =
                                                                       !isChoose1;
                                                                 });
-                                                                print(
-                                                                    "ischoose 1 : $isChoose1");
-                                                                print(
-                                                                    "choose1 : $choose1");
                                                               },
                                                               child: Container(
                                                                 width: width *
@@ -11628,8 +11574,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       isChoose1 =
                                                                           !isChoose1;
                                                                     });
-                                                                    print(
-                                                                        "isChoose1 1 : $isChoose1");
                                                                   },
                                                                   child:
                                                                       Container(
@@ -12340,8 +12284,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           isChoose1 =
                                                                               !isChoose1;
                                                                         });
-                                                                        print(
-                                                                            "ischoose 1 : $isChoose1");
                                                                       },
                                                                       child:
                                                                           Container(
@@ -13658,7 +13600,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 setState(() {
                                                                                   isChoose1 = !isChoose1;
                                                                                 });
-                                                                                print("ischoose1 pilih kanvas b : $isChoose1");
                                                                               },
                                                                               child: Container(
                                                                                 width: width * 0.095,
@@ -26303,7 +26244,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     ),
                                                   ),
                                                 )
-                                              : choose1 == "layout 5" &&
+                                              :
+
+                                              // ..................
+                                              // layout 5 main view A
+                                              // ..................
+                                              choose1 == "layout 5" &&
                                                       isChoose1 == true
                                                   ? Container(
                                                       width: width * 0.25,
@@ -28732,8 +28678,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       nama: nama,
                                                       title: title,
                                                       nama_filter: nama_filter,
-                                                      choose_layout:
-                                                          choose1.toString(),
+                                                      choose_layout: title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage B") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket B") ?
+                                                          choose2.toString() : choose1.toString(),
                                                       choose_layout2: title
                                                                   .toString()
                                                                   .contains(
@@ -28742,7 +28695,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   .toString()
                                                                   .contains(
                                                                       "Paket B")
-                                                          ? choose2.toString()
+                                                          ? choose1.toString()
                                                           : null,
 
                                                       // drag item untuk card data collage dragItemB2, dragItemB1

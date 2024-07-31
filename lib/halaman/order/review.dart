@@ -589,6 +589,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 fontSize: width * 0.012,
                                               ),
                                               decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
                                                 icon: Padding(
                                                   padding: EdgeInsets.all(
                                                     width * 0.025,
@@ -680,6 +682,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 fontSize: width * 0.012,
                                               ),
                                               decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
                                                 icon: Padding(
                                                   padding: EdgeInsets.all(
                                                     width * 0.025,
@@ -764,6 +768,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 fontSize: width * 0.012,
                                               ),
                                               decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
                                                 icon: Padding(
                                                   padding: EdgeInsets.all(
                                                     width * 0.025,
@@ -847,6 +853,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 fontSize: width * 0.012,
                                               ),
                                               decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
                                                 icon: Padding(
                                                   padding: EdgeInsets.all(
                                                     width * 0.025,

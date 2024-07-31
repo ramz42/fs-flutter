@@ -828,9 +828,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                           hintText: 'Pin / Maksimal 4 Digit',
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
@@ -894,9 +896,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       color: Colors.white,
                                       child: TextFormField(
                                         decoration: InputDecoration(
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                           hintText: 'masukkan server key',
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
@@ -971,9 +975,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                   255, 53, 53, 53),
                                             ),
                                           ),
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                         ),
                                         style: const TextStyle(
                                           color:
@@ -1018,6 +1025,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
                                           hintText: 'Ganti Deskripsi',
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
@@ -1036,9 +1045,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                   255, 53, 53, 53),
                                             ),
                                           ),
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                         ),
                                         style: const TextStyle(
                                           color:
@@ -1101,9 +1110,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                   255, 53, 53, 53),
                                             ),
                                           ),
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                         ),
                                         style: const TextStyle(
                                           color:
@@ -1152,6 +1164,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText:
                                                   "Ambil Gambar Background",
                                               hintStyle: const TextStyle(
@@ -1173,10 +1187,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1314,10 +1328,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1386,6 +1400,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText:
                                                   "Ambil Gambar Background - Order",
                                               hintStyle: const TextStyle(
@@ -1408,10 +1424,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1537,6 +1553,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText:
                                                   "Ambil Background Warna - Main",
                                               hintStyle: const TextStyle(
@@ -1556,10 +1574,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1630,6 +1648,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText: "Ambil warna 1 - Main",
                                               hintStyle: const TextStyle(
                                                   color: Colors.grey),
@@ -1648,10 +1668,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1724,6 +1744,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText: "Ambil Warna 2 - Main",
                                               hintStyle: const TextStyle(
                                                   color: Colors.grey),
@@ -1742,10 +1764,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(
@@ -1875,9 +1897,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                           hintText: 'Masukkan nama sticker',
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
@@ -1937,9 +1961,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: TextFormField(
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
-                                          border: new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.transparent)),
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          // border: new OutlineInputBorder(
+                                          //     borderSide: new BorderSide(
+                                          //         color: Colors.transparent)),
                                           hintText: 'Masukkan status sticker',
                                           hintStyle:
                                               TextStyle(color: Colors.grey),
@@ -2003,6 +2029,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           color: Colors.white,
                                           child: TextFormField(
                                             decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
                                               hintText: "Ambil Gambar Sticker",
                                               hintStyle: const TextStyle(
                                                   color: Colors.grey),
@@ -2023,10 +2051,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       255, 53, 53, 53),
                                                 ),
                                               ),
-                                              border: new OutlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color:
-                                                          Colors.transparent)),
+                                              // border: new OutlineInputBorder(
+                                              //     borderSide: new BorderSide(
+                                              //         color:
+                                              //             Colors.transparent)),
                                             ),
                                             style: const TextStyle(
                                               color: Color.fromARGB(

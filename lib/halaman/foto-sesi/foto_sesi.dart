@@ -873,7 +873,6 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                   Padding(
                     padding: const EdgeInsets.all(0.0),
                     child: Container(
-                      
                       height: height * 0.875,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -889,12 +888,12 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                           color: Color.fromARGB(255, 255, 255, 255),
                           child: Container(
                             decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                             width: width * 1,
                             height: height * 1,
                             child: Row(
@@ -1266,7 +1265,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
   var voucher = "";
 
   var db = new Mysql();
+
   bool isNavigate = true;
+  bool isVisibleTapCard = true;
 
   var bg_warna_main = "";
   var warna1 = "";
@@ -1544,6 +1545,8 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
                                 hintText: 'Masukkan Nama',
                                 hintStyle: TextStyle(color: Colors.grey),
                                 contentPadding: EdgeInsets.only(
@@ -1558,6 +1561,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                   "Nama",
                                   style: TextStyle(
                                     color: Color.fromARGB(255, 53, 53, 53),
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1599,6 +1603,8 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
                                 hintText: 'Masukkan Voucher',
                                 hintStyle: TextStyle(color: Colors.grey),
                                 contentPadding: EdgeInsets.only(
@@ -1613,6 +1619,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                   "Voucher",
                                   style: TextStyle(
                                     color: Color.fromARGB(255, 53, 53, 53),
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1756,47 +1763,51 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
             SizedBox(
               height: width * 0.08,
             ),
-            SizedBox(
-              // color: Color.fromARGB(255, 255, 123, 145),
-              height: height * 0.55,
-              child: Center(
-                child: Card(
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        45,
-                      ),
-                    ),
-                  ),
-                  elevation: 1,
-                  color: Color.fromARGB(218, 33, 33, 33),
-                  child: InkWell(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        25,
-                      ),
-                    ),
-                    onTap: () {
-                      print("scan qr code tap");
-                      // _dialogBuilder(context);
-                      _dialogBuilderVoucher(context, width);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: width * 0.06,
-                        bottom: width * 0.06,
-                        left: width * 0.05,
-                        right: width * 0.05,
-                      ),
-                      child: Text(
-                        "Scan Qr Anda \n\nAtau Tap Untuk Memasukkan Voucher",
-                        style: TextStyle(
-                          fontSize: width * 0.022,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontStyle: FontStyle.italic,
+            AnimatedOpacity(
+              opacity: isVisibleTapCard == true ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              child: Container(
+                // color: Color.fromARGB(255, 255, 123, 145),
+                height: height * 0.55,
+                child: Center(
+                  child: Card(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          45,
                         ),
-                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    elevation: 1,
+                    color: Color.fromARGB(218, 33, 33, 33),
+                    child: InkWell(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(
+                          25,
+                        ),
+                      ),
+                      onTap: () {
+                        print("scan qr code tap");
+                        // _dialogBuilder(context);
+                        _dialogBuilderVoucher(context, width);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: width * 0.02,
+                          bottom: width * 0.02,
+                          left: width * 0.2,
+                          right: width * 0.2,
+                        ),
+                        child: Text(
+                          "Scan Qr \n\or\n Tap Voucher",
+                          style: TextStyle(
+                            fontSize: width * 0.022,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),

@@ -626,11 +626,15 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      // border: new OutlineInputBorder(
+                                                      //     borderSide:
+                                                      //         new BorderSide(
+                                                      //             color: Colors
+                                                      //                 .transparent)),
+
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Menu Title',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -688,11 +692,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Title',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -750,11 +752,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Deskripsi',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -812,11 +812,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Harga',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -874,11 +872,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Timer',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -955,11 +951,10 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                       child: TextFormField(
                                                         decoration:
                                                             InputDecoration(
-                                                          border: new OutlineInputBorder(
-                                                              borderSide:
-                                                                  new BorderSide(
-                                                                      color: Colors
-                                                                          .transparent)),
+                                                          border:
+                                                              InputBorder.none,
+                                                          focusedBorder:
+                                                              InputBorder.none,
                                                           hintText: filePick
                                                               .toString(),
                                                           hintStyle:
@@ -1158,11 +1153,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Menu Title',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -1220,11 +1213,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Title',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -1282,11 +1273,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Deskripsi',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -1344,11 +1333,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Harga',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -1407,11 +1394,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Timer',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),
@@ -1488,11 +1473,10 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                       child: TextFormField(
                                                         decoration:
                                                             InputDecoration(
-                                                          border: new OutlineInputBorder(
-                                                              borderSide:
-                                                                  new BorderSide(
-                                                                      color: Colors
-                                                                          .transparent)),
+                                                          border:
+                                                              InputBorder.none,
+                                                          focusedBorder:
+                                                              InputBorder.none,
                                                           hintText: filePick
                                                               .toString(),
                                                           hintStyle:
@@ -1692,11 +1676,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                     keyboardType:
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
-                                                      border: new OutlineInputBorder(
-                                                          borderSide:
-                                                              new BorderSide(
-                                                                  color: Colors
-                                                                      .transparent)),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
                                                       hintText: 'Menu index',
                                                       hintStyle: TextStyle(
                                                           color: Colors.grey),

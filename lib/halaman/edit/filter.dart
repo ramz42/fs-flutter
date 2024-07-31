@@ -2629,7 +2629,10 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   var counter = 600;
   var voucher = "";
   var db = new Mysql();
+
   bool isNavigate = true;
+  bool isVisibleTapCard = true;
+  bool isVisibleTapDialog = false;
 
   var bg_warna_main = "";
   var warna1 = "";
@@ -2645,7 +2648,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   @override
   void initState() {
     // TODO: implement initState
-    // timerPeriodFunc(); // timer periodic functions\
 
     setState(() {
       isNavigate = true;
@@ -2660,14 +2662,9 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
 
   void getStorage() async {
     var ready = await storage.ready;
-
-    print("status ready storage : $ready");
     if (ready == true) {
       setState(() {});
-
       bgImg = await storage.getItem('background_images');
-
-      // print("background_storage : $bgImg");
     }
   }
 
@@ -2707,30 +2704,8 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
           } // Finally, close the connection
         }).then((value) {
           // ...
-          // print("bg main color : $bg_warna_main");
-          // print("bg main color : $warna1");
-          // print("bg main color : $warna2");
         });
         return value.close();
-      },
-    );
-  }
-
-  Route _routeAnimate(halaman) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => halaman,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
       },
     );
   }
@@ -2845,210 +2820,220 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          width: 100,
-          height: 100,
-          color: Colors.transparent,
-          child: Card(
+        return AnimatedOpacity(
+          opacity: isVisibleTapDialog == true ? 1.0 : 0.0,
+          duration: const Duration(seconds: 1),
+          child: Container(
+            width: 100,
+            height: 100,
             color: Colors.transparent,
-            // color: Colors.lightBlue,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(0),
-                child: AlertDialog(
-                  backgroundColor: Color.fromARGB(218, 33, 33, 33),
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 40, bottom: 50),
-                    child: Text(
-                      "Voucher Input",
-                      style: const TextStyle(
-                        fontSize: 56,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+            child: Card(
+              color: Colors.transparent,
+              // color: Colors.lightBlue,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: AlertDialog(
+                    backgroundColor: Color.fromARGB(218, 33, 33, 33),
+                    title: Padding(
+                      padding: const EdgeInsets.only(top: 40, bottom: 50),
+                      child: Text(
+                        "Masukkan Voucher",
+                        style: const TextStyle(
+                          fontSize: 56,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  content: Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Text(
-                      "Masukkan Nama dan Voucher",
-                      style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  actions: <Widget>[
-                    // input nama
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            bottom: width * 0.0, left: width * 0.0),
-                        child: SizedBox(
-                          width: width * 0.25,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: Colors.white,
-                            child: TextFormField(
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                border: new OutlineInputBorder(
-                                    borderSide: new BorderSide(
-                                        color: Colors.transparent)),
-                                hintText: 'Masukkan Nama',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.only(
-                                  left: 5,
-                                  bottom: 5,
-                                  top: 5,
-                                  right: 5,
-                                ),
-                                focusColor: Colors.black,
-                                fillColor: Colors.black,
-                                label: Text(
-                                  "Nama",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 53, 53, 53),
+                    // content: Padding(
+                    //   padding: const EdgeInsets.all(40.0),
+                    //   child: Text(
+                    //     "Masukkan Nama dan Voucher",
+                    //     style: const TextStyle(
+                    //       fontSize: 30,
+                    //       color: Colors.white,
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //     textAlign: TextAlign.center,
+                    //   ),
+                    // ),
+                    actions: <Widget>[
+                      // input nama
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              bottom: width * 0.0, left: width * 0.0),
+                          child: SizedBox(
+                            width: width * 0.25,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Colors.white,
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  hintText: 'Masukkan Nama',
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  contentPadding: EdgeInsets.only(
+                                    left: 5,
+                                    bottom: 5,
+                                    top: 5,
+                                    right: 5,
+                                  ),
+                                  focusColor: Colors.black,
+                                  fillColor: Colors.black,
+                                  label: Text(
+                                    "Nama",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 53, 53, 53),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 53, 53, 53),
+                                ),
+                                // The validator receives the text that the user has entered.
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter some text';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  print("object value : $value");
+                                  setState(() {
+                                    nama = value.toString();
+                                  });
+                                },
                               ),
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 53, 53, 53),
-                              ),
-                              // The validator receives the text that the user has entered.
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (value) {
-                                print("object value : $value");
-                                setState(() {
-                                  nama = value.toString();
-                                });
-                              },
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    // end input nama ...
+                      // end input nama ...
 
-                    // input voucher
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            bottom: width * 0.0, left: width * 0.0),
-                        child: SizedBox(
-                          width: width * 0.25,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: Colors.white,
-                            child: TextFormField(
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                border: new OutlineInputBorder(
-                                    borderSide: new BorderSide(
-                                        color: Colors.transparent)),
-                                hintText: 'Masukkan Voucher',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.only(
-                                  left: 5,
-                                  bottom: 5,
-                                  top: 5,
-                                  right: 5,
-                                ),
-                                focusColor: Colors.black,
-                                fillColor: Colors.black,
-                                label: Text(
-                                  "Voucher",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 53, 53, 53),
+                      SizedBox(height: 5),
+
+                      // input voucher
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              bottom: width * 0.0, left: width * 0.0),
+                          child: SizedBox(
+                            width: width * 0.25,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Colors.white,
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  hintText: 'Masukkan Voucher',
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  contentPadding: EdgeInsets.only(
+                                    left: 5,
+                                    bottom: 5,
+                                    top: 5,
+                                    right: 5,
+                                  ),
+                                  focusColor: Colors.black,
+                                  fillColor: Colors.black,
+                                  label: Text(
+                                    "Voucher",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 53, 53, 53),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 53, 53, 53),
+                                ),
+                                // The validator receives the text that the user has entered.
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter some text';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  setState(() {
+                                    voucher = value.toString();
+                                  });
+                                },
                               ),
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 53, 53, 53),
-                              ),
-                              // The validator receives the text that the user has entered.
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (value) {
-                                setState(() {
-                                  voucher = value.toString();
-                                });
-                              },
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    // end input voucher ...
-                    SizedBox(
-                      height: width * 0.025,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.redAccent,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Tidak'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                      // end input voucher ...
+                      SizedBox(
+                        height: width * 0.025,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          OutlinedButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.redAccent,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                'Tidak'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              setState(() {
+                                isVisibleTapCard = !isVisibleTapCard;
+                            isVisibleTapDialog = !isVisibleTapDialog;
+                              });
+                            },
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange,
+                          SizedBox(
+                            width: 25,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Iya'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                          OutlinedButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.orange,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                'Iya'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                            onPressed: () async {
+                              // ...
+                              _updateVoucher(nama, voucher);
+                            },
                           ),
-                          onPressed: () async {
-                            // ...
-                            _updateVoucher(nama, voucher);
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -3174,47 +3159,57 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
             SizedBox(
               height: width * 0.08,
             ),
-            SizedBox(
-              // color: Color.fromARGB(255, 255, 123, 145),
-              height: height * 0.55,
-              child: Center(
-                child: Card(
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        45,
-                      ),
-                    ),
-                  ),
-                  elevation: 1,
-                  color: Color.fromARGB(218, 33, 33, 33),
-                  child: InkWell(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(
-                        25,
-                      ),
-                    ),
-                    onTap: () {
-                      print("scan qr code tap");
-                      // _dialogBuilder(context);
-                      _dialogBuilderVoucher(context, width);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: width * 0.06,
-                        bottom: width * 0.06,
-                        left: width * 0.05,
-                        right: width * 0.05,
-                      ),
-                      child: Text(
-                        "Scan Qr Anda \n\nAtau Tap Untuk Memasukkan Voucher",
-                        style: TextStyle(
-                          fontSize: width * 0.022,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontStyle: FontStyle.italic,
+            AnimatedOpacity(
+              opacity: isVisibleTapCard == true ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              child: Container(
+                // color: Color.fromARGB(255, 255, 123, 145),
+                height: height * 0.55,
+                child: Container(
+                  child: Center(
+                    child: Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            45,
+                          ),
                         ),
-                        textAlign: TextAlign.center,
+                      ),
+                      elevation: 1,
+                      color: Color.fromARGB(218, 33, 33, 33),
+                      child: InkWell(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            25,
+                          ),
+                        ),
+                        onTap: () {
+                          print("scan qr code tap");
+                          // _dialogBuilder(context);
+                          _dialogBuilderVoucher(context, width);
+                          setState(() {
+                            isVisibleTapCard = !isVisibleTapCard;
+                            isVisibleTapDialog = !isVisibleTapDialog;
+                          });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: width * 0.02,
+                            bottom: width * 0.02,
+                            left: width * 0.2,
+                            right: width * 0.2,
+                          ),
+                          child: Text(
+                            "Scan Qr \n\or\n Tap Voucher",
+                            style: TextStyle(
+                              fontSize: width * 0.022,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ),
                     ),
                   ),
