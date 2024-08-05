@@ -173,7 +173,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
             Container(
               height: height * 0.12,
               width: width * 1,
-              color: Color.fromARGB(255, 116, 24, 55),
+              color: const Color.fromARGB(255, 116, 24, 55),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -236,7 +236,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Container(
@@ -353,8 +353,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                         context,
                         PageTransition(
                             type: PageTransitionType.fade,
-                            child: HalamanAwal(
-                              backgrounds: '',
+                            child: const HalamanAwal(
+                              backgrounds: "1720472173-background.jpg",
+                              header: "1719751264-header.jpg",
                             ),
                             inheritTheme: true,
                             ctx: context),
@@ -380,7 +381,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
             child: ListBody(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.all(0.0),
+                  padding: const EdgeInsets.all(0.0),
                   child: Pinput(
                     defaultPinTheme: defaultPinTheme,
                     focusedPinTheme: focusedPinTheme,
@@ -407,7 +408,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: SettingsWidget(),
+                              child: const SettingsWidget(),
                               inheritTheme: true,
                               ctx: context),
                         );
@@ -493,7 +494,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.fade,
-                                  child: SettingsWidget(),
+                                  child: const SettingsWidget(),
                                   inheritTheme: true,
                                   ctx: context),
                             );
@@ -558,7 +559,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                             context,
                             PageTransition(
                                 type: PageTransitionType.fade,
-                                child: HalamanAwalSettings(),
+                                child: const HalamanAwalSettings(),
                                 inheritTheme: true,
                                 ctx: context),
                           );

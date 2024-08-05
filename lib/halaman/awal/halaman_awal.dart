@@ -21,16 +21,22 @@ import 'dart:async';
 import 'dart:io';
 
 class HalamanAwal extends StatefulWidget {
-  const HalamanAwal({super.key, required this.backgrounds});
+  const HalamanAwal(
+      {super.key, required this.backgrounds, required this.header});
 
   final backgrounds;
+  final header;
   // final CameraDescription camera;
   @override
-  State<HalamanAwal> createState() => _HalamanAwalState(this.backgrounds);
+  State<HalamanAwal> createState() => _HalamanAwalState(
+        this.backgrounds,
+        this.header,
+      );
 }
 
 class _HalamanAwalState extends State<HalamanAwal> {
   final backgrounds;
+  final header;
   // ...
   // final CameraDescription camera;
   final LocalStorage storage = new LocalStorage('serial_key');
@@ -61,7 +67,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
   Color pickerColor = Color(0xff443a49);
   Color currentColor = Color(0xff443a49);
 
-  _HalamanAwalState(this.backgrounds);
+  _HalamanAwalState(this.backgrounds, this.header);
 
   void _dartPad() async {
     String s = "uploads/images/rama-20-0/20-5.png";
@@ -77,7 +83,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
     // TODO: implement initState
 
     getWarnaBg();
-    getOrderSettings();
+    // getOrderSettings();
     getStorage();
     // _strings();
 
@@ -180,43 +186,10 @@ class _HalamanAwalState extends State<HalamanAwal> {
       }
     });
     // ...
-
-    // timer not running ...
-    // const oneSec = const Duration(seconds: 1);
-    // _timer = new Timer.periodic(
-    //   oneSec,
-    //   await (Timer timer) {
-    //     if (waktu_awal != 0) {
-    //       setState(() {
-    //         waktu_awal - 1;
-    //       });
-    //     } else {
-    //       setState(() {
-    //         timer.cancel();
-    //       });
-    //       initFullScreen();
-    //     }
-    //   },
-    // );
   }
 
   void initFullScreen() async {
     print("init fullscreen");
-    // init fullscreen ...
-
-    // // hide / minimize app
-    // await windowManager.ensureInitialized();
-
-    // WindowOptions windowOptions = const WindowOptions(
-    //   size: Size(0, 0),
-    //   center: true,
-    //   backgroundColor: Colors.transparent,
-    //   skipTaskbar: false,
-    //   titleBarStyle: TitleBarStyle.hidden,
-    // );
-    // windowManager.waitUntilReadyToShow(windowOptions, () async {
-    //   await windowManager.hide();
-    // });
   }
 
   void hideApp() async {
@@ -278,12 +251,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           _saveStorage(keys);
 
                           Navigator.of(context).pop();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const SettingsWidget(),
-                          //   ),
-                          // );
                         }
                       }
                     },
@@ -292,58 +259,14 @@ class _HalamanAwalState extends State<HalamanAwal> {
               ],
             ),
           ),
-          // actions: <Widget>[
-          //   TextButton(
-          //     child: const Text('Kembali'),
-          //     onPressed: () {
-          //       // _dialogPin(pin);
-          //       Navigator.of(context).pop();
-          //     },
-          //   ),
-          // ],
         );
       },
     );
   }
 
-  // getUsers() async {
-  //   final conn = await MySqlConnection.connect(
-  //     ConnectionSettings(
-  //       host: 'localhost',
-  //       port: 3306,
-  //       user: 'root',
-  //       db: 'foto_selfi',
-  //       password: 'rama4422',
-  //       // host: "217.21.72.2",
-  //       // port: 3306,
-  //       // user: 'n1575196_foto_selfie_flutter',
-  //       // db: 'n1575196_foto_selfie_flutter',
-  //       // password: '%;Eq}m3Wjy{&',
-  //     ),
-  //   ).whenComplete(
-  //     () {
-  //       // ignore: avoid_print
-  //       print('');
-  //     },
-  //   );
-  //   // // Query again database using a parameterized query
-  //   var results2 = await conn.query('SELECT * FROM `user_fotos`');
-
-  //   for (var row in results2) {
-  //     setState(() {
-  //       users = row;
-  //       // jumlahVoucher = count as int;
-  //     });
-  //   }
-  // }
-
   _clearStorage() async {
     await storage.clear();
   }
-
-  // _saveStorage() async {
-  //   await storage.setItem('title', "Title parameter dari localstorage");
-  // }
 
   _saveStorage(key) async {
     print("save storage serial keys : $key");
@@ -410,12 +333,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
             fit: BoxFit.cover,
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // ----------------
             // header page view
@@ -424,11 +347,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/order/header-image/$headerImg"),
-                  fit: BoxFit.cover,
-                ),
+                color: const Color.fromARGB(255, 26, 26, 26),
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //       "${Variables.ipv4_local}/storage/order/header-image/$header"),
+                //   fit: BoxFit.cover,
+                // ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -449,28 +373,20 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               Container(
                                 // margin: EdgeInsets.all(20),
                                 padding: EdgeInsets.all(1),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    border: Border.all(
-                                      width: 2,
-                                      color: bg_warna_main != ""
-                                          ? Color(int.parse(bg_warna_main))
-                                          : Colors.transparent,
-                                    )),
+                                // decoration: BoxDecoration(
+                                //     borderRadius: BorderRadius.circular(100),
+                                //     border: Border.all(
+                                //       width: 2,
+                                //       color: bg_warna_main != ""
+                                //           ? Color(int.parse(bg_warna_main))
+                                //           : Colors.transparent,
+                                //     )),
                                 child: InkWell(
                                   onTap: () {
-                                    //
-                                    // _dialogBuilder(
-                                    //     context,
-                                    //     "Aplikasi",
-                                    //     "Ingin Minimize Aplikasi Foto Selfie ?",
-                                    //     1);
                                     _showMyDialog(
                                         "Aplikasi",
                                         "Ingin Minimize Aplikasi Foto Selfie ?",
                                         1);
-                                    // timerPeriodFunc();
-                                    // timer disini untuk show app kembali
                                   },
                                   child: Icon(
                                     size: 35.0,
@@ -494,12 +410,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
-                                    //
-                                    // _dialogBuilder(
-                                    //     context,
-                                    //     "Aplikasi",
-                                    //     "Ingin Menutup Aplikasi Foto Selfie ?",
-                                    //     2);
                                     _showMyDialog(
                                         "Aplikasi",
                                         "Ingin Menutup Aplikasi Foto Selfie ?",
@@ -518,63 +428,17 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               ),
                             ],
                           ),
-                          // child: Row(
-                          //   mainAxisAlignment: MainAxisAlignment.end,
-                          //   children: [
-                          //     Container(
-                          //       child: Padding(
-                          //         padding: const EdgeInsets.all(15.0),
-                          //         child: InkWell(
-                          //           onTap: () {
-                          //             // _showMyDialog();
-                          //           },
-                          //           child: Center(
-                          //             child: Icon(
-                          //               Icons.minimize,
-                          //               size: 55,
-                          //               color: Color.fromARGB(255, 22, 22, 22),
-                          //               semanticLabel: "Settings",
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //     Container(
-                          //       child: Padding(
-                          //         padding: const EdgeInsets.all(15.0),
-                          //         child: InkWell(
-                          //           onTap: () {
-                          //             // _showMyDialog();
-                          //           },
-                          //           child: const Icon(
-                          //             Icons.close,
-                          //             size: 55,
-                          //             color: Color.fromARGB(255, 22, 22, 22),
-                          //             semanticLabel: "Settings",
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
                         ),
                         Container(
                           height: height * 0.035,
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
-                              colors: [
-                                warna1 != ""
-                                    ? Color(int.parse(warna1))
-                                    : Colors.transparent,
-                                warna2 != ""
-                                    ? Color(int.parse(warna2))
-                                    : Colors.transparent
-                              ],
+                              colors: [Colors.transparent, Colors.transparent],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: pickerColor,
+                            backgroundColor: Colors.transparent,
                             size: const Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -587,10 +451,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
             ),
 
             SizedBox(
-              height: height * 0.055,
+              height: height * 0.065,
             ),
             Container(
-              // color: Color.fromARGB(255, 255, 123, 145),
               height: width * 0.36,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -619,7 +482,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                             PageTransition(
                               type: PageTransitionType.fade,
                               child: OrderWidget(
-                                backgrounds: bgImg,
+                                backgrounds: backgrounds,
                               ),
                               inheritTheme: true,
                               ctx: context,
@@ -665,8 +528,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child:
-                                  LockScreenFotoEditWidget(background: bgImg),
+                              child: LockScreenFotoEditWidget(
+                                  background: backgrounds),
                               inheritTheme: true,
                               ctx: context),
                         );

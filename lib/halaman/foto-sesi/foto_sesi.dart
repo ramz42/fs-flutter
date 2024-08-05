@@ -368,19 +368,10 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
           isRunPostSesiMethods == false
               ? {
                   _postSesiPhoto('tutup', "", "", 1),
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => LockScreenFotoSesiWidget(
-                  // nama: nama,
-                  // title: title,
-                  //         ),
-                  //   ),
-                  // ),
                   Navigator.of(context)
                       .push(_routeAnimate(LockScreenFotoSesiWidget(
-//  nama: nama,
-//                           title: title,
+                          //  nama: nama,
+                          //  title: title,
                           ))),
                   setState(() {
                     isRunPostSesiMethods == true;
@@ -1799,7 +1790,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           right: width * 0.2,
                         ),
                         child: Text(
-                          "Scan Qr \n\or\n Tap Voucher",
+                          "Input Voucher",
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,

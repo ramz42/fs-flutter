@@ -233,11 +233,12 @@ class _OrderWidgetState extends State<OrderWidget> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/order/header-image/$headerImg"),
-                  fit: BoxFit.cover,
-                ),
+                color: const Color.fromARGB(255, 26, 26, 26),
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //       "${Variables.ipv4_local}/storage/order/header-image/$headerImg"),
+                //   fit: BoxFit.cover,
+                // ),
               ),
               child: Column(
                 children: [
@@ -310,20 +311,11 @@ class _OrderWidgetState extends State<OrderWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [
-                          warna1 != ""
-                              ? Color(int.parse(warna1))
-                              : Colors.transparent,
-                          warna2 != ""
-                              ? Color(int.parse(warna2))
-                              : Colors.transparent
-                        ],
+                        colors: [Colors.transparent, Colors.transparent],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
-                          : Colors.transparent,
+                      backgroundColor: Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -617,7 +609,9 @@ class _OrderWidgetState extends State<OrderWidget> {
                                   PageTransition(
                                       type: PageTransitionType.fade,
                                       child: HalamanAwal(
-                                        backgrounds: backgrounds,
+                                        backgrounds:
+                                            "1720472173-background.jpg",
+                                        header: "1719751264-header.jpg",
                                       ),
                                       inheritTheme: true,
                                       ctx: context),

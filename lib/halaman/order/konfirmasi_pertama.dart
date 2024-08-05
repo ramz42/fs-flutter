@@ -264,21 +264,12 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [
-                          warna1 != ""
-                              ? Color(int.parse(warna1))
-                              : Colors.transparent,
-                          warna2 != ""
-                              ? Color(int.parse(warna2))
-                              : Colors.transparent
-                        ],
+                        colors: [Colors.transparent, Colors.transparent],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
-                          : Colors.transparent,
-                      size: Size(double.infinity, double.infinity),
+                      backgroundColor: Colors.transparent,
+                      size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
                   ),

@@ -2322,7 +2322,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   PageTransition(
                                       type: PageTransitionType.fade,
                                       child: HalamanAwal(
-                                        backgrounds: backgrounds,
+                                        
+                              backgrounds: "1720472173-background.jpg",
+                              header: "1719751264-header.jpg",
                                       ),
                                       inheritTheme: true,
                                       ctx: context),
@@ -3002,7 +3004,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                               Navigator.of(context).pop();
                               setState(() {
                                 isVisibleTapCard = !isVisibleTapCard;
-                            isVisibleTapDialog = !isVisibleTapDialog;
+                                isVisibleTapDialog = !isVisibleTapDialog;
                               });
                             },
                           ),
@@ -3135,23 +3137,20 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   SizedBox(
                     height: height * 0.035,
                     width: width * 1,
-                    child: bg_warna_main != ""
-                        ? WaveWidget(
-                            config: CustomConfig(
-                              colors: [
-                                Color(int.parse(warna1)),
-                                Color(int.parse(warna2))
-                              ],
-                              durations: _durations,
-                              heightPercentages: _heightPercentages,
-                            ),
-                            backgroundColor: bg_warna_main != ""
-                                ? Color(int.parse(bg_warna_main))
-                                : Colors.transparent,
-                            size: const Size(double.infinity, double.infinity),
-                            waveAmplitude: 0,
-                          )
-                        : Container(),
+                    child: Container(
+                    height: height * 0.025,
+                    width: width * 1,
+                    child: WaveWidget(
+                      config: CustomConfig(
+                        colors: [Colors.transparent, Colors.transparent],
+                        durations: _durations,
+                        heightPercentages: _heightPercentages,
+                      ),
+                      backgroundColor: Colors.transparent,
+                      size: const Size(double.infinity, double.infinity),
+                      waveAmplitude: 0,
+                    ),
+                  ),
                   ),
                 ],
               ),
@@ -3200,7 +3199,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                             right: width * 0.2,
                           ),
                           child: Text(
-                            "Scan Qr \n\or\n Tap Voucher",
+                            "Input Voucher",
                             style: TextStyle(
                               fontSize: width * 0.022,
                               color: Colors.white,

@@ -558,6 +558,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   type: PageTransitionType.fade,
                   child: HalamanAwal(
                     backgrounds: backgrounds,
+                    header: headerImg,
                   ),
                   inheritTheme: true,
                   ctx: context),
@@ -572,6 +573,7 @@ class _StickerWidgetState extends State<StickerWidget> {
               type: PageTransitionType.fade,
               child: HalamanAwal(
                 backgrounds: backgrounds,
+                header: headerImg,
               ),
               inheritTheme: true,
               ctx: context),
@@ -18629,7 +18631,9 @@ class _StickerWidgetState extends State<StickerWidget> {
                               PageTransition(
                                   type: PageTransitionType.fade,
                                   child: HalamanAwal(
-                                    backgrounds: backgrounds,
+                                    
+                              backgrounds: "1720472173-background.jpg",
+                              header: "1719751264-header.jpg",
                                   ),
                                   inheritTheme: true,
                                   ctx: context),
