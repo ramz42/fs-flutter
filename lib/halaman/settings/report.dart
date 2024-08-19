@@ -174,12 +174,6 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
         user: 'root',
         db: 'foto_selfi',
         password: 'rama4422',
-
-        // host: "217.21.72.2",
-        // port: 3306,
-        // user: 'n1575196_foto_selfie_flutter',
-        // db: 'n1575196_foto_selfie_flutter',
-        // password: '%;Eq}m3Wjy{&',
       ),
     ).whenComplete(
       // ignore: avoid_print

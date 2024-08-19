@@ -400,10 +400,10 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                           PageTransition(
                                               type: PageTransitionType.fade,
                                               child: HalamanAwal(
-                                                backgrounds:
-                                                    "1720472173-background.jpg",
-                                                header: "1719751264-header.jpg",
-                                              ),
+                                                  
+        backgrounds: "1719751112-background.jpg",
+        header: "1719751264-header.jpg",
+                                                      ),
                                               inheritTheme: true,
                                               ctx: context),
                                         );

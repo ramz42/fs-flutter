@@ -83,7 +83,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
     // TODO: implement initState
 
     getWarnaBg();
-    // getOrderSettings();
+    getOrderSettings();
     getStorage();
     // _strings();
 
@@ -333,7 +333,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
             fit: BoxFit.cover,
           ),
         ),
