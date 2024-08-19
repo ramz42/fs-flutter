@@ -735,7 +735,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -753,8 +754,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           "Layout",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: Color.fromARGB(255, 49, 49, 49),
+                            color: Color.fromARGB(255, 179, 179, 179),
                             fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -773,7 +775,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -792,7 +795,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                       ],

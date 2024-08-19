@@ -24,22 +24,30 @@ import 'dart:ui';
 import 'dart:ui';
 
 class FilterWidget extends StatefulWidget {
-  FilterWidget(
-      {super.key,
-      required this.nama,
-      required this.title,
-      required this.backgrounds});
+  FilterWidget({
+    super.key,
+    required this.nama,
+    required this.title,
+    required this.backgrounds,
+  });
   final nama;
   final title;
   final backgrounds;
 
   @override
-  State<FilterWidget> createState() =>
-      _FilterWidgetState(nama, title, backgrounds);
+  State<FilterWidget> createState() => _FilterWidgetState(
+        nama,
+        title,
+        backgrounds,
+      );
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  _FilterWidgetState(this.nama, this.title, this.backgrounds);
+  _FilterWidgetState(
+    this.nama,
+    this.title,
+    this.backgrounds,
+  );
 
   final nama;
   final title;
@@ -86,7 +94,6 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // colors wave
   // static const _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
-
   static const _colors = [
     Color.fromARGB(255, 212, 111, 170),
     Color.fromARGB(255, 252, 175, 229),
@@ -103,8 +110,8 @@ class _FilterWidgetState extends State<FilterWidget> {
   ];
   // end statements color waves
 
+  // .....
   //Create an instance of ScreenshotController
-  // ...
   ScreenshotController screenshotController1 = ScreenshotController();
   ScreenshotController screenshotController2 = ScreenshotController();
   ScreenshotController screenshotController3 = ScreenshotController();
@@ -122,6 +129,7 @@ class _FilterWidgetState extends State<FilterWidget> {
   ScreenshotController screenshotController14 = ScreenshotController();
   ScreenshotController screenshotController15 = ScreenshotController();
   ScreenshotController screenshotController16 = ScreenshotController();
+  // .....
 
   @override
   void initState() {
@@ -132,10 +140,14 @@ class _FilterWidgetState extends State<FilterWidget> {
 
     print(
         "title contains a pada filter page : ${title.toString().contains("Collage A")}");
+
     // init get filter from functions
     getFilter();
     getWarnaBg();
     getOrderSettings();
+
+    print(
+        "object date time now : $nama-${DateTime.now().day}-${DateTime.now().hour}");
 
     // test print logger nama dan tittle user
     print("nama initstate filterwidget : $nama");
@@ -153,14 +165,13 @@ class _FilterWidgetState extends State<FilterWidget> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       background.addAll(result);
-      // print("background : ${background}");
       for (var element in background) {
-        // print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
         });
       }
+      print("object : $bgImg");
     } else {
       print(response.reasonPhrase);
     }
@@ -1219,7 +1230,6 @@ class _FilterWidgetState extends State<FilterWidget> {
       }
       if (title.toString().contains("Collage B") ||
           title.toString().contains("Paket B")) {
-        // list.addAll(_list[i]);
         for (var i = 0; i < 16; i++) {
           // ...
           print("object _list collage B $i ${_list[i]}");
@@ -1283,8 +1293,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                           "Filter",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Color.fromARGB(255, 179, 179, 179),
                             fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -1302,7 +1313,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           "Layout",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             color: Colors.white,
                           ),
                         ),
@@ -1322,7 +1333,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
                         SizedBox(
@@ -1341,7 +1352,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
                         // SizedBox(
@@ -2322,10 +2333,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   PageTransition(
                                       type: PageTransitionType.fade,
                                       child: HalamanAwal(
-                                        
-                              
-        backgrounds: "1719751112-background.jpg",
-        header: "1719751264-header.jpg",
+                                        backgrounds: bgImg,
+                                        header: headerImg,
                                       ),
                                       inheritTheme: true,
                                       ctx: context),
@@ -2757,7 +2766,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                             child: FilterWidget(
                               nama: nama,
                               title: title,
-                              backgrounds: bgImg,
+                              backgrounds: background,
                             ),
                             inheritTheme: true,
                             ctx: context),
@@ -3139,19 +3148,19 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     height: height * 0.035,
                     width: width * 1,
                     child: Container(
-                    height: height * 0.025,
-                    width: width * 1,
-                    child: WaveWidget(
-                      config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
-                        durations: _durations,
-                        heightPercentages: _heightPercentages,
+                      height: height * 0.025,
+                      width: width * 1,
+                      child: WaveWidget(
+                        config: CustomConfig(
+                          colors: [Colors.transparent, Colors.transparent],
+                          durations: _durations,
+                          heightPercentages: _heightPercentages,
+                        ),
+                        backgroundColor: Colors.transparent,
+                        size: const Size(double.infinity, double.infinity),
+                        waveAmplitude: 0,
                       ),
-                      backgroundColor: Colors.transparent,
-                      size: const Size(double.infinity, double.infinity),
-                      waveAmplitude: 0,
                     ),
-                  ),
                   ),
                 ],
               ),

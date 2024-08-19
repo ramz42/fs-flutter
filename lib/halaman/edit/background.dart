@@ -172,11 +172,34 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
     getAllImages();
     getSettings();
 
+    // ...
+    getOrderSettings();
+
     print("drag item 1 : $drag_item");
     print("drag item 2 : $drag_item2");
     print("choose_layout pada backgrond page : $choose_layout");
     print("choose_layout2 pada backgrond page : $choose_layout2");
     super.initState();
+  }
+
+  getOrderSettings() async {
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      background.addAll(result);
+      for (var element in background) {
+        setState(() {
+          headerImg = element["header_image"];
+          bgImg = element["background_image"];
+        });
+      }
+      print("object : $bgImg");
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   getSettings() async {
@@ -3846,7 +3869,6 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
 
         // layout 3
         if (choose_layout2 == "layout 3") {
-
           // ......
           // card 1
           // ......
@@ -7424,7 +7446,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -7443,7 +7466,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -7461,8 +7485,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           "Background",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: const Color.fromARGB(255, 49, 49, 49),
+                            color: Color.fromARGB(255, 179, 179, 179),
                             fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(
@@ -7481,28 +7506,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           style: TextStyle(
                             fontSize: width * 0.022,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
                           ),
                         ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
-                        // Icon(
-                        //   Icons.arrow_right,
-                        //   size: 25,
-                        //   color: Colors.white,
-                        // ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
-                        // Text(
-                        //   "Review",
-                        //   style: TextStyle(
-                        //     fontSize: width * 0.022,
-                        //     color: Colors.white,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -13320,13 +13327,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                   ? string_logo
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 72,
+                                                                fontSize: 55,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
                                                               ),
+                                                              textAlign: TextAlign.center,
                                                             ),
                                                           ),
                                                         ),
@@ -13401,7 +13409,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: Colors
-                                                                    .transparent,
+                                                                    .white,
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -13434,7 +13442,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .transparent,
+                                                                    .white,
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13468,7 +13476,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .transparent,
+                                                                    .white,
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13492,7 +13500,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .transparent,
+                                                                    .white,
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13518,13 +13526,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 72,
+                                                                  fontSize: 55,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
+                                                              textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
@@ -13734,12 +13743,13 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              72,
+                                                                              55,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                              textAlign: TextAlign.center,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -14106,12 +14116,13 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                72,
+                                                                                55,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
+                                                              textAlign: TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -14273,10 +14284,11 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 72,
+                                                                              fontSize: 55,
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
+                                                              textAlign: TextAlign.center,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -14619,10 +14631,11 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
+                                                              textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -15006,7 +15019,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                   ? string_logo
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 72,
+                                                                fontSize: 55,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
@@ -15203,7 +15216,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 72,
+                                                                  fontSize: 55,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -15431,7 +15444,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              72,
+                                                                              55,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
@@ -15803,7 +15816,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                72,
+                                                                                55,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
@@ -15973,7 +15986,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 72,
+                                                                              fontSize: 55,
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
@@ -16319,7 +16332,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
@@ -16691,7 +16704,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                   ? string_logo
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 72,
+                                                                fontSize: 55,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
@@ -16888,7 +16901,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 72,
+                                                                  fontSize: 55,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -17116,7 +17129,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              72,
+                                                                              55,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
@@ -17489,7 +17502,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                72,
+                                                                                55,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
@@ -17659,7 +17672,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 72,
+                                                                              fontSize: 55,
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
@@ -18005,7 +18018,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),

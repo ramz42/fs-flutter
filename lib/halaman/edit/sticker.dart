@@ -296,7 +296,7 @@ class _StickerWidgetState extends State<StickerWidget> {
     getStickers();
     getBackground();
     getWarnaBg();
-    // getOrderSettings();
+    getOrderSettings();
     getStorage();
     getSettings();
 
@@ -7972,7 +7972,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     style: TextStyle(
                                       fontSize: width * 0.022,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.italic,
                                     ),
                                   ),
                                   SizedBox(
@@ -7991,7 +7992,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     style: TextStyle(
                                       fontSize: width * 0.022,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.italic,
                                     ),
                                   ),
                                   SizedBox(
@@ -8010,7 +8012,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     style: TextStyle(
                                       fontSize: width * 0.022,
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.italic,
                                     ),
                                   ),
                                   SizedBox(
@@ -8028,9 +8031,9 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     "Sticker",
                                     style: TextStyle(
                                       fontSize: width * 0.022,
-                                      color:
-                                          const Color.fromARGB(255, 49, 49, 49),
+                                      color: Color.fromARGB(255, 179, 179, 179),
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic,
                                     ),
                                   ),
                                 ],
@@ -13187,7 +13190,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                   padding:
                                                                       EdgeInsets
                                                                           .all(
-                                                                              15.0),
+                                                                              35.0),
                                                                   child:
                                                                       Container(
                                                                     child: Text(
@@ -13198,10 +13201,14 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
-                                                                            72,
+                                                                            55,
+                                          fontWeight: FontWeight.bold,
                                                                         color: Colors
                                                                             .white,
                                                                       ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -13270,14 +13277,14 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     // dragtarget 1
                                                                     Container(
                                                                       width: width *
-                                                                          0.10,
+                                                                          0.14,
                                                                       height:
                                                                           width *
-                                                                              0.10,
+                                                                              0.14,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: Colors
-                                                                            .transparent,
+                                                                            .white,
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         image:
@@ -13300,16 +13307,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     // dragtarget 2
                                                                     Container(
                                                                       width: width *
-                                                                          0.10,
+                                                                          0.14,
                                                                       height:
                                                                           width *
-                                                                              0.10,
+                                                                              0.14,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .transparent,
+                                                                            .white,
                                                                         image:
                                                                             DecorationImage(
                                                                           image: NetworkImage(
@@ -13336,16 +13343,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     // .............................
                                                                     Container(
                                                                       width: width *
-                                                                          0.10,
+                                                                          0.14,
                                                                       height:
                                                                           width *
-                                                                              0.10,
+                                                                              0.14,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .transparent,
+                                                                            .white,
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -13360,16 +13367,16 @@ class _StickerWidgetState extends State<StickerWidget> {
 
                                                                     Container(
                                                                       width: width *
-                                                                          0.10,
+                                                                          0.14,
                                                                       height:
                                                                           width *
-                                                                              0.10,
+                                                                              0.14,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .transparent,
+                                                                            .white,
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -13389,7 +13396,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       Padding(
                                                                     padding:
                                                                         EdgeInsets.all(
-                                                                            15.0),
+                                                                            35.0),
                                                                     child:
                                                                         Container(
                                                                       child:
@@ -13401,10 +13408,13 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              72,
+                                                                              55,
+                                          fontWeight: FontWeight.bold,
                                                                           color:
                                                                               Colors.white,
                                                                         ),
+                                                                        textAlign:
+                                                                            TextAlign.center,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -13566,15 +13576,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                EdgeInsets.all(15.0),
+                                                                                EdgeInsets.all(35.0),
                                                                             child:
                                                                                 Container(
                                                                               child: Text(
                                                                                 string_logo != "" ? string_logo : "Photobooth Text",
                                                                                 style: TextStyle(
-                                                                                  fontSize: 72,
+                                                                                  fontSize: 55,
                                                                                   color: Colors.white,
                                                                                 ),
+                                                                                textAlign: TextAlign.center,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -13850,14 +13861,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           Center(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsets.all(15.0),
+                                                                              padding: EdgeInsets.all(35.0),
                                                                               child: Container(
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                   ),
+                                                                                  textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -13991,14 +14003,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             SizedBox(height: 15),
                                                                             Center(
                                                                               child: Padding(
-                                                                                padding: EdgeInsets.all(15.0),
+                                                                                padding: EdgeInsets.all(35.0),
                                                                                 child: Container(
                                                                                   child: Text(
                                                                                     string_logo != "" ? string_logo : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 72,
+                                                                                      fontSize: 55,
                                                                                       color: Colors.white,
                                                                                     ),
+                                                                                    textAlign: TextAlign.center,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -14324,14 +14337,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   SizedBox(height: 15),
                                                                                   Center(
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsets.all(15.0),
+                                                                                      padding: EdgeInsets.all(35.0),
                                                                                       child: Container(
                                                                                         child: Text(
                                                                                           string_logo != "" ? string_logo : "Photobooth Text",
                                                                                           style: TextStyle(
-                                                                                            fontSize: 72,
+                                                                                            fontSize: 55,
                                                                                             color: Colors.white,
                                                                                           ),
+                                                                                          textAlign: TextAlign.center,
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -14703,7 +14717,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         Padding(
                                                                       padding:
                                                                           EdgeInsets.all(
-                                                                              15.0),
+                                                                              35.0),
                                                                       child:
                                                                           Container(
                                                                         child:
@@ -14714,10 +14728,12 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                72,
+                                                                                55,
                                                                             color:
                                                                                 Colors.white,
                                                                           ),
+                                                                          textAlign:
+                                                                              TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -14864,14 +14880,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               SizedBox(height: 15),
                                                                               Center(
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsets.all(15.0),
+                                                                                  padding: EdgeInsets.all(35.0),
                                                                                   child: Container(
                                                                                     child: Text(
                                                                                       string_logo != "" ? string_logo : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 72,
+                                                                                        fontSize: 55,
                                                                                         color: Colors.white,
                                                                                       ),
+                                                              textAlign: TextAlign.center,
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -15042,14 +15059,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           Center(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsets.all(15.0),
+                                                                              padding: EdgeInsets.all(35.0),
                                                                               child: Container(
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                   ),
+                                                              textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -15320,14 +15338,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             SizedBox(height: 15),
                                                                             Center(
                                                                               child: Padding(
-                                                                                padding: EdgeInsets.all(15.0),
+                                                                                padding: EdgeInsets.all(35.0),
                                                                                 child: Container(
                                                                                   child: Text(
                                                                                     string_logo != "" ? string_logo : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 72,
+                                                                                      fontSize: 55,
                                                                                       color: Colors.white,
                                                                                     ),
+                                                              textAlign: TextAlign.center,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -15470,14 +15489,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               // SizedBox(height: 15),
                                                                               Center(
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsets.all(15.0),
+                                                                                  padding: EdgeInsets.all(35.0),
                                                                                   child: Container(
                                                                                     child: Text(
                                                                                       string_logo != "" ? string_logo : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 72,
+                                                                                        fontSize: 55,
                                                                                         color: Colors.white,
                                                                                       ),
+                                                              textAlign: TextAlign.center,
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -15808,14 +15828,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       SizedBox(height: 15),
                                                                                       Center(
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsets.all(15.0),
+                                                                                          padding: EdgeInsets.all(35.0),
                                                                                           child: Container(
                                                                                             child: Text(
                                                                                               string_logo != "" ? string_logo : "Photobooth Text",
                                                                                               style: TextStyle(
-                                                                                                fontSize: 72,
+                                                                                                fontSize: 55,
                                                                                                 color: Colors.white,
                                                                                               ),
+                                                              textAlign: TextAlign.center,
                                                                                             ),
                                                                                           ),
                                                                                         ),
@@ -16171,7 +16192,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         Padding(
                                                                       padding:
                                                                           EdgeInsets.all(
-                                                                              15.0),
+                                                                              35.0),
                                                                       child:
                                                                           Container(
                                                                         child:
@@ -16182,10 +16203,11 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                72,
+                                                                                55,
                                                                             color:
                                                                                 Colors.white,
                                                                           ),
+                                                              textAlign: TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -16351,16 +16373,17 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(15.0),
+                                                                              EdgeInsets.all(35.0),
                                                                           child:
                                                                               Container(
                                                                             child:
                                                                                 Text(
                                                                               string_logo != "" ? string_logo : "Photobooth Text",
                                                                               style: TextStyle(
-                                                                                fontSize: 72,
+                                                                                fontSize: 55,
                                                                                 color: Colors.white,
                                                                               ),
+                                                              textAlign: TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
@@ -16531,14 +16554,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           Center(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsets.all(15.0),
+                                                                              padding: EdgeInsets.all(35.0),
                                                                               child: Container(
                                                                                 child: Text(
                                                                                   string_logo != "" ? string_logo : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 72,
+                                                                                    fontSize: 55,
                                                                                     color: Colors.white,
                                                                                   ),
+                                                                                  
+                                                              textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -16808,14 +16833,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             SizedBox(height: 15),
                                                                             Center(
                                                                               child: Padding(
-                                                                                padding: EdgeInsets.all(15.0),
+                                                                                padding: EdgeInsets.all(35.0),
                                                                                 child: Container(
                                                                                   child: Text(
                                                                                     string_logo != "" ? string_logo : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 72,
+                                                                                      fontSize: 55,
                                                                                       color: Colors.white,
                                                                                     ),
+                                                              textAlign: TextAlign.center,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -16958,14 +16984,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               // SizedBox(height: 15),
                                                                               Center(
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsets.all(15.0),
+                                                                                  padding: EdgeInsets.all(35.0),
                                                                                   child: Container(
                                                                                     child: Text(
                                                                                       string_logo != "" ? string_logo : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 72,
+                                                                                        fontSize: 55,
                                                                                         color: Colors.white,
                                                                                       ),
+                                                              textAlign: TextAlign.center,
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -17295,15 +17322,16 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       SizedBox(height: 15),
                                                                                       Center(
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsets.all(15.0),
+                                                                                          padding: EdgeInsets.all(35.0),
                                                                                           child: Container(
                                                                                             child: Text(
                                                                                               string_logo != "" ? string_logo : "Photobooth Text",
                                                                                               style: TextStyle(
-                                                                                                fontSize: 72,
+                                                                                                fontSize: 55,
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.bold,
                                                                                               ),
+                                                              textAlign: TextAlign.center,
                                                                                             ),
                                                                                           ),
                                                                                         ),
@@ -18505,7 +18533,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: 72,
+                      fontSize: 55,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -18530,7 +18558,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                       ? OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Color.fromARGB(255, 255, 72, 72),
+                            backgroundColor: Color.fromARGB(255, 255, 55, 72),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -18631,8 +18659,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                               PageTransition(
                                   type: PageTransitionType.fade,
                                   child: HalamanAwal(
-        backgrounds: "1719751112-background.jpg",
-        header: "1719751264-header.jpg",
+                                    backgrounds: "1719751112-background.jpg",
+                                    header: "1719751264-header.jpg",
                                   ),
                                   inheritTheme: true,
                                   ctx: context),

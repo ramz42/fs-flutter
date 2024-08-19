@@ -528,8 +528,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: LockScreenFotoEditWidget(
-                                  background: backgrounds),
+                              child:
+                                  LockScreenFotoEditWidget(background: bgImg),
                               inheritTheme: true,
                               ctx: context),
                         );
