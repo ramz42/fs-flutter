@@ -13334,7 +13334,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     FontWeight
                                                                         .bold,
                                                               ),
-                                                              textAlign: TextAlign.center,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                             ),
                                                           ),
                                                         ),
@@ -13533,7 +13535,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
-                                                              textAlign: TextAlign.center,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
                                                               ),
                                                             ),
                                                           ),
@@ -13749,7 +13753,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
-                                                              textAlign: TextAlign.center,
+                                                                        textAlign:
+                                                                            TextAlign.center,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -14122,7 +14127,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
-                                                              textAlign: TextAlign.center,
+                                                                          textAlign:
+                                                                              TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -14191,8 +14197,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             // ============
                                                                             // dragtarget 1
                                                                             Container(
-                                                                              width: width * 0.12,
-                                                                              height: width * 0.12,
+                                                                              width: width * 0.13,
+                                                                              height: width * 0.13,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(12),
                                                                                 color: Colors.transparent,
@@ -14206,11 +14212,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               ),
                                                                             ),
 
+                                                                            SizedBox(
+                                                                              height: height * 0.035,
+                                                                            ),
                                                                             // ============
                                                                             // dragtarget 2
                                                                             Container(
-                                                                              width: width * 0.12,
-                                                                              height: width * 0.12,
+                                                                              width: width * 0.13,
+                                                                              height: width * 0.13,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(12),
                                                                                 color: Colors.transparent,
@@ -14233,13 +14242,15 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           mainAxisAlignment:
                                                                               MainAxisAlignment.spaceEvenly,
                                                                           children: [
-                                                                            SizedBox(height: 12),
+                                                                            SizedBox(
+                                                                              height: height * 0.15,
+                                                                            ),
                                                                             // ...............................
                                                                             // layout drag target main view
                                                                             // .............................
                                                                             Container(
-                                                                              width: width * 0.12,
-                                                                              height: width * 0.12,
+                                                                              width: width * 0.13,
+                                                                              height: width * 0.13,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(12),
                                                                                 color: Colors.transparent,
@@ -14251,9 +14262,12 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               ),
                                                                             ),
 
+                                                                            SizedBox(
+                                                                              height: height * 0.035,
+                                                                            ),
                                                                             Container(
-                                                                              width: width * 0.12,
-                                                                              height: width * 0.12,
+                                                                              width: width * 0.13,
+                                                                              height: width * 0.13,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(12),
                                                                                 color: Colors.transparent,
@@ -14267,9 +14281,6 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    SizedBox(
-                                                                        height:
-                                                                            12),
                                                                     Center(
                                                                       child:
                                                                           Padding(
@@ -14288,14 +14299,15 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
-                                                              textAlign: TextAlign.center,
+                                                                            textAlign:
+                                                                                TextAlign.center,
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     SizedBox(
                                                                         height: height *
-                                                                            0.01),
+                                                                            0.025),
                                                                   ],
                                                                 ),
                                                               )
@@ -14635,7 +14647,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
-                                                              textAlign: TextAlign.center,
+                                                                                  textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -15026,6 +15038,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     FontWeight
                                                                         .bold,
                                                               ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                             ),
                                                           ),
                                                         ),
@@ -15223,6 +15238,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
                                                               ),
                                                             ),
                                                           ),
@@ -15450,6 +15468,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                        textAlign:
+                                                                            TextAlign.center,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -15822,6 +15842,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
+                                                                          textAlign:
+                                                                              TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -15990,6 +16012,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
+                                                                            textAlign:
+                                                                                TextAlign.center,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -16336,6 +16360,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
+                                                                                  textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -16711,6 +16736,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     FontWeight
                                                                         .bold,
                                                               ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                             ),
                                                           ),
                                                         ),
@@ -16908,6 +16936,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
                                                               ),
                                                             ),
                                                           ),
@@ -17135,6 +17166,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
+                                                                        textAlign:
+                                                                            TextAlign.center,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -17508,6 +17541,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                           ),
+                                                                          textAlign:
+                                                                              TextAlign.center,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -17676,6 +17711,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
+                                                                            textAlign:
+                                                                                TextAlign.center,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -18022,6 +18059,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                     color: Colors.white,
                                                                                     fontWeight: FontWeight.bold,
                                                                                   ),
+                                                                                  textAlign: TextAlign.center,
                                                                                 ),
                                                                               ),
                                                                             ),
