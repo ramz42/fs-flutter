@@ -58,7 +58,30 @@ class _MenuWidgetState extends State<MenuWidget> {
     _clearStorage();
     getSettings();
     getUsers();
+    getWarnaBg();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -245,27 +268,24 @@ class _MenuWidgetState extends State<MenuWidget> {
 
     return Material(
       child: Container(
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/bg2.jpeg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.12,
               width: width * 1,
-              // color: const Color.fromARGB(255, 24, 116, 59),
+              color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
               // tambah background image ...
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+
               // end background image ...
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -602,7 +622,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                 child: Text(
                                                   "Menu Buat",
                                                   style: TextStyle(
-                                                    color: Colors.grey,
+                                                    color: Colors.white,
                                                     fontSize: width * 0.012,
                                                     fontWeight: FontWeight.bold,
                                                   ),
@@ -1088,7 +1108,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                               ),
                               child: Divider(
                                 height: 10,
-                                color: Colors.grey,
+                                color: Colors.white,
                               ),
                             ),
                             SizedBox(
@@ -1129,7 +1149,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                 child: Text(
                                                   "Menu Update",
                                                   style: TextStyle(
-                                                    color: Colors.grey,
+                                                    color: Colors.white,
                                                     fontSize: width * 0.012,
                                                     fontWeight: FontWeight.bold,
                                                   ),
@@ -1611,7 +1631,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                               ),
                               child: Divider(
                                 height: 10,
-                                color: Colors.grey,
+                                color: Colors.white,
                               ),
                             ),
                             SizedBox(
@@ -1652,7 +1672,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                 child: Text(
                                                   "Menu Delete",
                                                   style: TextStyle(
-                                                    color: Colors.grey,
+                                                    color: Colors.white,
                                                     fontSize: width * 0.012,
                                                     fontWeight: FontWeight.bold,
                                                   ),

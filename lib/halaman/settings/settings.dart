@@ -77,7 +77,35 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     _clearStorage();
     getSettings();
     getUsers();
+
+    getWarnaBg();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna1 = row[2];
+              warna2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+          print("bg main color : $warna1");
+          print("bg main color : $warna2");
+        });
+        return value.close();
+      },
+    );
   }
 
   // ValueChanged<Color> callback
@@ -268,52 +296,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         ],
       ),
     );
-
-    // print("post settings");
-
-    // var request = http.MultipartRequest(
-    //     'POST', Uri.parse('http://127.0.0.1:8000/api/settings'));
-    // request.fields.addAll({
-    //   'judul': judul,
-    //   'deskripsi': deskripsi,
-    //   'pin': pin,
-    //   'type': "main",
-    //   'server_key': server_key,
-    //   'string_logo': string_logo
-    // });
-
-    // print("filePick : $filePick");
-    // request.files.add(await http.MultipartFile.fromPath(
-    //     'image', filePick.toString().replaceAll(r'\', r'/')));
-
-    // http.Response response =
-    //     await http.Response.fromStream(await request.send());
-    // print("post settings response status code : ${response.statusCode}");
-    // if (response.statusCode == 201) {
-    //   showDialog<String>(
-    //     context: context,
-    //     builder: (BuildContext context) => AlertDialog(
-    //       title: const Text('Update'),
-    //       content: const Text('Update Settings Berhasil'),
-    //       actions: <Widget>[
-    //         TextButton(
-    //           onPressed: () => Navigator.pop(context, 'Cancel'),
-    //           child: const Text('Kembali'),
-    //         ),
-    //         TextButton(
-    //           onPressed: () {
-    //             // Navigator.pop(context, 'OK');
-    //             Navigator.of(context).pop();
-    //             getSettings(); // memanggil kembali fungsi get settings untuk refresh data dari database
-    //           },
-    //           child: const Text('Baik'),
-    //         ),
-    //       ],
-    //     ),
-    //   );
-    // } else {
-    //   print(response.reasonPhrase);
-    // }
   }
 
   _postOrder() async {
@@ -521,22 +503,23 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
     return Material(
       child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(image != ""
+                ? "${Variables.ipv4_local}/storage/background-image/main/$bg_image"
+                : "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.12,
               width: width * 1,
-              // color: const Color.fromARGB(255, 24, 116, 59),
-              // tambah background image
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(image != ""
-                      ? "${Variables.ipv4_local}/storage/background-image/main/$bg_image"
-                      : "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              color: bg_warna_main != ""
+                  ? Color(int.parse(bg_warna_main))
+                  : Colors.transparent,
               // end background image
 
               child: Row(
@@ -804,7 +787,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Text(
                                       "Halaman Settings",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         fontSize: width * 0.012,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -1279,7 +1262,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Text(
                                       "Halaman Order",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         fontSize: width * 0.012,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -1525,7 +1508,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Text(
                                       "Warna Halaman",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         fontSize: width * 0.012,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -1873,7 +1856,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Text(
                                       "Sticker",
                                       style: TextStyle(
-                                        color: Colors.grey,
+                                        color: Colors.white,
                                         fontSize: width * 0.012,
                                         fontWeight: FontWeight.bold,
                                       ),

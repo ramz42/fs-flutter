@@ -167,50 +167,63 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
 
     return Material(
       child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+              "${Variables.ipv4_local}/storage/background-image/main/$bg_image",
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.12,
               width: width * 1,
-              color: const Color.fromARGB(255, 116, 24, 55),
+              color: bg_warna_main != ""
+                  ? Color(int.parse(bg_warna_main))
+                  : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    height: height * 1,
-                    width: width * 1,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                            "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(top: width * 0.001),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            judul.toString().toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.0275,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                  Opacity(
+                    opacity: 1,
+                    child: Container(
+                      height: height * 1,
+                      width: width * 1,
+                      // decoration: BoxDecoration(
+                      //   image: DecorationImage(
+                      //     image: NetworkImage(
+                      //         "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: width * 0.001),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              judul.toString().toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.0275,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            deskripsi.toString().toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.01,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              deskripsi.toString().toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.01,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -354,10 +367,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                         PageTransition(
                             type: PageTransitionType.fade,
                             child: const HalamanAwal(
-                                
-        backgrounds: "1719751112-background.jpg",
-        header: "1719751264-header.jpg",
-                                ),
+                              backgrounds: "1719751112-background.jpg",
+                              header: "1719751264-header.jpg",
+                            ),
                             inheritTheme: true,
                             ctx: context),
                       );

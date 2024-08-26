@@ -12998,7 +12998,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
-                                                        color: Colors.white,
+                                                        color: Colors.blueGrey,
                                                       ),
                                                 child: Padding(
                                                   padding: EdgeInsets.all(
@@ -13317,22 +13317,40 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
 
                                                       SizedBox(height: 12),
                                                       Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  12.0),
-                                                          child: Container(
+                                                        child: Container(
+                                                          width: width * 0.25,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15),
+                                                            color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        80,
+                                                                        133,
+                                                                        123)
+                                                                .withOpacity(
+                                                                    0.4),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(25.0),
                                                             child: Text(
                                                               string_logo != ""
                                                                   ? string_logo
+                                                                      .toString()
+                                                                      .toUpperCase()
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 55,
+                                                                fontSize: 35,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
+                                                                        .w900,
                                                               ),
                                                               textAlign:
                                                                   TextAlign
@@ -13382,7 +13400,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             5),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .blueGrey,
                                                               ),
                                                     child: Column(
                                                       mainAxisAlignment:
@@ -13411,7 +13429,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: Colors
-                                                                    .white,
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.3),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -13444,7 +13464,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.3),
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13478,7 +13500,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.3),
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13502,7 +13526,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             12),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.3),
                                                                 image:
                                                                     DecorationImage(
                                                                   image: NetworkImage(
@@ -13516,24 +13542,43 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         ),
                                                         SizedBox(height: 12),
                                                         Center(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    12.0),
-                                                            child: Container(
+                                                          child: Container(
+                                                            width: width * 0.25,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          15),
+                                                              color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          80,
+                                                                          133,
+                                                                          123)
+                                                                  .withOpacity(
+                                                                      0.4),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(
+                                                                      25.0),
                                                               child: Text(
                                                                 string_logo !=
                                                                         ""
                                                                     ? string_logo
+                                                                        .toString()
+                                                                        .toUpperCase()
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 55,
+                                                                  fontSize: 35,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w900,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
@@ -13582,7 +13627,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           BorderRadius.circular(
                                                                               5),
                                                                       color: Colors
-                                                                          .white,
+                                                                          .blueGrey,
                                                                     ),
                                                           child: Padding(
                                                             padding:
@@ -13732,26 +13777,42 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     height: 12),
                                                                 Center(
                                                                   child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets.all(
-                                                                            12.0),
+                                                                      Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.25,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              15),
+                                                                      color: Color.fromARGB(
+                                                                              255,
+                                                                              80,
+                                                                              133,
+                                                                              123)
+                                                                          .withOpacity(
+                                                                              0.4),
+                                                                    ),
                                                                     child:
-                                                                        Container(
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          25.0),
                                                                       child:
                                                                           Text(
                                                                         string_logo !=
                                                                                 ""
-                                                                            ? string_logo
+                                                                            ? string_logo.toString().toUpperCase()
                                                                             : "Photobooth Text",
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              55,
+                                                                              35,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w900,
                                                                         ),
                                                                         textAlign:
                                                                             TextAlign.center,
@@ -14107,25 +14168,38 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           12),
                                                                   Center(
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              12.0),
+                                                                        Container(
+                                                                      width: width *
+                                                                          0.25,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15),
+                                                                        color: Color.fromARGB(
+                                                                                255,
+                                                                                80,
+                                                                                133,
+                                                                                123)
+                                                                            .withOpacity(0.4),
+                                                                      ),
                                                                       child:
-                                                                          Container(
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                         child:
                                                                             Text(
                                                                           string_logo != ""
-                                                                              ? string_logo
+                                                                              ? string_logo.toString().toUpperCase()
                                                                               : "Photobooth Text",
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                55,
+                                                                                35,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                                FontWeight.w900,
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -14171,7 +14245,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.blueGrey,
                                                                           ),
                                                                 child: Column(
                                                                   mainAxisAlignment:
@@ -14283,21 +14357,31 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     ),
                                                                     Center(
                                                                       child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(12.0),
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.25,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(15),
+                                                                          color:
+                                                                              Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                        ),
                                                                         child:
-                                                                            Container(
+                                                                            Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .all(
+                                                                              25.0),
                                                                           child:
                                                                               Text(
                                                                             string_logo != ""
-                                                                                ? string_logo
+                                                                                ? string_logo.toString().toUpperCase()
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 55,
+                                                                              fontSize: 35,
                                                                               color: Colors.white,
-                                                                              fontWeight: FontWeight.bold,
+                                                                              fontWeight: FontWeight.w900,
                                                                             ),
                                                                             textAlign:
                                                                                 TextAlign.center,
@@ -14336,7 +14420,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.blueGrey,
                                                                           ),
                                                                     child:
                                                                         Padding(
@@ -14637,15 +14721,20 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               height: 12),
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(12.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 55,
+                                                                                    fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -14703,7 +14792,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
-                                                        color: Colors.white,
+                                                        color: Colors.blueGrey,
                                                       ),
                                                 child: Padding(
                                                   padding: EdgeInsets.all(
@@ -15021,22 +15110,40 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                       ),
                                                       SizedBox(height: 12),
                                                       Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  12.0),
-                                                          child: Container(
+                                                        child: Container(
+                                                          width: width * 0.25,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15),
+                                                            color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        80,
+                                                                        133,
+                                                                        123)
+                                                                .withOpacity(
+                                                                    0.4),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(25.0),
                                                             child: Text(
                                                               string_logo != ""
                                                                   ? string_logo
+                                                                      .toString()
+                                                                      .toUpperCase()
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 55,
+                                                                fontSize: 35,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
+                                                                        .w900,
                                                               ),
                                                               textAlign:
                                                                   TextAlign
@@ -15086,7 +15193,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             5),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .blueGrey,
                                                               ),
                                                     child: Column(
                                                       mainAxisAlignment:
@@ -15219,24 +15326,43 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         ),
                                                         SizedBox(height: 12),
                                                         Center(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    12.0),
-                                                            child: Container(
+                                                          child: Container(
+                                                            width: width * 0.25,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          15),
+                                                              color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          80,
+                                                                          133,
+                                                                          123)
+                                                                  .withOpacity(
+                                                                      0.4),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(
+                                                                      25.0),
                                                               child: Text(
                                                                 string_logo !=
                                                                         ""
                                                                     ? string_logo
+                                                                        .toString()
+                                                                        .toUpperCase()
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 55,
+                                                                  fontSize: 35,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w900,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
@@ -15447,26 +15573,42 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     height: 12),
                                                                 Center(
                                                                   child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets.all(
-                                                                            12.0),
+                                                                      Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.25,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              15),
+                                                                      color: Color.fromARGB(
+                                                                              255,
+                                                                              80,
+                                                                              133,
+                                                                              123)
+                                                                          .withOpacity(
+                                                                              0.4),
+                                                                    ),
                                                                     child:
-                                                                        Container(
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          25.0),
                                                                       child:
                                                                           Text(
                                                                         string_logo !=
                                                                                 ""
-                                                                            ? string_logo
+                                                                            ? string_logo.toString().toUpperCase()
                                                                             : "Photobooth Text",
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              55,
+                                                                              35,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w900,
                                                                         ),
                                                                         textAlign:
                                                                             TextAlign.center,
@@ -15516,7 +15658,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(5),
                                                                         color: Colors
-                                                                            .white,
+                                                                            .blueGrey,
                                                                       ),
                                                             child: Padding(
                                                               padding:
@@ -15822,25 +15964,38 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           12),
                                                                   Center(
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              12.0),
+                                                                        Container(
+                                                                      width: width *
+                                                                          0.25,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15),
+                                                                        color: Color.fromARGB(
+                                                                                255,
+                                                                                80,
+                                                                                133,
+                                                                                123)
+                                                                            .withOpacity(0.4),
+                                                                      ),
                                                                       child:
-                                                                          Container(
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                         child:
                                                                             Text(
                                                                           string_logo != ""
-                                                                              ? string_logo
+                                                                              ? string_logo.toString().toUpperCase()
                                                                               : "Photobooth Text",
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                55,
+                                                                                35,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                                FontWeight.w900,
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -15886,7 +16041,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.blueGrey,
                                                                           ),
                                                                 child: Column(
                                                                   mainAxisAlignment:
@@ -15996,21 +16151,31 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             12),
                                                                     Center(
                                                                       child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(12.0),
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.25,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(15),
+                                                                          color:
+                                                                              Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                        ),
                                                                         child:
-                                                                            Container(
+                                                                            Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .all(
+                                                                              25.0),
                                                                           child:
                                                                               Text(
                                                                             string_logo != ""
-                                                                                ? string_logo
+                                                                                ? string_logo.toString().toUpperCase()
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 55,
+                                                                              fontSize: 35,
                                                                               color: Colors.white,
-                                                                              fontWeight: FontWeight.bold,
+                                                                              fontWeight: FontWeight.w900,
                                                                             ),
                                                                             textAlign:
                                                                                 TextAlign.center,
@@ -16049,7 +16214,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.blueGrey,
                                                                           ),
                                                                     child:
                                                                         Padding(
@@ -16350,15 +16515,20 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               height: 12),
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(12.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 55,
+                                                                                    fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -16401,7 +16571,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
-                                                        color: Colors.white,
+                                                        color: Colors.blueGrey,
                                                       ),
                                                 child: Padding(
                                                   padding: EdgeInsets.all(
@@ -16719,22 +16889,40 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                       ),
                                                       SizedBox(height: 12),
                                                       Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  12.0),
-                                                          child: Container(
+                                                        child: Container(
+                                                          width: width * 0.25,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        15),
+                                                            color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        80,
+                                                                        133,
+                                                                        123)
+                                                                .withOpacity(
+                                                                    0.4),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(25.0),
                                                             child: Text(
                                                               string_logo != ""
                                                                   ? string_logo
+                                                                      .toString()
+                                                                      .toUpperCase()
                                                                   : "Photobooth Text",
                                                               style: TextStyle(
-                                                                fontSize: 55,
+                                                                fontSize: 35,
                                                                 color: Colors
                                                                     .white,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
+                                                                        .w900,
                                                               ),
                                                               textAlign:
                                                                   TextAlign
@@ -16784,7 +16972,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         .circular(
                                                                             5),
                                                                 color: Colors
-                                                                    .white,
+                                                                    .blueGrey,
                                                               ),
                                                     child: Column(
                                                       mainAxisAlignment:
@@ -16917,24 +17105,43 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                         ),
                                                         SizedBox(height: 12),
                                                         Center(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    12.0),
-                                                            child: Container(
+                                                          child: Container(
+                                                            width: width * 0.25,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          15),
+                                                              color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          80,
+                                                                          133,
+                                                                          123)
+                                                                  .withOpacity(
+                                                                      0.4),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(
+                                                                      25.0),
                                                               child: Text(
                                                                 string_logo !=
                                                                         ""
                                                                     ? string_logo
+                                                                        .toString()
+                                                                        .toUpperCase()
                                                                     : "Photobooth Text",
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 55,
+                                                                  fontSize: 35,
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w900,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
@@ -16983,7 +17190,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           BorderRadius.circular(
                                                                               5),
                                                                       color: Colors
-                                                                          .white,
+                                                                          .blueGrey,
                                                                     ),
                                                           child: Padding(
                                                             padding:
@@ -17145,26 +17352,42 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     height: 12),
                                                                 Center(
                                                                   child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets.all(
-                                                                            12.0),
+                                                                      Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.25,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              15),
+                                                                      color: Color.fromARGB(
+                                                                              255,
+                                                                              80,
+                                                                              133,
+                                                                              123)
+                                                                          .withOpacity(
+                                                                              0.4),
+                                                                    ),
                                                                     child:
-                                                                        Container(
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          25.0),
                                                                       child:
                                                                           Text(
                                                                         string_logo !=
                                                                                 ""
-                                                                            ? string_logo
+                                                                            ? string_logo.toString().toUpperCase()
                                                                             : "Photobooth Text",
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              55,
+                                                                              35,
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w900,
                                                                         ),
                                                                         textAlign:
                                                                             TextAlign.center,
@@ -17214,7 +17437,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(5),
                                                                         color: Colors
-                                                                            .white,
+                                                                            .blueGrey,
                                                                       ),
                                                             child: Padding(
                                                               padding:
@@ -17521,25 +17744,38 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                           12),
                                                                   Center(
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              12.0),
+                                                                        Container(
+                                                                      width: width *
+                                                                          0.25,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15),
+                                                                        color: Color.fromARGB(
+                                                                                255,
+                                                                                80,
+                                                                                133,
+                                                                                123)
+                                                                            .withOpacity(0.4),
+                                                                      ),
                                                                       child:
-                                                                          Container(
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                         child:
                                                                             Text(
                                                                           string_logo != ""
-                                                                              ? string_logo
+                                                                              ? string_logo.toString().toUpperCase()
                                                                               : "Photobooth Text",
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                55,
+                                                                                35,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                                FontWeight.w900,
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -17585,7 +17821,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.blueGrey,
                                                                           ),
                                                                 child: Column(
                                                                   mainAxisAlignment:
@@ -17695,21 +17931,31 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             12),
                                                                     Center(
                                                                       child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(12.0),
+                                                                          Container(
+                                                                        width: width *
+                                                                            0.25,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(15),
+                                                                          color:
+                                                                              Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                        ),
                                                                         child:
-                                                                            Container(
+                                                                            Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .all(
+                                                                              25.0),
                                                                           child:
                                                                               Text(
                                                                             string_logo != ""
-                                                                                ? string_logo
+                                                                                ? string_logo.toString().toUpperCase()
                                                                                 : "Photobooth Text",
                                                                             style:
                                                                                 TextStyle(
-                                                                              fontSize: 55,
+                                                                              fontSize: 35,
                                                                               color: Colors.white,
-                                                                              fontWeight: FontWeight.bold,
+                                                                              fontWeight: FontWeight.w900,
                                                                             ),
                                                                             textAlign:
                                                                                 TextAlign.center,
@@ -18049,15 +18295,20 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               height: 12),
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(12.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 55,
+                                                                                    fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -18092,6 +18343,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                         ? Color(int.parse(bg_warna_main))
                         : Colors.transparent,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
@@ -18115,7 +18367,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           ),
                           child: Container(
                             height: height * 0.55,
-                            color: Colors.transparent,
+                            color: const Color.fromRGBO(0, 0, 0, 0),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: ScrollConfiguration(
@@ -18126,8 +18378,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                   child: Wrap(
                                     alignment: WrapAlignment.start,
                                     verticalDirection: VerticalDirection.down,
-                                    spacing: width * 0.01,
-                                    runSpacing: width * 0.01,
+                                    spacing: width * 0.017,
+                                    runSpacing: width * 0.017,
                                     children: [
                                       for (var background in background)
                                         if (background["status"] == "aktif")
@@ -18193,6 +18445,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                             ),
                           ),
                         ),
+
+                        // SizedBox(height: height * 0.08),
+
                         OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
@@ -18278,6 +18533,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                             ),
                           ),
                         ),
+                        SizedBox(height: height * 0.047),
                       ],
                     ),
                   ),

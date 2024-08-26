@@ -110,9 +110,31 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
     _saveStorage();
     _clearStorage();
     getSettings();
-
+    getWarnaBg();
     getUsers();
     super.initState();
+  }
+
+  var bg_warna_main = "";
+
+  getWarnaBg() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+        });
+        return value.close();
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -257,24 +279,22 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
 
     return Material(
       child: Container(
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/bg2.jpeg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               // tambah background image ...
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+
+              color: bg_warna_main != ""
+                        ? Color(int.parse(bg_warna_main))
+                        : Colors.transparent,
               // end background image ...
               height: height * 0.12,
               width: width * 1,

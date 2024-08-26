@@ -13193,28 +13193,44 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                               SizedBox(
                                                                   height: 5),
                                                               Center(
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
-                                                                    left: 25.0,
-                                                                    right: 25.0,
+                                                                child:
+                                                                    Container(
+                                                                  width: width *
+                                                                      0.25,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            15),
+                                                                    color: Color.fromARGB(
+                                                                            255,
+                                                                            80,
+                                                                            133,
+                                                                            123)
+                                                                        .withOpacity(
+                                                                            0.4),
                                                                   ),
                                                                   child:
-                                                                      Container(
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                     child: Text(
                                                                       string_logo !=
                                                                               ""
                                                                           ? string_logo
+                                                                              .toString()
+                                                                              .toUpperCase()
                                                                           : "Photobooth Text",
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
-                                                                            55,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
+                                                                            35,
                                                                         color: Colors
                                                                             .white,
+                                                                        fontWeight:
+                                                                            FontWeight.w900,
                                                                       ),
                                                                       textAlign:
                                                                           TextAlign
@@ -13294,7 +13310,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: Colors
-                                                                            .white,
+                                                                            .white.withOpacity(0.4),
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         image:
@@ -13326,7 +13342,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white,
+                                                                            .white.withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image: NetworkImage(
@@ -13362,7 +13378,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white,
+                                                                            .white.withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -13386,7 +13402,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white,
+                                                                            .white.withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -13403,26 +13419,42 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                     height: 15),
                                                                 Center(
                                                                   child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets.all(
-                                                                            35.0),
+                                                                      Container(
+                                                                    width:
+                                                                        width *
+                                                                            0.25,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              15),
+                                                                      color: Color.fromARGB(
+                                                                              255,
+                                                                              80,
+                                                                              133,
+                                                                              123)
+                                                                          .withOpacity(
+                                                                              0.4),
+                                                                    ),
                                                                     child:
-                                                                        Container(
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          25.0),
                                                                       child:
                                                                           Text(
                                                                         string_logo !=
                                                                                 ""
-                                                                            ? string_logo
+                                                                            ? string_logo.toString().toUpperCase()
                                                                             : "Photobooth Text",
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              55,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
+                                                                              35,
                                                                           color:
                                                                               Colors.white,
+                                                                          fontWeight:
+                                                                              FontWeight.w900,
                                                                         ),
                                                                         textAlign:
                                                                             TextAlign.center,
@@ -13588,17 +13620,23 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                 15),
                                                                         Center(
                                                                           child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(35.0),
+                                                                              Container(
+                                                                            width:
+                                                                                width * 0.25,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(15),
+                                                                              color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                            ),
                                                                             child:
-                                                                                Container(
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(25.0),
                                                                               child: Text(
-                                                                                string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                 style: TextStyle(
-                                                                                  fontSize: 55,
+                                                                                  fontSize: 35,
                                                                                   color: Colors.white,
-                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontWeight: FontWeight.w900,
                                                                                 ),
                                                                                 textAlign: TextAlign.center,
                                                                               ),
@@ -13873,15 +13911,20 @@ class _StickerWidgetState extends State<StickerWidget> {
 
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
                                                                                     fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -14016,15 +14059,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             ),
                                                                             SizedBox(height: 15),
                                                                             Center(
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(35.0),
-                                                                                child: Container(
+                                                                              child: Container(
+                                                                                width: width * 0.25,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(15),
+                                                                                  color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(25.0),
                                                                                   child: Text(
-                                                                                    string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                    string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 55,
+                                                                                      fontSize: 35,
                                                                                       color: Colors.white,
-                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontWeight: FontWeight.w900,
                                                                                     ),
                                                                                     textAlign: TextAlign.center,
                                                                                   ),
@@ -14351,15 +14399,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                   ),
                                                                                   SizedBox(height: 15),
                                                                                   Center(
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsets.all(35.0),
-                                                                                      child: Container(
+                                                                                    child: Container(
+                                                                                      width: width * 0.25,
+                                                                                      decoration: BoxDecoration(
+                                                                                        borderRadius: BorderRadius.circular(15),
+                                                                                        color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: const EdgeInsets.all(25.0),
                                                                                         child: Text(
-                                                                                          string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                          string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                           style: TextStyle(
-                                                                                            fontSize: 55,
+                                                                                            fontSize: 35,
                                                                                             color: Colors.white,
-                                                                                            fontWeight: FontWeight.bold,
+                                                                                            fontWeight: FontWeight.w900,
                                                                                           ),
                                                                                           textAlign: TextAlign.center,
                                                                                         ),
@@ -14730,25 +14783,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           15),
                                                                   Center(
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              35.0),
+                                                                        Container(
+                                                                      width: width *
+                                                                          0.25,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15),
+                                                                        color: Color.fromARGB(
+                                                                                255,
+                                                                                80,
+                                                                                133,
+                                                                                123)
+                                                                            .withOpacity(0.4),
+                                                                      ),
                                                                       child:
-                                                                          Container(
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                         child:
                                                                             Text(
                                                                           string_logo != ""
-                                                                              ? string_logo
+                                                                              ? string_logo.toString().toUpperCase()
                                                                               : "Photobooth Text",
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                55,
+                                                                                35,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                                FontWeight.w900,
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -14897,15 +14963,20 @@ class _StickerWidgetState extends State<StickerWidget> {
 
                                                                               SizedBox(height: 15),
                                                                               Center(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.all(35.0),
-                                                                                  child: Container(
+                                                                                child: Container(
+                                                                                  width: width * 0.25,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(15),
+                                                                                    color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: const EdgeInsets.all(25.0),
                                                                                     child: Text(
-                                                                                      string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                      string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 55,
+                                                                                        fontSize: 35,
                                                                                         color: Colors.white,
-                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontWeight: FontWeight.w900,
                                                                                       ),
                                                                                       textAlign: TextAlign.center,
                                                                                     ),
@@ -15077,15 +15148,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               height: 15),
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(35.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 55,
+                                                                                    fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -15357,15 +15433,20 @@ class _StickerWidgetState extends State<StickerWidget> {
 
                                                                             SizedBox(height: 15),
                                                                             Center(
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(35.0),
-                                                                                child: Container(
+                                                                              child: Container(
+                                                                                width: width * 0.25,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(15),
+                                                                                  color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(25.0),
                                                                                   child: Text(
-                                                                                    string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                    string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 55,
+                                                                                      fontSize: 35,
                                                                                       color: Colors.white,
-                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontWeight: FontWeight.w900,
                                                                                     ),
                                                                                     textAlign: TextAlign.center,
                                                                                   ),
@@ -15509,15 +15590,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               ),
                                                                               // SizedBox(height: 15),
                                                                               Center(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.all(35.0),
-                                                                                  child: Container(
+                                                                                child: Container(
+                                                                                  width: width * 0.25,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(15),
+                                                                                    color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: const EdgeInsets.all(25.0),
                                                                                     child: Text(
-                                                                                      string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                      string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 55,
+                                                                                        fontSize: 35,
                                                                                         color: Colors.white,
-                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontWeight: FontWeight.w900,
                                                                                       ),
                                                                                       textAlign: TextAlign.center,
                                                                                     ),
@@ -15849,15 +15935,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       ),
                                                                                       SizedBox(height: 15),
                                                                                       Center(
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(35.0),
-                                                                                          child: Container(
+                                                                                        child: Container(
+                                                                                          width: width * 0.25,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: const EdgeInsets.all(25.0),
                                                                                             child: Text(
-                                                                                              string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                              string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                               style: TextStyle(
-                                                                                                fontSize: 55,
+                                                                                                fontSize: 35,
                                                                                                 color: Colors.white,
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w900,
                                                                                               ),
                                                                                               textAlign: TextAlign.center,
                                                                                             ),
@@ -16212,25 +16303,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                           15),
                                                                   Center(
                                                                     child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              35.0),
+                                                                        Container(
+                                                                      width: width *
+                                                                          0.25,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15),
+                                                                        color: Color.fromARGB(
+                                                                                255,
+                                                                                80,
+                                                                                133,
+                                                                                123)
+                                                                            .withOpacity(0.4),
+                                                                      ),
                                                                       child:
-                                                                          Container(
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .all(
+                                                                            25.0),
                                                                         child:
                                                                             Text(
                                                                           string_logo != ""
-                                                                              ? string_logo
+                                                                              ? string_logo.toString().toUpperCase()
                                                                               : "Photobooth Text",
                                                                           style:
                                                                               TextStyle(
                                                                             fontSize:
-                                                                                55,
+                                                                                35,
                                                                             color:
                                                                                 Colors.white,
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                                FontWeight.w900,
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.center,
@@ -16397,18 +16501,27 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               15),
                                                                       Center(
                                                                         child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(35.0),
+                                                                            Container(
+                                                                          width:
+                                                                              width * 0.25,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(15),
+                                                                            color:
+                                                                                Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                          ),
                                                                           child:
-                                                                              Container(
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(25.0),
                                                                             child:
                                                                                 Text(
-                                                                              string_logo != "" ? string_logo : "Photobooth Text",
+                                                                              string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                               style: TextStyle(
-                                                                                fontSize: 55,
+                                                                                fontSize: 35,
                                                                                 color: Colors.white,
-                                                                                fontWeight: FontWeight.bold,
+                                                                                fontWeight: FontWeight.w900,
                                                                               ),
                                                                               textAlign: TextAlign.center,
                                                                             ),
@@ -16580,15 +16693,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               height: 15),
                                                                           Center(
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(35.0),
-                                                                              child: Container(
+                                                                                Container(
+                                                                              width: width * 0.25,
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                              ),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(25.0),
                                                                                 child: Text(
-                                                                                  string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                   style: TextStyle(
-                                                                                    fontSize: 55,
+                                                                                    fontSize: 35,
                                                                                     color: Colors.white,
-                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontWeight: FontWeight.w900,
                                                                                   ),
                                                                                   textAlign: TextAlign.center,
                                                                                 ),
@@ -16859,15 +16977,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                             ),
                                                                             SizedBox(height: 15),
                                                                             Center(
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(35.0),
-                                                                                child: Container(
+                                                                              child: Container(
+                                                                                width: width * 0.25,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(15),
+                                                                                  color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsets.all(25.0),
                                                                                   child: Text(
-                                                                                    string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                    string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                     style: TextStyle(
-                                                                                      fontSize: 55,
+                                                                                      fontSize: 35,
                                                                                       color: Colors.white,
-                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontWeight: FontWeight.w900,
                                                                                     ),
                                                                                     textAlign: TextAlign.center,
                                                                                   ),
@@ -17011,15 +17134,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                               ),
                                                                               // SizedBox(height: 15),
                                                                               Center(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.all(35.0),
-                                                                                  child: Container(
+                                                                                child: Container(
+                                                                                  width: width * 0.25,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(15),
+                                                                                    color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: const EdgeInsets.all(25.0),
                                                                                     child: Text(
-                                                                                      string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                      string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 55,
+                                                                                        fontSize: 35,
                                                                                         color: Colors.white,
-                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontWeight: FontWeight.w900,
                                                                                       ),
                                                                                       textAlign: TextAlign.center,
                                                                                     ),
@@ -17350,15 +17478,20 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                                       ),
                                                                                       SizedBox(height: 15),
                                                                                       Center(
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(35.0),
-                                                                                          child: Container(
+                                                                                        child: Container(
+                                                                                          width: width * 0.25,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(15),
+                                                                                            color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: const EdgeInsets.all(25.0),
                                                                                             child: Text(
-                                                                                              string_logo != "" ? string_logo : "Photobooth Text",
+                                                                                              string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
                                                                                               style: TextStyle(
-                                                                                                fontSize: 55,
+                                                                                                fontSize: 35,
                                                                                                 color: Colors.white,
-                                                                                                fontWeight: FontWeight.bold,
+                                                                                                fontWeight: FontWeight.w900,
                                                                                               ),
                                                                                               textAlign: TextAlign.center,
                                                                                             ),
@@ -17915,555 +18048,42 @@ class _StickerWidgetState extends State<StickerWidget> {
                           print("object top: $_top");
                         },
                         child: Container(
-                                  width: width * 0.18,
-                                  height: height * 0.18,
+                          width: width * 0.18,
+                          height: height * 0.18,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
                             color: Colors.transparent,
                           ),
-                          child: 
-                          // Image.network(
-                          //   "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}",
-                          //   scale: 1.0,
-                          // ),
-                          RotationTransition(
+                          child:
+                              // Image.network(
+                              //   "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}",
+                              //   scale: 1.0,
+                              // ),
+                              RotationTransition(
                             turns: new AlwaysStoppedAnimation(
-                                _currentSliderValuePutarSticker.round() / 360,),
+                              _currentSliderValuePutarSticker.round() / 360,
+                            ),
                             child: Padding(
                               padding: EdgeInsets.all(width * 0.0055),
                               child: PhotoView(
-                                    backgroundDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      color: Colors.transparent,
-                                    ),
-                                    controller: controller,
-                                    scaleStateController: scaleStateController,
-                                    enableRotation: true,
-                                    initialScale: 0.5,
-                                    minScale: 0.5,
-                                    maxScale: 0.7,
-                                    imageProvider: NetworkImage(
-                                        "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-                                  ),
+                                backgroundDecoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: Colors.transparent,
+                                ),
+                                controller: controller,
+                                scaleStateController: scaleStateController,
+                                enableRotation: true,
+                                initialScale: 0.5,
+                                minScale: 0.5,
+                                maxScale: 0.7,
+                                imageProvider: NetworkImage(
+                                    "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-              // if (sticker_nama_list.contains("sticker 2"))
-              //   Positioned(
-              //     left: _left1,
-              //     top: _top1,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left1 = max(0, _left1 + details.delta.dx);
-              //         _top1 = max(0, _top1 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //         print("object tap");
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 3"))
-              //   Positioned(
-              //     left: _left2,
-              //     top: _top2,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left2 = max(0, _left2 + details.delta.dx);
-              //         _top2 = max(0, _top2 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 4"))
-              //   Positioned(
-              //     left: _left3,
-              //     top: _top3,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left3 = max(0, _left3 + details.delta.dx);
-              //         _top3 = max(0, _top3 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 5"))
-              //   Positioned(
-              //     left: _left4,
-              //     top: _top4,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left4 = max(0, _left4 + details.delta.dx);
-              //         _top4 = max(0, _top4 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 6"))
-              //   Positioned(
-              //     left: _left5,
-              //     top: _top5,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left5 = max(0, _left5 + details.delta.dx);
-              //         _top5 = max(0, _top5 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 7"))
-              //   Positioned(
-              //     left: _left6,
-              //     top: _top6,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left6 = max(0, _left6 + details.delta.dx);
-              //         _top6 = max(0, _top6 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 8"))
-              //   Positioned(
-              //     left: _left7,
-              //     top: _top7,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left7 = max(0, _left7 + details.delta.dx);
-              //         _top7 = max(0, _top7 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 9"))
-              //   Positioned(
-              //     left: _left8,
-              //     top: _top8,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left8 = max(0, _left8 + details.delta.dx);
-              //         _top8 = max(0, _top8 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // if (sticker_nama_list.contains("sticker 10"))
-              //   Positioned(
-              //     left: _left9,
-              //     top: _top9,
-              //     child: GestureDetector(
-              //       onPanUpdate: (details) {
-              //         // ...
-              //         _left9 = max(0, _left9 + details.delta.dx);
-              //         _top9 = max(0, _top9 + details.delta.dy);
-              //         setState(() {
-              //           // ...
-              //         });
-
-              //         print("object left: $_left");
-              //         print("object top: $_top");
-              //       },
-              //       onTap: () {
-              //         // ...
-              //       },
-              //       child: Container(
-              //         width: width * 0.18,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(25),
-              //           color: Colors.transparent,
-              //         ),
-              //         child: RotationTransition(
-              //           turns: new AlwaysStoppedAnimation(
-              //               _currentSliderValuePutarSticker.round() / 720),
-              //           child: Padding(
-              //             padding: EdgeInsets.all(width * 0.0055),
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               child: Container(
-              //                 color: Colors.transparent,
-              //                 width: width * 0.18,
-              //                 height: height * 0.18,
-              //                 child: PhotoView(
-              //                   backgroundDecoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(25),
-              //                     color: Colors.transparent,
-              //                   ),
-              //                   controller: controller,
-              //                   scaleStateController: scaleStateController,
-              //                   enableRotation: true,
-              //                   initialScale: minScale * 1.5,
-              //                   minScale: minScale,
-              //                   maxScale: maxScale,
-              //                   imageProvider: NetworkImage(
-              //                       "${Variables.ipv4_local}/storage/sticker/${sticker['nama_img'].toString()}"),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
             ],
           ),
         ),
