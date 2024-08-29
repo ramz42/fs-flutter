@@ -705,90 +705,133 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
 
   Future<void> _dialogRetake(BuildContext context, filename, index) {
     return showDialog<void>(
+      barrierColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          width: 100,
-          height: 100,
-          child: Card(
-            // color: Colors.lightBlue,
-            child: Padding(
-              padding: const EdgeInsets.all(0),
-              child: AlertDialog(
-                backgroundColor: const Color.fromARGB(255, 42, 193, 188),
-                title: Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 50),
-                  child: Text(
-                    "Retake Shoot",
-                    style: const TextStyle(
-                      fontSize: 56,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+        return Theme(
+          data: Theme.of(context)
+              .copyWith(dialogBackgroundColor: Colors.transparent),
+          child: Container(
+            color: Colors.transparent,
+            width: 100,
+            height: 100,
+            child: Card(
+              // color: Colors.lightBlue,
+              child: Padding(
+                padding: const EdgeInsets.all(0),
+                child: AlertDialog(
+                  backgroundColor: Color.fromARGB(255, 104, 152, 151),
+                  title: Padding(
+                    padding: const EdgeInsets.only(top: 40, bottom: 50),
+                    child: Text(
+                      "Retake Shoot",
+                      style: const TextStyle(
+                        fontSize: 56,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ),
-                content: Padding(
-                  padding: const EdgeInsets.all(40.0),
-                  child: Text(
-                    "Foto ini ?",
-                    style: const TextStyle(
-                      fontSize: 46,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  content: Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Text(
+                      "Foto ini ?",
+                      style: const TextStyle(
+                        fontSize: 46,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                ),
-                actions: <Widget>[
-                  // MainAxisAlignment.spaceAround,
-                  OutlinedButton(
-                    style: TextButton.styleFrom(
-                      textStyle: Theme.of(context).textTheme.labelLarge,
-                      backgroundColor: Colors.redAccent,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        'Tidak'.toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  actions: <Widget>[
+                    // MainAxisAlignment.spaceAround,
+                    OutlinedButton(
+                      style: TextButton.styleFrom(
+                        textStyle: Theme.of(context).textTheme.labelLarge,
+                        backgroundColor: Colors.redAccent,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          'Tidak'.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  const Spacer(),
-                  OutlinedButton(
-                    style: TextButton.styleFrom(
-                      textStyle: Theme.of(context).textTheme.labelLarge,
-                      backgroundColor: Colors.orange,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        'Iya'.toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                    const Spacer(),
+                    OutlinedButton(
+                      style: TextButton.styleFrom(
+                        textStyle: Theme.of(context).textTheme.labelLarge,
+                        backgroundColor: Colors.orange,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          'Iya'.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
+                      onPressed: () async {
+                        // ...
+                        _deleteImage(filename);
+                        Navigator.of(context).pop();
+                      },
                     ),
-                    onPressed: () async {
-                      // ...
-                      _deleteImage(filename);
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
+        );
+      },
+    );
+  }
+
+  Future<void> _dialogBuilderRetake(BuildContext context, filename, index) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            "Retake Shoot",
+          ),
+          content: const Text(
+            'Retake Foto ini ?',
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Tidak'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Iya'),
+              onPressed: () async {
+                _deleteImage(filename);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
       },
     );
@@ -878,13 +921,15 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                           elevation: 1,
                           color: Color.fromARGB(255, 255, 255, 255),
                           child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                            decoration: bgImg != ""
+                                ? BoxDecoration(
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                          "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : BoxDecoration(),
                             width: width * 1,
                             height: height * 1,
                             child: Row(
@@ -951,13 +996,19 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                       color: list[i] != null &&
                                                               list.isNotEmpty
                                                           ? Colors.transparent
-                                                          : Colors.white,
+                                                          : Colors.white
+                                                              .withOpacity(0.3),
                                                       child: Card(
                                                         elevation: 5,
                                                         child: InkWell(
                                                           onTap: () {
                                                             // ...
-                                                            _dialogRetake(
+                                                            // _dialogRetake(
+                                                            //     context,
+                                                            //     list[i],
+                                                            //     i);
+
+                                                            _dialogBuilderRetake(
                                                                 context,
                                                                 list[i],
                                                                 i);

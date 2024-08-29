@@ -1,6 +1,5 @@
 // ignore_for_file: sized_box_for_whitespace, override_on_non_overriding_member, avoid_unnecessary_containers, unused_import
 
-import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,6 +12,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import '../../src/database/db.dart';
 import '../awal/halaman_awal.dart';
+import 'dart:io';
 
 class OrderWidget extends StatefulWidget {
   OrderWidget({
@@ -49,6 +49,9 @@ class _OrderWidgetState extends State<OrderWidget> {
   int lengthMenu = 0;
   String ig = "";
 
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
   var menu;
 
   @override
@@ -56,12 +59,9 @@ class _OrderWidgetState extends State<OrderWidget> {
     getMenuOrder();
     getWarnaBg();
     getOrderSettings();
+
     super.initState();
   }
-
-  var bg_warna_main = "";
-  var warna1 = "";
-  var warna2 = "";
 
   getWarnaBg() async {
     // print("get sesi data");
@@ -133,12 +133,6 @@ class _OrderWidgetState extends State<OrderWidget> {
         user: 'root',
         db: 'foto_selfi',
         password: 'rama4422',
-
-        // host: "217.21.72.2",
-        // port: 3306,
-        // user: 'n1575196_foto_selfie_flutter',
-        // db: 'n1575196_foto_selfie_flutter',
-        // password: '%;Eq}m3Wjy{&',
       ),
     ).whenComplete(
       () {
@@ -147,7 +141,7 @@ class _OrderWidgetState extends State<OrderWidget> {
       },
     );
 
-    // // Query again database using a parameterized query
+    // Query again database using a parameterized query
     var results2 = await conn.query('SELECT * FROM `menu_settings`');
 
     setState(() {
@@ -234,11 +228,6 @@ class _OrderWidgetState extends State<OrderWidget> {
               width: width * 1,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 26, 26, 26),
-                // image: DecorationImage(
-                //   image: NetworkImage(
-                //       "${Variables.ipv4_local}/storage/order/header-image/$headerImg"),
-                //   fit: BoxFit.cover,
-                // ),
               ),
               child: Column(
                 children: [
@@ -374,14 +363,11 @@ class _OrderWidgetState extends State<OrderWidget> {
                                 Container(
                                   width: width * 0.775,
                                   height: height * 0.8,
-                                  // color: Colors.green,
                                   child: Center(
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Wrap(
                                         alignment: WrapAlignment.center,
-                                        // verticalDirection: VerticalDirection.,
-                                        // hor
                                         spacing: width * 0.01,
                                         runSpacing: width * 0.15,
                                         children: [
@@ -389,7 +375,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                                             for (var item in menu)
                                               Container(
                                                 width: width * 0.25,
-                                                height: height * 0.75,
+                                                height: height * 0.6,
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(1.0),
@@ -430,126 +416,100 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                                   true,
                                                               ctx: context),
                                                         );
-                                                        // Navigator.of(context)
-                                                        //     .push(_routeAnimate(
-                                                        //         ReviewPaymentWidget()));
-
-                                                        //                                       Navigator.push(
-                                                        //   context,
-                                                        //   PageTransition(
-                                                        //       type: PageTransitionType.fade,
-                                                        //       child: OrderWidget(),
-                                                        //       inheritTheme: true,
-                                                        //       ctx: context),
-                                                        // );
                                                       },
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                  .all(
-                                                            Radius.circular(
-                                                              10,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(15.0),
-                                                          child: Column(
-                                                            children: [
-                                                              Card(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(15.0),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Container(
+                                                              height:
+                                                                  height * 0.2,
+                                                              width: width * 1,
+                                                              child: Card(
                                                                 child: Image(
+                                                                  height:
+                                                                      height *
+                                                                          1,
+                                                                  width:
+                                                                      width * 1,
                                                                   image:
                                                                       NetworkImage(
                                                                     "${Variables.ipv4_local}/storage/background-image/sub/${item["image"]}",
                                                                     scale: 1,
                                                                   ),
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
                                                               ),
-                                                              SizedBox(
-                                                                height: 20,
+                                                            ),
+                                                            Text(
+                                                              item["title"]
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.02,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        255,
+                                                                        255,
+                                                                        255),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                               ),
-                                                              Text(
-                                                                item["title"]
-                                                                    .toString(),
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.02,
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          255),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
+                                                            ),
+                                                            Text(
+                                                              item["deskripsi"],
+                                                              style: TextStyle(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.014,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
                                                               ),
-                                                              SizedBox(
-                                                                height: 20,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                            Text(
+                                                              "Harga : Rp. ${item["harga"]},-"
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.014,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
                                                               ),
-                                                              Text(
-                                                                item[
-                                                                    "deskripsi"],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.014,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
+                                                            ),
+                                                            Text(
+                                                              "Waktu Sesi : ${item["waktu"]} Menit"
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                fontSize:
+                                                                    width *
+                                                                        0.014,
+                                                                color: Colors
+                                                                    .white,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .italic,
                                                               ),
-                                                              SizedBox(
-                                                                height: 20,
-                                                              ),
-                                                              Text(
-                                                                "Harga : Rp. ${item["harga"]},-"
-                                                                    .toString(),
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.014,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 20,
-                                                              ),
-                                                              Text(
-                                                                "Waktu Sesi : ${item["waktu"]} Menit"
-                                                                    .toString(),
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      width *
-                                                                          0.014,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ),
@@ -609,9 +569,9 @@ class _OrderWidgetState extends State<OrderWidget> {
                                   PageTransition(
                                       type: PageTransitionType.fade,
                                       child: HalamanAwal(
-                                        
-        backgrounds: "1719751112-background.jpg",
-        header: "1719751264-header.jpg",
+                                        backgrounds:
+                                            "1719751112-background.jpg",
+                                        header: "1719751264-header.jpg",
                                       ),
                                       inheritTheme: true,
                                       ctx: context),

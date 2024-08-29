@@ -60,7 +60,8 @@ class _LayoutImageWidgetState extends State<LayoutImageWidget> {
                     color: Colors.grey[300],
                     image: DecorationImage(
                       image: NetworkImage(
-                          "${Variables.ipv4_local}/storage/${url_image.toString()}"),
+                        "${Variables.ipv4_local}/storage/${url_image.toString()}",
+                      ),
                       fit: BoxFit.contain,
                     ),
                   )

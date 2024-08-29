@@ -85,7 +85,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
     getWarnaBg();
     getOrderSettings();
     getStorage();
-    // _strings();
 
     super.initState();
   }
@@ -137,7 +136,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
       main_color.addAll(result);
       // print("main_color : ${main_color}");
       for (var element in main_color) {
-        // print("element : ${element["bg_warna_wave"]}");
         setState(() {
           bg_warna_main = element["bg_warna_wave"];
           warna1 = element["warna1"];
@@ -332,8 +330,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+            image: NetworkImage(bgImg == ""
+                ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
             fit: BoxFit.cover,
           ),
         ),

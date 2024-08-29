@@ -47,8 +47,9 @@ class _MenuWidgetState extends State<MenuWidget> {
   String waktu = "";
 
   String bg_image = "";
-  String judul = "";
 
+  String judul_nav = "";
+  String deskripsi_nav = "";
   _MenuWidgetState();
 
   @override
@@ -111,8 +112,8 @@ class _MenuWidgetState extends State<MenuWidget> {
         value.query(sql).then((value) {
           for (var row in value) {
             setState(() {
-              judul = row[1];
-              deskripsi = row[2];
+              judul_nav = row[1];
+              deskripsi_nav = row[2];
               // pin = row[3];
               bg_image = row[6];
             });
@@ -282,8 +283,8 @@ class _MenuWidgetState extends State<MenuWidget> {
               height: height * 0.12,
               width: width * 1,
               color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
-                        : Colors.transparent,
+                  ? Color(int.parse(bg_warna_main))
+                  : Colors.transparent,
               // tambah background image ...
 
               // end background image ...
@@ -299,7 +300,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            judul.toUpperCase(),
+                            judul_nav.toUpperCase(),
                             style: TextStyle(
                               fontSize: width * 0.0275,
                               color: Colors.white,
@@ -308,7 +309,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            deskripsi.toUpperCase(),
+                            deskripsi_nav.toUpperCase(),
                             style: TextStyle(
                               fontSize: width * 0.01,
                               color: Colors.white,
