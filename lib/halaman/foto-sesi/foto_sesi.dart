@@ -22,15 +22,17 @@ class FotoSesiWidget extends StatefulWidget {
     required this.nama,
     required this.title,
     required this.waktu,
+    required this.backgrounds,
   });
 
   final nama;
   final title;
   final waktu;
+  final backgrounds;
 
   @override
   State<FotoSesiWidget> createState() =>
-      _FotoSesiWidgetState(this.nama, this.title, this.waktu);
+      _FotoSesiWidgetState(this.nama, this.title, this.waktu, this.backgrounds);
 }
 
 class _FotoSesiWidgetState extends State<FotoSesiWidget>
@@ -40,6 +42,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   final nama;
   final title;
   final waktu;
+  final backgrounds;
 
   final double barHeight = 10.0;
 
@@ -108,7 +111,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   StreamSubscription<CameraErrorEvent>? _errorStreamSubscription;
   StreamSubscription<CameraClosingEvent>? _cameraClosingStreamSubscription;
 
-  _FotoSesiWidgetState(this.nama, this.title, this.waktu);
+  _FotoSesiWidgetState(this.nama, this.title, this.waktu, this.backgrounds);
+  List<dynamic> main_color = [];
 
   @override
   void initState() {
@@ -162,27 +166,24 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   }
 
   getWarnaBg() async {
-    // print("get sesi data");
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `main_color`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {
-              bg_warna_main = row[1];
-              warna1 = row[2];
-              warna2 = row[3];
-            });
-          } // Finally, close the connection
-        }).then((value) {
-          // ...
-          print("bg main color : $bg_warna_main");
-          print("bg main color : $warna1");
-          print("bg main color : $warna2");
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/main-color'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      main_color.addAll(result);
+      // print("main_color : ${main_color}");
+      for (var element in main_color) {
+        setState(() {
+          bg_warna_main = element["bg_warna_wave"];
+          warna1 = element["warna1"];
+          warna2 = element["warna2"];
         });
-        return value.close();
-      },
-    );
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   postFotoSesi() async {
@@ -370,9 +371,10 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                   _postSesiPhoto('tutup', "", "", 1),
                   Navigator.of(context)
                       .push(_routeAnimate(LockScreenFotoSesiWidget(
-                          //  nama: nama,
-                          //  title: title,
-                          ))),
+                    //  nama: nama,
+                    //  title: title,
+                    backgrounds: backgrounds,
+                  ))),
                   setState(() {
                     isRunPostSesiMethods == true;
                   }),
@@ -878,20 +880,28 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                         Container(
                             height: width * 0.025,
                             width: width * 1,
-                            color: Color(int.parse(bg_warna_main))),
+                            color: bg_warna_main == ""
+                                ? Colors.transparent
+                                : Color(int.parse(bg_warna_main))),
                         Container(
                           height: height * 0.025,
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
                               colors: [
-                                Color(int.parse(warna1)),
-                                Color(int.parse(warna2))
+                                warna1 == ""
+                                    ? Colors.transparent
+                                    : Color(int.parse(warna1)),
+                                warna2 == ""
+                                    ? Colors.transparent
+                                    : Color(int.parse(warna2))
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: Color(int.parse(bg_warna_main)),
+                            backgroundColor: bg_warna_main == ""
+                                ? Colors.transparent
+                                : Color(int.parse(bg_warna_main)),
                             size: Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -921,15 +931,13 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                           elevation: 1,
                           color: Color.fromARGB(255, 255, 255, 255),
                           child: Container(
-                            decoration: bgImg != ""
-                                ? BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : BoxDecoration(),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                             width: width * 1,
                             height: height * 1,
                             child: Row(
@@ -999,6 +1007,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                           : Colors.white
                                                               .withOpacity(0.3),
                                                       child: Card(
+                                                        color: Colors.white
+                                                            .withOpacity(0.3),
                                                         elevation: 5,
                                                         child: InkWell(
                                                           onTap: () {
@@ -1126,7 +1136,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                       children: [
                                         Container(
                                           child: Card(
-                                            color: Colors.white,
+                                            color:
+                                                Colors.black.withOpacity(0.4),
                                             elevation: 5,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
@@ -1143,9 +1154,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: width * 0.012,
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              255, 31, 31, 31),
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255),
                                                     ),
                                                   ),
                                                   // count down widgewt here
@@ -1168,6 +1178,14 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         ),
                                         countTakePictures != 0
                                             ? ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    backgroundColor: Colors
+                                                        .black
+                                                        .withOpacity(0.4),
+                                                    textStyle: TextStyle(
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
                                                 onPressed: _initialized
                                                     ? _takePicture
                                                     : null,
@@ -1178,20 +1196,30 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                   child: Icon(
                                                     Icons.camera,
                                                     size: width * 0.04,
-                                                    color: const Color.fromARGB(
-                                                        255, 44, 44, 44),
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255),
                                                   ),
                                                 ),
                                               )
                                             : ElevatedButton(
-                                                onPressed: () {},
+                                                style: ElevatedButton.styleFrom(
+                                                    backgroundColor: Colors
+                                                        .black
+                                                        .withOpacity(0.4),
+                                                    textStyle: TextStyle(
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                onPressed: () {
+                                                  // dialog habis shoot
+                                                },
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
                                                       15.0),
                                                   child: Icon(
                                                     Icons.camera,
                                                     size: width * 0.04,
-                                                    color: Colors.grey,
+                                                    color: Colors.white,
                                                   ),
                                                 ),
                                               )
@@ -1259,7 +1287,7 @@ class Countdown extends AnimatedWidget {
       "$timerText",
       style: TextStyle(
         fontSize: width * 0.03,
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
     );
@@ -1267,14 +1295,16 @@ class Countdown extends AnimatedWidget {
 }
 
 class LockScreenFotoSesiWidget extends StatefulWidget {
-  const LockScreenFotoSesiWidget({super.key});
+  const LockScreenFotoSesiWidget({super.key, this.backgrounds});
 
+  final backgrounds;
   @override
   State<LockScreenFotoSesiWidget> createState() =>
-      _LockScreenFotoSesiWidgetState();
+      _LockScreenFotoSesiWidgetState(this.backgrounds);
 }
 
 class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
+  final backgrounds;
   final double barHeight = 10.0;
 
   // colors wave
@@ -1316,9 +1346,14 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
   var warna2 = "";
 
   List<dynamic> background = [];
+  List<dynamic> main_color = [];
 
   String headerImg = "";
   String bgImg = "";
+
+  bool isVisibleModalInput = false;
+
+  _LockScreenFotoSesiWidgetState(this.backgrounds);
 
   @override
   void initState() {
@@ -1334,27 +1369,24 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
   }
 
   getWarnaBg() async {
-    // print("get sesi data");
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `main_color`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {
-              bg_warna_main = row[1];
-              warna1 = row[2];
-              warna2 = row[3];
-            });
-          } // Finally, close the connection
-        }).then((value) {
-          // ...
-          print("bg main color : $bg_warna_main");
-          print("bg main color : $warna1");
-          print("bg main color : $warna2");
+    var request =
+        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/main-color'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      main_color.addAll(result);
+      // print("main_color : ${main_color}");
+      for (var element in main_color) {
+        setState(() {
+          bg_warna_main = element["bg_warna_wave"];
+          warna1 = element["warna1"];
+          warna2 = element["warna2"];
         });
-        return value.close();
-      },
-    );
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   getOrderSettings() async {
@@ -1448,6 +1480,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         nama: nama,
                         title: title,
                         waktu: waktu,
+                        backgrounds: backgrounds,
                       ))),
                     }
                   : null;
@@ -1524,6 +1557,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                 nama: nama,
                 title: title,
                 waktu: waktu,
+                backgrounds: backgrounds,
               ))),
             });
         return value.close();
@@ -1631,55 +1665,58 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     // end input nama ...
 
                     // input voucher
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            bottom: width * 0.0, left: width * 0.0),
-                        child: SizedBox(
-                          width: width * 0.25,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: Colors.white,
-                            child: TextFormField(
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText: 'Masukkan Voucher',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.only(
-                                  left: 5,
-                                  bottom: 5,
-                                  top: 5,
-                                  right: 5,
-                                ),
-                                focusColor: Colors.black,
-                                fillColor: Colors.black,
-                                label: Text(
-                                  "Voucher",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 53, 53, 53),
-                                    fontWeight: FontWeight.bold,
+                    Visibility(
+                      visible: isVisibleModalInput,
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              bottom: width * 0.0, left: width * 0.0),
+                          child: SizedBox(
+                            width: width * 0.25,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Colors.white,
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  hintText: 'Masukkan Voucher',
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  contentPadding: EdgeInsets.only(
+                                    left: 5,
+                                    bottom: 5,
+                                    top: 5,
+                                    right: 5,
+                                  ),
+                                  focusColor: Colors.black,
+                                  fillColor: Colors.black,
+                                  label: Text(
+                                    "Voucher",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 53, 53, 53),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 53, 53, 53),
+                                ),
+                                // The validator receives the text that the user has entered.
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter some text';
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  setState(() {
+                                    voucher = value.toString();
+                                  });
+                                },
                               ),
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 53, 53, 53),
-                              ),
-                              // The validator receives the text that the user has entered.
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (value) {
-                                setState(() {
-                                  voucher = value.toString();
-                                });
-                              },
                             ),
                           ),
                         ),
@@ -1710,6 +1747,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           ),
                           onPressed: () {
                             Navigator.of(context).pop();
+                            setState(() {
+                              isVisibleModalInput = !isVisibleModalInput;
+                            });
                           },
                         ),
                         SizedBox(
@@ -1760,7 +1800,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
             fit: BoxFit.cover,
           ),
         ),
@@ -1785,8 +1825,12 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         ? WaveWidget(
                             config: CustomConfig(
                               colors: [
-                                Color(int.parse(warna1)),
-                                Color(int.parse(warna2))
+                                warna1 == ""
+                                    ? Colors.transparent
+                                    : Color(int.parse(warna1)),
+                                warna2 == ""
+                                    ? Colors.transparent
+                                    : Color(int.parse(warna2))
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
@@ -1805,50 +1849,56 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
             SizedBox(
               height: width * 0.08,
             ),
-            AnimatedOpacity(
-              opacity: isVisibleTapCard == true ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),
-              child: Container(
-                // color: Color.fromARGB(255, 255, 123, 145),
-                height: height * 0.55,
-                child: Center(
-                  child: Card(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          45,
-                        ),
-                      ),
-                    ),
-                    elevation: 1,
-                    color: Color.fromARGB(218, 33, 33, 33),
-                    child: InkWell(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(
-                          25,
-                        ),
-                      ),
-                      onTap: () {
-                        print("scan qr code tap");
-                        // _dialogBuilder(context);
-                        _dialogBuilderVoucher(context, width);
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: width * 0.02,
-                          bottom: width * 0.02,
-                          left: width * 0.2,
-                          right: width * 0.2,
-                        ),
-                        child: Text(
-                          "Input Voucher",
-                          style: TextStyle(
-                            fontSize: width * 0.022,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                            fontStyle: FontStyle.italic,
+            Visibility(
+              visible: !isVisibleModalInput,
+              child: AnimatedOpacity(
+                opacity: isVisibleTapCard == true ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 500),
+                child: Container(
+                  // color: Color.fromARGB(255, 255, 123, 145),
+                  height: height * 0.55,
+                  child: Center(
+                    child: Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            45,
                           ),
-                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      elevation: 1,
+                      color: Color.fromARGB(218, 33, 33, 33),
+                      child: InkWell(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            25,
+                          ),
+                        ),
+                        onTap: () {
+                          print("scan qr code tap");
+                          // _dialogBuilder(context);
+                          _dialogBuilderVoucher(context, width);
+                          setState(() {
+                            isVisibleModalInput = !isVisibleModalInput;
+                          });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: width * 0.02,
+                            bottom: width * 0.02,
+                            left: width * 0.2,
+                            right: width * 0.2,
+                          ),
+                          child: Text(
+                            "Input Voucher",
+                            style: TextStyle(
+                              fontSize: width * 0.022,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),

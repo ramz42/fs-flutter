@@ -57,10 +57,10 @@ Future<void> main() async {
       scrollBehavior:
           MyCustomScrollBehavior(), // add custom scroll behavior class pada material app main app untuk dipakai global
       theme: ThemeData.light(),
-      home: LockScreenFotoSesiWidget(
-          // backgrounds: "",
-          // header: "",
-          ), // ubah route dengan mengetik halaman
+      home: HalamanAwal(
+        backgrounds: "1719751112-background.jpg",
+        header: "1719751112-background.jpg",
+      ), // ubah route dengan mengetik halaman
     ),
   );
 }
