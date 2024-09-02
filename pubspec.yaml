@@ -43,7 +43,7 @@ dependencies:
 
   floating_draggable_widget: ^2.1.5
 
-  font_awesome_flutter: '>= 4.7.0'
+  font_awesome_flutter: ^10.7.0
   adaptive_dialog: ^2.1.0
   panara_dialogs: ^0.1.4
   zoom_widget: ^2.0.1

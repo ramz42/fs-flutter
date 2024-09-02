@@ -1,5 +1,6 @@
 // ignore_for_file: duplicate_import, unused_import, unused_local_variable
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fs_dart/halaman/edit/layout.dart';
@@ -239,7 +240,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           title.toString().contains(" a") ||
           title.toString().contains(" A") ||
           title.toString().contains("Paket A")) {
-        print("tipe a");
+        print("tipe a delete ...");
         screenCaptureImages(0, 0);
         screenCaptureImages(0, 1);
         screenCaptureImages(0, 2);
@@ -2323,8 +2324,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                               style: TextButton.styleFrom(
                                 textStyle:
                                     Theme.of(context).textTheme.labelLarge,
-                                backgroundColor:
-                                    const Color.fromARGB(255, 255, 255, 255),
+                                backgroundColor: Color.fromARGB(255, 0, 0, 0)
+                                    .withOpacity(0.7),
                               ),
                               onPressed: () {
                                 // do onpressed... last
@@ -2352,10 +2353,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                                     children: <Widget>[
                                       const Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Icon(
-                                          Icons.arrow_circle_left_outlined,
-                                          color:
-                                              Color.fromARGB(255, 96, 96, 96),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.caretLeft,
+                                          color: Colors.white,
                                         ),
                                       ),
                                       Align(
@@ -2365,8 +2365,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: width * 0.010,
-                                              color: const Color.fromARGB(
-                                                  255, 96, 96, 96),
+                                              color: Color.fromARGB(
+                                                  255, 255, 255, 255),
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ))
@@ -2405,7 +2405,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
                             backgroundColor:
-                                const Color.fromARGB(255, 255, 255, 255),
+                                Color.fromARGB(255, 0, 0, 0).withOpacity(0.6),
                           ),
                           onPressed: () {
                             // do onpressed...
@@ -2425,7 +2425,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                 "Filter Beauty : $isFilterBeauty",
                                 style: TextStyle(
                                   fontSize: width * 0.010,
-                                  color: const Color.fromARGB(255, 96, 96, 96),
+                                  color: Color.fromARGB(255, 255, 255, 255),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -2445,8 +2445,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                               padding: const EdgeInsets.all(10.0),
                               child: Wrap(
                                 alignment: WrapAlignment.start,
-                                spacing: width * 0.01,
-                                runSpacing: width * 0.01,
+                                spacing: width * 0.025,
+                                runSpacing: width * 0.025,
                                 children: [
                                   // ....
                                   for (var filter in filters)
@@ -2463,13 +2463,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10),
-                                            color: Colors.white,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
                                             boxShadow: [],
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsets.all(width * 0.0045),
+                                                EdgeInsets.all(width * 0.01),
                                             child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
                                               children: [
                                                 ColorFiltered(
                                                   colorFilter: ColorFilter.mode(
@@ -2477,8 +2480,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                     BlendMode.saturation,
                                                   ),
                                                   child: Container(
-                                                    width: width * 0.08,
-                                                    height: height * 0.18,
+                                                    width: width * 0.1,
+                                                    height: height * 0.15,
                                                     decoration:
                                                         const BoxDecoration(
                                                       image: DecorationImage(
@@ -2523,8 +2526,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                   filter["nama"],
                                                   style: TextStyle(
                                                     fontSize: width * 0.008,
-                                                    color: const Color.fromARGB(
-                                                        255, 102, 102, 102),
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255),
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
@@ -2544,7 +2547,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
                             backgroundColor:
-                                const Color.fromARGB(255, 255, 255, 255),
+                                Color.fromARGB(255, 0, 0, 0).withOpacity(0.7),
                           ),
                           onPressed: () {
                             // do onpressed...
@@ -2562,25 +2565,28 @@ class _FilterWidgetState extends State<FilterWidget> {
                               ),
                               child: Stack(
                                 children: <Widget>[
-                                  const Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Icon(
-                                      Icons.menu_open_outlined,
-                                      color: Color.fromARGB(255, 96, 96, 96),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "Selanjutnya".toUpperCase(),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: width * 0.010,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                  Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "Selanjutnya".toUpperCase(),
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: width * 0.010,
-                                          color: const Color.fromARGB(
-                                              255, 96, 96, 96),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ))
+
+                                  // ...
+                                  const Align(
+                                    alignment: Alignment.centerRight,
+                                    child: FaIcon(
+                                      FontAwesomeIcons.caretRight,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

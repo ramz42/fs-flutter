@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:fs_dart/halaman/edit/layout.dart';
 import 'package:localstorage/localstorage.dart';
@@ -7649,8 +7650,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(5),
-                                                                    color: Colors
-                                                                        .white,
+                                                                    color: Colors.black.withOpacity(0.7),
                                                                   ),
                                                         child: Padding(
                                                           padding:
@@ -8043,8 +8043,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     : BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.circular(5),
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: Colors.black.withOpacity(0.7),
                                                                       ),
                                                             child: Padding(
                                                               padding:
@@ -8264,7 +8263,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.white,
+                                                                                Colors.black.withOpacity(0.7),
                                                                           ),
                                                                 child: Padding(
                                                                   padding:
@@ -8490,8 +8489,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                         : BoxDecoration(
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
-                                                                            color:
-                                                                                Colors.white,
+                                                                            color: Colors.black.withOpacity(0.7),
                                                                           ),
                                                                     child:
                                                                         Padding(
@@ -8829,7 +8827,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                               )
                                                                             : BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(5),
-                                                                                color: Colors.white,
+                                                                                color: Colors.black.withOpacity(0.7),
                                                                               ),
                                                                         child:
                                                                             Padding(
@@ -9009,7 +9007,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                                   )
                                                                                 : BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
+                                                                                    color: Colors.black.withOpacity(0.7),
                                                                                   ),
                                                                             child:
                                                                                 Padding(
@@ -12881,7 +12879,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                             style: TextButton.styleFrom(
                               textStyle: Theme.of(context).textTheme.labelLarge,
                               backgroundColor:
-                                  Color.fromARGB(255, 255, 255, 255),
+                                  Colors.black.withOpacity(0.7),
                             ),
                             onPressed: () {
                               // do onpressed...
@@ -12905,19 +12903,19 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                               // height: height * 0.012,
                               child: Padding(
                                 padding: const EdgeInsets.only(
-                                  top: 12,
-                                  bottom: 12,
+                                  top: 8,
+                                  bottom: 8,
                                 ),
                                 child: Stack(
                                   children: <Widget>[
                                     Align(
                                       alignment: Alignment.centerLeft,
-                                      child: Icon(
-                                        Icons.arrow_circle_left_outlined,
-                                        color: const Color.fromARGB(
-                                            255, 96, 96, 96),
-                                        size: width * 0.012,
-                                      ),
+                                      child: FaIcon(
+                                                             FontAwesomeIcons.caretLeft,
+                                                            color:
+                                                                Colors.white,
+                                                            size: width * 0.015,
+                                                          ),
                                     ),
                                     Align(
                                         alignment: Alignment.center,
@@ -12927,7 +12925,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                           style: TextStyle(
                                             fontSize: width * 0.010,
                                             color:
-                                                Color.fromARGB(255, 96, 96, 96),
+                                                Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ))
@@ -18451,7 +18449,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                         OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Colors.black.withOpacity(0.7),
                           ),
                           onPressed: () {
                             // do onpressed...
@@ -18502,19 +18500,19 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                             // height: height * 0.012,
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                top: 12,
-                                bottom: 12,
+                                top: 8,
+                                bottom: 8,
                               ),
                               child: Stack(
                                 children: <Widget>[
                                   Align(
                                     alignment: Alignment.centerRight,
-                                    child: Icon(
-                                      Icons.arrow_circle_right_outlined,
-                                      color:
-                                          const Color.fromARGB(255, 96, 96, 96),
-                                      size: width * 0.012,
-                                    ),
+                                    child: FaIcon(
+                                                             FontAwesomeIcons.caretRight,
+                                                            color:
+                                                                Colors.white,
+                                                            size: width * 0.015,
+                                                          ),
                                   ),
                                   Align(
                                       alignment: Alignment.center,
@@ -18524,7 +18522,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                         style: TextStyle(
                                           fontSize: width * 0.010,
                                           color:
-                                              Color.fromARGB(255, 96, 96, 96),
+                                              Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ))
