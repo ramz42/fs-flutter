@@ -372,12 +372,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
   final double barHeight = 10.0;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
-
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
 
   static const _durations = [
     10000,
@@ -414,7 +408,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26),
+                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.7),
               ),
               height: height * 0.12,
               width: width * 1,

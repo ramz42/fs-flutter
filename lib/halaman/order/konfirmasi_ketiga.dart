@@ -6,10 +6,8 @@ import 'package:fs_dart/halaman/order/order.dart';
 import 'package:fs_dart/konfigurasi/database/db.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-
 import '../../src/variables.g.dart';
 import '../awal/halaman_awal.dart';
 import 'pilih_pembayaran.dart';
@@ -43,12 +41,6 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
   var db = new Mysql();
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
-
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
 
   static const _durations = [
     10000,
@@ -196,7 +188,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26),
+                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.7),
               ),
               child: Column(
                 children: [
@@ -400,10 +392,10 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                           PageTransition(
                                               type: PageTransitionType.fade,
                                               child: HalamanAwal(
-                                                  
-        backgrounds: "1719751112-background.jpg",
-        header: "1719751264-header.jpg",
-                                                      ),
+                                                backgrounds:
+                                                    "1719751112-background.jpg",
+                                                header: "1719751264-header.jpg",
+                                              ),
                                               inheritTheme: true,
                                               ctx: context),
                                         );

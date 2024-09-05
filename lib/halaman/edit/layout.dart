@@ -165,10 +165,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   // colors wave
   // static  _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
 
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
 
   static const _durations = [
     10000,
@@ -184,7 +180,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   //Create an instance of ScreenshotController
   // ...
   ScreenshotController screenshotController = ScreenshotController();
-
+  
   ScreenshotController screenshotController1 = ScreenshotController();
   ScreenshotController screenshotController2 = ScreenshotController();
   ScreenshotController screenshotController3 = ScreenshotController();
@@ -202,6 +198,16 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   ScreenshotController screenshotController14 = ScreenshotController();
   ScreenshotController screenshotController15 = ScreenshotController();
   ScreenshotController screenshotController16 = ScreenshotController();
+
+  ScreenshotController screenshotController17 = ScreenshotController();
+  ScreenshotController screenshotController18 = ScreenshotController();
+  ScreenshotController screenshotController19 = ScreenshotController();
+  ScreenshotController screenshotController20 = ScreenshotController();
+  ScreenshotController screenshotController21 = ScreenshotController();
+  ScreenshotController screenshotController22 = ScreenshotController();
+  ScreenshotController screenshotController23 = ScreenshotController();
+  ScreenshotController screenshotController24 = ScreenshotController();
+  ScreenshotController screenshotController25 = ScreenshotController();
 
   // ignore: unused_element
   _saveCard1PilihKanvasWithImage(layout) async {
@@ -354,10 +360,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     });
   }
 
-  Future<void> _getDataImages() async {
-    list.clear();
-    print("get list : $list");
-    print("get all images layout");
+  Future<void> _getAllImages() async {
+    List<dynamic> _list = [];
+    // get all images
+    print("get all images $nama-${DateTime.now().day}-${DateTime.now().hour}");
     var request = http.MultipartRequest(
       'POST',
       Uri.parse(
@@ -374,30 +380,52 @@ class _LayoutWidgetState extends State<LayoutWidget> {
         await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 201) {
-      setState(() {});
-      list.addAll(jsonDecode(response.body));
       stores = jsonDecode(response.body);
-      print("response. length : ${stores.length}");
+      _list.addAll(jsonDecode(response.body));
+      print("response length : ${stores.length}");
+      print("response _list : ${_list}");
       setState(() {
         lengthDataImages = stores.length;
       });
 
-      if (title.toString().contains("Paket A") ||
-          title.toString().contains("Collage A")) {
-        // ...
+      if (title.toString().contains("Collage A") ||
+          title.toString().contains("Paket A")) {
+        print("list a");
         for (var i = 0; i < 8; i++) {
-          print("object get data images layout page tipe a $i ${list[i]}");
-          listA.add(list[i]);
+          print("list a for loop");
+          // ...
+          print("object _list collage A $i ${_list[i]}");
+          list.add(_list[i]);
         }
-        print("object list a : $listA");
-      } else {
-        // ...
+      }
+
+      if (title.toString().contains("Collage B") ||
+          title.toString().contains("Paket B")) {
         for (var i = 0; i < 16; i++) {
-          print("object get data images layout page tipe b $i ${list[i]}");
-          listB.add(list[i]);
+          // ...
+          print("object _list collage B $i ${_list[i]}");
+          list.add(_list[i]);
         }
-        // ...
-        print(" === object list b === : $listB");
+      }
+
+      // paket e
+      if (title.toString().contains("Collage E") ||
+          title.toString().contains("Paket E")) {
+        for (var i = 0; i < 20; i++) {
+          // ...
+          print("object _list paket E $i ${_list[i]}");
+          list.add(_list[i]);
+        }
+      }
+
+      // paket f
+      if (title.toString().contains("Collage F") ||
+          title.toString().contains("Paket F")) {
+        for (var i = 0; i < 25; i++) {
+          // ...
+          print("object _list paket F $i ${_list[i]}");
+          list.add(_list[i]);
+        }
       }
     } else {
       print(response.reasonPhrase);
@@ -415,7 +443,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     print("title contains B === : ${title.toString().contains("Collage B")}");
     // ===
     _clearStorage();
-    _getDataImages();
+    _getAllImages();
     getLayout();
 
     getWarnaBg();
@@ -914,7 +942,26 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   .contains(
                                                                       "Collage A")
                                                           ? 4
-                                                          : 8,
+                                                          : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket A") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage A")
+                                                          ? 8
+                                                          : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket A") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage A")
+                                                          ? 10
+                                                          
+                                                          : 12,
                                                       itemBuilder:
                                                           (BuildContext context,
                                                               int j) {
@@ -1299,7 +1346,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                         )
                                                                       :
 
-                                                                      // card 2
+                                                                      //  card 2
                                                                       (i == 0 &&
                                                                               j == 1 &&
                                                                               dragItem.isNotEmpty &&

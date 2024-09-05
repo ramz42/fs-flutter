@@ -50,6 +50,9 @@ class _MenuWidgetState extends State<MenuWidget> {
 
   String judul_nav = "";
   String deskripsi_nav = "";
+
+  bool isVisibleMainView = false;
+
   _MenuWidgetState();
 
   @override
@@ -252,14 +255,288 @@ class _MenuWidgetState extends State<MenuWidget> {
 
   final double barHeight = 10.0;
 
-  // colors wave
-
-  // end statements color waves
-  // end statements color waves
-
   final _formKey = GlobalKey<FormState>();
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
+
+  // dialog edit menu
+  Future<void> _dialogAddMenuEdit(
+      BuildContext context, title, content, stage, pin) {
+    // route animate on dialog
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          width: 100,
+          height: 100,
+          color: Colors.transparent,
+          child: Card(
+            color: Colors.transparent,
+            // color: Colors.lightBlue,
+            child: Padding(
+              padding: const EdgeInsets.all(0),
+              child: AlertDialog(
+                backgroundColor:
+                    const Color.fromARGB(255, 24, 116, 59).withOpacity(0.4),
+                title: Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 50),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 56,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                content: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Text(
+                    content,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                actions: <Widget>[
+                  // MainAxisAlignment.spaceAround,
+                  Column(
+                    children: [
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Filter'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddFilter(),
+                            //   ),
+                            // );
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddFilter()));
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddFilter(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Layout'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddLayout(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddLayout()));
+
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddLayout(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Background'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddBackground(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddBackground()));
+
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddBackground(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Sticker'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddSticker(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddSticker()));
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddSticker(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.redAccent.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Kembali'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            setState(() {
+                              isVisibleMainView = !isVisibleMainView;
+                            });
+                            // ...
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
   Widget build(BuildContext context) {
@@ -276,1534 +553,1658 @@ class _MenuWidgetState extends State<MenuWidget> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: height * 0.12,
-              width: width * 1,
-              color: bg_warna_main != ""
-                  ? Color(int.parse(bg_warna_main))
-                  : Colors.transparent,
-              // tambah background image ...
+        child: Visibility(
+          visible: !isVisibleMainView,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: height * 0.12,
+                width: width * 1,
+                color: bg_warna_main != ""
+                    ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                    : Colors.transparent,
+                // tambah background image ...
 
-              // end background image ...
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    height: height * 1,
-                    width: width * 0.9,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: width * 0.001),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            judul_nav.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.0275,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                // end background image ...
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: height * 1,
+                      width: width * 0.9,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: width * 0.001),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              judul_nav.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.0275,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            deskripsi_nav.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.01,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              deskripsi_nav.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.01,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: InkWell(
-                            onTap: () {
-                              _dialogAddMenuEdit(
-                                context,
-                                "Menu",
-                                "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
-                                1,
-                                "",
-                              );
-                            },
-                            child: const Icon(
-                              Icons.add_box,
-                              size: 55,
-                              color: Colors.white,
-                              semanticLabel: "Add",
+                    Row(
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: InkWell(
+                              onTap: () {
+                                _dialogAddMenuEdit(
+                                  context,
+                                  "Menu",
+                                  "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
+                                  1,
+                                  "",
+                                );
+
+                                setState(() {
+                                  // ...
+                                  isVisibleMainView = !isVisibleMainView;
+                                });
+                              },
+                              child: const Icon(
+                                Icons.add_box,
+                                size: 55,
+                                color: Colors.white,
+                                semanticLabel: "Add",
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: InkWell(
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) =>
+                                //         const HalamanAwalSettings(),
+                                //   ),
+                                // );
+                                // Navigator.of(context)
+                                //     .push(_routeAnimate(HalamanAwalSettings()));
+
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: HalamanAwalSettings(),
+                                      inheritTheme: true,
+                                      ctx: context),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.power_settings_new,
+                                size: 55,
+                                color: Colors.white,
+                                semanticLabel: "Logout",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
+              Container(
+                // color: Color.fromARGB(255, 255, 123, 145),
+                height: width * 0.42,
+                // color: Colors.transparent,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // settings menu
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blue.withOpacity(0.7),
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const HalamanAwalSettings(),
+                              //     builder: (context) => const SettingsWidget(
+                              //         // camera: camera,
+                              //         ),
                               //   ),
                               // );
                               // Navigator.of(context)
-                              //     .push(_routeAnimate(HalamanAwalSettings()));
-
+                              //     .push(_routeAnimate(SettingsWidget()));
                               Navigator.push(
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: HalamanAwalSettings(),
+                                    child: SettingsWidget(),
                                     inheritTheme: true,
                                     ctx: context),
                               );
                             },
-                            child: const Icon(
-                              Icons.power_settings_new,
-                              size: 55,
-                              color: Colors.white,
-                              semanticLabel: "Logout",
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: height * 0.05,
-            ),
-            Container(
-              // color: Color.fromARGB(255, 255, 123, 145),
-              height: width * 0.42,
-              // color: Colors.transparent,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // settings menu
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blue[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const SettingsWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(SettingsWidget()));
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: SettingsWidget(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.025,
-                              right: width * 0.025,
-                            ),
-                            child: Text(
-                              "Settings".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
                               ),
-                              textAlign: TextAlign.center,
                             ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.034,
-                      ),
-
-                      // ...........
-                      // menu atas
-                      // ...........
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blueGrey[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => LockScreenFotoEditWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.04,
-                              right: width * 0.04,
-                            ),
-                            child: Text(
-                              "Menu".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.034,
-                      ),
-
-                      // report
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blue[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const ReportWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(ReportWidget()));
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: ReportWidget(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.03,
-                              right: width * 0.03,
-                            ),
-                            child: Text(
-                              "Report".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  // form pin serverkey background
-                  SizedBox(
-                    height: width * 0.035,
-                  ),
-                  Container(
-                    // color: Colors.transparent,
-                    height: height * 0.5,
-                    child: ScrollConfiguration(
-                      behavior: ScrollConfiguration.of(context)
-                          .copyWith(scrollbars: false),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        // child: Container(
-                        // height: height * 0.5,
-                        child: Column(
-                          children: [
-                            // SizedBox(
-                            //   height: width * 0.08,
-                            // ),
-
-                            // ............
-                            // menu tambah
-                            // ............
-                            Padding(
+                            child: Padding(
                               padding: EdgeInsets.only(
-                                left: width * 0.215,
-                                top: width * 0.025,
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.025,
+                                right: width * 0.025,
                               ),
-                              child: Container(
-                                width: width * 1,
-                                height: height * 0.485,
-                                child: Form(
-                                  key: _formKey,
-                                  child: SizedBox(
-                                    height: height * 0.325,
-                                    child: ScrollConfiguration(
-                                      behavior: ScrollConfiguration.of(context)
-                                          .copyWith(scrollbars: false),
-                                      child: SingleChildScrollView(
-                                        // physics: NeverScrollableScrollPhysics(),
+                              child: Text(
+                                "Settings".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.034,
+                        ),
 
-                                        scrollDirection: Axis.vertical,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            // menu 1
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Text(
-                                                  "Menu Buat",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: width * 0.012,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      // border: new OutlineInputBorder(
-                                                      //     borderSide:
-                                                      //         new BorderSide(
-                                                      //             color: Colors
-                                                      //                 .transparent)),
+                        // ...........
+                        // menu atas
+                        // ...........
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blueGrey.withOpacity(0.7),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => LockScreenFotoEditWidget(
+                              //         // camera: camera,
+                              //         ),
+                              //   ),
+                              // );
+                            },
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.04,
+                                right: width * 0.04,
+                              ),
+                              child: Text(
+                                "Menu".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.034,
+                        ),
 
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Menu Title',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Menu Title",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        menu_title =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Title',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Title",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        title =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Deskripsi',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Deskripsi",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        deskripsi =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Harga',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Harga",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        harga =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Timer',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Timer",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        waktu =
-                                                            value.toString();
-                                                      });
+                        // report
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blue.withOpacity(0.7),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const ReportWidget(
+                              //         // camera: camera,
+                              //         ),
+                              //   ),
+                              // );
+                              // Navigator.of(context)
+                              //     .push(_routeAnimate(ReportWidget()));
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ReportWidget(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            },
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.03,
+                                right: width * 0.03,
+                              ),
+                              child: Text(
+                                "Report".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
 
-                                                      print(
-                                                          "object waktu : $waktu");
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
+                    // form pin serverkey background
+                    SizedBox(
+                      height: width * 0.035,
+                    ),
+                    Container(
+                      // color: Colors.transparent,
+                      height: height * 0.5,
+                      child: ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context)
+                            .copyWith(scrollbars: false),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          // child: Container(
+                          // height: height * 0.5,
+                          child: Column(
+                            children: [
+                              // SizedBox(
+                              //   height: width * 0.08,
+                              // ),
 
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        waktu =
-                                                            value.toString();
-                                                      });
+                              // ............
+                              // menu tambah
+                              // ............
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: width * 0.215,
+                                  top: width * 0.025,
+                                ),
+                                child: Container(
+                                  width: width * 1,
+                                  height: height * 0.485,
+                                  child: Form(
+                                    key: _formKey,
+                                    child: SizedBox(
+                                      height: height * 0.325,
+                                      child: ScrollConfiguration(
+                                        behavior:
+                                            ScrollConfiguration.of(context)
+                                                .copyWith(scrollbars: false),
+                                        child: SingleChildScrollView(
+                                          // physics: NeverScrollableScrollPhysics(),
 
-                                                      print(
-                                                          "object waktu : $waktu");
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                bottom: width * 0.01,
-                                                left: width * 0.02,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width * 0.35,
-                                                    // height: 200,
-                                                    // child: Row(
-                                                    //   children: [
-                                                    child: Card(
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15.0),
-                                                      ),
-                                                      color: Colors.white,
-                                                      child: TextFormField(
-                                                        decoration:
-                                                            InputDecoration(
-                                                          border:
-                                                              InputBorder.none,
-                                                          focusedBorder:
-                                                              InputBorder.none,
-                                                          hintText: filePick
-                                                              .toString(),
-                                                          hintStyle:
-                                                              const TextStyle(
-                                                                  color: Colors
-                                                                      .grey),
-                                                          contentPadding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                            left: 15,
-                                                            bottom: 11,
-                                                            top: 11,
-                                                            right: 15,
-                                                          ),
-                                                          label: const Text(
-                                                            "BACKGROUND IMAGE",
-                                                            style: TextStyle(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      53,
-                                                                      53,
-                                                                      53),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        style: const TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-
-                                                        // The validator receives the text that the user has entered.
-                                                        validator: (value) {
-                                                          if (value == null ||
-                                                              value.isEmpty) {
-                                                            return 'Please enter some text';
-                                                          }
-                                                          return filePick
-                                                              .toString();
-                                                          //
-                                                        },
-                                                      ),
-                                                    ),
-
-                                                    //   ],
-                                                    // ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.15,
-                                                    child: Card(
-                                                      color: Colors.black,
-                                                      child: InkWell(
-                                                        onTap: () {
-                                                          pickFile();
-                                                        },
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                            width * 0.0055,
-                                                          ),
-                                                          child: Icon(
-                                                            Icons.image,
-                                                            size: width * 0.014,
-                                                            color: Colors.white,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            // SizedBox(
-                                            //   height: width * 0.0035,
-                                            // ),
-
-                                            // button simpan
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: width * 0.02,
-                                                left: width * 0.02,
-                                              ),
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      Color.fromARGB(
-                                                          255, 36, 36, 36),
-                                                ),
-                                                onPressed: () {
-                                                  // Validate returns true if the form is valid, or false otherwise.
-                                                  if (_formKey.currentState!
-                                                      .validate()) {
-                                                    // _postSettings();
-                                                  }
-                                                  _postMenusettings("buat", "");
-                                                },
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                    left: width * 0.025,
-                                                    right: width * 0.025,
-                                                    top: width * 0.005,
-                                                    bottom: width * 0.005,
-                                                  ),
+                                          scrollDirection: Axis.vertical,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              // menu 1
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
                                                   child: Text(
-                                                    'Buat'.toUpperCase(),
-                                                    style: const TextStyle(
-                                                      fontSize: 20,
+                                                    "Menu Buat",
+                                                    style: TextStyle(
                                                       color: Colors.white,
+                                                      fontSize: width * 0.012,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(
-                              height: width * 0.035,
-                            ),
-
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: width * 0.22,
-                                right: width * 0.22,
-                              ),
-                              child: Divider(
-                                height: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              height: width * 0.01,
-                            ),
-                            // ............
-                            // menu update
-                            // ............
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: width * 0.215,
-                              ),
-                              child: Container(
-                                width: width * 1,
-                                height: height * 0.485,
-                                child: Form(
-                                  key: _formKey1,
-                                  child: SizedBox(
-                                    height: height * 0.325,
-                                    child: ScrollConfiguration(
-                                      behavior: ScrollConfiguration.of(context)
-                                          .copyWith(scrollbars: false),
-                                      child: SingleChildScrollView(
-                                        // physics: NeverScrollableScrollPhysics(),
-
-                                        scrollDirection: Axis.vertical,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            // menu 1
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Text(
-                                                  "Menu Update",
-                                                  style: TextStyle(
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
                                                     color: Colors.white,
-                                                    fontSize: width * 0.012,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Menu Title',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Menu Title",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        menu_title =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Title',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Title",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        title =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Deskripsi',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Deskripsi",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        deskripsi =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Harga',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Harga",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        harga =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        // border: new OutlineInputBorder(
+                                                        //     borderSide:
+                                                        //         new BorderSide(
+                                                        //             color: Colors
+                                                        //                 .transparent)),
 
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Timer',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
-                                                      ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Timer",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Menu Title',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
                                                         ),
-                                                      ),
-                                                    ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
-                                                    ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        waktu =
-                                                            value.toString();
-                                                      });
-
-                                                      print(
-                                                          "object waktu : $waktu");
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        waktu =
-                                                            value.toString();
-                                                      });
-
-                                                      print(
-                                                          "object waktu : $waktu");
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width * 0.35,
-                                                    // height: 200,
-                                                    // child: Row(
-                                                    //   children: [
-                                                    child: Card(
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15.0),
-                                                      ),
-                                                      color: Colors.white,
-                                                      child: TextFormField(
-                                                        decoration:
-                                                            InputDecoration(
-                                                          border:
-                                                              InputBorder.none,
-                                                          focusedBorder:
-                                                              InputBorder.none,
-                                                          hintText: filePick
-                                                              .toString(),
-                                                          hintStyle:
-                                                              const TextStyle(
-                                                                  color: Colors
-                                                                      .grey),
-                                                          contentPadding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                            left: 15,
-                                                            bottom: 11,
-                                                            top: 11,
-                                                            right: 15,
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Menu Title",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
                                                           ),
-                                                          label: const Text(
-                                                            "BACKGROUND IMAGE",
-                                                            style: TextStyle(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      53,
-                                                                      53,
-                                                                      53),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          menu_title =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Title',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Title",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          title =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Deskripsi',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Deskripsi",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          deskripsi =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Harga',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Harga",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          harga =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Timer',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Timer",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          waktu =
+                                                              value.toString();
+                                                        });
+
+                                                        print(
+                                                            "object waktu : $waktu");
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          waktu =
+                                                              value.toString();
+                                                        });
+
+                                                        print(
+                                                            "object waktu : $waktu");
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  bottom: width * 0.01,
+                                                  left: width * 0.02,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width * 0.35,
+                                                      // height: 200,
+                                                      // child: Row(
+                                                      //   children: [
+                                                      child: Card(
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15.0),
+                                                        ),
+                                                        color: Colors.white,
+                                                        child: TextFormField(
+                                                          decoration:
+                                                              InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                            focusedBorder:
+                                                                InputBorder
+                                                                    .none,
+                                                            hintText: filePick
+                                                                .toString(),
+                                                            hintStyle:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .grey),
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                              left: 15,
+                                                              bottom: 11,
+                                                              top: 11,
+                                                              right: 15,
+                                                            ),
+                                                            label: const Text(
+                                                              "BACKGROUND IMAGE",
+                                                              style: TextStyle(
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        53,
+                                                                        53,
+                                                                        53),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          style:
+                                                              const TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+
+                                                          // The validator receives the text that the user has entered.
+                                                          validator: (value) {
+                                                            if (value == null ||
+                                                                value.isEmpty) {
+                                                              return 'Please enter some text';
+                                                            }
+                                                            return filePick
+                                                                .toString();
+                                                            //
+                                                          },
+                                                        ),
+                                                      ),
+
+                                                      //   ],
+                                                      // ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.15,
+                                                      child: Card(
+                                                        color: Colors.black,
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            pickFile();
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                              width * 0.0055,
+                                                            ),
+                                                            child: Icon(
+                                                              Icons.image,
+                                                              size:
+                                                                  width * 0.014,
+                                                              color:
+                                                                  Colors.white,
                                                             ),
                                                           ),
                                                         ),
-                                                        style: const TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
-                                                        ),
-
-                                                        // The validator receives the text that the user has entered.
-                                                        validator: (value) {
-                                                          if (value == null ||
-                                                              value.isEmpty) {
-                                                            return 'Please enter some text';
-                                                          }
-                                                          return filePick
-                                                              .toString();
-                                                          //
-                                                        },
                                                       ),
                                                     ),
-
-                                                    //   ],
-                                                    // ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.15,
-                                                    child: Card(
-                                                      color: Colors.black,
-                                                      child: InkWell(
-                                                        onTap: () {
-                                                          pickFile();
-                                                        },
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                            width * 0.0055,
-                                                          ),
-                                                          child: Icon(
-                                                            Icons.image,
-                                                            size: width * 0.014,
-                                                            color: Colors.white,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            // SizedBox(
-                                            //   height: width * 0.012,
-                                            // ),
-
-                                            // button simpan
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: width * 0.02,
-                                                left: width * 0.02,
-                                              ),
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      Color.fromARGB(
-                                                          255, 36, 36, 36),
+                                                  ],
                                                 ),
-                                                onPressed: () {
-                                                  // Validate returns true if the form is valid, or false otherwise.
-                                                  if (_formKey1.currentState!
-                                                      .validate()) {
-                                                    // ...
-                                                  }
-                                                  _postMenusettings(
-                                                      "update", "");
-                                                },
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                    left: width * 0.025,
-                                                    right: width * 0.025,
-                                                    top: width * 0.005,
-                                                    bottom: width * 0.005,
+                                              ),
+                                              // SizedBox(
+                                              //   height: width * 0.0035,
+                                              // ),
+
+                                              // button simpan
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  top: width * 0.02,
+                                                  left: width * 0.02,
+                                                ),
+                                                child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Color.fromARGB(
+                                                            255, 36, 36, 36),
                                                   ),
-                                                  child: const Text(
-                                                    'Update',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.white,
+                                                  onPressed: () {
+                                                    // Validate returns true if the form is valid, or false otherwise.
+                                                    if (_formKey.currentState!
+                                                        .validate()) {
+                                                      // _postSettings();
+                                                    }
+                                                    _postMenusettings(
+                                                        "buat", "");
+                                                  },
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: width * 0.025,
+                                                      right: width * 0.025,
+                                                      top: width * 0.005,
+                                                      bottom: width * 0.005,
+                                                    ),
+                                                    child: Text(
+                                                      'Buat'.toUpperCase(),
+                                                      style: const TextStyle(
+                                                        fontSize: 20,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
 
-                            SizedBox(
-                              height: width * 0.035,
-                            ),
+                              SizedBox(
+                                height: width * 0.035,
+                              ),
 
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: width * 0.22,
-                                right: width * 0.22,
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: width * 0.22,
+                                  right: width * 0.22,
+                                ),
+                                child: Divider(
+                                  height: 10,
+                                  color: Colors.white,
+                                ),
                               ),
-                              child: Divider(
-                                height: 10,
-                                color: Colors.white,
+                              SizedBox(
+                                height: width * 0.01,
                               ),
-                            ),
-                            SizedBox(
-                              height: width * 0.01,
-                            ),
-                            // ............
-                            // menu delete
-                            // ............
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: width * 0.215,
-                              ),
-                              child: Container(
-                                width: width * 1,
-                                // height: height * 0.485,
-                                child: Form(
-                                  key: _formKey2,
-                                  child: SizedBox(
-                                    // height: height * 0.325,
-                                    child: ScrollConfiguration(
-                                      behavior: ScrollConfiguration.of(context)
-                                          .copyWith(scrollbars: false),
-                                      child: SingleChildScrollView(
-                                        // physics: NeverScrollableScrollPhysics(),
+                              // ............
+                              // menu update
+                              // ............
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: width * 0.215,
+                                ),
+                                child: Container(
+                                  width: width * 1,
+                                  height: height * 0.485,
+                                  child: Form(
+                                    key: _formKey1,
+                                    child: SizedBox(
+                                      height: height * 0.325,
+                                      child: ScrollConfiguration(
+                                        behavior:
+                                            ScrollConfiguration.of(context)
+                                                .copyWith(scrollbars: false),
+                                        child: SingleChildScrollView(
+                                          // physics: NeverScrollableScrollPhysics(),
 
-                                        scrollDirection: Axis.vertical,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            // menu 1
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Text(
-                                                  "Menu Delete",
-                                                  style: TextStyle(
+                                          scrollDirection: Axis.vertical,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              // menu 1
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Text(
+                                                    "Menu Update",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: width * 0.012,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
                                                     color: Colors.white,
-                                                    fontSize: width * 0.012,
-                                                    fontWeight: FontWeight.bold,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Menu Title',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Menu Title",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          menu_title =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: width * 0.01,
-                                                  left: width * 0.02),
-                                              child: SizedBox(
-                                                width: width * 0.5,
-                                                child: Card(
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15.0),
-                                                  ),
-                                                  color: Colors.white,
-                                                  child: TextFormField(
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    decoration: InputDecoration(
-                                                      border: InputBorder.none,
-                                                      focusedBorder:
-                                                          InputBorder.none,
-                                                      hintText: 'Menu index',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      contentPadding:
-                                                          EdgeInsets.only(
-                                                        left: 15,
-                                                        bottom: 11,
-                                                        top: 11,
-                                                        right: 15,
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Title',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Title",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
                                                       ),
-                                                      focusColor: Colors.black,
-                                                      fillColor: Colors.black,
-                                                      label: Text(
-                                                        "Menu Index",
-                                                        style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255, 53, 53, 53),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          title =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Deskripsi',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Deskripsi",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          deskripsi =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Harga',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Harga",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          harga =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Timer',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Timer",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          waktu =
+                                                              value.toString();
+                                                        });
+
+                                                        print(
+                                                            "object waktu : $waktu");
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          waktu =
+                                                              value.toString();
+                                                        });
+
+                                                        print(
+                                                            "object waktu : $waktu");
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width * 0.35,
+                                                      // height: 200,
+                                                      // child: Row(
+                                                      //   children: [
+                                                      child: Card(
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15.0),
+                                                        ),
+                                                        color: Colors.white,
+                                                        child: TextFormField(
+                                                          decoration:
+                                                              InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                            focusedBorder:
+                                                                InputBorder
+                                                                    .none,
+                                                            hintText: filePick
+                                                                .toString(),
+                                                            hintStyle:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .grey),
+                                                            contentPadding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                              left: 15,
+                                                              bottom: 11,
+                                                              top: 11,
+                                                              right: 15,
+                                                            ),
+                                                            label: const Text(
+                                                              "BACKGROUND IMAGE",
+                                                              style: TextStyle(
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        53,
+                                                                        53,
+                                                                        53),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          style:
+                                                              const TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+
+                                                          // The validator receives the text that the user has entered.
+                                                          validator: (value) {
+                                                            if (value == null ||
+                                                                value.isEmpty) {
+                                                              return 'Please enter some text';
+                                                            }
+                                                            return filePick
+                                                                .toString();
+                                                            //
+                                                          },
+                                                        ),
+                                                      ),
+
+                                                      //   ],
+                                                      // ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width * 0.15,
+                                                      child: Card(
+                                                        color: Colors.black,
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            pickFile();
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                              width * 0.0055,
+                                                            ),
+                                                            child: Icon(
+                                                              Icons.image,
+                                                              size:
+                                                                  width * 0.014,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                    style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 53, 53, 53),
+                                                  ],
+                                                ),
+                                              ),
+                                              // SizedBox(
+                                              //   height: width * 0.012,
+                                              // ),
+
+                                              // button simpan
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  top: width * 0.02,
+                                                  left: width * 0.02,
+                                                ),
+                                                child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Color.fromARGB(
+                                                            255, 36, 36, 36),
+                                                  ),
+                                                  onPressed: () {
+                                                    // Validate returns true if the form is valid, or false otherwise.
+                                                    if (_formKey1.currentState!
+                                                        .validate()) {
+                                                      // ...
+                                                    }
+                                                    _postMenusettings(
+                                                        "update", "");
+                                                  },
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: width * 0.025,
+                                                      right: width * 0.025,
+                                                      top: width * 0.005,
+                                                      bottom: width * 0.005,
                                                     ),
-                                                    // The validator receives the text that the user has entered.
-                                                    validator: (value) {
-                                                      setState(() {
-                                                        menu_title =
-                                                            value.toString();
-                                                      });
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'Please enter some text';
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-
-                                            // SizedBox(
-                                            //   height: width * 0.012,
-                                            // ),
-
-                                            // button simpan
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                top: width * 0.02,
-                                                left: width * 0.02,
-                                              ),
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      Color.fromARGB(
-                                                          255, 36, 36, 36),
-                                                ),
-                                                onPressed: () {
-                                                  // Validate returns true if the form is valid, or false otherwise.
-                                                  if (_formKey2.currentState!
-                                                      .validate()) {
-                                                    // ...
-                                                  }
-                                                  _postMenusettings(
-                                                      "delete", menu_title);
-                                                },
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                    left: width * 0.025,
-                                                    right: width * 0.025,
-                                                    top: width * 0.005,
-                                                    bottom: width * 0.005,
-                                                  ),
-                                                  child: const Text(
-                                                    'Delete',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.white,
+                                                    child: const Text(
+                                                      'Update',
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: width * 0.035,
-                            ),
-                          ],
+
+                              SizedBox(
+                                height: width * 0.035,
+                              ),
+
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: width * 0.22,
+                                  right: width * 0.22,
+                                ),
+                                child: Divider(
+                                  height: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                height: width * 0.01,
+                              ),
+                              // ............
+                              // menu delete
+                              // ............
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  left: width * 0.215,
+                                ),
+                                child: Container(
+                                  width: width * 1,
+                                  // height: height * 0.485,
+                                  child: Form(
+                                    key: _formKey2,
+                                    child: SizedBox(
+                                      // height: height * 0.325,
+                                      child: ScrollConfiguration(
+                                        behavior:
+                                            ScrollConfiguration.of(context)
+                                                .copyWith(scrollbars: false),
+                                        child: SingleChildScrollView(
+                                          // physics: NeverScrollableScrollPhysics(),
+
+                                          scrollDirection: Axis.vertical,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              // menu 1
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Text(
+                                                    "Menu Delete",
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: width * 0.012,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: width * 0.01,
+                                                    left: width * 0.02),
+                                                child: SizedBox(
+                                                  width: width * 0.5,
+                                                  child: Card(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                    ),
+                                                    color: Colors.white,
+                                                    child: TextFormField(
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        border:
+                                                            InputBorder.none,
+                                                        focusedBorder:
+                                                            InputBorder.none,
+                                                        hintText: 'Menu index',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        contentPadding:
+                                                            EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 11,
+                                                          top: 11,
+                                                          right: 15,
+                                                        ),
+                                                        focusColor:
+                                                            Colors.black,
+                                                        fillColor: Colors.black,
+                                                        label: Text(
+                                                          "Menu Index",
+                                                          style: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    53,
+                                                                    53,
+                                                                    53),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      style: const TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 53, 53, 53),
+                                                      ),
+                                                      // The validator receives the text that the user has entered.
+                                                      validator: (value) {
+                                                        setState(() {
+                                                          menu_title =
+                                                              value.toString();
+                                                        });
+                                                        if (value == null ||
+                                                            value.isEmpty) {
+                                                          return 'Please enter some text';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+
+                                              // SizedBox(
+                                              //   height: width * 0.012,
+                                              // ),
+
+                                              // button simpan
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  top: width * 0.02,
+                                                  left: width * 0.02,
+                                                ),
+                                                child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Color.fromARGB(
+                                                            255, 36, 36, 36),
+                                                  ),
+                                                  onPressed: () {
+                                                    // Validate returns true if the form is valid, or false otherwise.
+                                                    if (_formKey2.currentState!
+                                                        .validate()) {
+                                                      // ...
+                                                    }
+                                                    _postMenusettings(
+                                                        "delete", menu_title);
+                                                  },
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: width * 0.025,
+                                                      right: width * 0.025,
+                                                      top: width * 0.005,
+                                                      bottom: width * 0.005,
+                                                    ),
+                                                    child: const Text(
+                                                      'Delete',
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: width * 0.035,
+                              ),
+                            ],
+                          ),
+                          // ),
                         ),
-                        // ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -2013,326 +2414,6 @@ Future<void> _dialogPin(BuildContext context) {
           ),
         );
       });
-}
-
-Future<void> _dialogAddMenuEdit(
-    BuildContext context, title, content, stage, pin) {
-  // route animate on dialog
-  Route _routeAnimate(halaman) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => halaman,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
-
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return Container(
-        width: 100,
-        height: 100,
-        color: Colors.transparent,
-        child: Card(
-          color: Colors.transparent,
-          // color: Colors.lightBlue,
-          child: Padding(
-            padding: const EdgeInsets.all(0),
-            child: AlertDialog(
-              backgroundColor: const Color.fromARGB(255, 24, 116, 59),
-              title: Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 50),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 56,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              content: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Text(
-                  content,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              actions: <Widget>[
-                // MainAxisAlignment.spaceAround,
-                Column(
-                  children: [
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: 55,
-                              right: 55,
-                            ),
-                            child: Text(
-                              'Filter'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddFilter(),
-                          //   ),
-                          // );
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddFilter()));
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddFilter(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 45,
-                              right: 45,
-                            ),
-                            child: Text(
-                              'Layout'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddLayout(),
-                          //   ),
-                          // );
-
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddLayout()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddLayout(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            'Background'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddBackground(),
-                          //   ),
-                          // );
-
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddBackground()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddBackground(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: 55,
-                              right: 55,
-                            ),
-                            child: Text(
-                              'Sticker'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddSticker(),
-                          //   ),
-                          // );
-
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddSticker()));
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddSticker(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.redAccent,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 45,
-                              right: 45,
-                            ),
-                            child: Text(
-                              'Kembali'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                // const Spacer(),
-                // OutlinedButton(
-                //   style: TextButton.styleFrom(
-                //     textStyle: Theme.of(context).textTheme.labelLarge,
-                //     backgroundColor: Colors.orange,
-                //   ),
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(15.0),
-                //     child: Text(
-                //       'Lanjut'.toUpperCase(),
-                //       style: const TextStyle(
-                //         fontSize: 30,
-                //         color: Colors.white,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //     ),
-                //   ),
-                //   onPressed: () {
-                //     // Navigator.of(context).pop();
-                //     // Navigator.push(
-                //     //   context,
-                //     //   MaterialPageRoute(
-                //     //     builder: (context) => const HalamanAwalSettings(),
-                //     //   ),
-                //     // );
-
-                //     _dialogPin(context, pin);
-                //   },
-                // ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
 }
 
 final defaultPinTheme = PinTheme(

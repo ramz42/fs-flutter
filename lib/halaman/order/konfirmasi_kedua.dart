@@ -404,7 +404,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26),
+                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.7),
               ),
               child: Column(
                 children: [

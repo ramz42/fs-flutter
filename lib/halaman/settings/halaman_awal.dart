@@ -40,6 +40,8 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
   var judul;
   var deskripsi;
 
+  bool isVisibleCardSeetings = false;
+
   List<dynamic> serial_key = [];
 
   _HalamanAwalSettingsState();
@@ -182,7 +184,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
               height: height * 0.12,
               width: width * 1,
               color: bg_warna_main != ""
-                  ? Color(int.parse(bg_warna_main))
+                  ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
                   : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -192,13 +194,6 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                     child: Container(
                       height: height * 1,
                       width: width * 1,
-                      // decoration: BoxDecoration(
-                      //   image: DecorationImage(
-                      //     image: NetworkImage(
-                      //         "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                      //     fit: BoxFit.cover,
-                      //   ),
-                      // ),
                       child: Padding(
                         padding: EdgeInsets.only(top: width * 0.001),
                         child: Column(
@@ -239,6 +234,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                     child: InkWell(
                       onTap: () {
                         _showMyDialog("settings");
+                        setState(() {
+                          isVisibleCardSeetings = !isVisibleCardSeetings;
+                        });
                       },
                       child: const Icon(
                         Icons.settings,
@@ -258,6 +256,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                     child: InkWell(
                       onTap: () {
                         _showMyDialog("order");
+                        setState(() {
+                          isVisibleCardSeetings = !isVisibleCardSeetings;
+                        });
                       },
                       child: const Icon(
                         Icons.home,
@@ -270,63 +271,66 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                 ),
               ],
             ),
-
             SizedBox(
               height: height * 0.055,
             ),
-            Container(
-              // color: Color.fromARGB(255, 255, 123, 145),
-              height: width * 0.36,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Card(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          25,
-                        ),
-                      ),
-                    ),
-                    elevation: 1,
-                    color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
-                        : Colors.transparent,
-                    child: InkWell(
-                      onTap: () {
-                        print("edit foto page");
-                      },
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(
-                          25,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: width * 0.13,
-                          bottom: width * 0.13,
-                          left: width * 0.05,
-                          right: width * 0.05,
-                        ),
-                        child: Text(
-                          "Halaman Settings",
-                          style: TextStyle(
-                            fontSize: width * 0.05,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
+            Visibility(
+              visible: !isVisibleCardSeetings,
+              child: Container(
+                // color: Color.fromARGB(255, 255, 123, 145),
+                height: width * 0.36,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            45,
                           ),
-                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      elevation: 1,
+                      color: bg_warna_main != ""
+                          ? Color(int.parse(bg_warna_main)).withOpacity(0.1)
+                          : Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          print("edit foto page");
+                          _showMyDialog("settings");
+                          setState(() {
+                            isVisibleCardSeetings = !isVisibleCardSeetings;
+                          });
+                        },
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            45,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: width * 0.02,
+                            bottom: width * 0.02,
+                            left: width * 0.02,
+                            right: width * 0.02,
+                          ),
+                          child: Text(
+                            "Settings",
+                            style: TextStyle(
+                              fontSize: width * 0.05,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            //   ),
-            // ),
-            // ),
           ],
         ),
       ),
@@ -339,27 +343,53 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(type == "settings" ? 'Menu Settings' : "Menu Order"),
+          backgroundColor: Colors.black.withOpacity(0.4),
+          surfaceTintColor: Colors.black.withOpacity(0.4),
+          title: Text(
+            type == "settings" ? 'Menu Settings' : "Menu Order",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(type == "settings"
-                    ? 'Apakah Anda Ingin Ke Menu Settings ?'
-                    : "Apakah Anda Ingin Ke Menu Order ?"),
+                Text(
+                  type == "settings"
+                      ? 'Apakah Anda Ingin Ke Menu Settings ?'
+                      : "Apakah Anda Ingin Ke Menu Order ?",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Tidak'),
+              child: const Text(
+                'Tidak',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               onPressed: () {
-                // _showMyDialogPin(pin);
                 Navigator.of(context).pop();
+
+                setState(() {
+                  isVisibleCardSeetings = !isVisibleCardSeetings;
+                });
               },
             ),
             TextButton(
-              child: const Text('Iya'),
+              child: const Text(
+                'Iya',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               onPressed: () {
+                Navigator.of(context).pop();
                 type == "settings"
                     ? _showMyDialogPin(pin)
                     : Navigator.push(
@@ -389,7 +419,14 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Masukkan Pin'),
+          backgroundColor: Colors.black.withOpacity(0.4),
+          surfaceTintColor: Colors.black.withOpacity(0.4),
+          title: const Text(
+            'Masukkan Pin',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -407,16 +444,6 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                     onCompleted: (pin) {
                       print(pin);
                       if (pin == pins.toString()) {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         SettingsWidget(),
-                        //   ),
-                        // );
-                        // Navigator.of(context)
-                        //     .push(_routeAnimate(SettingsWidget()));
-
                         Navigator.push(
                           context,
                           PageTransition(
@@ -436,10 +463,17 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Kembali'),
+              child: const Text(
+                'Kembali',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               onPressed: () {
-                // _dialogPin(pin);
                 Navigator.of(context).pop();
+                setState(() {
+                  isVisibleCardSeetings = !isVisibleCardSeetings;
+                });
               },
             ),
           ],

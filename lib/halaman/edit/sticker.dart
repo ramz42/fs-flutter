@@ -1,13 +1,9 @@
+// ignore_for_file: override_on_non_overriding_member
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fs_dart/halaman/edit/background.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:fs_dart/halaman/edit/filter.dart';
 import 'package:fs_dart/halaman/edit/layout.dart';
-import 'package:fs_dart/halaman/edit/review.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:fs_dart/halaman/order/review.dart';
-import 'package:zoom_widget/zoom_widget.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:fs_dart/src/database/db.dart';
 import 'package:fs_dart/src/variables.g.dart';
@@ -19,7 +15,6 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
-import '../../src/database/db.dart';
 import '../awal/halaman_awal.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
@@ -29,7 +24,6 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:math';
 import 'dart:io';
-import 'dart:math';
 import 'dart:ui';
 
 class StickerWidget extends StatefulWidget {
@@ -113,12 +107,6 @@ class _StickerWidgetState extends State<StickerWidget> {
   bool isChooseSticker = false;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
-
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
 
   static const _durations = [
     10000,
@@ -162,44 +150,6 @@ class _StickerWidgetState extends State<StickerWidget> {
   // icon 1
   double _left = 806.0;
   double _top = 416.0;
-  double _bottom = 0;
-  double _right = 0;
-
-  // icon 2
-  double _left1 = 806.0;
-  double _top1 = 416.0;
-
-  // icon 3
-  double _left2 = 806.0;
-  double _top2 = 416.0;
-
-  // icon 4
-  double _left3 = 806.0;
-  double _top3 = 416.0;
-
-  // icon 5
-  double _left4 = 806.0;
-  double _top4 = 416.0;
-
-  // icon 6
-  double _left5 = 806.0;
-  double _top5 = 416.0;
-
-  // icon 7
-  double _left6 = 806.0;
-  double _top6 = 416.0;
-
-  // icon 8
-  double _left7 = 806.0;
-  double _top7 = 416.0;
-
-  // icon 9
-  double _left8 = 806.0;
-  double _top8 = 416.0;
-
-  // icon 10
-  double _left9 = 806.0;
-  double _top9 = 416.0;
 
   bool isVisibleIfPrint = false;
 
@@ -230,10 +180,6 @@ class _StickerWidgetState extends State<StickerWidget> {
   late PhotoViewControllerBase? controller;
   late PhotoViewScaleStateController? scaleStateController;
   ScreenshotController screenshotController = ScreenshotController();
-
-  static const double minScale = 0.5;
-  static const double defScale = 0.5;
-  static const double maxScale = 0.7;
 
   int calls = 0;
 
@@ -279,7 +225,6 @@ class _StickerWidgetState extends State<StickerWidget> {
     this.pilih_background2,
   );
 
-  Uint8List? _imageFile;
   @override
   void initState() {
     // TODO: implement initState
@@ -463,7 +408,7 @@ class _StickerWidgetState extends State<StickerWidget> {
   _uploadImage(path) async {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    var photo = path.toString().replaceAll(r'\', r'/');
+    path.toString().replaceAll(r'\', r'/');
     // ...
     var request = http.MultipartRequest(
         'POST', Uri.parse('${Variables.ipv4_local}/api/upload-print'));
@@ -661,7 +606,6 @@ class _StickerWidgetState extends State<StickerWidget> {
     );
 
     // ...
-    final font = await PdfGoogleFonts.nunitoExtraLight();
 
     final provider = await flutterImageProvider(
         NetworkImage("${Variables.ipv4_local}/storage/uploads/print/$image"));
@@ -12735,11 +12679,10 @@ class _StickerWidgetState extends State<StickerWidget> {
                                               Align(
                                                 alignment: Alignment.centerLeft,
                                                 child: FaIcon(
-                                                             FontAwesomeIcons.caretLeft,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                                  FontAwesomeIcons.caretLeft,
+                                                  color: Colors.white,
+                                                  size: width * 0.015,
+                                                ),
                                               ),
                                               Align(
                                                   alignment: Alignment.center,
@@ -13309,7 +13252,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: Colors
-                                                                            .white.withOpacity(0.4),
+                                                                            .white
+                                                                            .withOpacity(0.4),
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         image:
@@ -13341,7 +13285,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white.withOpacity(0.4),
+                                                                            .white
+                                                                            .withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image: NetworkImage(
@@ -13377,7 +13322,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white.withOpacity(0.4),
+                                                                            .white
+                                                                            .withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -13401,7 +13347,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                                         borderRadius:
                                                                             BorderRadius.circular(15),
                                                                         color: Colors
-                                                                            .white.withOpacity(0.4),
+                                                                            .white
+                                                                            .withOpacity(0.4),
                                                                         image:
                                                                             DecorationImage(
                                                                           image:
@@ -17884,7 +17831,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                             textStyle: Theme.of(context)
                                                 .textTheme
                                                 .labelLarge,
-                                            backgroundColor: Colors.black.withOpacity(0.7),
+                                            backgroundColor:
+                                                Colors.black.withOpacity(0.7),
                                           ),
                                           onPressed: () {
                                             // do onpressed...
@@ -17907,11 +17855,11 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     alignment:
                                                         Alignment.centerRight,
                                                     child: FaIcon(
-                                                             FontAwesomeIcons.caretRight,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                                      FontAwesomeIcons
+                                                          .caretRight,
+                                                      color: Colors.white,
+                                                      size: width * 0.015,
+                                                    ),
                                                   ),
                                                   Align(
                                                       alignment:
@@ -17938,7 +17886,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                                             textStyle: Theme.of(context)
                                                 .textTheme
                                                 .labelLarge,
-                                            backgroundColor: Colors.black.withOpacity(0.7),
+                                            backgroundColor:
+                                                Colors.black.withOpacity(0.7),
                                           ),
                                           onPressed: () {
                                             // do onpressed...
@@ -17959,11 +17908,11 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                     alignment:
                                                         Alignment.centerRight,
                                                     child: FaIcon(
-                                                             FontAwesomeIcons.caretRight,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                                      FontAwesomeIcons
+                                                          .caretRight,
+                                                      color: Colors.white,
+                                                      size: width * 0.015,
+                                                    ),
                                                   ),
                                                   Align(
                                                       alignment:
@@ -18137,9 +18086,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                           });
 
                   // ..
-                  setState(() {
-                    _imageFile = capturedImage;
-                  });
+                  setState(() {});
                 }).catchError(
                   (onError) {
                     print(onError);
@@ -18268,9 +18215,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                       });
 
                               // ..setState
-                              setState(() {
-                                _imageFile = capturedImage;
-                              });
+                              setState(() {});
 
                               // ... printing preview
                             }).catchError((onError) {

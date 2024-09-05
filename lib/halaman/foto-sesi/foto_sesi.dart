@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, depend_on_referenced_packages, unnecessary_import, unused_local_variable, override_on_non_overriding_member
+// ignore_for_file: unused_field, depend_on_referenced_packages, unnecessary_import, unused_local_variable, override_on_non_overriding_member, duplicate_ignore
 
 import 'package:camera_platform_interface/camera_platform_interface.dart';
 import 'package:fs_dart/src/database/db.dart';
@@ -697,11 +697,40 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
         countTakePictures = 8;
       });
       print("take picture 8x");
-    } else {
+    }
+    if (title.toString().contains(" B") ||
+        title.toString().contains(" b") ||
+        title.toString().contains("collage b") ||
+        title.toString().contains("Collage B") ||
+        title.toString().contains("Strip B") ||
+        title.toString().contains("Paket B")) {
       setState(() {
         countTakePictures = 16;
       });
-      print("take picture 16x");
+      print("take picture 8x");
+    }
+    if (title.toString().contains(" E") ||
+        title.toString().contains(" e") ||
+        title.toString().contains("collage e") ||
+        title.toString().contains("Collage F") ||
+        title.toString().contains("Strip E") ||
+        title.toString().contains("Paket E")) {
+      setState(() {
+        countTakePictures = 20;
+      });
+      print("take picture 20x");
+    }
+
+    if (title.toString().contains(" F") ||
+        title.toString().contains(" f") ||
+        title.toString().contains("collage f") ||
+        title.toString().contains("Collage F") ||
+        title.toString().contains("Strip F") ||
+        title.toString().contains("Paket F")) {
+      setState(() {
+        countTakePictures = 25;
+      });
+      print("take picture 25x");
     }
   }
 
@@ -1815,7 +1844,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
                         : Colors.transparent,
                   ),
                   SizedBox(
@@ -1827,16 +1856,19 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                               colors: [
                                 warna1 == ""
                                     ? Colors.transparent
-                                    : Color(int.parse(warna1)),
+                                    : Color.fromARGB(255, 77, 117, 70)
+                                        .withOpacity(0.7),
                                 warna2 == ""
                                     ? Colors.transparent
-                                    : Color(int.parse(warna2))
+                                    : Color.fromARGB(255, 77, 117, 70)
+                                        .withOpacity(0.7)
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
                             backgroundColor: bg_warna_main != ""
-                                ? Color(int.parse(bg_warna_main))
+                                ? Color.fromARGB(255, 77, 117, 70)
+                                    .withOpacity(0.7)
                                 : Colors.transparent,
                             size: const Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
@@ -1867,7 +1899,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(218, 33, 33, 33),
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
@@ -1890,7 +1922,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                             right: width * 0.2,
                           ),
                           child: Text(
-                            "Input Voucher",
+                            "Input Voucher - Foto",
                             style: TextStyle(
                               fontSize: width * 0.022,
                               color: Colors.white,

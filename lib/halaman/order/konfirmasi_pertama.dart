@@ -146,12 +146,6 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
   final double barHeight = 10.0;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
-
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
 
   static const _durations = [
     10000,
@@ -295,16 +289,6 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                   ),
                   elevation: 1,
                   color: Colors.transparent,
-                  // child: Container(
-                  //   // color: Colors.black26,
-                  //   width: width * 1,
-                  //   height: width * 1,
-                  // child: SingleChildScrollView(
-                  //   // shrinkWrap: true,
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   scrollDirection: Axis.horizontal,
-                  // child: Container(
-                  // width: width * 1,
                   child: Container(
                     width: width * 1,
                     height: width * 0.6,
@@ -315,7 +299,6 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                       ),
                       child: Card(
                         child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(

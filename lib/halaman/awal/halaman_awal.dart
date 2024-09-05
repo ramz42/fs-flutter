@@ -1,14 +1,14 @@
 // import 'package:camera/camera.dart';
 // ignore_for_file: override_on_non_overriding_member
 
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+// import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mysql1/mysql1.dart';
+// import 'package:mysql1/mysql1.dart';
 import 'package:pinput/pinput.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
@@ -40,8 +40,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
   // ...
   // final CameraDescription camera;
   final LocalStorage storage = new LocalStorage('serial_key');
-
-  late Timer _timer;
 
   var db = new Mysql();
   var pin = '';
@@ -282,7 +280,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
   final double barHeight = 10.0;
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+  // static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   List<Color> _colors = [
     Color.fromARGB(255, 212, 111, 170),
@@ -346,12 +344,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26),
-                // image: DecorationImage(
-                //   image: NetworkImage(
-                //       "${Variables.ipv4_local}/storage/order/header-image/$header"),
-                //   fit: BoxFit.cover,
-                // ),
+                color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -364,7 +357,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           height: width * 0.035,
                           width: width * 1,
                           color: bg_warna_main != ""
-                              ? Color(int.parse(bg_warna_main))
+                              ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
                               : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -468,7 +461,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(218, 33, 33, 33),
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
@@ -519,7 +512,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                       ),
                     ),
                     elevation: 1,
-                    color: Color.fromARGB(218, 33, 33, 33),
+                    color: Color.fromARGB(255, 117, 70, 70).withOpacity(0.7),
                     child: InkWell(
                       onTap: () {
                         print("edit foto page");

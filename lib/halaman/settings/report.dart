@@ -102,6 +102,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
   String judul = '';
   String deskripsi = '';
 
+  bool isVisibleMainView = false;
+
   _ReportWidgetState();
 
   @override
@@ -264,12 +266,286 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
     await storage.setItem('title', "Title parameter dari localstorage");
   }
 
+  // dialog edit menu
+  Future<void> _dialogAddMenuEdit(
+      BuildContext context, title, content, stage, pin) {
+    // route animate on dialog
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          width: 100,
+          height: 100,
+          color: Colors.transparent,
+          child: Card(
+            color: Colors.transparent,
+            // color: Colors.lightBlue,
+            child: Padding(
+              padding: const EdgeInsets.all(0),
+              child: AlertDialog(
+                backgroundColor:
+                    const Color.fromARGB(255, 24, 116, 59).withOpacity(0.4),
+                title: Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 50),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 56,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                content: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Text(
+                    content,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                actions: <Widget>[
+                  // MainAxisAlignment.spaceAround,
+                  Column(
+                    children: [
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Filter'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddFilter(),
+                            //   ),
+                            // );
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddFilter()));
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddFilter(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Layout'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddLayout(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddLayout()));
+
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddLayout(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Background'.toUpperCase(),
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddBackground(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddBackground()));
+
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddBackground(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.orange.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Sticker'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => const AddSticker(),
+                            //   ),
+                            // );
+
+                            // Navigator.of(context)
+                            //     .push(_routeAnimate(AddSticker()));
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddSticker(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.redAccent.withOpacity(0.4),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Kembali'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            setState(() {
+                              isVisibleMainView = !isVisibleMainView;
+                            });
+                            // ...
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   final double barHeight = 10.0;
-
-  // colors wave
-
-  // end statements color waves
-  // end statements color waves
 
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
   Widget build(BuildContext context) {
@@ -286,554 +562,533 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              // tambah background image ...
+        child: Visibility(
+          visible: !isVisibleMainView,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                // tambah background image ...
 
-              color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
-                        : Colors.transparent,
-              // end background image ...
-              height: height * 0.12,
-              width: width * 1,
-              // color: const Color.fromARGB(255, 24, 116, 59),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    height: height * 1,
-                    width: width * 0.9,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: width * 0.001),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            judul.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.0275,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                color: bg_warna_main != ""
+                    ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                    : Colors.transparent,
+                // end background image ...
+                height: height * 0.12,
+                width: width * 1,
+                // color: const Color.fromARGB(255, 24, 116, 59),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      height: height * 1,
+                      width: width * 0.9,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: width * 0.001),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              judul.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.0275,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            deskripsi.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.01,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              deskripsi.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: width * 0.01,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: InkWell(
-                            onTap: () {
-                              _dialogAddMenuEdit(
-                                context,
-                                "Menu",
-                                "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
-                                1,
-                                "",
-                              );
-                            },
-                            child: const Icon(
-                              Icons.add_box,
-                              size: 55,
-                              color: Colors.white,
-                              semanticLabel: "Add",
+                    Row(
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: InkWell(
+                              onTap: () {
+                                _dialogAddMenuEdit(
+                                  context,
+                                  "Menu",
+                                  "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
+                                  1,
+                                  "",
+                                );
+                                setState(() {
+                                  isVisibleMainView = !isVisibleMainView;
+                                });
+                              },
+                              child: const Icon(
+                                Icons.add_box,
+                                size: 55,
+                                color: Colors.white,
+                                semanticLabel: "Add",
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: InkWell(
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) =>
+                                //         const HalamanAwalSettings(),
+                                //   ),
+                                // );
+                                // Navigator.of(context)
+                                //     .push(_routeAnimate(HalamanAwalSettings()));
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: HalamanAwalSettings(),
+                                      inheritTheme: true,
+                                      ctx: context),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.power_settings_new,
+                                size: 55,
+                                color: Colors.white,
+                                semanticLabel: "Logout",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: height * 0.055,
+              ),
+              Container(
+                // color: Color.fromARGB(255, 255, 123, 145),
+                height: width * 0.43,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // settings menu
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blue.withOpacity(0.7),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const HalamanAwalSettings(),
-                              //   ),
-                              // );
-                              // Navigator.of(context)
-                              //     .push(_routeAnimate(HalamanAwalSettings()));
                               Navigator.push(
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: HalamanAwalSettings(),
+                                    child: SettingsWidget(),
                                     inheritTheme: true,
                                     ctx: context),
                               );
                             },
-                            child: const Icon(
-                              Icons.power_settings_new,
-                              size: 55,
-                              color: Colors.white,
-                              semanticLabel: "Logout",
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: height * 0.055,
-            ),
-            Container(
-              // color: Color.fromARGB(255, 255, 123, 145),
-              height: width * 0.43,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // settings menu
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blue[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const SettingsWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(SettingsWidget()));
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: SettingsWidget(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.025,
-                              right: width * 0.025,
-                            ),
-                            child: Text(
-                              "Settings".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
                               ),
-                              textAlign: TextAlign.center,
                             ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.034,
-                      ),
-
-                      // menu
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blue[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const MenuWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(MenuWidget()));
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: MenuWidget(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.04,
-                              right: width * 0.04,
-                            ),
-                            child: Text(
-                              "Menu".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.034,
-                      ),
-
-                      // report
-                      Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                        ),
-                        elevation: 1,
-                        color: Colors.blueGrey[900],
-                        child: InkWell(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => LockScreenFotoEditWidget(
-                            //         // camera: camera,
-                            //         ),
-                            //   ),
-                            // );
-                          },
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              25,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: width * 0.035,
-                              bottom: width * 0.035,
-                              left: width * 0.03,
-                              right: width * 0.03,
-                            ),
-                            child: Text(
-                              "Report".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.02,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  // form pin serverkey background
-
-                  SizedBox(
-                    height: height * 0.045,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: width * 0.215,
-                      right: width * 0.215,
-                      bottom: width * 0.012,
-                    ),
-                    child: Container(
-                      width: width * 1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Card(
-                            color: Colors.blueGrey,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: width * 0.28,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      // width: width * 0.15,
-                                      child: InkWell(
-                                        onTap: () {
-                                          _restorableDatePickerRouteFuture
-                                              .present();
+                              padding: EdgeInsets.only(
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.025,
+                                right: width * 0.025,
+                              ),
+                              child: Text(
+                                "Settings".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.034,
+                        ),
 
-                                          users.clear();
-                                        },
+                        // menu
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blue.withOpacity(0.7),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: MenuWidget(),
+                                    inheritTheme: true,
+                                    ctx: context),
+                              );
+                            },
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.04,
+                                right: width * 0.04,
+                              ),
+                              child: Text(
+                                "Menu".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.034,
+                        ),
+
+                        // report
+                        Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                          ),
+                          elevation: 1,
+                          color: Colors.blueGrey.withOpacity(0.7),
+                          child: InkWell(
+                            onTap: () {
+                              // ...
+                            },
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                25,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: width * 0.035,
+                                bottom: width * 0.035,
+                                left: width * 0.03,
+                                right: width * 0.03,
+                              ),
+                              child: Text(
+                                "Report".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: width * 0.02,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    // form pin serverkey background
+
+                    SizedBox(
+                      height: height * 0.045,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: width * 0.215,
+                        right: width * 0.215,
+                        bottom: width * 0.012,
+                      ),
+                      child: Container(
+                        width: width * 1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Card(
+                              color: Colors.blueGrey,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: width * 0.28,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        // width: width * 0.15,
+                                        child: InkWell(
+                                          onTap: () {
+                                            _restorableDatePickerRouteFuture
+                                                .present();
+
+                                            users.clear();
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: width * 0.01),
+                                              child: Text(
+                                                'Tanggal : ${_selectedDate.value.year}-${_selectedDate.value.month}-${_selectedDate.value.day}',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: width * 0.0095,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              color: Colors.blueGrey,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: width * 0.25,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        // width: width * 0.1,
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                left: width * 0.01),
-                                            child: Text(
-                                              'Tanggal : ${_selectedDate.value.year}-${_selectedDate.value.month}-${_selectedDate.value.day}',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: width * 0.0095,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                          child: Text(
+                                            "Total",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: width * 0.0095,
+                                              fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        width: width * 0.01,
+                                      ),
+                                      Container(
+                                        // width: width * 0.1,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              right: width * 0.01),
+                                          child: Text(
+                                            "Rp. ${total_harga}",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: width * 0.0095,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Card(
-                            color: Colors.blueGrey,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: width * 0.25,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      // width: width * 0.1,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "Total",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: width * 0.0095,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.01,
-                                    ),
-                                    Container(
-                                      // width: width * 0.1,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            right: width * 0.01),
-                                        child: Text(
-                                          "Rp. ${total_harga}",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: width * 0.0095,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: width * 0.215,
-                      right: width * 0.215,
-                    ),
-                    child: ScrollConfiguration(
-                      behavior: ScrollConfiguration.of(context)
-                          .copyWith(scrollbars: false),
-                      child: SingleChildScrollView(
-                        child: Container(
-                          color: Colors.blueGrey,
-                          width: width * 1,
-                          height: height * 0.44,
-                          child: ListView(
-                            children: [
-                              Table(
-                                border: TableBorder.all(color: Colors.white),
-                                children: [
-                                  TableRow(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'No'.toUpperCase(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: width * 0.012,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Customer'.toUpperCase(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: width * 0.012,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Hp'.toUpperCase(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: width * 0.012,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Harga'.toUpperCase(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: width * 0.012,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  ]),
-                                  // for (int i = 0; i < 4; i++)
-
-                                  if (users.isNotEmpty)
-                                    // for (var user in users)
-                                    for (int i = 0; i < users.length; i++)
-                                      // if (!users[i]['nama'].toString().contains(
-                                      //         users[i + 1]['nama'].toString()) &&
-                                      //     i >= users.length)
-                                      TableRow(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Center(
-                                              child: Text(
-                                                (i + 1).toString(),
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Center(
-                                              child: Text(
-                                                "${users[i]['nama']}",
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Center(
-                                              child: Text(
-                                                "${users[i]['hp'].toString()}",
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Center(
-                                              child: Text(
-                                                "${users[i]['harga']}",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                ],
-                              ),
-                            ],
-                          ),
-                          // height: height * 1,
-                          // child: DataTable(
-                          //     columns: DataColumn(label: Text("text")),
-                          //     rows: DataRow(cells: [])),
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: width * 0.215,
+                        right: width * 0.215,
+                      ),
+                      child: ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context)
+                            .copyWith(scrollbars: false),
+                        child: SingleChildScrollView(
+                          child: Container(
+                            color: Colors.blueGrey,
+                            width: width * 1,
+                            height: height * 0.44,
+                            child: ListView(
+                              children: [
+                                Table(
+                                  border: TableBorder.all(color: Colors.white),
+                                  children: [
+                                    TableRow(children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'No'.toUpperCase(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: width * 0.012,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Customer'.toUpperCase(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: width * 0.012,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Hp'.toUpperCase(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: width * 0.012,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Harga'.toUpperCase(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontSize: width * 0.012,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ]),
+                                    // for (int i = 0; i < 4; i++)
+
+                                    if (users.isNotEmpty)
+                                      // for (var user in users)
+                                      for (int i = 0; i < users.length; i++)
+                                        // if (!users[i]['nama'].toString().contains(
+                                        //         users[i + 1]['nama'].toString()) &&
+                                        //     i >= users.length)
+                                        TableRow(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Center(
+                                                child: Text(
+                                                  (i + 1).toString(),
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "${users[i]['nama']}",
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "${users[i]['hp'].toString()}",
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Center(
+                                                child: Text(
+                                                  "${users[i]['harga']}",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            // height: height * 1,
+                            // child: DataTable(
+                            //     columns: DataColumn(label: Text("text")),
+                            //     rows: DataRow(cells: [])),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -1072,323 +1327,6 @@ Future<void> _dialogPin(BuildContext context) {
           ),
         );
       });
-}
-
-Future<void> _dialogAddMenuEdit(
-    BuildContext context, title, content, stage, pin) {
-  Route _routeAnimate(halaman) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => halaman,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
-
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return Container(
-        width: 100,
-        height: 100,
-        color: Colors.transparent,
-        child: Card(
-          color: Colors.transparent,
-          // color: Colors.lightBlue,
-          child: Padding(
-            padding: const EdgeInsets.all(0),
-            child: AlertDialog(
-              backgroundColor: const Color.fromARGB(255, 24, 116, 59),
-              title: Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 50),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 56,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              content: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Text(
-                  content,
-                  style: const TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              actions: <Widget>[
-                // MainAxisAlignment.spaceAround,
-                Column(
-                  children: [
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: 55,
-                              right: 55,
-                            ),
-                            child: Text(
-                              'Filter'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddFilter(),
-                          //   ),
-                          // );
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddFilter()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddFilter(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 45,
-                              right: 45,
-                            ),
-                            child: Text(
-                              'Layout'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddLayout(),
-                          //   ),
-                          // );
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddLayout()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddLayout(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            'Background'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddBackground(),
-                          //   ),
-                          // );
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddBackground()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddBackground(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.orange,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: 55,
-                              right: 55,
-                            ),
-                            child: Text(
-                              'Sticker'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AddSticker(),
-                          //   ),
-                          // );
-                          // Navigator.of(context)
-                          //     .push(_routeAnimate(AddSticker()));
-
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: AddSticker(),
-                                inheritTheme: true,
-                                ctx: context),
-                          );
-                          // Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          backgroundColor: Colors.redAccent,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              left: 45,
-                              right: 45,
-                            ),
-                            child: Text(
-                              'Kembali'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                // const Spacer(),
-                // OutlinedButton(
-                //   style: TextButton.styleFrom(
-                //     textStyle: Theme.of(context).textTheme.labelLarge,
-                //     backgroundColor: Colors.orange,
-                //   ),
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(15.0),
-                //     child: Text(
-                //       'Lanjut'.toUpperCase(),
-                //       style: const TextStyle(
-                //         fontSize: 30,
-                //         color: Colors.white,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //     ),
-                //   ),
-                //   onPressed: () {
-                //     // Navigator.of(context).pop();
-                //     // Navigator.push(
-                //     //   context,
-                //     //   MaterialPageRoute(
-                //     //     builder: (context) => const HalamanAwalSettings(),
-                //     //   ),
-                //     // );
-
-                //     _dialogPin(context, pin);
-                //   },
-                // ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
 }
 
 final defaultPinTheme = PinTheme(

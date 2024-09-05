@@ -82,12 +82,12 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
   String choose_background = '';
 
   // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+  // static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 250),
-    Color.fromARGB(255, 252, 255, 229),
-  ];
+  // static const _colors = [
+  //   Color.fromARGB(255, 212, 111, 250),
+  //   Color.fromARGB(255, 252, 255, 229),
+  // ];
 
   static const _durations = [
     10000,
@@ -7401,7 +7401,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
+  // Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
   Widget build(BuildContext context) {
     // ...
     double width = MediaQuery.of(context).size.width;
@@ -7431,13 +7431,13 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                       height: width * 0.012,
                       width: width * 1,
                       color: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
+                          ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
                           : Colors.transparent),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -7524,14 +7524,15 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                               ? Colors.transparent
                               : Colors.transparent,
                           warna2 != ""
-                              ? Color(int.parse(warna2))
+                              ? Color.fromARGB(255, 77, 117, 70)
+                                  .withOpacity(0.7)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
+                          ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -7562,7 +7563,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -7650,7 +7651,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(5),
-                                                                    color: Colors.black.withOpacity(0.7),
+                                                                    color: Colors
+                                                                        .black
+                                                                        .withOpacity(
+                                                                            0.7),
                                                                   ),
                                                         child: Padding(
                                                           padding:
@@ -8043,7 +8047,9 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     : BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.circular(5),
-                                                                        color: Colors.black.withOpacity(0.7),
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(0.7),
                                                                       ),
                                                             child: Padding(
                                                               padding:
@@ -8475,21 +8481,22 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                                                     decoration: choose_background !=
                                                                             ""
                                                                         ? BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(15),
                                                                             image:
                                                                                 DecorationImage(
                                                                               // last visit code here
                                                                               image: NetworkImage("${Variables.ipv4_local}/storage/background-image/edit-photo/${choose_background.toString()}"),
                                                                               fit: BoxFit.cover,
                                                                             ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
                                                                             color:
                                                                                 Colors.white,
                                                                           )
                                                                         : BoxDecoration(
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
-                                                                            color: Colors.black.withOpacity(0.7),
+                                                                            color:
+                                                                                Colors.black.withOpacity(0.7),
                                                                           ),
                                                                     child:
                                                                         Padding(
@@ -12878,8 +12885,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           child: OutlinedButton(
                             style: TextButton.styleFrom(
                               textStyle: Theme.of(context).textTheme.labelLarge,
-                              backgroundColor:
-                                  Colors.black.withOpacity(0.7),
+                              backgroundColor: Colors.black.withOpacity(0.7),
                             ),
                             onPressed: () {
                               // do onpressed...
@@ -12911,11 +12917,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: FaIcon(
-                                                             FontAwesomeIcons.caretLeft,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                        FontAwesomeIcons.caretLeft,
+                                        color: Colors.white,
+                                        size: width * 0.015,
+                                      ),
                                     ),
                                     Align(
                                         alignment: Alignment.center,
@@ -12924,8 +12929,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: width * 0.010,
-                                            color:
-                                                Colors.white,
+                                            color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ))
@@ -18508,11 +18512,10 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                   Align(
                                     alignment: Alignment.centerRight,
                                     child: FaIcon(
-                                                             FontAwesomeIcons.caretRight,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                      FontAwesomeIcons.caretRight,
+                                      color: Colors.white,
+                                      size: width * 0.015,
+                                    ),
                                   ),
                                   Align(
                                       alignment: Alignment.center,
@@ -18521,8 +18524,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: width * 0.010,
-                                          color:
-                                              Colors.white,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ))
