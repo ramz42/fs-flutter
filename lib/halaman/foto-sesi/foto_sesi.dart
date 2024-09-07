@@ -1,8 +1,10 @@
 // ignore_for_file: unused_field, depend_on_referenced_packages, unnecessary_import, unused_local_variable, override_on_non_overriding_member, duplicate_ignore
 
 import 'package:camera_platform_interface/camera_platform_interface.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/src/database/db.dart';
 import 'package:fs_dart/src/variables.g.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -13,6 +15,8 @@ import 'package:wave/wave.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
+import '../awal/halaman_awal.dart';
 
 /// Example app for Camera Windows plugin.
 class FotoSesiWidget extends StatefulWidget {
@@ -1387,7 +1391,6 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
   @override
   void initState() {
     // TODO: implement initState
-    // timerPeriodFunc(); // timer periodic functions
     setState(() {
       isNavigate = true;
     });
@@ -1458,71 +1461,6 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
     );
   }
 
-  Future<void> timerPeriodFunc() async {
-    // ...
-    // new timer periodic
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      // ignore: avoid_print
-      print('timer : ${timer.tick}');
-      counter--;
-      if (counter == 0) {
-        print('Cancel timer');
-        timer.cancel();
-      } else {
-        // ...
-        getEditData();
-      }
-    });
-  }
-
-  // get data edit foto lock - open page
-  getEditData() async {
-    // print("get edit data");
-    db.getConnection().then(
-      (value) {
-        String sql = "select * from `edit_photo`";
-        value.query(sql).then((value) {
-          for (var row in value) {
-            setState(() {
-              edit = row;
-            });
-            if (edit[1] == "buka") {
-              isNavigate == true
-                  ? {
-                      setState(() {
-                        counter = 0;
-                        nama = edit[2];
-                        title = edit[3];
-                        isNavigate = false;
-                      }),
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => FotoSesiWidget(
-                      //       nama: nama,
-                      //       title: title,
-                      //       waktu: waktu,
-                      //     ),
-                      //   ),
-                      // )
-                      Navigator.of(context).push(_routeAnimate(FotoSesiWidget(
-                        nama: nama,
-                        title: title,
-                        waktu: waktu,
-                        backgrounds: backgrounds,
-                      ))),
-                    }
-                  : null;
-            } else {
-              // print("object : status foto edit belum 'buka'");
-            }
-          } // Finally, close the connection
-        });
-        return value.close();
-      },
-    );
-  }
-
   _updateVoucher(nama, voucher) async {
     db.getConnection().then(
       (value) {
@@ -1531,29 +1469,13 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
         value.query(sql).then((value) {
           print(
               "berhasil update user $nama, voucher : $voucher, value : $value");
-        });
+        }).then(
+          _getUser(voucher),
+        );
         return value.close();
       },
     );
   }
-
-  // getSettings() async {
-  //     // print("get sesi data");
-  //     db.getConnection().then(
-  //       (value) {
-  //         String sql = "select * from `settings`";
-  //         value.query(sql).then((value) {
-  //           for (var row in value) {
-  //             setState(() {
-  //               pin = row[1];
-  //               bg_image = row[4];
-  //             });
-  //           } // Finally, close the connection
-  //         }).then((value) => print("object pin : $pin"));
-  //         return value.close();
-  //       },
-  //     );
-  //   }
 
   _getUser(voucher) async {
     // SELECT * FROM `user_fotos` WHERE `voucher`= 'Mw-246-Afm7'
@@ -1572,16 +1494,6 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
               print("object nama : $nama"),
               print("object title : $title"),
               print("object waktu : $waktu"),
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FotoSesiWidget(
-              //       nama: nama,
-              //       title: title,
-              //       waktu: waktu,
-              //     ),
-              //   ),
-              // ),
               Navigator.of(context).push(_routeAnimate(FotoSesiWidget(
                 nama: nama,
                 title: title,
@@ -1598,105 +1510,37 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          width: 100,
-          height: 100,
-          color: Colors.transparent,
-          child: Card(
+        return AnimatedOpacity(
+          opacity: 1.0,
+          duration: const Duration(seconds: 1),
+          child: Container(
+            width: 100,
+            height: 100,
             color: Colors.transparent,
-            // color: Colors.lightBlue,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(0),
-                child: AlertDialog(
-                  backgroundColor: Color.fromARGB(218, 33, 33, 33),
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 40, bottom: 50),
-                    child: Text(
-                      "Voucher Input",
-                      style: const TextStyle(
-                        fontSize: 56,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  content: Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Text(
-                      "Masukkan Nama dan Voucher",
-                      style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  actions: <Widget>[
-                    // input nama
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            bottom: width * 0.0, left: width * 0.0),
-                        child: SizedBox(
-                          width: width * 0.25,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: Colors.white,
-                            child: TextFormField(
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                hintText: 'Masukkan Nama',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding: EdgeInsets.only(
-                                  left: 5,
-                                  bottom: 5,
-                                  top: 5,
-                                  right: 5,
-                                ),
-                                focusColor: Colors.black,
-                                fillColor: Colors.black,
-                                label: Text(
-                                  "Nama",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 53, 53, 53),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 53, 53, 53),
-                              ),
-                              // The validator receives the text that the user has entered.
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              onChanged: (value) {
-                                print("object value : $value");
-                                setState(() {
-                                  nama = value.toString();
-                                });
-                              },
-                            ),
-                          ),
+            child: Card(
+              color: Colors.transparent,
+              // color: Colors.lightBlue,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: AlertDialog(
+                    backgroundColor:
+                        Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                    title: Padding(
+                      padding: const EdgeInsets.only(top: 40, bottom: 50),
+                      child: Text(
+                        "Masukkan Voucher",
+                        style: const TextStyle(
+                          fontSize: 56,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                    // end input nama ...
-
-                    // input voucher
-                    Visibility(
-                      visible: isVisibleModalInput,
-                      child: Center(
+                    actions: <Widget>[
+                      // input voucher
+                      Center(
                         child: Padding(
                           padding: EdgeInsets.only(
                               bottom: width * 0.0, left: width * 0.0),
@@ -1709,7 +1553,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                               color: Colors.white,
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   hintText: 'Masukkan Voucher',
@@ -1750,65 +1594,66 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           ),
                         ),
                       ),
-                    ),
-                    // end input voucher ...
-                    SizedBox(
-                      height: width * 0.025,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.redAccent,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Tidak'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                      // end input voucher ...
+                      SizedBox(
+                        height: width * 0.025,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          OutlinedButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.redAccent,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                'Tidak'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              setState(() {
+                                isVisibleTapCard = !isVisibleTapCard;
+                                isVisibleModalInput = !isVisibleModalInput;
+                                // isVisibleTapDialog = !isVisibleTapDialog;
+                              });
+                            },
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            setState(() {
-                              isVisibleModalInput = !isVisibleModalInput;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange,
+                          SizedBox(
+                            width: 25,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Iya'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                          OutlinedButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.orange,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                'Iya'.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
+                            onPressed: () async {
+                              // ...
+                              _updateVoucher(nama, voucher);
+                            },
                           ),
-                          onPressed: () async {
-                            // ...
-                            _updateVoucher(nama, voucher);
-                            _getUser(voucher);
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -1839,41 +1684,69 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
               height: height * 0.12,
               width: width * 1,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  SizedBox(
+                    height: width * 0.0085,
+                  ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
-                        : Colors.transparent,
+                    color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: width * 0.0085,
+                        ),
+                        Container(
+                          // margin: EdgeInsets.all(20),
+                          padding: EdgeInsets.all(5),
+                          child: InkWell(
+                            onTap: () {
+                              // ...
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: HalamanAwal(
+                                    backgrounds: backgrounds,
+                                    header: null,
+                                  ),
+                                  inheritTheme: true,
+                                  ctx: context,
+                                ),
+                              );
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.caretLeft,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.0085,
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height * 0.035,
                     width: width * 1,
-                    child: bg_warna_main != ""
-                        ? WaveWidget(
-                            config: CustomConfig(
-                              colors: [
-                                warna1 == ""
-                                    ? Colors.transparent
-                                    : Color.fromARGB(255, 77, 117, 70)
-                                        .withOpacity(0.7),
-                                warna2 == ""
-                                    ? Colors.transparent
-                                    : Color.fromARGB(255, 77, 117, 70)
-                                        .withOpacity(0.7)
-                              ],
-                              durations: _durations,
-                              heightPercentages: _heightPercentages,
-                            ),
-                            backgroundColor: bg_warna_main != ""
-                                ? Color.fromARGB(255, 77, 117, 70)
-                                    .withOpacity(0.7)
-                                : Colors.transparent,
-                            size: const Size(double.infinity, double.infinity),
-                            waveAmplitude: 0,
-                          )
-                        : Container(),
+                    child: Container(
+                      height: height * 0.025,
+                      width: width * 1,
+                      child: WaveWidget(
+                        config: CustomConfig(
+                          colors: [Colors.transparent, Colors.transparent],
+                          durations: _durations,
+                          heightPercentages: _heightPercentages,
+                        ),
+                        backgroundColor: Colors.transparent,
+                        size: const Size(double.infinity, double.infinity),
+                        waveAmplitude: 0,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -1884,7 +1757,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
             Visibility(
               visible: !isVisibleModalInput,
               child: AnimatedOpacity(
-                opacity: isVisibleTapCard == true ? 1.0 : 0.0,
+                opacity: 1.0,
                 duration: const Duration(milliseconds: 500),
                 child: Container(
                   // color: Color.fromARGB(255, 255, 123, 145),
@@ -1899,7 +1772,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(

@@ -2,6 +2,7 @@
 // ignore_for_file: override_on_non_overriding_member
 
 // import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:window_manager/window_manager.dart';
@@ -19,6 +20,9 @@ import '../edit/filter.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
+
+import '../foto-sesi/foto_sesi.dart';
+import '../settings/settings.dart';
 
 class HalamanAwal extends StatefulWidget {
   const HalamanAwal(
@@ -59,6 +63,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
   String background_storage = "";
 
   bool isDialogSerialKey = true;
+  bool isVisibleContentMenu = false;
   int waktu_awal = 10;
 
   // create some values
@@ -83,8 +88,26 @@ class _HalamanAwalState extends State<HalamanAwal> {
     getWarnaBg();
     getOrderSettings();
     getStorage();
+    getSettings();
 
     super.initState();
+  }
+
+  getSettings() async {
+    // print("get sesi data");
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `settings`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              pin = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) => print("object pin : $pin"));
+        return value.close();
+      },
+    );
   }
 
   void getStorage() async {
@@ -344,7 +367,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
+                color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -352,12 +375,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
                   Container(
                     // color: Color.fromARGB(255, 24, 116, 59),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
+                        SizedBox(
+                          height: width * 0.005,
+                        ),
                         Container(
                           height: width * 0.035,
                           width: width * 1,
                           color: bg_warna_main != ""
-                              ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                              ? Color(int.parse(bg_warna_main)).withOpacity(0.9)
                               : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -365,26 +392,40 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               Container(
                                 // margin: EdgeInsets.all(20),
                                 padding: EdgeInsets.all(1),
-                                // decoration: BoxDecoration(
-                                //     borderRadius: BorderRadius.circular(100),
-                                //     border: Border.all(
-                                //       width: 2,
-                                //       color: bg_warna_main != ""
-                                //           ? Color(int.parse(bg_warna_main))
-                                //           : Colors.transparent,
-                                //     )),
+                                child: InkWell(
+                                  onTap: () {
+                                    _showMyDialogPin(pin);
+                                    setState(() {
+                                      isVisibleContentMenu =
+                                          !isVisibleContentMenu;
+                                    });
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.gear,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: width * 0.01,
+                              ),
+                              Container(
+                                // margin: EdgeInsets.all(20),
+                                padding: EdgeInsets.all(1),
                                 child: InkWell(
                                   onTap: () {
                                     _showMyDialog(
                                         "Aplikasi",
                                         "Ingin Minimize Aplikasi Foto Selfie ?",
                                         1);
+                                    setState(() {
+                                      isVisibleContentMenu =
+                                          !isVisibleContentMenu;
+                                    });
                                   },
-                                  child: Icon(
-                                    size: 35.0,
-                                    Icons.move_down,
-                                    color: Colors.white,
-                                    semanticLabel: "Minimize",
+                                  child: FaIcon(
+                                    FontAwesomeIcons.minimize,
+                                    color: Colors.orange,
                                   ),
                                 ),
                               ),
@@ -402,16 +443,18 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                     )),
                                 child: InkWell(
                                   onTap: () {
+                                    setState(() {
+                                      isVisibleContentMenu =
+                                          !isVisibleContentMenu;
+                                    });
                                     _showMyDialog(
                                         "Aplikasi",
                                         "Ingin Menutup Aplikasi Foto Selfie ?",
                                         2);
                                   },
-                                  child: Icon(
-                                    size: 35.0,
-                                    Icons.cancel,
-                                    color: Colors.white,
-                                    semanticLabel: "Close",
+                                  child: FaIcon(
+                                    FontAwesomeIcons.cancel,
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
@@ -443,115 +486,171 @@ class _HalamanAwalState extends State<HalamanAwal> {
             ),
 
             SizedBox(
-              height: height * 0.065,
+              height: height * 0.24,
             ),
-            Container(
-              height: width * 0.36,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Card(
+            Visibility(
+              visible: !isVisibleContentMenu,
+              child: Container(
+                height: width * 0.36,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: width * 0.025,
+                  runSpacing: width * 0.025,
+                  children: [
+                    Container(
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              55,
+                            ),
+                          ),
+                        ),
+                        elevation: 1,
+                        color:
+                            Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                        child: InkWell(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              25,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.fade,
+                                child: OrderWidget(
+                                  backgrounds: backgrounds,
+                                ),
+                                inheritTheme: true,
+                                ctx: context,
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: width * 0.055,
+                              bottom: width * 0.055,
+                              left: width * 0.016,
+                              right: width * 0.016,
+                            ),
+                            child: Text(
+                              "   ORDER   ",
+                              style: TextStyle(
+                                fontSize: width * 0.035,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // SizedBox(
+                    //   width: width * 0.034,
+                    // ),
+                    Card(
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(
-                            25,
+                            55,
                           ),
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
                       child: InkWell(
+                        onTap: () {
+                          print("edit foto page");
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: LockScreenFotoSesiWidget(
+                                    backgrounds: bgImg),
+                                inheritTheme: true,
+                                ctx: context),
+                          );
+                          // _dialogChangeColor();
+                        },
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
                             25,
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.fade,
-                              child: OrderWidget(
-                                backgrounds: backgrounds,
-                              ),
-                              inheritTheme: true,
-                              ctx: context,
-                            ),
-                          );
-                        },
                         child: Padding(
                           padding: EdgeInsets.only(
-                            top: width * 0.07,
-                            bottom: width * 0.07,
-                            left: width * 0.01,
-                            right: width * 0.01,
+                            top: width * 0.03,
+                            bottom: width * 0.03,
+                            left: width * 0.05,
+                            right: width * 0.05,
                           ),
                           child: Text(
-                            "   ORDER   ",
+                            "SESI\nPHOTO",
                             style: TextStyle(
-                              fontSize: width * 0.05,
+                              fontSize: width * 0.035,
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: width * 0.034,
-                  ),
-                  Card(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          25,
-                        ),
-                      ),
-                    ),
-                    elevation: 1,
-                    color: Color.fromARGB(255, 117, 70, 70).withOpacity(0.7),
-                    child: InkWell(
-                      onTap: () {
-                        print("edit foto page");
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.fade,
-                              child:
-                                  LockScreenFotoEditWidget(background: bgImg),
-                              inheritTheme: true,
-                              ctx: context),
-                        );
-                        // _dialogChangeColor();
-                      },
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(
-                          25,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: width * 0.035,
-                          bottom: width * 0.035,
-                          left: width * 0.05,
-                          right: width * 0.05,
-                        ),
-                        child: Text(
-                          "EDIT\nPHOTO",
-                          style: TextStyle(
-                            fontSize: width * 0.05,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
+                    // SizedBox(
+                    //   width: width * 0.034,
+                    // ),
+                    Card(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            55,
                           ),
-                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      elevation: 1,
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                      child: InkWell(
+                        onTap: () {
+                          print("edit foto page");
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child:
+                                    LockScreenFotoEditWidget(background: bgImg),
+                                inheritTheme: true,
+                                ctx: context),
+                          );
+                          // _dialogChangeColor();
+                        },
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            25,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: width * 0.03,
+                            bottom: width * 0.03,
+                            left: width * 0.05,
+                            right: width * 0.05,
+                          ),
+                          child: Text(
+                            "EDIT\nPHOTO",
+                            style: TextStyle(
+                              fontSize: width * 0.035,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             //   ),
@@ -569,24 +668,49 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title),
+          backgroundColor: Colors.black.withOpacity(0.7),
+          surfaceTintColor: Colors.black.withOpacity(0.7),
+          title: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(deskripsi),
+                Text(
+                  deskripsi,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Tidak'),
+              child: const Text('Tidak',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                  )),
               onPressed: () {
                 // _showMyDialogPin(pin);
                 Navigator.of(context).pop();
+                setState(() {
+                  isVisibleContentMenu = !isVisibleContentMenu;
+                });
               },
             ),
             TextButton(
-              child: const Text('Iya'),
+              child: const Text('Iya',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                  )),
               onPressed: () async {
                 if (stage == 1) {
                   // ...
@@ -602,6 +726,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
                     await windowManager.hide();
                   });
                   Navigator.of(context).pop();
+                }
+                if (stage == 2) {
+                  // ...
+                  print("pin dialog");
+                  _showMyDialogPin(pin);
+                  Navigator.of(context).pop();
                 } else {
                   Navigator.of(context).pop();
                   exit(0);
@@ -609,6 +739,75 @@ class _HalamanAwalState extends State<HalamanAwal> {
                   // ...
                 }
                 // Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMyDialogPin(pins) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.black.withOpacity(0.7),
+          surfaceTintColor: Colors.black.withOpacity(0.7),
+          title: const Text(
+            'Masukkan Pin',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Pinput(
+                    defaultPinTheme: defaultPinTheme,
+                    focusedPinTheme: focusedPinTheme,
+                    submittedPinTheme: submittedPinTheme,
+                    validator: (s) {
+                      return s == pins.toString() ? null : 'Pin is incorrect';
+                    },
+                    pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                    showCursor: true,
+                    onCompleted: (pin) {
+                      print(pin);
+                      if (pin == pins.toString()) {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.fade,
+                              child: const SettingsWidget(),
+                              inheritTheme: true,
+                              ctx: context),
+                        );
+                      } else {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Kembali',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  isVisibleContentMenu = !isVisibleContentMenu;
+                });
               },
             ),
           ],

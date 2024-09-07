@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:fs_dart/halaman/awal/halaman_awal.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-background.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-layout.dart';
 import 'package:fs_dart/halaman/settings/edit_pages/add-sticker.dart';
@@ -801,7 +802,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 height: height * 0.12,
                 width: width * 1,
                 color: bg_warna_main != ""
-                    ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                    ? Color(int.parse(bg_warna_main)).withOpacity(0.95)
                     : Colors.transparent,
                 // end background image
 
@@ -873,7 +874,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.fade,
-                                      child: HalamanAwalSettings(),
+                                      child: HalamanAwal(
+                                        backgrounds: null,
+                                        header: null,
+                                      ),
                                       inheritTheme: true,
                                       ctx: context),
                                 );
@@ -914,7 +918,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blueGrey.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
                           child: InkWell(
                             onTap: () {},
                             borderRadius: const BorderRadius.all(
@@ -955,7 +960,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -1005,7 +1011,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(

@@ -4518,21 +4518,21 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     db.getConnection().then(
       (value) {
         String sql =
-            "UPDATE `user_fotos` SET status_voucher = 'belum' WHERE `nama` = '$nama' AND `status_voucher`= 'belum' AND `voucher`= '$voucher';";
+            "UPDATE `user_fotos` SET status_voucher = 'sudah' WHERE `voucher` = '$voucher' AND `status_voucher`= 'belum' OR `voucher`= 'sudah';";
         value.query(sql).then((value) {
           print(
               "berhasil update user $nama, voucher : $voucher status sudah, value : $value");
-          getUser(nama);
+          getUser(voucher);
         });
         return value.close();
       },
     );
   }
 
-  getUser(nama) async {
+  getUser(voucher) async {
     db.getConnection().then(
       (value) {
-        String sql = "SELECT * FROM `user_fotos` WHERE `nama` = '$nama';";
+        String sql = "SELECT * FROM `user_fotos` WHERE `voucher` = '$voucher';";
         value.query(sql).then((value) {
           for (var row in value) {
             print(row);
@@ -4580,7 +4580,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   padding: const EdgeInsets.all(0),
                   child: AlertDialog(
                     backgroundColor:
-                        Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
+                        Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
                       child: Text(
@@ -4607,64 +4607,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                     // ),
                     actions: <Widget>[
                       // input nama
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              bottom: width * 0.0, left: width * 0.0),
-                          child: SizedBox(
-                            width: width * 0.25,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              color: Colors.white,
-                              child: TextFormField(
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  hintText: 'Masukkan Nama',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  contentPadding: EdgeInsets.only(
-                                    left: 5,
-                                    bottom: 5,
-                                    top: 5,
-                                    right: 5,
-                                  ),
-                                  focusColor: Colors.black,
-                                  fillColor: Colors.black,
-                                  label: Text(
-                                    "Nama",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 53, 53, 53),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                style: const TextStyle(
-                                  color: Color.fromARGB(255, 53, 53, 53),
-                                ),
-                                // The validator receives the text that the user has entered.
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter some text';
-                                  }
-                                  return null;
-                                },
-                                onChanged: (value) {
-                                  print("object value : $value");
-                                  setState(() {
-                                    nama = value.toString();
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // end input nama ...
-
-                      SizedBox(height: 5),
 
                       // input voucher
                       Center(
@@ -4870,13 +4812,51 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
               height: height * 0.12,
               width: width * 1,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  SizedBox(
+                    height: width * 0.0085,
+                  ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
-                        : Colors.transparent,
+                    color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: width * 0.0085,
+                        ),
+                        Container(
+                          // margin: EdgeInsets.all(20),
+                          padding: EdgeInsets.all(5),
+                          child: InkWell(
+                            onTap: () {
+                              // ...
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: HalamanAwal(
+                                    backgrounds: backgrounds,
+                                    header: null,
+                                  ),
+                                  inheritTheme: true,
+                                  ctx: context,
+                                ),
+                              );
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.caretLeft,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: width * 0.0085,
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: height * 0.035,
@@ -4919,7 +4899,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.7),
+                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(

@@ -16,6 +16,7 @@ import 'package:pinput/pinput.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:fs_dart/src/variables.g.dart';
 
+import '../awal/halaman_awal.dart';
 import 'edit_pages/add-background.dart';
 import 'edit_pages/add-filter.dart';
 import 'edit_pages/add-layout.dart';
@@ -571,7 +572,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                 // tambah background image ...
 
                 color: bg_warna_main != ""
-                    ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                    ? Color(int.parse(bg_warna_main)).withOpacity(0.95)
                     : Colors.transparent,
                 // end background image ...
                 height: height * 0.12,
@@ -642,20 +643,14 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             padding: const EdgeInsets.all(15.0),
                             child: InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) =>
-                                //         const HalamanAwalSettings(),
-                                //   ),
-                                // );
-                                // Navigator.of(context)
-                                //     .push(_routeAnimate(HalamanAwalSettings()));
                                 Navigator.push(
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.fade,
-                                      child: HalamanAwalSettings(),
+                                      child: HalamanAwal(
+                                        backgrounds: null,
+                                        header: null,
+                                      ),
                                       inheritTheme: true,
                                       ctx: context),
                                 );
@@ -696,7 +691,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -746,7 +742,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -796,7 +793,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blueGrey.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
                           child: InkWell(
                             onTap: () {
                               // ...
@@ -845,7 +843,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Card(
-                              color: Colors.blueGrey,
+                              color: Color.fromARGB(255, 77, 117, 70)
+                                  .withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -885,7 +884,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                             ),
                             Card(
-                              color: Colors.blueGrey,
+                              color: Color.fromARGB(255, 77, 117, 70)
+                                  .withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -947,7 +947,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             .copyWith(scrollbars: false),
                         child: SingleChildScrollView(
                           child: Container(
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 77, 117, 70)
+                                .withOpacity(0.9),
                             width: width * 1,
                             height: height * 0.44,
                             child: ListView(

@@ -408,7 +408,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.7),
+                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
               ),
               height: height * 0.12,
               width: width * 1,

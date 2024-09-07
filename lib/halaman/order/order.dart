@@ -221,7 +221,7 @@ class _OrderWidgetState extends State<OrderWidget> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.7),
+                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
               ),
               child: Column(
                 children: [
@@ -289,20 +289,20 @@ class _OrderWidgetState extends State<OrderWidget> {
                       ],
                     ),
                   ),
-                  Container(
-                    height: height * 0.025,
-                    width: width * 1,
-                    child: WaveWidget(
-                      config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
-                        durations: _durations,
-                        heightPercentages: _heightPercentages,
-                      ),
-                      backgroundColor: Colors.transparent,
-                      size: const Size(double.infinity, double.infinity),
-                      waveAmplitude: 0,
-                    ),
-                  ),
+                  // Container(
+                  //   height: height * 0.025,
+                  //   width: width * 1,
+                  //   child: WaveWidget(
+                  //     config: CustomConfig(
+                  //       colors: [Colors.transparent, Colors.transparent],
+                  //       durations: _durations,
+                  //       heightPercentages: _heightPercentages,
+                  //     ),
+                  //     backgroundColor: Colors.transparent,
+                  //     size: const Size(double.infinity, double.infinity),
+                  //     waveAmplitude: 0,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -374,7 +374,9 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   padding:
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
-                                                    color: Colors.transparent,
+                                                    color: Color.fromARGB(
+                                                            255, 26, 26, 26)
+                                                        .withOpacity(0.9),
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(

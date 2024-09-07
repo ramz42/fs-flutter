@@ -17,6 +17,7 @@ import 'package:fs_dart/src/variables.g.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:http/http.dart' as http;
 
+import '../awal/halaman_awal.dart';
 import 'edit_pages/add-background.dart';
 import 'edit_pages/add-filter.dart';
 import 'edit_pages/add-layout.dart';
@@ -562,7 +563,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 height: height * 0.12,
                 width: width * 1,
                 color: bg_warna_main != ""
-                    ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                    ? Color(int.parse(bg_warna_main)).withOpacity(0.95)
                     : Colors.transparent,
                 // tambah background image ...
 
@@ -690,24 +691,18 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => const SettingsWidget(
-                              //         // camera: camera,
-                              //         ),
-                              //   ),
-                              // );
-                              // Navigator.of(context)
-                              //     .push(_routeAnimate(SettingsWidget()));
                               Navigator.push(
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: SettingsWidget(),
+                                    child: HalamanAwal(
+                                      backgrounds: null,
+                                      header: null,
+                                    ),
                                     inheritTheme: true,
                                     ctx: context),
                               );
@@ -752,7 +747,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blueGrey.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(
@@ -802,7 +798,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color: Colors.blue.withOpacity(0.7),
+                          color:
+                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(
