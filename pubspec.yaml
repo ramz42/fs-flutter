@@ -55,6 +55,7 @@ dependencies:
   page_transition: ^2.1.0
   virtual_keyboard_multi_language: ^1.0.3
   flutter_colorpicker: ^1.1.0
+  print_bluetooth_thermal: ^1.1.1
   
 
 dev_dependencies:

@@ -668,8 +668,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.black.withOpacity(0.7),
-          surfaceTintColor: Colors.black.withOpacity(0.7),
+          backgroundColor: Colors.green.withOpacity(0.7),
+          surfaceTintColor: Colors.green.withOpacity(0.7),
           title: Text(
             title,
             style: const TextStyle(
@@ -753,8 +753,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.black.withOpacity(0.7),
-          surfaceTintColor: Colors.black.withOpacity(0.7),
+          backgroundColor: Colors.green.withOpacity(0.7),
+          surfaceTintColor: Colors.green.withOpacity(0.7),
           title: const Text(
             'Masukkan Pin',
             style: TextStyle(

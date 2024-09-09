@@ -37,17 +37,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   //
   // final CameraDescription camera;
   final LocalStorage storage = LocalStorage('parameters');
-  var db = new Mysql();
 
+  var db = new Mysql();
+  var bg_warna_main = "";
   var users;
 
-  String filePick = "";
+  bool isVisibleMainView = false;
 
+  String filePick = "";
   String filePickHeader = "";
   String filePickBackground = "";
-
   String filePickSticker = "";
-
   String judul = "";
   String deskripsi = "";
   String pin = "";
@@ -57,10 +57,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   String image = "";
   String image_settings = "";
   String string_logo = "";
-
   String image_header = "";
   String image_background = "";
-
   String nama_sticker = "";
   String status_sticker = "";
 
@@ -68,8 +66,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   Color bg_warna_wave = Color(0xff443a49);
   Color warna1 = Color(0xff443a49);
   Color warna2 = Color(0xff443a49);
-
-  bool isVisibleMainView = false;
 
   _SettingsWidgetState();
 
@@ -85,10 +81,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     super.initState();
   }
 
-  var bg_warna_main = "";
-
   getWarnaBg() async {
-    // print("get sesi data");
     db.getConnection().then(
       (value) {
         String sql = "select * from `main_color`";
@@ -111,7 +104,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     );
   }
 
-  // ValueChanged<Color> callback
   void changeColorBgWarna(Color color) {
     setState(() {
       bg_warna_wave = color;
@@ -137,7 +129,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   _postWarna() async {
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://127.0.0.1:8000/api/store-main-color'));
+        'POST', Uri.parse('${Variables.ipv4_local}/api/store-main-color'));
     request.fields.addAll({
       'bg_warna_wave': "0x${bg_warna_wave.toHexString()}",
       'warna1': "0x${warna1.toHexString()}",

@@ -95,10 +95,10 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // colors wave
   // static const _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
-  // static const _colors = [
-  //   Color.fromARGB(255, 212, 111, 170),
-  //   Color.fromARGB(255, 252, 175, 229),
-  // ];
+  static const _colors = [
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
+  ];
 
   static const _durations = [
     10000,

@@ -52,15 +52,16 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
   _KonfirmasiKeduaState(this.qris_content, this.qris_request_date,
       this.qris_invoiceid, this.jenis_pembayaran, this.backgrounds);
 
+  final LocalStorage storage = new LocalStorage('parameters');
+  final double barHeight = 10.0;
+
   final backgrounds;
   final qris_content;
   final qris_request_date;
   final qris_invoiceid;
   final jenis_pembayaran;
 
-  var db = new Mysql();
-
-  final LocalStorage storage = new LocalStorage('parameters');
+  late AnimationController _controller;
 
   String title = "";
   String deskripsi = "";
@@ -74,17 +75,43 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
   String nama_bank = "";
   String virtual_account = "";
 
+  String headerImg = "";
+  String bgImg = "";
+
   int _counter = 0;
-  late AnimationController _controller;
   int levelClock = 600;
 
+  var db = new Mysql();
   var random_string = "";
   var id_foto = "";
   var status_transaksi = "";
   var jenis_transaksi = "";
 
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
   // kode voucher ...
   var kode_voucher = '';
+
+  // colors wave
+  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+
+  static const _colors = [
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
+  ];
+
+  static const _durations = [
+    10000,
+    75000,
+  ];
+
+  static const _heightPercentages = [
+    0.90,
+    0.70,
+  ];
+  // end statements color waves
 
   @override
   void initState() {
@@ -103,14 +130,6 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
 
     _controller.forward();
     if (levelClock == 590) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => const KonfirmasiKetiga(),
-      //   ),
-      // );
-      // Navigator.of(context).push(_routeAnimate(KonfirmasiKetiga()));
-
       Navigator.push(
         context,
         PageTransition(
@@ -126,10 +145,6 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     getOrderSettings();
     getWarnaBg();
   }
-
-  var bg_warna_main = "";
-  var warna1 = "";
-  var warna2 = "";
 
   getWarnaBg() async {
     // print("get sesi data");
@@ -155,8 +170,6 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     );
   }
 
-  String headerImg = "";
-  String bgImg = "";
   // ...
   getOrderSettings() async {
     // print("get sesi data");
@@ -345,26 +358,49 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     print("title photobooth user : $title");
   }
 
-  final double barHeight = 10.0;
+  createInvoices() async {
+    // ...
+    const _chars =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    const _numbers = '1234567890';
 
-  // colors wave
-  static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
+    // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables, no_leading_underscores_for_local_identifiers
+    Random _rnd = Random();
 
-  static const _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
-  ];
+    String getRandomString(int length) =>
+        String.fromCharCodes(Iterable.generate(
+            length, (_) => _numbers.codeUnitAt(_rnd.nextInt(_numbers.length))));
 
-  static const _durations = [
-    10000,
-    75000,
-  ];
+    String date = DateTime.now().day.toString();
+    String month = DateTime.now().month.toString();
+    String year = DateTime.now().year.toString();
 
-  static const _heightPercentages = [
-    0.90,
-    0.70,
-  ];
-  // end statements color waves
+    // ...
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('${Variables.ipv4_local}/api/invoices'));
+    request.fields.addAll({
+      'tanggal': '$date/$month/$year',
+      'no_invoice': 'INV${getRandomString(6)}-${getRandomString(3)}',
+      'code': getRandomString(9),
+      'paket': title,
+      'customer': nama_user,
+      'email': email_user,
+      'no_telp': no_telp,
+      'harga': harga.toString(),
+      'image': '-'
+    });
+
+    // request.files.add(await http.MultipartFile.fromPath(
+    //     'image', '/C:/Users/rama/Documents/1720471768_main.jpg'));
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -1254,16 +1290,6 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                           ),
                                           onPressed: () {
                                             // do onpressed...
-                                            // Navigator.push(
-                                            //   context,
-                                            //   MaterialPageRoute(
-                                            //     builder: (context) =>
-                                            //         KonfirmasiKetiga(),
-                                            //   ),
-                                            // );
-                                            // Navigator.of(context).push(
-                                            //     _routeAnimate(
-                                            //         KonfirmasiKetiga()));
 
                                             Navigator.push(
                                               context,
@@ -1277,6 +1303,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                             );
 
                                             sendMail();
+                                            createInvoices();
                                           },
                                           child: Container(
                                             // color: Colors.transparent,

@@ -61,7 +61,9 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   late AnimationController _controller;
 
   Uint8List? _imageFile = null;
+
   bool isRunPostSesiMethods = false;
+  bool isVisibleButtonLanjut = false;
 
   int countTakePictures = 0;
   int _startLevelClock = 10;
@@ -132,6 +134,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
       levelClock = int.parse(waktu.toString()) * 60;
     });
 
+    print("title : $title");
+
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
@@ -142,9 +146,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
     _controller.forward();
     _startTimerClock();
     countTakePicture();
-
     getWarnaBg();
-
     getOrderSettings();
   }
 
@@ -567,6 +569,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
   }
 
   Future<void> _takePicture() async {
+    print("count take picture : ${countTakePictures}");
     if (countTakePictures != 0) {
       _timerAfterTakePicture();
       final XFile file = await CameraPlatform.instance.takePicture(_cameraId);
@@ -585,6 +588,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
         startTimer();
       }
     } else {
+      
       _showInSnackBar('Jumlah Shoot Habis');
       print("count take picture : ${countTakePictures}");
       startTimer();
@@ -605,8 +609,18 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
     // ...
     http.StreamedResponse response = await request.send();
 
+    if (countTakePictures == 0) {
+      _dialogBuilder(context, "Foto Sesi", "Jumlah Shots Sudah Habis");
+      setState(() {
+        isVisibleButtonLanjut = !isVisibleButtonLanjut;
+      });
+    } else {
+      print("take picture masih ada");
+    }
     if (response.statusCode == 200) {
       print(await response.stream.bytesToString());
+
+      // if take picture habis
     } else {
       print(response.reasonPhrase);
     }
@@ -696,46 +710,47 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
         title.toString().contains("collage a") ||
         title.toString().contains("Collage A") ||
         title.toString().contains("Strip A") ||
-        title.toString().contains("Paket A")) {
+        title.toString().contains("Paket A") ||
+        title.toString().contains("Foto Book A")) {
       setState(() {
         countTakePictures = 8;
       });
-      print("take picture 8x");
-    }
-    if (title.toString().contains(" B") ||
-        title.toString().contains(" b") ||
-        title.toString().contains("collage b") ||
-        title.toString().contains("Collage B") ||
-        title.toString().contains("Strip B") ||
-        title.toString().contains("Paket B")) {
+    } else
+    // (title.toString().contains(" B") ||
+    //     title.toString().contains(" b") ||
+    //     title.toString().contains("collage b") ||
+    //     title.toString().contains("Collage B") ||
+    //     title.toString().contains("Strip B") ||
+    // title.toString().contains("Paket B"))
+    {
       setState(() {
         countTakePictures = 16;
       });
-      print("take picture 8x");
+      print("take picture 16x");
     }
-    if (title.toString().contains(" E") ||
-        title.toString().contains(" e") ||
-        title.toString().contains("collage e") ||
-        title.toString().contains("Collage F") ||
-        title.toString().contains("Strip E") ||
-        title.toString().contains("Paket E")) {
-      setState(() {
-        countTakePictures = 20;
-      });
-      print("take picture 20x");
-    }
+    // if (title.toString().contains(" E") ||
+    //     title.toString().contains(" e") ||
+    //     title.toString().contains("collage e") ||
+    //     title.toString().contains("Collage F") ||
+    //     title.toString().contains("Strip E") ||
+    //     title.toString().contains("Paket E")) {
+    //   setState(() {
+    //     countTakePictures = 20;
+    //   });
+    //   print("take picture 20x");
+    // }
 
-    if (title.toString().contains(" F") ||
-        title.toString().contains(" f") ||
-        title.toString().contains("collage f") ||
-        title.toString().contains("Collage F") ||
-        title.toString().contains("Strip F") ||
-        title.toString().contains("Paket F")) {
-      setState(() {
-        countTakePictures = 25;
-      });
-      print("take picture 25x");
-    }
+    // if (title.toString().contains(" F") ||
+    //     title.toString().contains(" f") ||
+    //     title.toString().contains("collage f") ||
+    //     title.toString().contains("Collage F") ||
+    //     title.toString().contains("Strip F") ||
+    //     title.toString().contains("Paket F")) {
+    //   setState(() {
+    //     countTakePictures = 25;
+    //   });
+    //   print("take picture 25x");
+    // }
   }
 
   Future<void> _dialogRetake(BuildContext context, filename, index) {
@@ -863,6 +878,34 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
               child: const Text('Iya'),
               onPressed: () async {
                 _deleteImage(filename);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, title, deskripsi) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            title,
+          ),
+          content: Text(
+            deskripsi,
+          ),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Baik'),
+              onPressed: () async {
+                // _deleteImage(filename);
                 Navigator.of(context).pop();
               },
             ),
@@ -1168,53 +1211,57 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Container(
-                                          child: Card(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(65),
                                             color:
-                                                Colors.black.withOpacity(0.4),
-                                            elevation: 5,
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 20.0,
-                                                bottom: 20,
-                                                left: 40,
-                                                right: 40,
-                                              ),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "Waktu Shoot",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: width * 0.012,
-                                                      color: Color.fromARGB(
-                                                          255, 255, 255, 255),
-                                                    ),
+                                                Colors.black.withOpacity(0.7),
+                                            boxShadow: [],
+                                          ),
+                                          // child: Card(
+                                          //   elevation: 5,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 20.0,
+                                              bottom: 20,
+                                              left: 40,
+                                              right: 40,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "Waktu Shoot",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: width * 0.012,
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255),
                                                   ),
-                                                  // count down widgewt here
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            bottom: 15.0),
-                                                    child: Countdown(
-                                                      animation: StepTween(
-                                                        begin:
-                                                            levelClock, // THIS IS A USER ENTERED NUMBER
-                                                        end: 0,
-                                                      ).animate(_controller),
-                                                    ),
+                                                ),
+                                                // count down widgewt here
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 15.0),
+                                                  child: Countdown(
+                                                    animation: StepTween(
+                                                      begin:
+                                                          levelClock, // THIS IS A USER ENTERED NUMBER
+                                                      end: 0,
+                                                    ).animate(_controller),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
                                           ),
+                                          // ),
                                         ),
                                         countTakePictures != 0
                                             ? ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     backgroundColor: Colors
                                                         .black
-                                                        .withOpacity(0.4),
+                                                        .withOpacity(0.7),
                                                     textStyle: TextStyle(
                                                         fontSize: 30,
                                                         fontWeight:
@@ -1226,19 +1273,18 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                   padding: const EdgeInsets.all(
                                                     15.0,
                                                   ),
-                                                  child: Icon(
-                                                    Icons.camera,
-                                                    size: width * 0.04,
-                                                    color: Color.fromARGB(
-                                                        255, 255, 255, 255),
-                                                  ),
+                                                  child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .cameraRetro,
+                                                      color: Colors.white,
+                                                      size: width * 0.04),
                                                 ),
                                               )
                                             : ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     backgroundColor: Colors
                                                         .black
-                                                        .withOpacity(0.4),
+                                                        .withOpacity(0.3),
                                                     textStyle: TextStyle(
                                                         fontSize: 30,
                                                         fontWeight:
@@ -1249,13 +1295,91 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
                                                       15.0),
-                                                  child: Icon(
-                                                    Icons.camera,
-                                                    size: width * 0.04,
-                                                    color: Colors.white,
-                                                  ),
+                                                  child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .cameraRetro,
+                                                      color: Colors.white,
+                                                      size: width * 0.04),
                                                 ),
-                                              )
+                                              ),
+                                        const SizedBox(height: 15),
+
+                                        // ...
+                                        Visibility(
+                                          visible: isVisibleButtonLanjut,
+                                          child: OutlinedButton(
+                                            style: TextButton.styleFrom(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge,
+                                              backgroundColor:
+                                                  Color.fromARGB(255, 0, 0, 0)
+                                                      .withOpacity(0.7),
+                                            ),
+                                            onPressed: () {
+                                              // do onpressed...
+                                              Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child: HalamanAwal(
+                                                      backgrounds: backgrounds,
+                                                      header: null,
+                                                    ),
+                                                    inheritTheme: true,
+                                                    ctx: context),
+                                              );
+                                            },
+                                            child: SizedBox(
+                                              // color: Colors.transparent,
+                                              width: width * 0.25,
+                                              // height: height * 0.012,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 10,
+                                                  bottom: 10,
+                                                ),
+                                                child: Stack(
+                                                  children: <Widget>[
+                                                    Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        "Kembali"
+                                                            .toUpperCase(),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize:
+                                                              width * 0.010,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              255,
+                                                              255,
+                                                              255),
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    // ...
+                                                    // const Align(
+                                                    //   alignment:
+                                                    //       Alignment.centerRight,
+                                                    //   child: FaIcon(
+                                                    //     FontAwesomeIcons
+                                                    //         .caretRight,
+                                                    //     color: Colors.white,
+                                                    //   ),
+                                                    // ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -1529,7 +1653,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
                       child: Text(
-                        "Masukkan Voucher",
+                        "Masukkan Kode",
                         style: const TextStyle(
                           fontSize: 56,
                           color: Colors.white,
@@ -1556,7 +1680,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  hintText: 'Masukkan Voucher',
+                                  hintText: 'Masukkan Kode',
                                   hintStyle: TextStyle(color: Colors.grey),
                                   contentPadding: EdgeInsets.only(
                                     left: 5,
@@ -1567,7 +1691,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                   focusColor: Colors.black,
                                   fillColor: Colors.black,
                                   label: Text(
-                                    "Voucher",
+                                    "Kode",
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 53, 53, 53),
                                       fontWeight: FontWeight.bold,
@@ -1795,7 +1919,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                             right: width * 0.2,
                           ),
                           child: Text(
-                            "Input Voucher - Foto",
+                            "Input Kode - Foto Sesi",
                             style: TextStyle(
                               fontSize: width * 0.022,
                               color: Colors.white,

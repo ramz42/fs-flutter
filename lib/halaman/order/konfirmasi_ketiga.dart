@@ -29,13 +29,22 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
   final LocalStorage storage = new LocalStorage('parameters');
   final backgrounds;
 
+  int harga = 0;
+
   String title = "";
   String deskripsi = "";
   String nama_user = "";
   String no_telp = "";
   String email_user = "";
   String ig = "";
-  int harga = 0;
+
+  String headerImg = "";
+  String bgImg = "";
+
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
+
   final double barHeight = 10.0;
 
   var db = new Mysql();
@@ -58,19 +67,10 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
   @override
   void initState() {
     // TODO: implement initState
-    // _saveStorage(title, deskripsi, nama, telp, email, ig, harga);
-    // Note that using a username and password for gmail only works if
-    // you have two-factor authentication enabled and created an App password.
-    // Search for "gmail app password 2fa"
-    // The alternative is to use oauth.
     _getStorage();
     getOrderSettings();
     getWarnaBg();
   }
-
-  var bg_warna_main = "";
-  var warna1 = "";
-  var warna2 = "";
 
   getWarnaBg() async {
     // print("get sesi data");
@@ -87,17 +87,15 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
           } // Finally, close the connection
         }).then((value) {
           // ...
-          print("bg main color : $bg_warna_main");
-          print("bg main color : $warna1");
-          print("bg main color : $warna2");
+          // print("bg main color : $bg_warna_main");
+          // print("bg main color : $warna1");
+          // print("bg main color : $warna2");
         });
         return value.close();
       },
     );
   }
 
-  String headerImg = "";
-  String bgImg = "";
   // ...
   getOrderSettings() async {
     // print("get sesi data");
@@ -149,12 +147,12 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
         ig = storage.getItem('ig') ?? "";
       });
 
-      print("judul : $title");
-      print("deskripsi : $deskripsi");
-      print("harga : $harga");
-      print("nama : $nama_user");
-      print("telp : $no_telp");
-      print("ig : $ig");
+      // print("judul : $title");
+      // print("deskripsi : $deskripsi");
+      // print("harga : $harga");
+      // print("nama : $nama_user");
+      // print("telp : $no_telp");
+      // print("ig : $ig");
     } else {}
 
     print("nama user : $nama_user");
