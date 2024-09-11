@@ -184,7 +184,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
               height: height * 0.12,
               width: width * 1,
               color: bg_warna_main != ""
-                  ? Color(int.parse(bg_warna_main)).withOpacity(0.7)
+                  ? const Color.fromARGB(255, 251, 142, 178)
                   : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,

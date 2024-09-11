@@ -186,7 +186,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               child: Column(
                 children: [

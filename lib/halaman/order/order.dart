@@ -221,7 +221,7 @@ class _OrderWidgetState extends State<OrderWidget> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               child: Column(
                 children: [
@@ -289,20 +289,6 @@ class _OrderWidgetState extends State<OrderWidget> {
                       ],
                     ),
                   ),
-                  // Container(
-                  //   height: height * 0.025,
-                  //   width: width * 1,
-                  //   child: WaveWidget(
-                  //     config: CustomConfig(
-                  //       colors: [Colors.transparent, Colors.transparent],
-                  //       durations: _durations,
-                  //       heightPercentages: _heightPercentages,
-                  //     ),
-                  //     backgroundColor: Colors.transparent,
-                  //     size: const Size(double.infinity, double.infinity),
-                  //     waveAmplitude: 0,
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -341,16 +327,28 @@ class _OrderWidgetState extends State<OrderWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: width * 0.045,
-                                  height: width * 0.045,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/icons/left-arrow.png"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
+                                    width: width * 0.045,
+                                    height: width * 0.045,
+                                    child: ShaderMask(
+                                      child: Image(
+                                        image: AssetImage(
+                                          "assets/icons/left-arrow.png",
+                                        ),
+                                      ),
+                                      shaderCallback: (Rect bounds) {
+                                        return LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 155, 61, 93),
+                                            Color.fromARGB(255, 155, 61, 93),
+                                          ],
+                                          stops: [
+                                            0.0,
+                                            0.5,
+                                          ],
+                                        ).createShader(bounds);
+                                      },
+                                      blendMode: BlendMode.srcATop,
+                                    )),
                                 SizedBox(
                                   width: 25,
                                 ),
@@ -368,6 +366,16 @@ class _OrderWidgetState extends State<OrderWidget> {
                                           if (menu != null)
                                             for (var item in menu)
                                               Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(35),
+                                                  border: Border.all(
+                                                      width: 5,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255)),
+                                                  color: Color.fromARGB(
+                                                      255, 155, 61, 93),
+                                                ),
                                                 width: width * 0.25,
                                                 height: height * 0.6,
                                                 child: Padding(
@@ -375,8 +383,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
                                                     color: Color.fromARGB(
-                                                            255, 26, 26, 26)
-                                                        .withOpacity(0.9),
+                                                        255, 155, 61, 93),
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(
@@ -523,12 +530,25 @@ class _OrderWidgetState extends State<OrderWidget> {
                                 Container(
                                   width: width * 0.045,
                                   height: width * 0.045,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                  child: ShaderMask(
+                                    child: Image(
                                       image: AssetImage(
-                                          "assets/icons/right-arrow.png"),
-                                      fit: BoxFit.cover,
+                                        "assets/icons/right-arrow.png",
+                                      ),
                                     ),
+                                    shaderCallback: (Rect bounds) {
+                                      return LinearGradient(
+                                        colors: [
+                                          Color.fromARGB(255, 155, 61, 93),
+                                          Color.fromARGB(255, 155, 61, 93),
+                                        ],
+                                        stops: [
+                                          0.0,
+                                          0.5,
+                                        ],
+                                      ).createShader(bounds);
+                                    },
+                                    blendMode: BlendMode.srcATop,
                                   ),
                                 ),
                               ],

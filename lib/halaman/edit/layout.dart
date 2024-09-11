@@ -1,6 +1,5 @@
 // ignore_for_file: unused_import
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/edit/background.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:path_provider/path_provider.dart';
@@ -158,13 +157,17 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   var image_name = "";
 
   // colors...
-  // Color color =  bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
+  // Color color =  bg_warna_main != "" ? Color.fromARGB(255, 155, 61, 93) : Colors.transparent;
 
   final double barHeight = 10.0;
 
   // colors wave
-  // static  _backgroundColor = bg_warna_main != "" ? Color(int.parse(bg_warna_main)) : Colors.transparent;
+  // static  _backgroundColor = bg_warna_main != "" ? Color.fromARGB(255, 155, 61, 93) : Colors.transparent;
 
+  static const _colors = [
+    Color.fromARGB(255, 212, 111, 170),
+    Color.fromARGB(255, 252, 175, 229),
+  ];
 
   static const _durations = [
     10000,
@@ -180,7 +183,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   //Create an instance of ScreenshotController
   // ...
   ScreenshotController screenshotController = ScreenshotController();
-  
+
   ScreenshotController screenshotController1 = ScreenshotController();
   ScreenshotController screenshotController2 = ScreenshotController();
   ScreenshotController screenshotController3 = ScreenshotController();
@@ -198,16 +201,6 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   ScreenshotController screenshotController14 = ScreenshotController();
   ScreenshotController screenshotController15 = ScreenshotController();
   ScreenshotController screenshotController16 = ScreenshotController();
-
-  ScreenshotController screenshotController17 = ScreenshotController();
-  ScreenshotController screenshotController18 = ScreenshotController();
-  ScreenshotController screenshotController19 = ScreenshotController();
-  ScreenshotController screenshotController20 = ScreenshotController();
-  ScreenshotController screenshotController21 = ScreenshotController();
-  ScreenshotController screenshotController22 = ScreenshotController();
-  ScreenshotController screenshotController23 = ScreenshotController();
-  ScreenshotController screenshotController24 = ScreenshotController();
-  ScreenshotController screenshotController25 = ScreenshotController();
 
   // ignore: unused_element
   _saveCard1PilihKanvasWithImage(layout) async {
@@ -360,10 +353,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     });
   }
 
-  Future<void> _getAllImages() async {
-    List<dynamic> _list = [];
-    // get all images
-    print("get all images $nama-${DateTime.now().day}-${DateTime.now().hour}");
+  Future<void> _getDataImages() async {
+    list.clear();
+    print("get list : $list");
+    print("get all images layout");
     var request = http.MultipartRequest(
       'POST',
       Uri.parse(
@@ -380,52 +373,30 @@ class _LayoutWidgetState extends State<LayoutWidget> {
         await http.Response.fromStream(await request.send());
 
     if (response.statusCode == 201) {
+      setState(() {});
+      list.addAll(jsonDecode(response.body));
       stores = jsonDecode(response.body);
-      _list.addAll(jsonDecode(response.body));
-      print("response length : ${stores.length}");
-      print("response _list : ${_list}");
+      print("response. length : ${stores.length}");
       setState(() {
         lengthDataImages = stores.length;
       });
 
-      if (title.toString().contains("Collage A") ||
-          title.toString().contains("Paket A")) {
-        print("list a");
+      if (title.toString().contains("Paket A") ||
+          title.toString().contains("Collage A")) {
+        // ...
         for (var i = 0; i < 8; i++) {
-          print("list a for loop");
-          // ...
-          print("object _list collage A $i ${_list[i]}");
-          list.add(_list[i]);
+          print("object get data images layout page tipe a $i ${list[i]}");
+          listA.add(list[i]);
         }
-      }
-
-      if (title.toString().contains("Collage B") ||
-          title.toString().contains("Paket B")) {
+        print("object list a : $listA");
+      } else {
+        // ...
         for (var i = 0; i < 16; i++) {
-          // ...
-          print("object _list collage B $i ${_list[i]}");
-          list.add(_list[i]);
+          print("object get data images layout page tipe b $i ${list[i]}");
+          listB.add(list[i]);
         }
-      }
-
-      // paket e
-      if (title.toString().contains("Collage E") ||
-          title.toString().contains("Paket E")) {
-        for (var i = 0; i < 20; i++) {
-          // ...
-          print("object _list paket E $i ${_list[i]}");
-          list.add(_list[i]);
-        }
-      }
-
-      // paket f
-      if (title.toString().contains("Collage F") ||
-          title.toString().contains("Paket F")) {
-        for (var i = 0; i < 25; i++) {
-          // ...
-          print("object _list paket F $i ${_list[i]}");
-          list.add(_list[i]);
-        }
+        // ...
+        print(" === object list b === : $listB");
       }
     } else {
       print(response.reasonPhrase);
@@ -443,7 +414,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     print("title contains B === : ${title.toString().contains("Collage B")}");
     // ===
     _clearStorage();
-    _getAllImages();
+    _getDataImages();
     getLayout();
 
     getWarnaBg();
@@ -513,9 +484,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       background.addAll(result);
-      // print("background : ${background}");
+      print("background : ${background}");
       for (var element in background) {
-        // print("background_image : ${element["background_image"]}");
+        print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
@@ -747,14 +718,14 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                     height: width * 0.015,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 155, 61, 93)
                         : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 155, 61, 93)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -783,7 +754,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           "Layout",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: Color.fromARGB(255, 179, 179, 179),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                           ),
@@ -848,7 +819,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main))
+                          ? Color.fromARGB(255, 155, 61, 93)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -872,7 +843,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 155, 61, 93)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -914,7 +885,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                       Container(
                                         width: width * 0.2,
                                         height: height * 0.6,
-                                        // color: Colors.black.withOpacity(0.7),
+                                        // color: Colors.grey[100],
                                         child: ListView.builder(
                                           itemCount: 2,
                                           scrollDirection: Axis.horizontal,
@@ -942,26 +913,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   .contains(
                                                                       "Collage A")
                                                           ? 4
-                                                          : title
-                                                                  .toString()
-                                                                  .contains(
-                                                                      "Paket A") ||
-                                                              title
-                                                                  .toString()
-                                                                  .contains(
-                                                                      "Collage A")
-                                                          ? 8
-                                                          : title
-                                                                  .toString()
-                                                                  .contains(
-                                                                      "Paket A") ||
-                                                              title
-                                                                  .toString()
-                                                                  .contains(
-                                                                      "Collage A")
-                                                          ? 10
-                                                          
-                                                          : 12,
+                                                          : 8,
                                                       itemBuilder:
                                                           (BuildContext context,
                                                               int j) {
@@ -1346,7 +1298,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                         )
                                                                       :
 
-                                                                      //  card 2
+                                                                      // card 2
                                                                       (i == 0 &&
                                                                               j == 1 &&
                                                                               dragItem.isNotEmpty &&
@@ -2148,18 +2100,14 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                           ),
                         ),
 
-                        SizedBox(height: height*0.047),
-
                         OutlinedButton(
-                              style: TextButton.styleFrom(
-                                textStyle:
-                                    Theme.of(context).textTheme.labelLarge,
-                                backgroundColor: Color.fromARGB(255, 0, 0, 0)
-                                    .withOpacity(0.7),
-                              ),
-                              onPressed: () {
-                                // do onpressed... last
-                                Navigator.push(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                          onPressed: () {
+                            // do onpressed...
+                            Navigator.push(
                               context,
                               PageTransition(
                                   type: PageTransitionType.fade,
@@ -2171,41 +2119,43 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                   inheritTheme: true,
                                   ctx: context),
                             );
-                              },
-                              child: SizedBox(
-                                // color: Colors.transparent,
-                                width: width * 0.15,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 10,
+                          },
+                          child: Container(
+                            // color: Colors.transparent,
+                            width: width * 0.17,
+                            // height: height * 0.012,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 15,
+                                bottom: 15,
+                              ),
+                              child: Stack(
+                                children: <Widget>[
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Icon(
+                                      Icons.arrow_circle_left_outlined,
+                                      color: Color.fromARGB(255, 96, 96, 96),
+                                      size: width * 0.015,
+                                    ),
                                   ),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      const Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: FaIcon(
-                                          FontAwesomeIcons.caretLeft,
-                                          color: Colors.white,
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Kembali".toUpperCase(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: width * 0.010,
+                                          color:
+                                              Color.fromARGB(255, 96, 96, 96),
+                                          fontWeight: FontWeight.bold,
                                         ),
-                                      ),
-                                      Align(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "Kembali".toUpperCase(),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: width * 0.010,
-                                              color: Color.fromARGB(
-                                                  255, 255, 255, 255),
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ))
-                                    ],
-                                  ),
-                                ),
+                                      ))
+                                ],
                               ),
                             ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -2224,12 +2174,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: bg_warna_main != ""
-                                    ? Color(int.parse(bg_warna_main))
+                                    ? Color.fromARGB(255, 155, 61, 93)
                                     : Colors.transparent,
                                 boxShadow: [
                                   BoxShadow(
                                     color: bg_warna_main != ""
-                                        ? Color(int.parse(bg_warna_main))
+                                        ? Color.fromARGB(255, 155, 61, 93)
                                         : Colors.transparent,
                                     spreadRadius: 5,
                                   ),
@@ -2278,7 +2228,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               BorderRadius
                                                                   .circular(5),
                                                           color:
-                                                              Colors.black.withOpacity(0.7),
+                                                              Colors.grey[100],
                                                         ),
                                                         child: Padding(
                                                           padding:
@@ -2321,7 +2271,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -2432,7 +2382,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -2554,7 +2504,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -2667,7 +2617,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -2712,7 +2662,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.03,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                   image: DecorationImage(
                                                                                     image: NetworkImage(
@@ -2789,7 +2739,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -2902,7 +2852,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -3046,7 +2996,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       .circular(
                                                                           5),
                                                               color:
-                                                                  Colors.black.withOpacity(0.7),
+                                                                  Colors.white,
                                                               boxShadow: [],
                                                             ),
                                                             child: Padding(
@@ -3385,7 +3335,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       BorderRadius
                                                                           .circular(
                                                                               5),
-                                                                  color: Colors.black.withOpacity(0.7),
+                                                                  color: Colors
+                                                                      .white,
                                                                   boxShadow: [],
                                                                 ),
                                                                 child: Padding(
@@ -3764,7 +3715,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               5),
-                                                                      color: Colors.black.withOpacity(0.7),
+                                                                      color: Colors
+                                                                          .white,
                                                                       boxShadow: [],
                                                                     ),
                                                                     child:
@@ -4354,7 +4306,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           borderRadius:
                                                                               BorderRadius.circular(5),
                                                                           color:
-                                                                              Colors.black.withOpacity(0.7),
+                                                                              Colors.white,
                                                                           boxShadow: [],
                                                                         ),
                                                                         child:
@@ -4664,7 +4616,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -4682,7 +4634,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -4765,7 +4717,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -4850,7 +4802,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -4942,7 +4894,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5027,7 +4979,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5069,7 +5021,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                                      color: Colors.grey[100],
                                                                                                       boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
@@ -5112,7 +5064,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5154,7 +5106,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                     height: width * 0.021,
                                                                                                     decoration: BoxDecoration(
                                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                                      color: Colors.grey[100],
                                                                                                       boxShadow: [],
                                                                                                       image: DecorationImage(
                                                                                                         image: NetworkImage(
@@ -5204,7 +5156,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5289,7 +5241,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5373,7 +5325,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -5554,7 +5506,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               BorderRadius
                                                                   .circular(5),
                                                           color:
-                                                              Colors.black.withOpacity(0.7),
+                                                              Colors.grey[100],
                                                         ),
                                                         child: Padding(
                                                           padding:
@@ -5613,7 +5565,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -5756,7 +5708,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -5908,7 +5860,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -6051,7 +6003,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -6203,7 +6155,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -6346,7 +6298,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -6524,7 +6476,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -6638,7 +6590,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -6759,7 +6711,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -6873,7 +6825,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -7024,7 +6976,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -7123,7 +7075,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -7229,7 +7181,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -7327,7 +7279,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -7425,7 +7377,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -8636,7 +8588,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -8654,7 +8606,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -8752,7 +8704,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -8850,7 +8802,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -8955,7 +8907,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9053,7 +9005,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9151,7 +9103,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9256,7 +9208,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9354,7 +9306,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9452,7 +9404,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -9639,7 +9591,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               BorderRadius
                                                                   .circular(5),
                                                           color:
-                                                              Colors.black.withOpacity(0.7),
+                                                              Colors.grey[100],
                                                         ),
                                                         child: Padding(
                                                           padding:
@@ -9698,7 +9650,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -9841,7 +9793,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -9993,7 +9945,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -10136,7 +10088,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -10288,7 +10240,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -10431,7 +10383,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(10),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -10607,7 +10559,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -10721,7 +10673,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -10842,7 +10794,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -10956,7 +10908,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.03,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -11107,7 +11059,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -11206,7 +11158,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.04,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -11312,7 +11264,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -11410,7 +11362,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -11508,7 +11460,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.03,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(10),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -12719,7 +12671,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -12737,7 +12689,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -12835,7 +12787,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -12933,7 +12885,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13038,7 +12990,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13136,7 +13088,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13234,7 +13186,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13339,7 +13291,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13437,7 +13389,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13535,7 +13487,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                               height: width * 0.021,
                                                                                               decoration: BoxDecoration(
                                                                                                 borderRadius: BorderRadius.circular(10),
-                                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                                color: Colors.grey[100],
                                                                                                 boxShadow: [],
                                                                                               ),
                                                                                               child: Padding(
@@ -13727,7 +13679,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: Colors.black.withOpacity(0.7),
+                                            color: Colors.grey[100],
                                             boxShadow: [],
                                           ),
                                           child: Padding(
@@ -14944,7 +14896,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
-                                                color: Colors.black.withOpacity(0.7),
+                                                color: Colors.grey[100],
                                                 boxShadow: [],
                                               ),
                                               child: Padding(
@@ -15726,7 +15678,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             5),
-                                                    color: Colors.black.withOpacity(0.7),
+                                                    color: Colors.grey[100],
                                                     boxShadow: [],
                                                   ),
                                                   child: Padding(
@@ -15804,7 +15756,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           borderRadius:
                                                                               BorderRadius.circular(10),
                                                                           color:
-                                                                              Colors.black.withOpacity(0.7),
+                                                                              Colors.grey[100],
                                                                         ),
                                                                         child:
                                                                             Padding(
@@ -16098,7 +16050,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           borderRadius:
                                                                               BorderRadius.circular(10),
                                                                           color:
-                                                                              Colors.black.withOpacity(0.7),
+                                                                              Colors.grey[100],
                                                                           boxShadow: [],
                                                                         ),
                                                                         child:
@@ -16270,7 +16222,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           borderRadius:
                                                                               BorderRadius.circular(10),
                                                                           color:
-                                                                              Colors.black.withOpacity(0.7),
+                                                                              Colors.grey[100],
                                                                           boxShadow: [],
                                                                         ),
                                                                         child:
@@ -16448,7 +16400,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                           borderRadius:
                                                                               BorderRadius.circular(10),
                                                                           color:
-                                                                              Colors.black.withOpacity(0.7),
+                                                                              Colors.grey[100],
                                                                         ),
                                                                         child:
                                                                             Padding(
@@ -16543,7 +16495,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
-                                                        color: Colors.black.withOpacity(0.7),
+                                                        color: Colors.grey[100],
                                                         boxShadow: [],
                                                       ),
                                                       child: Padding(
@@ -17648,7 +17600,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.1,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                 ),
                                                                                 child: Padding(
                                                                                   padding: EdgeInsets.all(
@@ -17885,7 +17837,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.1,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -18024,7 +17976,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.1,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -18197,7 +18149,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                     ),
                                                                                     child: Padding(
                                                                                       padding: EdgeInsets.all(
@@ -18287,7 +18239,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                       boxShadow: [],
                                                                                     ),
                                                                                     child: Padding(
@@ -18416,7 +18368,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                       boxShadow: [],
                                                                                     ),
                                                                                     child: Padding(
@@ -18559,7 +18511,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                       boxShadow: [],
                                                                                     ),
                                                                                     child: Padding(
@@ -18678,7 +18630,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                       boxShadow: [],
                                                                                     ),
                                                                                     child: Padding(
@@ -18798,7 +18750,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                       boxShadow: [],
                                                                                     ),
                                                                                     child: Padding(
@@ -18933,7 +18885,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                     ),
                                                                                     child: Padding(
                                                                                       padding: EdgeInsets.all(
@@ -19021,7 +18973,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                     ),
                                                                                     child: Padding(
                                                                                       padding: EdgeInsets.all(
@@ -19121,7 +19073,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                     height: width * 0.065,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.circular(10),
-                                                                                      color: Colors.black.withOpacity(0.7),
+                                                                                      color: Colors.grey[100],
                                                                                     ),
                                                                                     child: Padding(
                                                                                       padding: EdgeInsets.all(
@@ -19267,7 +19219,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                         ),
                                                                                         child: Padding(
                                                                                           padding: EdgeInsets.all(
@@ -19353,7 +19305,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                           boxShadow: [],
                                                                                         ),
                                                                                         child: Padding(
@@ -19490,7 +19442,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                           boxShadow: [],
                                                                                         ),
                                                                                         child: Padding(
@@ -19605,7 +19557,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                           boxShadow: [],
                                                                                         ),
                                                                                         child: Padding(
@@ -19734,7 +19686,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                         ),
                                                                                         child: Padding(
                                                                                           padding: EdgeInsets.all(
@@ -19818,7 +19770,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         height: width * 0.07,
                                                                                         decoration: BoxDecoration(
                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                          color: Colors.grey[100],
                                                                                         ),
                                                                                         child: Padding(
                                                                                           padding: EdgeInsets.all(
@@ -19959,7 +19911,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             height: width * 0.1,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                              color: Colors.grey[100],
                                                                                             ),
                                                                                             child: Padding(
                                                                                               padding: EdgeInsets.all(
@@ -20138,7 +20090,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             height: width * 0.1,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                              color: Colors.grey[100],
                                                                                               boxShadow: [],
                                                                                             ),
                                                                                             child: Padding(
@@ -20253,7 +20205,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                             height: width * 0.1,
                                                                                             decoration: BoxDecoration(
                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                              color: Colors.grey[100],
                                                                                               boxShadow: [],
                                                                                             ),
                                                                                             child: Padding(
@@ -20373,7 +20325,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             color:
-                                                                                Colors.black.withOpacity(0.7),
+                                                                                Colors.grey[100],
                                                                             boxShadow: [],
                                                                           ),
                                                                           child:
@@ -20408,7 +20360,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 height: width * 0.1,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                                  color: Colors.grey[100],
                                                                                                 ),
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsets.all(
@@ -20581,7 +20533,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 height: width * 0.07,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                                  color: Colors.grey[100],
                                                                                                   boxShadow: [],
                                                                                                 ),
                                                                                                 child: Padding(
@@ -20697,7 +20649,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 height: width * 0.07,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                                  color: Colors.grey[100],
                                                                                                   boxShadow: [],
                                                                                                 ),
                                                                                                 child: Padding(
@@ -20817,7 +20769,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                 height: width * 0.07,
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                                  color: Colors.grey[100],
                                                                                                 ),
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsets.all(
@@ -20895,7 +20847,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                               height: width * 0.3,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.circular(5),
-                                                                                color: Colors.black.withOpacity(0.7),
+                                                                                color: Colors.grey[100],
                                                                                 boxShadow: [],
                                                                               ),
                                                                               child: Padding(
@@ -21651,7 +21603,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                   height: width * 0.3,
                                                                                   decoration: BoxDecoration(
                                                                                     borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.black.withOpacity(0.7),
+                                                                                    color: Colors.grey[100],
                                                                                     boxShadow: [],
                                                                                   ),
                                                                                   child: Padding(
@@ -21691,7 +21643,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         height: width * 0.1,
                                                                                                         decoration: BoxDecoration(
                                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                                          color: Colors.grey[100],
                                                                                                         ),
                                                                                                         child: Padding(
                                                                                                           padding: EdgeInsets.all(
@@ -21872,7 +21824,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         height: width * 0.1,
                                                                                                         decoration: BoxDecoration(
                                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                                          color: Colors.grey[100],
                                                                                                           boxShadow: [],
                                                                                                         ),
                                                                                                         child: Padding(
@@ -21987,7 +21939,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                         height: width * 0.1,
                                                                                                         decoration: BoxDecoration(
                                                                                                           borderRadius: BorderRadius.circular(10),
-                                                                                                          color: Colors.black.withOpacity(0.7),
+                                                                                                          color: Colors.grey[100],
                                                                                                           boxShadow: [],
                                                                                                         ),
                                                                                                         child: Padding(
@@ -22102,7 +22054,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                       height: width * 0.3,
                                                                                       decoration: BoxDecoration(
                                                                                         borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.black.withOpacity(0.7),
+                                                                                        color: Colors.grey[100],
                                                                                         boxShadow: [],
                                                                                       ),
                                                                                       child: Padding(
@@ -22142,7 +22094,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                             ),
                                                                                                             child: Padding(
                                                                                                               padding: EdgeInsets.all(
@@ -22228,7 +22180,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                               boxShadow: [],
                                                                                                             ),
                                                                                                             child: Padding(
@@ -22353,7 +22305,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                               boxShadow: [],
                                                                                                             ),
                                                                                                             child: Padding(
@@ -22489,7 +22441,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                               boxShadow: [],
                                                                                                             ),
                                                                                                             child: Padding(
@@ -22604,7 +22556,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                               boxShadow: [],
                                                                                                             ),
                                                                                                             child: Padding(
@@ -22720,7 +22672,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                               boxShadow: [],
                                                                                                             ),
                                                                                                             child: Padding(
@@ -22848,7 +22800,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                             ),
                                                                                                             child: Padding(
                                                                                                               padding: EdgeInsets.all(
@@ -22931,7 +22883,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                             ),
                                                                                                             child: Padding(
                                                                                                               padding: EdgeInsets.all(
@@ -23026,7 +22978,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                                             height: width * 0.065,
                                                                                                             decoration: BoxDecoration(
                                                                                                               borderRadius: BorderRadius.circular(10),
-                                                                                                              color: Colors.black.withOpacity(0.7),
+                                                                                                              color: Colors.grey[100],
                                                                                                             ),
                                                                                                             child: Padding(
                                                                                                               padding: EdgeInsets.all(
@@ -23117,7 +23069,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                       height: width * 0.3,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
-                                        color: Colors.black.withOpacity(0.7),
+                                        color: Colors.grey[100],
                                         boxShadow: [],
                                       ),
                                       child: Padding(
@@ -24118,7 +24070,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: Colors.black.withOpacity(0.7),
+                                            color: Colors.grey[100],
                                             boxShadow: [],
                                           ),
                                           child: Padding(
@@ -24673,7 +24625,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
-                                                color: Colors.black.withOpacity(0.7),
+                                                color: Colors.grey[100],
                                                 boxShadow: [],
                                               ),
                                               child: Padding(
@@ -25341,7 +25293,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             5),
-                                                    color: Colors.black.withOpacity(0.7),
+                                                    color: Colors.grey[100],
                                                     boxShadow: [],
                                                   ),
                                                   child: Padding(
@@ -26310,7 +26262,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
-                                                        color: Colors.black.withOpacity(0.7),
+                                                        color: Colors.grey[100],
                                                         boxShadow: [],
                                                       ),
                                                       child: Padding(
@@ -26381,7 +26333,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(10),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -26471,7 +26423,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(10),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -26579,7 +26531,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(10),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -26665,7 +26617,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(10),
-                                                                              color: Colors.black.withOpacity(0.7),
+                                                                              color: Colors.grey[100],
                                                                             ),
                                                                             child:
                                                                                 Padding(
@@ -26731,7 +26683,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         5),
-                                                            color: Colors.black.withOpacity(0.7),
+                                                            color: Colors
+                                                                .grey[100],
                                                             boxShadow: [],
                                                           ),
                                                           child: Padding(
@@ -26790,7 +26743,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                 ),
                                                                                 child: Padding(
                                                                                   padding: EdgeInsets.all(
@@ -26872,7 +26825,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -26991,7 +26944,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27127,7 +27080,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27237,7 +27190,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27347,7 +27300,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27475,7 +27428,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27594,7 +27547,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27714,7 +27667,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 height: width * 0.065,
                                                                                 decoration: BoxDecoration(
                                                                                   borderRadius: BorderRadius.circular(10),
-                                                                                  color: Colors.black.withOpacity(0.7),
+                                                                                  color: Colors.grey[100],
                                                                                   boxShadow: [],
                                                                                 ),
                                                                                 child: Padding(
@@ -27811,7 +27764,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 155, 61, 93)
                         : Colors.transparent,
                     child: Container(
                       child: Column(
@@ -27992,7 +27945,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                             width:
                                                                                 width * 0.085,
                                                                             decoration:
-                                                                                BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                BoxDecoration(color: Colors.white),
                                                                             child:
                                                                                 Padding(
                                                                               padding: EdgeInsets.all(
@@ -28072,7 +28025,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 "layout 2"
                                                                             ? Container(
                                                                                 width: width * 0.085,
-                                                                                decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                decoration: BoxDecoration(color: Colors.white),
                                                                                 child: Padding(
                                                                                   padding: EdgeInsets.all(
                                                                                     width * 0.0047,
@@ -28129,7 +28082,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 ? Container(
                                                                                     width: width * 0.084,
                                                                                     height: width * 0.105,
-                                                                                    decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                    decoration: BoxDecoration(color: Colors.white),
                                                                                     child: Padding(
                                                                                       padding: EdgeInsets.all(
                                                                                         width * 0.0047,
@@ -28199,7 +28152,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                 : layout["nama"] == "layout 4"
                                                                                     ? Container(
                                                                                         width: width * 0.086,
-                                                                                        decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                        decoration: BoxDecoration(color: Colors.white),
                                                                                         child: Padding(
                                                                                           padding: EdgeInsets.all(
                                                                                             width * 0.0048,
@@ -28298,7 +28251,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         ? Container(
                                                                                             width: width * 0.085,
                                                                                             height: width * 0.112,
-                                                                                            decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                            decoration: BoxDecoration(color: Colors.white),
                                                                                             child: Padding(
                                                                                               padding: EdgeInsets.all(
                                                                                                 width * 0.0047,
@@ -28357,7 +28310,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                                         : Container(
                                                                                             width: width * 0.085,
                                                                                             height: width * 0.112,
-                                                                                            decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
+                                                                                            decoration: BoxDecoration(color: Colors.white),
                                                                                             child: Padding(
                                                                                               padding: EdgeInsets.all(
                                                                                                 width * 0.0047,
@@ -28570,7 +28523,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       .textTheme
                                                       .labelLarge,
                                                   backgroundColor:
-                                                      Colors.black.withOpacity(0.7),
+                                                      Color.fromARGB(
+                                                          255, 255, 255, 255),
                                                 ),
                                                 onPressed: () {
                                                   setState(() {
@@ -28587,31 +28541,47 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       top: 15,
                                                       bottom: 15,
                                                     ),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    child: Stack(
                                                       children: <Widget>[
-                                                        FaIcon(
+                                                        Align(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: Icon(
                                                             foto_details != ""
-                                                                ? FontAwesomeIcons
-                                                                    .caretLeft
-                                                                : FontAwesomeIcons.edit,
+                                                                ? Icons
+                                                                    .arrow_circle_left_outlined
+                                                                : Icons.edit,
                                                             color:
-                                                                Colors.white,
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
                                                             size: width * 0.015,
                                                           ),
-                                                       Text(
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Text(
                                                             "Batal",
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: TextStyle(
                                                               fontSize:
                                                                   width * 0.010,
-                                                              color: Colors.white,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      96,
+                                                                      96,
+                                                                      96),
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
                                                             ),
                                                           ),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -28625,7 +28595,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       .textTheme
                                                       .labelLarge,
                                                   backgroundColor:
-                                                      Colors.black.withOpacity(0.7),
+                                                      Color.fromARGB(
+                                                          255, 255, 255, 255),
                                                 ),
                                                 onPressed: () async {
                                                   print("simpan gambar");
@@ -28644,11 +28615,29 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       top: 15,
                                                       bottom: 15,
                                                     ),
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                    child: Stack(
                                                       children: <Widget>[
-                                                        
-                                                        Text(
+                                                        Align(
+                                                          alignment: Alignment
+                                                              .centerRight,
+                                                          child: Icon(
+                                                            foto_details != ""
+                                                                ? Icons
+                                                                    .arrow_circle_right_outlined
+                                                                : Icons.edit,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
+                                                            size: width * 0.015,
+                                                          ),
+                                                        ),
+                                                        Align(
+                                                            alignment: Alignment
+                                                                .center,
+                                                            child: Text(
                                                               "Simpan",
                                                               textAlign:
                                                                   TextAlign
@@ -28657,21 +28646,17 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                 fontSize:
                                                                     width *
                                                                         0.010,
-                                                                color: Colors.white,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        96,
+                                                                        96,
+                                                                        96),
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
                                                               ),
-                                                            ),
-                                                        FaIcon(
-                                                            foto_details != ""
-                                                                ? FontAwesomeIcons
-                                                                    .caretRight
-                                                                : FontAwesomeIcons.edit,
-                                                            color:
-                                                                Colors.white,
-                                                            size: width * 0.015,
-                                                          ),
+                                                            ))
                                                       ],
                                                     ),
                                                   ),
@@ -28679,16 +28664,16 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               ),
                                             ],
                                           )
-                                        : 
-                                        OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor:
-                                Color.fromARGB(255, 0, 0, 0).withOpacity(0.7),
-                          ),
-                          onPressed: () {
-                            // do onpressed...
-                            Navigator.push(
+                                        : OutlinedButton(
+                                            style: TextButton.styleFrom(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge,
+                                              backgroundColor: Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                            ),
+                                            onPressed: () async {
+                                              Navigator.push(
                                                 context,
                                                 PageTransition(
                                                     type:
@@ -28743,157 +28728,54 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                     inheritTheme: true,
                                                     ctx: context),
                                               );
-                          },
-                          child: SizedBox(
-                            // color: Colors.transparent,
-                            width: width * 0.25,
-                            // height: height * 0.012,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Selanjutnya".toUpperCase(),
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: width * 0.010,
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-
-                                  // ...
-                                  const Align(
-                                    alignment: Alignment.centerRight,
-                                    child: FaIcon(
-                                      FontAwesomeIcons.caretRight,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                                        // OutlinedButton(
-                                        //     style: TextButton.styleFrom(
-                                        //       textStyle: Theme.of(context)
-                                        //           .textTheme
-                                        //           .labelLarge,
-                                        //       backgroundColor: Color.fromARGB(
-                                        //           255, 255, 255, 255),
-                                        //     ),
-                                        //     onPressed: () async {
-                                        //       Navigator.push(
-                                        //         context,
-                                        //         PageTransition(
-                                        //             type:
-                                        //                 PageTransitionType.fade,
-                                        //             child: BackgroundWidget(
-                                        //               nama: nama,
-                                        //               title: title,
-                                        //               nama_filter: nama_filter,
-                                        //               choose_layout: title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Collage B") ||
-                                        //                       title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Paket B") ?
-                                        //                   choose2.toString() : choose1.toString(),
-                                        //               choose_layout2: title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Collage B") ||
-                                        //                       title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Paket B")
-                                        //                   ? choose1.toString()
-                                        //                   : null,
-
-                                        //               // drag item untuk card data collage dragItemB2, dragItemB1
-                                        //               drag_item: title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Collage A") ||
-                                        //                       title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Paket A")
-                                        //                   ? dragItem
-                                        //                   : dragItemB2,
-                                        //               drag_item2: title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Collage B") ||
-                                        //                       title
-                                        //                           .toString()
-                                        //                           .contains(
-                                        //                               "Paket B")
-                                        //                   ? dragItemB1
-                                        //                   : null,
-                                        //               backgrounds: backgrounds,
-                                        //             ),
-                                        //             inheritTheme: true,
-                                        //             ctx: context),
-                                        //       );
-                                        //     },
-                                        //     child: Container(
-                                        //       // color: Colors.transparent,
-                                        //       width: width * 0.17,
-                                        //       // height: height * 0.012,
-                                        //       child: Padding(
-                                        //         padding: const EdgeInsets.only(
-                                        //           top: 15,
-                                        //           bottom: 15,
-                                        //         ),
-                                        //         child: Stack(
-                                        //           children: <Widget>[
-                                        //             Align(
-                                        //               alignment:
-                                        //                   Alignment.centerRight,
-                                        //               child: Icon(
-                                        //                 Icons
-                                        //                     .arrow_circle_right_outlined,
-                                        //                 color: Color.fromARGB(
-                                        //                     255, 96, 96, 96),
-                                        //                 size: width * 0.015,
-                                        //               ),
-                                        //             ),
-                                        //             Align(
-                                        //                 alignment:
-                                        //                     Alignment.center,
-                                        //                 child: Text(
-                                        //                   "Selanjutnya",
-                                        //                   textAlign:
-                                        //                       TextAlign.center,
-                                        //                   style: TextStyle(
-                                        //                     fontSize:
-                                        //                         width * 0.010,
-                                        //                     color:
-                                        //                         Color.fromARGB(
-                                        //                             255,
-                                        //                             96,
-                                        //                             96,
-                                        //                             96),
-                                        //                     fontWeight:
-                                        //                         FontWeight.bold,
-                                        //                   ),
-                                        //                 ))
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //   ),
+                                            },
+                                            child: Container(
+                                              // color: Colors.transparent,
+                                              width: width * 0.17,
+                                              // height: height * 0.012,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                  top: 15,
+                                                  bottom: 15,
+                                                ),
+                                                child: Stack(
+                                                  children: <Widget>[
+                                                    Align(
+                                                      alignment:
+                                                          Alignment.centerRight,
+                                                      child: Icon(
+                                                        Icons
+                                                            .arrow_circle_right_outlined,
+                                                        color: Color.fromARGB(
+                                                            255, 96, 96, 96),
+                                                        size: width * 0.015,
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          "Selanjutnya",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontSize:
+                                                                width * 0.010,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    96,
+                                                                    96,
+                                                                    96),
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ))
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                     SizedBox(height: height * 0.02),
                                   ],
                                 ),

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
@@ -440,7 +441,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               child: Column(
                 children: [
@@ -683,43 +684,52 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                       )
                                                     : jenis_pembayaran ==
                                                             "bank payment"
-                                                        ? Image.asset(
-                                                            nama_bank == "gopay"
-                                                                ? 'assets/images/gopay.png'
-                                                                : nama_bank ==
-                                                                        "qris"
-                                                                    ? 'assets/images/qris.png'
-                                                                    : nama_bank ==
-                                                                            "bni"
-                                                                        ? 'assets/images/bni.png'
-                                                                        : nama_bank ==
-                                                                                "bri"
-                                                                            ? 'assets/images/bri.png'
-                                                                            : nama_bank == "permata"
-                                                                                ? 'assets/images/permata.png'
-                                                                                : nama_bank == "mandiri"
-                                                                                    ? 'assets/images/mandiri.png'
-                                                                                    : "",
-                                                            height:
-                                                                width * 0.15,
-                                                            fit: BoxFit.cover,
-                                                            width:
-                                                                double.infinity,
+                                                        ? FaIcon(
+                                                            FontAwesomeIcons
+                                                                .rupiahSign,
+                                                            color: Colors.white,
+                                                            size: 140,
                                                           )
                                                         : Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          35),
+                                                              border: Border.all(
+                                                                  width: 5,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          255,
+                                                                          255,
+                                                                          255)),
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      155,
+                                                                      61,
+                                                                      93),
+                                                            ),
+                                                            // color:
+                                                            //     Color.fromARGB(
+                                                            //         255,
+                                                            //         251,
+                                                            //         142,
+                                                            //         178),
                                                             height:
                                                                 width * 0.15,
                                                             width:
                                                                 double.infinity,
                                                             child: Center(
-                                                              child: Icon(
-                                                                Icons.recommend,
-                                                                size: width *
-                                                                    0.15,
-                                                                color: Colors
-                                                                    .orangeAccent,
-                                                              ),
-                                                            )),
+                                                                child: FaIcon(
+                                                              FontAwesomeIcons
+                                                                  .rupiahSign,
+                                                              color:
+                                                                  Colors.white,
+                                                              size: width * 0.1,
+                                                            ))),
                                               ),
                                             ),
                                           ),
@@ -735,13 +745,16 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                               const EdgeInsets.only(left: 0),
                                           child: InkWell(
                                             // ...
-                                            child: Card(
-                                              color: Color.fromARGB(
-                                                  255, 39, 39, 39),
-                                              elevation: 12,
-                                              shape: RoundedRectangleBorder(
+                                            child: Container(
+                                              decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(20.0),
+                                                    BorderRadius.circular(35),
+                                                border: Border.all(
+                                                    width: 5,
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255)),
+                                                color: Color.fromARGB(
+                                                    255, 155, 61, 93),
                                               ),
                                               child: InkWell(
                                                 borderRadius:

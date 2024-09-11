@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/edit/review.dart';
 import 'package:fs_dart/halaman/order/review.dart';
 import 'package:flutter/material.dart';
@@ -474,7 +475,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               child: Column(
                 children: [
@@ -605,18 +606,9 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(15),
                                           child: InkWell(
-                                            // onTap: () {
-                                            //   Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //       builder: (context) =>
-                                            //           const HomeWidget(),
-                                            //     ),
-                                            //   );
-                                            // },
                                             child: Card(
                                               color: Color.fromARGB(
-                                                  49, 39, 39, 39),
+                                                  255, 155, 61, 93),
                                               elevation: 12,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -630,14 +622,6 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    // Padding(
-                                                    //   padding: const EdgeInsets.all(25.0),
-                                                    //   child: Icon(
-                                                    //     Icons.arrow_circle_left,
-                                                    //     color: Colors.white,
-                                                    //     size: width * 0.0225,
-                                                    //   ),
-                                                    // ),
                                                     Padding(
                                                       padding: EdgeInsets.only(
                                                         top: width * 0.02,
@@ -676,7 +660,7 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                 children: [
                                                   Card(
                                                     color: Color.fromARGB(
-                                                        49, 39, 39, 39),
+                                                        255, 155, 61, 93),
                                                     elevation: width * 0.005,
                                                     child: Container(
                                                       width: width * 0.12,
@@ -718,209 +702,222 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                                       .circular(
                                                                           20),
                                                             ),
-                                                            child: Image.asset(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      100,
-                                                                      196,
-                                                                      234),
-                                                              colorBlendMode:
-                                                                  BlendMode
-                                                                      .modulate,
-                                                              'assets/images/gopay-logo.png',
-                                                              height:
-                                                                  width * 0.1,
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                              width: 25,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Card(
-                                                    color: Color.fromARGB(
-                                                        49, 39, 39, 39),
-                                                    elevation: width * 0.005,
-                                                    child: Container(
-                                                      width: width * 0.12,
-                                                      height: width * 0.2,
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          // ...
-                                                          print("qris payment");
-
-                                                          createInvoices();
-                                                          setState(() {
-                                                            jenis_pembayaran =
-                                                                "qris";
-                                                          });
-                                                          await storage.setItem(
-                                                              'jenis_transaksi',
-                                                              'qris');
-                                                          await storage.setItem(
-                                                              'status_transaksi',
-                                                              'sudah');
-                                                        },
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  25),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topRight: Radius
-                                                                  .circular(20),
-                                                              topLeft: Radius
-                                                                  .circular(20),
-                                                              bottomLeft: Radius
-                                                                  .circular(20),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          20),
-                                                            ),
-                                                            child: Image.asset(
-                                                              'assets/images/qris-logo.png',
-                                                              height:
-                                                                  width * 0.1,
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                              width: 25,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Card(
-                                                    color: Color.fromARGB(
-                                                        49, 39, 39, 39),
-                                                    elevation: width * 0.005,
-                                                    child: Container(
-                                                      width: width * 0.12,
-                                                      height: width * 0.2,
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          // ...
-                                                          print(
-                                                              "bayar ditempat");
-                                                          await storage.setItem(
-                                                              'jenis_transaksi',
-                                                              'bayar ditempat');
-                                                          await storage.setItem(
-                                                              'status_transaksi',
-                                                              'sudah');
-                                                          // Navigator.push(
-                                                          //   context,
-                                                          //   MaterialPageRoute(
-                                                          //     builder: (context) =>
-                                                          //         KonfirmasiKedua(
-                                                          //       qris_content:
-                                                          //           qris_content,
-                                                          //       qris_request_date:
-                                                          //           qris_request_date,
-                                                          //       qris_invoiceid:
-                                                          //           qris_invoiceid, // parameter dari filter
-                                                          //       jenis_pembayaran:
-                                                          //           "bayar ditempat",
-                                                          //     ),
-                                                          //   ),
-                                                          // );
-                                                          // Navigator.of(context)
-                                                          //     .push(_routeAnimate(
-                                                          //         KonfirmasiKedua(
-                                                          //   qris_content:
-                                                          //       qris_content,
-                                                          //   qris_request_date:
-                                                          //       qris_request_date,
-                                                          //   qris_invoiceid:
-                                                          //       qris_invoiceid, // parameter dari filter
-                                                          //   jenis_pembayaran:
-                                                          //       "bayar ditempat",
-                                                          // )));
-
-                                                          // Navigator.push(
-                                                          //   context,
-                                                          //   PageTransition(
-                                                          //       type:
-                                                          //           PageTransitionType
-                                                          //               .fade,
-                                                          //       child:
-                                                          //           KonfirmasiKedua(
-                                                          //         qris_content:
-                                                          //             qris_content,
-                                                          //         qris_request_date:
-                                                          //             qris_request_date,
-                                                          //         qris_invoiceid:
-                                                          //             qris_invoiceid, // parameter dari filter
-                                                          //         jenis_pembayaran:
-                                                          //             "bayar ditempat",
-                                                          //       ),
-                                                          //       inheritTheme:
-                                                          //           true,
-                                                          //       ctx: context),
-                                                          // );
-
-                                                          Navigator.push(
-                                                            context,
-                                                            PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    KonfirmasiKedua(
-                                                                  qris_content:
-                                                                      qris_content,
-                                                                  qris_request_date:
-                                                                      qris_request_date,
-                                                                  qris_invoiceid:
-                                                                      qris_invoiceid, // parameter dari filter
-                                                                  jenis_pembayaran:
-                                                                      "bayar ditempat",
-                                                                  backgrounds:
-                                                                      backgrounds,
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceAround,
+                                                              children: [
+                                                                FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .qrcode,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  size: 140,
                                                                 ),
-                                                                inheritTheme:
-                                                                    true,
-                                                                ctx: context),
-                                                          );
-                                                        },
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  25),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topRight: Radius
-                                                                  .circular(20),
-                                                              topLeft: Radius
-                                                                  .circular(20),
-                                                              bottomLeft: Radius
-                                                                  .circular(20),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          20),
+                                                                Container(
+                                                                  child: Text(
+                                                                    "Gopay",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontSize:
+                                                                          42,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                            child: Image.asset(
-                                                              'assets/icons/pembayaran-04.png',
-                                                              height:
-                                                                  width * 0.1,
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                              width: 25,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 15,
+                                                  ),
+                                                  Card(
+                                                    color: Color.fromARGB(
+                                                        255, 155, 61, 93),
+                                                    elevation: width * 0.005,
+                                                    child: Container(
+                                                      width: width * 0.12,
+                                                      height: width * 0.2,
+                                                      child: Center(
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            // ...
+                                                            print(
+                                                                "qris payment");
+
+                                                            createInvoices();
+                                                            setState(() {
+                                                              jenis_pembayaran =
+                                                                  "qris";
+                                                            });
+                                                            await storage.setItem(
+                                                                'jenis_transaksi',
+                                                                'qris');
+                                                            await storage.setItem(
+                                                                'status_transaksi',
+                                                                'sudah');
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    25),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  const BorderRadius
+                                                                      .only(
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceAround,
+                                                                children: [
+                                                                  FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .qrcode,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 140,
+                                                                  ),
+                                                                  Container(
+                                                                    child: Text(
+                                                                      "Qris",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontSize:
+                                                                            42,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 15,
+                                                  ),
+                                                  Card(
+                                                    color: Color.fromARGB(
+                                                        255, 155, 61, 93),
+                                                    elevation: width * 0.005,
+                                                    child: Container(
+                                                      width: width * 0.12,
+                                                      height: width * 0.2,
+                                                      child: Center(
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            // ...
+                                                            print(
+                                                                "bayar ditempat");
+                                                            await storage.setItem(
+                                                                'jenis_transaksi',
+                                                                'bayar ditempat');
+                                                            await storage.setItem(
+                                                                'status_transaksi',
+                                                                'sudah');
+
+                                                            Navigator.push(
+                                                              context,
+                                                              PageTransition(
+                                                                  type:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  child:
+                                                                      KonfirmasiKedua(
+                                                                    qris_content:
+                                                                        qris_content,
+                                                                    qris_request_date:
+                                                                        qris_request_date,
+                                                                    qris_invoiceid:
+                                                                        qris_invoiceid, // parameter dari filter
+                                                                    jenis_pembayaran:
+                                                                        "bayar ditempat",
+                                                                    backgrounds:
+                                                                        backgrounds,
+                                                                  ),
+                                                                  inheritTheme:
+                                                                      true,
+                                                                  ctx: context),
+                                                            );
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    25),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  const BorderRadius
+                                                                      .only(
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        20),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceAround,
+                                                                children: [
+                                                                  FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .rupiahSign,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 140,
+                                                                  ),
+                                                                  Container(
+                                                                    child: Text(
+                                                                      "Bayar Ditempat",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontSize:
+                                                                            24,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                         ),

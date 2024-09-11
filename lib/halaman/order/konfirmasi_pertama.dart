@@ -195,7 +195,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                   Container(
                     height: width * 0.025,
                     width: width * 1,
-                    color: Colors.transparent,
+                    color: Color.fromARGB(255, 155, 61, 93),
                   ),
                   Container(
                     height: width * 0.025,

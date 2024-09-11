@@ -408,7 +408,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 26, 26, 26).withOpacity(0.95),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               height: height * 0.12,
               width: width * 1,
@@ -1009,7 +1009,8 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                             ? width * 0.35
                                             : 0,
                                         // width: width * 1,
-                                        color: Colors.black,
+                                        color:
+                                            Color.fromARGB(255, 251, 142, 178),
                                         child: VirtualKeyboard(
                                           reverseLayout: false,
                                           // Default height is 300

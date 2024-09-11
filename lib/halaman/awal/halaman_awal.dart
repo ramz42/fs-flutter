@@ -488,7 +488,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                color: Color.fromARGB(255, 155, 61, 93),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -505,7 +505,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           height: width * 0.035,
                           width: width * 1,
                           color: bg_warna_main != ""
-                              ? Color(int.parse(bg_warna_main)).withOpacity(0.9)
+                              ? Color.fromARGB(255, 155, 61, 93)
+                                  .withOpacity(0.7)
                               : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -592,14 +593,20 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
-                              colors: [Colors.transparent, Colors.transparent],
+                              colors: [
+                                const Color.fromARGB(255, 249, 146, 181),
+                                const Color.fromARGB(255, 215, 85, 128),
+                              ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: Colors.transparent,
+                            backgroundColor: const Color.fromARGB(255, 249, 98, 149),
                             size: const Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
+                        ),
+                        SizedBox(
+                          height: width * 0.005,
                         ),
                       ],
                     ),
@@ -630,7 +637,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         elevation: 1,
-                        color: const Color.fromARGB(255, 77, 117, 70)
+                        color: const Color.fromARGB(255, 155, 61, 93)
                             .withOpacity(0.9),
                         child: InkWell(
                           borderRadius: const BorderRadius.all(
@@ -682,7 +689,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: const Color.fromARGB(255, 77, 117, 70)
+                      color: const Color.fromARGB(255, 155, 61, 93)
                           .withOpacity(0.9),
                       child: InkWell(
                         onTap: () {
@@ -734,7 +741,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: const Color.fromARGB(255, 77, 117, 70)
+                      color: const Color.fromARGB(255, 155, 61, 93)
                           .withOpacity(0.9),
                       child: InkWell(
                         onTap: () {
@@ -793,8 +800,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.green.withOpacity(0.7),
-          surfaceTintColor: Colors.green.withOpacity(0.7),
+          backgroundColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
+          surfaceTintColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
           title: Text(
             title,
             style: const TextStyle(
@@ -878,8 +885,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Colors.green.withOpacity(0.7),
-          surfaceTintColor: Colors.green.withOpacity(0.7),
+          backgroundColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
+          surfaceTintColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
           title: const Text(
             'Masukkan Pin',
             style: TextStyle(

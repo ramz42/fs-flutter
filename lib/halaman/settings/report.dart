@@ -1274,7 +1274,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                 // tambah background image ...
 
                 color: bg_warna_main != ""
-                    ? Color(int.parse(bg_warna_main)).withOpacity(0.95)
+                    ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.95)
                     : Colors.transparent,
                 // end background image ...
                 height: height * 0.12,
@@ -1394,7 +1394,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
+                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -1445,7 +1445,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
+                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -1496,7 +1496,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.9),
                           child: InkWell(
                             onTap: () {
                               // ...
@@ -1546,14 +1546,14 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               width: 1,
                               color: Color.fromARGB(255, 255, 255, 255)),
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(1),
+                             Color.fromARGB(255, 155, 61, 93).withOpacity(1),
                         ),
                         width: width * 1,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Card(
-                              color: Color.fromARGB(255, 77, 117, 70)
+                              color:Color.fromARGB(255, 155, 61, 93)
                                   .withOpacity(1),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -1594,7 +1594,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                             ),
                             Card(
-                              color: Color.fromARGB(255, 77, 117, 70)
+                              color:Color.fromARGB(255, 155, 61, 93)
                                   .withOpacity(0.9),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -1605,7 +1605,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                                         width: 1,
                                         color:
                                             Color.fromARGB(255, 255, 255, 255)),
-                                    color: Color.fromARGB(255, 77, 117, 70)
+                                    color:Color.fromARGB(255, 155, 61, 93)
                                         .withOpacity(0.9),
                                   ),
                                   width: width * 0.25,
@@ -1671,7 +1671,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               border: Border.all(
                                   width: 1,
                                   color: Color.fromARGB(255, 255, 255, 255)),
-                              color: Color.fromARGB(255, 77, 117, 70)
+                              color:Color.fromARGB(255, 155, 61, 93)
                                   .withOpacity(0.9),
                             ),
                             width: width * 1,

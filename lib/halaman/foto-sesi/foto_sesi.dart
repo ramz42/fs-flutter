@@ -895,9 +895,9 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
           height: 150,
           child: AlertDialog(
             backgroundColor:
-                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                const Color.fromARGB(255, 251, 142, 178).withOpacity(0.9),
             surfaceTintColor:
-                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                const Color.fromARGB(255, 251, 142, 178).withOpacity(0.9),
             title: Padding(
               padding: const EdgeInsets.only(top: 25, bottom: 10),
               child: Text(
@@ -1025,7 +1025,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
 
     return Material(
       child: Container(
-        color: Color.fromARGB(218, 33, 33, 33),
+        color: Color.fromARGB(255, 155, 61, 93),
         child: Stack(
           children: [
             // Positioned(
@@ -1050,7 +1050,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                             width: width * 1,
                             color: bg_warna_main == ""
                                 ? Colors.transparent
-                                : Color(int.parse(bg_warna_main))),
+                                : Color.fromARGB(255, 251, 142, 178)),
                         Container(
                           height: height * 0.025,
                           width: width * 1,
@@ -1059,17 +1059,17 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                               colors: [
                                 warna1 == ""
                                     ? Colors.transparent
-                                    : Color(int.parse(warna1)),
+                                    : Color.fromARGB(255, 155, 61, 93),
                                 warna2 == ""
                                     ? Colors.transparent
-                                    : Color(int.parse(warna2))
+                                    : Color.fromARGB(255, 155, 61, 93),
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
                             backgroundColor: bg_warna_main == ""
                                 ? Colors.transparent
-                                : Color(int.parse(bg_warna_main)),
+                                : Color.fromARGB(255, 155, 61, 93),
                             size: Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -1141,12 +1141,27 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         Container(
                                           width: width * 0.08,
                                           height: width * 0.08,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
+                                          child: ShaderMask(
+                                            child: Image(
                                               image: AssetImage(
-                                                  "assets/icons/chevron-arrow-up.png"),
-                                              fit: BoxFit.cover,
+                                                "assets/icons/chevron-arrow-up.png",
+                                              ),
                                             ),
+                                            shaderCallback: (Rect bounds) {
+                                              return LinearGradient(
+                                                colors: [
+                                                  Color.fromARGB(
+                                                      255, 155, 61, 93),
+                                                  Color.fromARGB(
+                                                      255, 155, 61, 93),
+                                                ],
+                                                stops: [
+                                                  0.0,
+                                                  0.5,
+                                                ],
+                                              ).createShader(bounds);
+                                            },
+                                            blendMode: BlendMode.srcATop,
                                           ),
                                         ),
                                         Container(
@@ -1218,12 +1233,27 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         Container(
                                           width: width * 0.08,
                                           height: width * 0.08,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
+                                          child: ShaderMask(
+                                            child: Image(
                                               image: AssetImage(
-                                                  "assets/icons/chevron-arrow-down.png"),
-                                              fit: BoxFit.cover,
+                                                "assets/icons/chevron-arrow-down.png",
+                                              ),
                                             ),
+                                            shaderCallback: (Rect bounds) {
+                                              return LinearGradient(
+                                                colors: [
+                                                  Color.fromARGB(
+                                                      255, 155, 61, 93),
+                                                  Color.fromARGB(
+                                                      255, 155, 61, 93),
+                                                ],
+                                                stops: [
+                                                  0.0,
+                                                  0.5,
+                                                ],
+                                              ).createShader(bounds);
+                                            },
+                                            blendMode: BlendMode.srcATop,
                                           ),
                                         ),
                                       ],
@@ -1286,7 +1316,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         : Container(
                                             width: width * 0.5,
                                             height: width * 0.25,
-                                            color: Colors.black,
+                                            color: Color.fromARGB(
+                                                255, 251, 142, 178),
                                           ),
                                   ],
                                 ),
@@ -1307,7 +1338,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                             borderRadius:
                                                 BorderRadius.circular(65),
                                             color:
-                                                Colors.black.withOpacity(0.7),
+                                                Color.fromARGB(255, 155, 61, 93)
+                                                    .withOpacity(0.7),
                                             boxShadow: [],
                                           ),
                                           // child: Card(
@@ -1351,9 +1383,9 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         countTakePictures != 0
                                             ? ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
-                                                    backgroundColor: Colors
-                                                        .black
-                                                        .withOpacity(0.7),
+                                                    backgroundColor:
+                                                        Color.fromARGB(255, 155, 61, 93)
+                                                            .withOpacity(0.7),
                                                     textStyle: TextStyle(
                                                         fontSize: 30,
                                                         fontWeight:
@@ -1397,80 +1429,80 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         const SizedBox(height: 15),
 
                                         // ...
-                                        Visibility(
-                                          visible: isVisibleButtonLanjut,
-                                          child: OutlinedButton(
-                                            style: TextButton.styleFrom(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .labelLarge,
-                                              backgroundColor:
-                                                  Color.fromARGB(255, 0, 0, 0)
-                                                      .withOpacity(0.7),
-                                            ),
-                                            onPressed: () {
-                                              // do onpressed...
-                                              Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                    type:
-                                                        PageTransitionType.fade,
-                                                    child: HalamanAwal(
-                                                      backgrounds: backgrounds,
-                                                      header: null,
-                                                    ),
-                                                    inheritTheme: true,
-                                                    ctx: context),
-                                              );
-                                            },
-                                            child: SizedBox(
-                                              // color: Colors.transparent,
-                                              width: width * 0.25,
-                                              // height: height * 0.012,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                  top: 10,
-                                                  bottom: 10,
-                                                ),
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    Align(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Text(
-                                                        "Kembali".toUpperCase(),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.010,
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
+                                        // Visibility(
+                                        //   visible: isVisibleButtonLanjut,
+                                        //   child: OutlinedButton(
+                                        //     style: TextButton.styleFrom(
+                                        //       textStyle: Theme.of(context)
+                                        //           .textTheme
+                                        //           .labelLarge,
+                                        //       backgroundColor: Color.fromARGB(
+                                        //               255, 251, 142, 178)
+                                        //           .withOpacity(0.7),
+                                        //     ),
+                                        //     onPressed: () {
+                                        //       // do onpressed...
+                                        //       Navigator.push(
+                                        //         context,
+                                        //         PageTransition(
+                                        //             type:
+                                        //                 PageTransitionType.fade,
+                                        //             child: HalamanAwal(
+                                        //               backgrounds: backgrounds,
+                                        //               header: null,
+                                        //             ),
+                                        //             inheritTheme: true,
+                                        //             ctx: context),
+                                        //       );
+                                        //     },
+                                        //     child: SizedBox(
+                                        //       // color: Colors.transparent,
+                                        //       width: width * 0.25,
+                                        //       // height: height * 0.012,
+                                        //       child: Padding(
+                                        //         padding: const EdgeInsets.only(
+                                        //           top: 10,
+                                        //           bottom: 10,
+                                        //         ),
+                                        //         child: Stack(
+                                        //           children: <Widget>[
+                                        //             Align(
+                                        //               alignment:
+                                        //                   Alignment.center,
+                                        //               child: Text(
+                                        //                 "Kembali".toUpperCase(),
+                                        //                 textAlign:
+                                        //                     TextAlign.center,
+                                        //                 style: TextStyle(
+                                        //                   fontSize:
+                                        //                       width * 0.010,
+                                        //                   color: Color.fromARGB(
+                                        //                       255,
+                                        //                       255,
+                                        //                       255,
+                                        //                       255),
+                                        //                   fontWeight:
+                                        //                       FontWeight.bold,
+                                        //                 ),
+                                        //               ),
+                                        //             ),
 
-                                                    // ...
-                                                    // const Align(
-                                                    //   alignment:
-                                                    //       Alignment.centerRight,
-                                                    //   child: FaIcon(
-                                                    //     FontAwesomeIcons
-                                                    //         .caretRight,
-                                                    //     color: Colors.white,
-                                                    //   ),
-                                                    // ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                        //             // ...
+                                        //             // const Align(
+                                        //             //   alignment:
+                                        //             //       Alignment.centerRight,
+                                        //             //   child: FaIcon(
+                                        //             //     FontAwesomeIcons
+                                        //             //         .caretRight,
+                                        //             //     color: Colors.white,
+                                        //             //   ),
+                                        //             // ),
+                                        //           ],
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ),
@@ -1739,8 +1771,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                 child: Padding(
                   padding: const EdgeInsets.all(0),
                   child: AlertDialog(
-                    backgroundColor:
-                        Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                    backgroundColor: Color.fromARGB(255, 155, 61, 93),
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
                       child: Text(
@@ -1779,8 +1810,8 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                     top: 5,
                                     right: 5,
                                   ),
-                                  focusColor: Colors.black,
-                                  fillColor: Colors.black,
+                                  focusColor: Color.fromARGB(255, 155, 61, 93),
+                                  fillColor: Color.fromARGB(255, 155, 61, 93),
                                   label: Text(
                                     "Kode",
                                     style: TextStyle(
@@ -1819,15 +1850,15 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           OutlinedButton(
                             style: TextButton.styleFrom(
                               textStyle: Theme.of(context).textTheme.labelLarge,
-                              backgroundColor: Colors.redAccent,
+                              backgroundColor: Colors.white,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: Text(
-                                'Tidak'.toUpperCase(),
+                                'Batal',
                                 style: const TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 155, 61, 93),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1847,15 +1878,15 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           OutlinedButton(
                             style: TextButton.styleFrom(
                               textStyle: Theme.of(context).textTheme.labelLarge,
-                              backgroundColor: Colors.orange,
+                              backgroundColor: Colors.white,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: Text(
-                                'Iya'.toUpperCase(),
+                                'Input',
                                 style: const TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 155, 61, 93),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1907,7 +1938,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                    color: Color.fromARGB(255, 155, 61, 93),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -1987,7 +2018,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.95),
+                      color: Color.fromARGB(255, 155, 61, 93),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(

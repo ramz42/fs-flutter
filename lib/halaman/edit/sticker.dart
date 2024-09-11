@@ -7891,13 +7891,13 @@ class _StickerWidgetState extends State<StickerWidget> {
                                 height: width * 0.015,
                                 width: width * 1,
                                 color: bg_warna_main != ""
-                                    ? Color(int.parse(bg_warna_main))
+                                    ? Color.fromARGB(255, 155, 61, 93)
                                     : Colors.transparent),
                             Container(
                               height: width * 0.035,
                               width: width * 1,
                               color: bg_warna_main != ""
-                                  ? Color(int.parse(bg_warna_main))
+                                  ? Color.fromARGB(255, 155, 61, 93)
                                   : Colors.transparent,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -7966,7 +7966,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     "Sticker",
                                     style: TextStyle(
                                       fontSize: width * 0.022,
-                                      color: Color.fromARGB(255, 179, 179, 179),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FontStyle.italic,
                                     ),
@@ -7991,7 +7991,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                                   heightPercentages: _heightPercentages,
                                 ),
                                 backgroundColor: bg_warna_main != ""
-                                    ? Color(int.parse(bg_warna_main))
+                                    ? Color.fromARGB(255, 155, 61, 93)
                                     : Colors.transparent,
                                 size: Size(double.infinity, double.infinity),
                                 waveAmplitude: 0,
@@ -8032,7 +8032,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             child: Container(
                               width: width * 0.25,
                               color: bg_warna_main != ""
-                                  ? Color(int.parse(bg_warna_main))
+                                  ? Color.fromARGB(255, 155, 61, 93)
                                   : Colors.transparent,
                               child: Column(
                                 children: [
@@ -17470,7 +17470,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             child: Container(
                               width: width * 0.25,
                               color: bg_warna_main != ""
-                                  ? Color(int.parse(bg_warna_main))
+                                  ? Color.fromARGB(255, 155, 61, 93)
                                   : Colors.transparent,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,

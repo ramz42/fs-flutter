@@ -563,7 +563,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 height: height * 0.12,
                 width: width * 1,
                 color: bg_warna_main != ""
-                    ? Color(int.parse(bg_warna_main)).withOpacity(0.95)
+                    ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.95)
                     : Colors.transparent,
                 // tambah background image ...
 
@@ -692,7 +692,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
+                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -748,7 +748,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.9),
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(
@@ -799,7 +799,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                           elevation: 1,
                           color:
-                              Color.fromARGB(255, 77, 117, 70).withOpacity(0.4),
+                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(

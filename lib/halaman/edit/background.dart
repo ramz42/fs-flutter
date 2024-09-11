@@ -7431,13 +7431,13 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                       height: width * 0.012,
                       width: width * 1,
                       color: bg_warna_main != ""
-                          ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
+                          ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
                           : Colors.transparent),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
+                        ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -7486,7 +7486,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                           "Background",
                           style: TextStyle(
                             fontSize: width * 0.022,
-                            color: Color.fromARGB(255, 179, 179, 179),
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                           ),
@@ -7524,7 +7524,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                               ? Colors.transparent
                               : Colors.transparent,
                           warna2 != ""
-                              ? Color.fromARGB(255, 77, 117, 70)
+                              ? Color.fromARGB(255, 155, 61, 93)
                                   .withOpacity(0.7)
                               : Colors.transparent
                         ],
@@ -7532,7 +7532,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
+                          ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -7563,7 +7563,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 77, 117, 70).withOpacity(0.7)
+                        ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -18342,7 +18342,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color(int.parse(bg_warna_main))
+                        ? Color.fromARGB(255, 155, 61, 93)
                         : Colors.transparent,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
