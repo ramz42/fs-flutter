@@ -588,7 +588,6 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
         startTimer();
       }
     } else {
-      
       _showInSnackBar('Jumlah Shoot Habis');
       print("count take picture : ${countTakePictures}");
       startTimer();
@@ -891,25 +890,118 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            title,
-          ),
-          content: Text(
-            deskripsi,
-          ),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
+        return Container(
+          width: 200,
+          height: 150,
+          child: AlertDialog(
+            backgroundColor:
+                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+            surfaceTintColor:
+                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+            title: Padding(
+              padding: const EdgeInsets.only(top: 25, bottom: 10),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 56,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-              child: const Text('Baik'),
-              onPressed: () async {
-                // _deleteImage(filename);
-                Navigator.of(context).pop();
-              },
             ),
-          ],
+            content: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Container(
+                height: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      child: const FaIcon(
+                        FontAwesomeIcons.cameraRetro,
+                        color: Colors.white,
+                        size: 140,
+                      ),
+                    ),
+                    Text(
+                      deskripsi,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              OutlinedButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                  backgroundColor: Colors.redAccent,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'Kembali'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              const Spacer(),
+              OutlinedButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                  backgroundColor: Colors.orange,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'Lanjut'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  // Navigator.of(context).pop();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) =>
+                  //         _routeAnimate(HalamanAwalSettings()),
+                  //   ),
+                  // );
+                  // Navigator.of(context)
+                  //     .push(_routeAnimate(HalamanAwalSettings()));
+
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        child: HalamanAwal(
+                          backgrounds: backgrounds,
+                          header: null,
+                        ),
+                        inheritTheme: true,
+                        ctx: context),
+                  );
+                },
+              ),
+            ],
+          ),
         );
       },
     );
@@ -1346,8 +1438,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                       alignment:
                                                           Alignment.center,
                                                       child: Text(
-                                                        "Kembali"
-                                                            .toUpperCase(),
+                                                        "Kembali".toUpperCase(),
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(

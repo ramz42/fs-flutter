@@ -67,8 +67,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
   int waktu_awal = 10;
 
   // create some values
-  Color pickerColor = Color(0xff443a49);
-  Color currentColor = Color(0xff443a49);
+  Color pickerColor = const Color(0xff443a49);
+  Color currentColor = const Color(0xff443a49);
 
   _HalamanAwalState(this.backgrounds, this.header);
 
@@ -283,6 +283,127 @@ class _HalamanAwalState extends State<HalamanAwal> {
     );
   }
 
+  Future<void> _dialogBuilder(BuildContext context, title, deskripsi) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          width: 200,
+          height: 150,
+          child: AlertDialog(
+            backgroundColor:
+                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+            surfaceTintColor:
+                const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+            title: Padding(
+              padding: const EdgeInsets.only(top: 25, bottom: 10),
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 56,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            content: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Container(
+                height: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      child: const FaIcon(
+                        FontAwesomeIcons.cameraRetro,
+                        color: Colors.white,
+                        size: 140,
+                      ),
+                    ),
+                    Text(
+                      deskripsi,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              OutlinedButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                  backgroundColor: Colors.redAccent,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'Kembali'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              const Spacer(),
+              OutlinedButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                  backgroundColor: Colors.orange,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'Lanjut'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  // Navigator.of(context).pop();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) =>
+                  //         _routeAnimate(HalamanAwalSettings()),
+                  //   ),
+                  // );
+                  // Navigator.of(context)
+                  //     .push(_routeAnimate(HalamanAwalSettings()));
+
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade,
+                        child: const HalamanAwal(
+                          backgrounds: null,
+                          header: null,
+                        ),
+                        inheritTheme: true,
+                        ctx: context),
+                  );
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   _clearStorage() async {
     await storage.clear();
   }
@@ -306,8 +427,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
   // static const _backgroundColor = Color.fromARGB(255, 196, 75, 146);
 
   List<Color> _colors = [
-    Color.fromARGB(255, 212, 111, 170),
-    Color.fromARGB(255, 252, 175, 229),
+    const Color.fromARGB(255, 212, 111, 170),
+    const Color.fromARGB(255, 252, 175, 229),
   ];
 
   static const _durations = [
@@ -367,7 +488,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                color: const Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -391,16 +512,18 @@ class _HalamanAwalState extends State<HalamanAwal> {
                             children: [
                               Container(
                                 // margin: EdgeInsets.all(20),
-                                padding: EdgeInsets.all(1),
+                                padding: const EdgeInsets.all(1),
                                 child: InkWell(
                                   onTap: () {
                                     _showMyDialogPin(pin);
+                                    // _dialogBuilder(context, "Foto Sesi",
+                                    //     "Foto Sesi Shots Telah Habis.");
                                     setState(() {
                                       isVisibleContentMenu =
                                           !isVisibleContentMenu;
                                     });
                                   },
-                                  child: FaIcon(
+                                  child: const FaIcon(
                                     FontAwesomeIcons.gear,
                                     color: Colors.white,
                                   ),
@@ -411,7 +534,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               ),
                               Container(
                                 // margin: EdgeInsets.all(20),
-                                padding: EdgeInsets.all(1),
+                                padding: const EdgeInsets.all(1),
                                 child: InkWell(
                                   onTap: () {
                                     _showMyDialog(
@@ -423,7 +546,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                           !isVisibleContentMenu;
                                     });
                                   },
-                                  child: FaIcon(
+                                  child: const FaIcon(
                                     FontAwesomeIcons.minimize,
                                     color: Colors.orange,
                                   ),
@@ -434,7 +557,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               ),
                               Container(
                                 // margin: EdgeInsets.all(20),
-                                padding: EdgeInsets.all(1),
+                                padding: const EdgeInsets.all(1),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
@@ -452,7 +575,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                         "Ingin Menutup Aplikasi Foto Selfie ?",
                                         2);
                                   },
-                                  child: FaIcon(
+                                  child: const FaIcon(
                                     FontAwesomeIcons.cancel,
                                     color: Colors.red,
                                   ),
@@ -507,8 +630,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         elevation: 1,
-                        color:
-                            Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                        color: const Color.fromARGB(255, 77, 117, 70)
+                            .withOpacity(0.9),
                         child: InkWell(
                           borderRadius: const BorderRadius.all(
                             Radius.circular(
@@ -559,7 +682,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                      color: const Color.fromARGB(255, 77, 117, 70)
+                          .withOpacity(0.9),
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");
@@ -610,7 +734,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 77, 117, 70).withOpacity(0.9),
+                      color: const Color.fromARGB(255, 77, 117, 70)
+                          .withOpacity(0.9),
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");
