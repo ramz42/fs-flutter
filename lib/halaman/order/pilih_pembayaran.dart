@@ -14,6 +14,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import '../../src/variables.g.dart';
+import '../awal/halaman_awal.dart';
 import 'konfirmasi_kedua.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -458,13 +459,16 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -475,7 +479,9 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -545,11 +551,20 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
+                        colors: [
+                          bg_warna_main != ""
+                              ? HexColor(warna1)
+                              : Colors.transparent,
+                          bg_warna_main != ""
+                              ? HexColor(warna2)
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -561,11 +576,11 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
             // end header page view
             // ---------------------
             Container(
-              height: width * 0.46,
-              width: width * 1,
+              height: width * 0.485,
+              width: width * 12,
               // color: Colors.white,
               child: Padding(
-                padding: EdgeInsets.all(width * 0.018),
+                padding: EdgeInsets.all(width * 0.005),
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
@@ -579,65 +594,128 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                   child: Container(
                     // color: Colors.black26,
                     width: width * 1,
-                    height: width * 0.45,
+                    // height: width * 0.7,
                     // child: SingleChildScrollView(
                     // shrinkWrap: true,
                     // physics: const NeverScrollableScrollPhysics(),
                     // scrollDirection: Axis.horizontal,
                     // child: Container(
                     // width: width * 1,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // container
-                          Container(
-                            width: width * 1,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 25,
+                        ),
+                        // container
+                        Container(
+                          width: width * 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
+                                Container(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      top: width * 0.02,
+                                      bottom: width * 0.02,
+                                      right: width * 0.045,
+                                      left: width * 0.045,
+                                    ),
+                                    child: Text(
+                                      "Qr Code / Cash".toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: width * 0.03,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Column(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Container(
-                                        width: width * 0.42,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(15),
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.white, width: 15),
+                                          borderRadius:
+                                              BorderRadius.circular(45),
+                                        ),
+                                        color: bg_warna_main != ""
+                                            ? HexColor(bg_warna_main)
+                                            : Colors.transparent,
+                                        elevation: width * 0.005,
+                                        child: Container(
+                                          width: width * 0.225,
+                                          height: width * 0.225,
                                           child: InkWell(
-                                            child: Card(
-                                              color: Color.fromARGB(
-                                                  255, 155, 61, 93),
-                                              elevation: 12,
-                                              shape: RoundedRectangleBorder(
+                                            onTap: () async {
+                                              // ...
+                                              print("bayar ditempat");
+                                              await storage.setItem(
+                                                  'jenis_transaksi',
+                                                  'bayar ditempat');
+                                              await storage.setItem(
+                                                  'status_transaksi', 'sudah');
+
+                                              Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child: KonfirmasiKedua(
+                                                      qris_content:
+                                                          qris_content,
+                                                      qris_request_date:
+                                                          qris_request_date,
+                                                      qris_invoiceid:
+                                                          qris_invoiceid, // parameter dari filter
+                                                      jenis_pembayaran:
+                                                          "bayar ditempat",
+                                                      backgrounds: backgrounds,
+                                                    ),
+                                                    inheritTheme: true,
+                                                    ctx: context),
+                                              );
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(25),
+                                              child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                              ),
-                                              child: InkWell(
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                                onTap: () {},
-                                                child: Row(
+                                                    const BorderRadius.only(
+                                                  topRight: Radius.circular(45),
+                                                  topLeft: Radius.circular(45),
+                                                  bottomLeft:
+                                                      Radius.circular(45),
+                                                  bottomRight:
+                                                      Radius.circular(45),
+                                                ),
+                                                child: Column(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                      MainAxisAlignment
+                                                          .spaceAround,
                                                   children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                        top: width * 0.02,
-                                                        bottom: width * 0.02,
-                                                        right: width * 0.045,
-                                                        left: width * 0.045,
-                                                      ),
+                                                    FaIcon(
+                                                      FontAwesomeIcons
+                                                          .rupiahSign,
+                                                      color: Colors.white,
+                                                      size: 185,
+                                                    ),
+                                                    Container(
                                                       child: Text(
-                                                        "Qr Code / Cash"
-                                                            .toUpperCase(),
+                                                        "Cash",
                                                         style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.023,
+                                                          color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          color: Colors.white,
+                                                          fontSize: 75,
                                                         ),
                                                       ),
                                                     ),
@@ -648,478 +726,218 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              // width: width * 0.1,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Card(
-                                                    color: Color.fromARGB(
-                                                        255, 155, 61, 93),
-                                                    elevation: width * 0.005,
-                                                    child: Container(
-                                                      width: width * 0.12,
-                                                      height: width * 0.2,
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          // ...
-                                                          print(
-                                                              "gopay payment");
 
-                                                          createInvoices();
-                                                          setState(() {
-                                                            jenis_pembayaran =
-                                                                "qris";
-                                                          });
-                                                          await storage.setItem(
-                                                              'jenis_transaksi',
-                                                              'gopay');
-                                                          await storage.setItem(
-                                                              'status_transaksi',
-                                                              'sudah');
-                                                        },
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(25),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              topRight: Radius
-                                                                  .circular(20),
-                                                              topLeft: Radius
-                                                                  .circular(20),
-                                                              bottomLeft: Radius
-                                                                  .circular(20),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          20),
-                                                            ),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceAround,
-                                                              children: [
-                                                                FaIcon(
-                                                                  FontAwesomeIcons
-                                                                      .qrcode,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  size: 140,
-                                                                ),
-                                                                Container(
-                                                                  child: Text(
-                                                                    "Gopay",
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          42,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
+                                      SizedBox(
+                                        width: width * 0.065,
+                                      ),
+                                      // Card(
+                                      //   color: bg_warna_main != ""
+                                      //       ? HexColor(bg_warna_main)
+                                      //       : Colors.transparent,
+                                      //   elevation: width * 0.005,
+                                      //   child: Container(
+                                      //     width: width * 0.2,
+                                      //     height: width * 0.2,
+                                      //     child: InkWell(
+                                      //       onTap: () async {
+                                      //         // ...
+                                      //         print("gopay payment");
+
+                                      //         createInvoices();
+                                      //         setState(() {
+                                      //           jenis_pembayaran = "qris";
+                                      //         });
+                                      //         await storage.setItem(
+                                      //             'jenis_transaksi', 'gopay');
+                                      //         await storage.setItem(
+                                      //             'status_transaksi', 'sudah');
+                                      //       },
+                                      //       child: Padding(
+                                      //         padding: const EdgeInsets.all(25),
+                                      //         child: ClipRRect(
+                                      //           borderRadius:
+                                      //               const BorderRadius.only(
+                                      //             topRight: Radius.circular(20),
+                                      //             topLeft: Radius.circular(20),
+                                      //             bottomLeft:
+                                      //                 Radius.circular(20),
+                                      //             bottomRight:
+                                      //                 Radius.circular(20),
+                                      //           ),
+                                      //           child: Column(
+                                      //             mainAxisAlignment:
+                                      //                 MainAxisAlignment
+                                      //                     .spaceAround,
+                                      //             children: [
+                                      //               FaIcon(
+                                      //                 FontAwesomeIcons.qrcode,
+                                      //                 color: Colors.white,
+                                      //                 size: 140,
+                                      //               ),
+                                      //               Container(
+                                      //                 child: Text(
+                                      //                   "Gopay",
+                                      //                   style: TextStyle(
+                                      //                     color: Colors.white,
+                                      //                     fontWeight:
+                                      //                         FontWeight.bold,
+                                      //                     fontSize: 55,
+                                      //                   ),
+                                      //                 ),
+                                      //               ),
+                                      //             ],
+                                      //           ),
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //   ),
+                                      // ),
+                                      // SizedBox(
+                                      //   width: 55,
+                                      // ),
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.white, width: 15),
+                                          borderRadius:
+                                              BorderRadius.circular(45),
+                                        ),
+                                        color: bg_warna_main != ""
+                                            ? HexColor(bg_warna_main)
+                                            : Colors.transparent,
+                                        elevation: width * 0.005,
+                                        child: Container(
+                                          width: width * 0.225,
+                                          height: width * 0.225,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              // ...
+                                              print("qris payment");
+
+                                              createInvoices();
+                                              setState(() {
+                                                jenis_pembayaran = "qris";
+                                              });
+                                              await storage.setItem(
+                                                  'jenis_transaksi', 'qris');
+                                              await storage.setItem(
+                                                  'status_transaksi', 'sudah');
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(25),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  topRight: Radius.circular(45),
+                                                  topLeft: Radius.circular(45),
+                                                  bottomLeft:
+                                                      Radius.circular(45),
+                                                  bottomRight:
+                                                      Radius.circular(45),
+                                                ),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    FaIcon(
+                                                      FontAwesomeIcons.qrcode,
+                                                      color: Colors.white,
+                                                      size: 185,
+                                                    ),
+                                                    Container(
+                                                      child: Text(
+                                                        "Qris",
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 75,
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Card(
-                                                    color: Color.fromARGB(
-                                                        255, 155, 61, 93),
-                                                    elevation: width * 0.005,
-                                                    child: Container(
-                                                      width: width * 0.12,
-                                                      height: width * 0.2,
-                                                      child: Center(
-                                                        child: InkWell(
-                                                          onTap: () async {
-                                                            // ...
-                                                            print(
-                                                                "qris payment");
-
-                                                            createInvoices();
-                                                            setState(() {
-                                                              jenis_pembayaran =
-                                                                  "qris";
-                                                            });
-                                                            await storage.setItem(
-                                                                'jenis_transaksi',
-                                                                'qris');
-                                                            await storage.setItem(
-                                                                'status_transaksi',
-                                                                'sudah');
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    25),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  const BorderRadius
-                                                                      .only(
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                bottomRight:
-                                                                    Radius
-                                                                        .circular(
-                                                                            20),
-                                                              ),
-                                                              child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceAround,
-                                                                children: [
-                                                                  FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .qrcode,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    size: 140,
-                                                                  ),
-                                                                  Container(
-                                                                    child: Text(
-                                                                      "Qris",
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontSize:
-                                                                            42,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Card(
-                                                    color: Color.fromARGB(
-                                                        255, 155, 61, 93),
-                                                    elevation: width * 0.005,
-                                                    child: Container(
-                                                      width: width * 0.12,
-                                                      height: width * 0.2,
-                                                      child: Center(
-                                                        child: InkWell(
-                                                          onTap: () async {
-                                                            // ...
-                                                            print(
-                                                                "bayar ditempat");
-                                                            await storage.setItem(
-                                                                'jenis_transaksi',
-                                                                'bayar ditempat');
-                                                            await storage.setItem(
-                                                                'status_transaksi',
-                                                                'sudah');
-
-                                                            Navigator.push(
-                                                              context,
-                                                              PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      KonfirmasiKedua(
-                                                                    qris_content:
-                                                                        qris_content,
-                                                                    qris_request_date:
-                                                                        qris_request_date,
-                                                                    qris_invoiceid:
-                                                                        qris_invoiceid, // parameter dari filter
-                                                                    jenis_pembayaran:
-                                                                        "bayar ditempat",
-                                                                    backgrounds:
-                                                                        backgrounds,
-                                                                  ),
-                                                                  inheritTheme:
-                                                                      true,
-                                                                  ctx: context),
-                                                            );
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    25),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  const BorderRadius
-                                                                      .only(
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                bottomRight:
-                                                                    Radius
-                                                                        .circular(
-                                                                            20),
-                                                              ),
-                                                              child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceAround,
-                                                                children: [
-                                                                  FaIcon(
-                                                                    FontAwesomeIcons
-                                                                        .rupiahSign,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    size: 140,
-                                                                  ),
-                                                                  Container(
-                                                                    child: Text(
-                                                                      "Bayar Ditempat",
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontSize:
-                                                                            24,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
+                                      // ...
                                     ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                        ),
 
-                          SizedBox(
-                            height: width * 0.04,
-                          ),
-                          Container(
-                            // color: Colors.green,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  // left: 25.0,
-                                  // right: 25,
-                                  ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    // color: Colors.grey,
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                        left: width * 0.025,
-                                      ),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: OutlinedButton(
-                                          style: TextButton.styleFrom(
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .labelLarge,
-                                            backgroundColor: Color.fromARGB(
-                                                255, 255, 255, 255),
-                                          ),
-                                          onPressed: () {
-                                            // do onpressed...
-                                            // Navigator.push(
-                                            //   context,
-                                            //   MaterialPageRoute(
-                                            //     builder: (context) =>
-                                            //         ReviewPaymentWidget(),
-                                            //   ),
-                                            // );
-                                            // Navigator.of(context).push(
-                                            //     _routeAnimate(
-                                            //         ReviewPaymentWidget()));
-
-                                            Navigator.push(
-                                              context,
-                                              PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child: ReviewPaymentWidget(
-                                                    backgrounds: backgrounds,
-                                                  ),
-                                                  inheritTheme: true,
-                                                  ctx: context),
-                                            );
-                                          },
-                                          child: Container(
-                                            // color: Colors.transparent,
-                                            width: width * 0.15,
-                                            // height: height * 0.012,
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 10,
-                                                bottom: 10,
-                                              ),
-                                              child: Stack(
-                                                children: <Widget>[
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Icon(
-                                                      Icons
-                                                          .arrow_circle_left_outlined,
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              255, 96, 96, 96),
-                                                      size: width * 0.025,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 45,
-                                                  ),
-                                                  Align(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Text(
-                                                        "Kembali".toUpperCase(),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              width * 0.016,
-                                                          color: Color.fromARGB(
-                                                              255, 96, 96, 96),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ))
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                        SizedBox(
+                          height: width * 0.07,
+                        ),
+                        Container(
+                          // color: Colors.green,
+                          child: Padding(
+                            padding: const EdgeInsets.only(),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  // color: Colors.grey,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: width * 0.025,
                                     ),
-                                  ),
-                                  Container(
-                                    // color: Colors.grey,
-                                    child: Padding(
-                                      padding:
-                                          EdgeInsets.only(right: width * 0.025),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: OutlinedButton(
-                                          style: TextButton.styleFrom(
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .labelLarge,
-                                            backgroundColor: Color.fromARGB(
-                                                255, 255, 255, 255),
-                                          ),
-                                          onPressed: () {
-                                            // do onpressed...
-                                            // Navigator.push(
-                                            //   context,
-                                            //   MaterialPageRoute(
-                                            //     builder: (context) =>
-                                            //         KonfirmasiKedua(
-                                            //       qris_content: qris_content,
-                                            //       qris_request_date:
-                                            //           qris_request_date,
-                                            //       qris_invoiceid:
-                                            //           qris_invoiceid, // parameter dari filter
-                                            //       jenis_pembayaran:
-                                            //           jenis_pembayaran,
-                                            //     ),
-                                            //   ),
-                                            // );
-                                            // Navigator.of(context).push(
-                                            //     _routeAnimate(KonfirmasiKedua(
-                                            //   qris_content: qris_content,
-                                            //   qris_request_date:
-                                            //       qris_request_date,
-                                            //   qris_invoiceid:
-                                            //       qris_invoiceid, // parameter dari filter
-                                            //   jenis_pembayaran:
-                                            //       jenis_pembayaran,
-                                            // )));
-
-                                            Navigator.push(
-                                              context,
-                                              PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child: KonfirmasiKedua(
-                                                    qris_content: qris_content,
-                                                    qris_request_date:
-                                                        qris_request_date,
-                                                    qris_invoiceid:
-                                                        qris_invoiceid, // parameter dari filter
-                                                    jenis_pembayaran:
-                                                        jenis_pembayaran,
-                                                    backgrounds: backgrounds,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: OutlinedButton(
+                                        style: TextButton.styleFrom(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge,
+                                          backgroundColor: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: ReviewPaymentWidget(
+                                                  backgrounds: backgrounds,
+                                                ),
+                                                inheritTheme: true,
+                                                ctx: context),
+                                          );
+                                        },
+                                        child: Container(
+                                          // color: Colors.transparent,
+                                          width: width * 0.15,
+                                          // height: height * 0.012,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 10,
+                                              bottom: 10,
+                                            ),
+                                            child: Stack(
+                                              children: <Widget>[
+                                                Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons.caretLeft,
+                                                    color: const Color.fromARGB(
+                                                        255, 96, 96, 96),
+                                                    size: width * 0.025,
                                                   ),
-                                                  inheritTheme: true,
-                                                  ctx: context),
-                                            );
-                                          },
-                                          child: Container(
-                                            // color: Colors.transparent,
-                                            width: width * 0.15,
-                                            // height: height * 0.012,
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 10,
-                                                bottom: 10,
-                                              ),
-                                              child: Stack(
-                                                children: <Widget>[
-                                                  SizedBox(
-                                                    width: 45,
-                                                  ),
-                                                  Align(
+                                                ),
+                                                SizedBox(
+                                                  width: 45,
+                                                ),
+                                                Align(
                                                     alignment: Alignment.center,
                                                     child: Text(
-                                                      "Lanjut".toUpperCase(),
+                                                      "Kembali".toUpperCase(),
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
@@ -1129,34 +947,100 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.centerRight,
-                                                    child: Icon(
-                                                      Icons
-                                                          .arrow_circle_right_outlined,
-                                                      color:
-                                                          const Color.fromARGB(
-                                                              255, 96, 96, 96),
-                                                      size: width * 0.025,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
+                                                    ))
+                                              ],
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Container(
+                                  // color: Colors.grey,
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.only(right: width * 0.025),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: OutlinedButton(
+                                        style: TextButton.styleFrom(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge,
+                                          backgroundColor: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: KonfirmasiKedua(
+                                                  qris_content: qris_content,
+                                                  qris_request_date:
+                                                      qris_request_date,
+                                                  qris_invoiceid:
+                                                      qris_invoiceid, // parameter dari filter
+                                                  jenis_pembayaran:
+                                                      jenis_pembayaran,
+                                                  backgrounds: backgrounds,
+                                                ),
+                                                inheritTheme: true,
+                                                ctx: context),
+                                          );
+                                        },
+                                        child: Container(
+                                          // color: Colors.transparent,
+                                          width: width * 0.15,
+                                          // height: height * 0.012,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 10,
+                                              bottom: 10,
+                                            ),
+                                            child: Stack(
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 45,
+                                                ),
+                                                Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    "Lanjut".toUpperCase(),
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: width * 0.016,
+                                                      color: Color.fromARGB(
+                                                          255, 96, 96, 96),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons.caretRight,
+                                                    color: const Color.fromARGB(
+                                                        255, 96, 96, 96),
+                                                    size: width * 0.025,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     // ),r
                     // ),

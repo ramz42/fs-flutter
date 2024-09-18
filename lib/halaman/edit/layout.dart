@@ -17,6 +17,8 @@ import 'package:wave/wave.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import '../awal/halaman_awal.dart';
+
 class LayoutWidget extends StatefulWidget {
   LayoutWidget({
     super.key,
@@ -64,6 +66,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
 
   List<dynamic> listA = [];
   List<dynamic> listB = [];
+  List<dynamic> listC = [];
+  List<dynamic> listD = [];
+  List<dynamic> listE = [];
+  List<dynamic> listF = [];
 
   List dragItem = [];
   List dragItemB = [];
@@ -157,12 +163,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   var image_name = "";
 
   // colors...
-  // Color color =  bg_warna_main != "" ? Color.fromARGB(255, 155, 61, 93) : Colors.transparent;
+  // Color color =  bg_warna_main != "" ? HexColor(bg_warna_main) : Colors.transparent;
 
   final double barHeight = 10.0;
 
   // colors wave
-  // static  _backgroundColor = bg_warna_main != "" ? Color.fromARGB(255, 155, 61, 93) : Colors.transparent;
+  // static  _backgroundColor = bg_warna_main != "" ? HexColor(bg_warna_main) : Colors.transparent;
 
   static const _colors = [
     Color.fromARGB(255, 212, 111, 170),
@@ -201,6 +207,16 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   ScreenshotController screenshotController14 = ScreenshotController();
   ScreenshotController screenshotController15 = ScreenshotController();
   ScreenshotController screenshotController16 = ScreenshotController();
+  
+  ScreenshotController screenshotController17 = ScreenshotController();
+  ScreenshotController screenshotController18 = ScreenshotController();
+  ScreenshotController screenshotController19 = ScreenshotController();
+  ScreenshotController screenshotController20 = ScreenshotController();
+  ScreenshotController screenshotController21 = ScreenshotController();
+  ScreenshotController screenshotController22 = ScreenshotController();
+  ScreenshotController screenshotController23 = ScreenshotController();
+  ScreenshotController screenshotController24 = ScreenshotController();
+  ScreenshotController screenshotController25 = ScreenshotController();
 
   // ignore: unused_element
   _saveCard1PilihKanvasWithImage(layout) async {
@@ -384,19 +400,19 @@ class _LayoutWidgetState extends State<LayoutWidget> {
       if (title.toString().contains("Paket A") ||
           title.toString().contains("Collage A")) {
         // ...
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 6; i++) {
           print("object get data images layout page tipe a $i ${list[i]}");
           listA.add(list[i]);
         }
         print("object list a : $listA");
-      } else {
+      }  if (title.toString().contains("Paket B") ||
+          title.toString().contains("Collage B")) {
         // ...
-        for (var i = 0; i < 16; i++) {
-          print("object get data images layout page tipe b $i ${list[i]}");
+        for (var i = 0; i < 8; i++) {
+          print("object get data images layout page tipe a $i ${list[i]}");
           listB.add(list[i]);
         }
-        // ...
-        print(" === object list b === : $listB");
+        print("object list b : $listB");
       }
     } else {
       print(response.reasonPhrase);
@@ -696,13 +712,15 @@ class _LayoutWidgetState extends State<LayoutWidget> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -718,14 +736,14 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                     height: width * 0.015,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93)
+                        ? HexColor(bg_warna_main)
                         : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93)
+                        ? HexColor(bg_warna_main)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -808,18 +826,14 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                     child: WaveWidget(
                       config: CustomConfig(
                         colors: [
-                          warna1 != ""
-                              ? Color(int.parse(warna1))
-                              : Colors.transparent,
-                          warna2 != ""
-                              ? Color(int.parse(warna2))
-                              : Colors.transparent
+                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                          warna2 != "" ? HexColor(warna2) : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? Color.fromARGB(255, 155, 61, 93)
+                          ? HexColor(bg_warna_main)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -843,7 +857,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93)
+                        ? HexColor(bg_warna_main)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -912,8 +926,40 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                                   .toString()
                                                                   .contains(
                                                                       "Collage A")
-                                                          ? 4
-                                                          : 8,
+                                                          ? 3
+                                                          : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket B") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage B")
+                                                          ? 4 : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket C") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage C")
+                                                          ? 6 : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket D") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage D")
+                                                          ? 8 : title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Paket E") ||
+                                                              title
+                                                                  .toString()
+                                                                  .contains(
+                                                                      "Collage E")
+                                                          ? 10 : 13,
                                                       itemBuilder:
                                                           (BuildContext context,
                                                               int j) {
@@ -2103,7 +2149,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                         OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Colors.black.withOpacity(0.7),
                           ),
                           onPressed: () {
                             // do onpressed...
@@ -2135,7 +2181,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                     alignment: Alignment.centerLeft,
                                     child: Icon(
                                       Icons.arrow_circle_left_outlined,
-                                      color: Color.fromARGB(255, 96, 96, 96),
+                                      color: Colors.white,
                                       size: width * 0.015,
                                     ),
                                   ),
@@ -2146,8 +2192,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: width * 0.010,
-                                          color:
-                                              Color.fromARGB(255, 96, 96, 96),
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ))
@@ -2174,12 +2219,12 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: bg_warna_main != ""
-                                    ? Color.fromARGB(255, 155, 61, 93)
+                                    ? HexColor(bg_warna_main)
                                     : Colors.transparent,
                                 boxShadow: [
                                   BoxShadow(
                                     color: bg_warna_main != ""
-                                        ? Color.fromARGB(255, 155, 61, 93)
+                                        ? HexColor(bg_warna_main)
                                         : Colors.transparent,
                                     spreadRadius: 5,
                                   ),
@@ -27764,7 +27809,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93)
+                        ? HexColor(bg_warna_main)
                         : Colors.transparent,
                     child: Container(
                       child: Column(
@@ -28669,8 +28714,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                               textStyle: Theme.of(context)
                                                   .textTheme
                                                   .labelLarge,
-                                              backgroundColor: Color.fromARGB(
-                                                  255, 255, 255, 255),
+                                              backgroundColor:
+                                                  Colors.black.withOpacity(0.7),
                                             ),
                                             onPressed: () async {
                                               Navigator.push(
@@ -28689,8 +28734,9 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                               title
                                                                   .toString()
                                                                   .contains(
-                                                                      "Paket B") ?
-                                                          choose2.toString() : choose1.toString(),
+                                                                      "Paket B")
+                                                          ? choose2.toString()
+                                                          : choose1.toString(),
                                                       choose_layout2: title
                                                                   .toString()
                                                                   .contains(
@@ -28746,8 +28792,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                       child: Icon(
                                                         Icons
                                                             .arrow_circle_right_outlined,
-                                                        color: Color.fromARGB(
-                                                            255, 96, 96, 96),
+                                                        color: Colors.white,
                                                         size: width * 0.015,
                                                       ),
                                                     ),
@@ -28761,12 +28806,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
                                                           style: TextStyle(
                                                             fontSize:
                                                                 width * 0.010,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    96,
-                                                                    96,
-                                                                    96),
+                                                            color: Colors.white,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),

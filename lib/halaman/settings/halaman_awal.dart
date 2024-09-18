@@ -39,6 +39,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
   //
   var judul;
   var deskripsi;
+  var bg_warna_main = "";
+  var warna1 = "";
+  var warna2 = "";
 
   bool isVisibleCardSeetings = false;
 
@@ -57,10 +60,6 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
     getWarnaBg();
     super.initState();
   }
-
-  var bg_warna_main = "";
-  var warna1 = "";
-  var warna2 = "";
 
   getWarnaBg() async {
     // print("get sesi data");
@@ -116,8 +115,8 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
             serial_key.add(row);
           } // Finally, close the connection
         }).then((value) {
-          print("object serial key : $serial_key");
-          print("serial key length : ${serial_key.length}");
+          // print("object serial key : $serial_key");
+          // print("serial key length : ${serial_key.length}");
         });
         return value.close();
       },
@@ -125,7 +124,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
   }
 
   getSettings() async {
-    // print("get sesi data");
+    print("get settings");
     db.getConnection().then(
       (value) {
         String sql = "select * from `settings`";
@@ -138,7 +137,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
               bg_image = row[6];
             });
           } // Finally, close the connection
-        }).then((value) => print("object pin : $pin"));
+        }).then((value) => print("object pin =============== : $pin"));
         return value.close();
       },
     );
@@ -169,14 +168,15 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-              "${Variables.ipv4_local}/storage/background-image/main/$bg_image",
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bg_image != ""
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -184,7 +184,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
               height: height * 0.12,
               width: width * 1,
               color: bg_warna_main != ""
-                  ? const Color.fromARGB(255, 251, 142, 178)
+                  ? HexColor(bg_warna_main)
                   : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -293,7 +293,7 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                       ),
                       elevation: 1,
                       color: bg_warna_main != ""
-                          ? Color(int.parse(bg_warna_main)).withOpacity(0.1)
+                          ? HexColor(bg_warna_main).withOpacity(0.1)
                           : Colors.transparent,
                       child: InkWell(
                         onTap: () {
@@ -454,6 +454,9 @@ class _HalamanAwalSettingsState extends State<HalamanAwalSettings> {
                         );
                       } else {
                         Navigator.of(context).pop();
+                        setState(() {
+                          isVisibleCardSeetings = !isVisibleCardSeetings;
+                        });
                       }
                     },
                   ),

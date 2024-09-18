@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/order/pilih_pembayaran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,6 +17,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../src/database/db.dart';
+import '../awal/halaman_awal.dart';
 
 late StreamSubscription<bool> keyboardSubscription;
 
@@ -141,6 +143,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
         setState(() {
           // ...
           txtNama.text = textNama;
+          nama_user = textNama;
         });
       }
       if (isTapInputEmail == true) {
@@ -150,6 +153,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
         setState(() {
           // ...
           txtEmail.text = textEmail;
+          email_user = textEmail;
         });
       }
       if (isTapInputTelp == true) {
@@ -159,6 +163,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
         setState(() {
           // ...
           txtTelp.text = textTelp;
+          no_telp = textTelp;
         });
       }
       if (isTapInputInstagram == true) {
@@ -167,6 +172,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
         setState(() {
           // ...
           txtIg.text = textIg;
+          ig = textIg;
         });
       }
       print("object text : $text");
@@ -183,6 +189,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtNama.text = textNama;
+                nama_user = textNama;
               });
             }
           }
@@ -196,6 +203,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtEmail.text = textEmail;
+                email_user = textEmail;
               });
             }
           }
@@ -209,6 +217,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtTelp.text = textTelp;
+                no_telp = textTelp;
               });
             }
           }
@@ -222,6 +231,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtIg.text = textIg;
+                ig = textIg;
               });
             }
           }
@@ -235,6 +245,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtNama.text = textNama;
+                nama_user = textNama;
               });
             }
             if (isTapInputEmail == true) {
@@ -243,6 +254,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtEmail.text = textEmail;
+                email_user = textEmail;
               });
             }
             if (isTapInputTelp == true) {
@@ -251,6 +263,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtTelp.text = textTelp;
+                no_telp = textTelp;
               });
             }
             if (isTapInputInstagram == true) {
@@ -259,6 +272,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtIg.text = textIg;
+                ig = textIg;
               });
             }
           }
@@ -274,6 +288,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtNama.text = textNama;
+                nama_user = textNama;
               });
             }
             if (isTapInputEmail == true) {
@@ -282,6 +297,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtEmail.text = textEmail;
+                email_user = textEmail;
               });
             }
             if (isTapInputTelp == true) {
@@ -290,6 +306,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtTelp.text = textTelp;
+                no_telp = textTelp;
               });
             }
             if (isTapInputInstagram == true) {
@@ -298,6 +315,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
               setState(() {
                 // ...
                 txtIg.text = textIg;
+                ig = textIg;
               });
             }
           }
@@ -393,13 +411,16 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
     //return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -408,7 +429,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               height: height * 0.12,
               width: width * 1,
@@ -480,11 +503,20 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
+                        colors: [
+                          bg_warna_main != ""
+                              ? HexColor(warna1)
+                              : Colors.transparent,
+                          bg_warna_main != ""
+                              ? HexColor(warna2)
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -498,7 +530,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
 
             Container(
               // color: Color.fromARGB(255, 255, 152, 178),
-              height: width * 0.46,
+              height: width * 0.485,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Card(
@@ -524,7 +556,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: height * 0.045,
+                                height: height * 0.025,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
@@ -538,6 +570,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                     children: [
                                       Container(
                                         width: width * 0.55,
+                                        height: width * 0.045,
                                         child: Card(
                                           elevation: 12,
                                           shape: RoundedRectangleBorder(
@@ -548,6 +581,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                             padding:
                                                 const EdgeInsets.only(left: 0),
                                             child: TextFormField(
+                                              style: TextStyle(
+                                                fontSize: width * 0.012,
+                                              ),
                                               controller: txtNama,
                                               onTap: () {
                                                 print("tap textformfield nama");
@@ -562,27 +598,26 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 print(
                                                     "isTapInputNama : $isTapInputNama");
                                               },
-
-                                              // focusNode: inputNode,
-                                              // autofocus: true,
-                                              //maxLines: 1,
-                                              style: TextStyle(
-                                                fontSize: width * 0.012,
-                                              ),
                                               decoration: InputDecoration(
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 icon: Padding(
-                                                  padding: EdgeInsets.all(
-                                                    width * 0.025,
+                                                  padding: EdgeInsets.only(
+                                                    left: width * 0.02,
                                                   ),
                                                   child: Icon(
                                                     Icons.person,
                                                     size: width * 0.025,
                                                   ),
                                                 ),
-                                                hintText: 'Nama kamu ?',
-                                                labelText: 'Nama',
+                                                hintText: isTapInputNama == true
+                                                    ? 'Nama kamu ?'
+                                                    : '',
+                                                labelText:
+                                                    isTapInputNama == false &&
+                                                            nama_user == ""
+                                                        ? 'Nama'
+                                                        : '',
                                                 hintStyle: TextStyle(
                                                   fontSize: width * 0.012,
                                                 ),
@@ -623,6 +658,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: height * 0.005,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
                                   top: 5,
@@ -635,6 +673,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                     children: [
                                       Container(
                                         width: width * 0.55,
+                                        height: width * 0.045,
                                         child: Card(
                                           elevation: 12,
                                           shape: RoundedRectangleBorder(
@@ -666,16 +705,22 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 icon: Padding(
-                                                  padding: EdgeInsets.all(
-                                                    width * 0.025,
+                                                  padding: EdgeInsets.only(
+                                                    left: width * 0.02,
                                                   ),
                                                   child: Icon(
                                                     Icons.phone_android,
                                                     size: width * 0.025,
                                                   ),
                                                 ),
-                                                hintText: 'No telp kamu ?',
-                                                labelText: 'Telp',
+                                                hintText: isTapInputTelp == true
+                                                    ? 'No telp kamu ?'
+                                                    : '',
+                                                labelText:
+                                                    isTapInputTelp == false &&
+                                                            no_telp == ""
+                                                        ? 'Telp'
+                                                        : '',
                                                 hintStyle: TextStyle(
                                                   fontSize: width * 0.012,
                                                 ),
@@ -710,6 +755,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: height * 0.005,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
                                   top: 5,
@@ -722,6 +770,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                     children: [
                                       Container(
                                         width: width * 0.55,
+                                        height: width * 0.045,
                                         child: Card(
                                           elevation: 12,
                                           shape: RoundedRectangleBorder(
@@ -752,16 +801,23 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 icon: Padding(
-                                                  padding: EdgeInsets.all(
-                                                    width * 0.025,
+                                                  padding: EdgeInsets.only(
+                                                    left: width * 0.02,
                                                   ),
                                                   child: Icon(
                                                     Icons.mail,
                                                     size: width * 0.025,
                                                   ),
                                                 ),
-                                                hintText: 'Email kamu ?',
-                                                labelText: 'E-mail',
+                                                hintText:
+                                                    isTapInputEmail == true
+                                                        ? 'Email kamu ?'
+                                                        : '',
+                                                labelText:
+                                                    isTapInputEmail == false &&
+                                                            email_user == ""
+                                                        ? 'E-mail'
+                                                        : '',
                                                 hintStyle: TextStyle(
                                                   fontSize: width * 0.012,
                                                 ),
@@ -796,6 +852,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: height * 0.005,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
                                   top: 5,
@@ -808,6 +867,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                     children: [
                                       Container(
                                         width: width * 0.55,
+                                        height: width * 0.045,
                                         child: Card(
                                           elevation: 12,
                                           shape: RoundedRectangleBorder(
@@ -837,22 +897,31 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                 border: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
                                                 icon: Padding(
-                                                  padding: EdgeInsets.all(
-                                                    width * 0.025,
+                                                  padding: EdgeInsets.only(
+                                                    left: width * 0.02,
                                                   ),
                                                   child: Icon(
                                                     Icons.image_aspect_ratio,
                                                     size: width * 0.025,
                                                   ),
                                                 ),
-                                                hintText: 'IG kamu ?',
+                                                hintText: isTapInputInstagram ==
+                                                            true &&
+                                                        ig == ""
+                                                    ? 'IG kamu ?'
+                                                    : '',
                                                 hintStyle: TextStyle(
                                                   fontSize: width * 0.012,
                                                 ),
                                                 labelStyle: TextStyle(
                                                   fontSize: width * 0.012,
                                                 ),
-                                                labelText: 'Instagram',
+                                                labelText:
+                                                    isTapInputInstagram ==
+                                                                false &&
+                                                            ig == ""
+                                                        ? 'Instagram'
+                                                        : '',
                                                 contentPadding: EdgeInsets.all(
                                                   width * 0.015,
                                                 ),
@@ -884,8 +953,50 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                 ),
                               ),
                               SizedBox(
-                                height: width * 0.055,
+                                height: width * 0.035,
                               ),
+
+                              // ...
+                              Container(
+                                height: isTapInputNama == true ||
+                                        isTapInputTelp == true ||
+                                        isTapInputEmail == true ||
+                                        isTapInputInstagram == true
+                                    ? height * 0.23
+                                    : height * 0.23,
+                                width: isTapInputNama == true ||
+                                        isTapInputTelp == true ||
+                                        isTapInputEmail == true ||
+                                        isTapInputInstagram == true
+                                    ? width * 0.52
+                                    : width * 0.52,
+                                // width: width * 1,
+                                color: bg_warna_main != ""
+                                    ? HexColor(bg_warna_main)
+                                    : Colors.transparent,
+                                child: VirtualKeyboard(
+                                  reverseLayout: false,
+                                  // Default height is 300
+                                  height: height * 0.23,
+                                  // Default height is will screen width
+                                  width: width * 0.52,
+                                  // Default is black
+                                  textColor: Colors.white,
+                                  // Default 14
+                                  fontSize: width * 0.01,
+                                  // the layouts supported
+                                  onKeyPress: isTapInputNama == true ||
+                                          isTapInputTelp == true ||
+                                          isTapInputEmail == true ||
+                                          isTapInputInstagram == true
+                                      ? _onKeyPressKeyboardVirutal
+                                      : null,
+                                  // [A-Z, 0-9]
+                                  type: VirtualKeyboardType.Alphanumeric,
+                                  // Callback for key press event
+                                ),
+                              ),
+
                               Container(
                                 // color: Colors.green,
                                 child: Padding(
@@ -915,17 +1026,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                               ),
                                               onPressed: () {
                                                 // do onpressed...
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //     builder: (context) =>
-                                                //         OrderWidget(),
-                                                //   ),
-                                                // );
-                                                // Navigator.of(context).push(
-                                                //     _routeAnimate(
-                                                //         OrderWidget()));
-
                                                 Navigator.push(
                                                   context,
                                                   PageTransition(
@@ -953,9 +1053,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                       Align(
                                                         alignment: Alignment
                                                             .centerLeft,
-                                                        child: Icon(
-                                                          Icons
-                                                              .arrow_circle_left_outlined,
+                                                        child: FaIcon(
+                                                          FontAwesomeIcons
+                                                              .caretLeft,
                                                           color: const Color
                                                               .fromARGB(
                                                               255, 96, 96, 96),
@@ -996,41 +1096,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                         ),
                                       ),
                                       Container(
-                                        height: isTapInputNama == true ||
-                                                isTapInputTelp == true ||
-                                                isTapInputEmail == true ||
-                                                isTapInputInstagram == true
-                                            ? height * 0.135
-                                            : 0,
-                                        width: isTapInputNama == true ||
-                                                isTapInputTelp == true ||
-                                                isTapInputEmail == true ||
-                                                isTapInputInstagram == true
-                                            ? width * 0.35
-                                            : 0,
-                                        // width: width * 1,
-                                        color:
-                                            Color.fromARGB(255, 251, 142, 178),
-                                        child: VirtualKeyboard(
-                                          reverseLayout: false,
-                                          // Default height is 300
-                                          height: height * 0.135,
-                                          // Default height is will screen width
-                                          width: width * 0.35,
-                                          // Default is black
-                                          textColor: Colors.white,
-                                          // Default 14
-                                          fontSize: width * 0.01,
-                                          // the layouts supported
-                                          onKeyPress:
-                                              _onKeyPressKeyboardVirutal,
-                                          // [A-Z, 0-9]
-                                          type:
-                                              VirtualKeyboardType.Alphanumeric,
-                                          // Callback for key press event
-                                        ),
-                                      ),
-                                      Container(
                                         // color: Colors.grey,
                                         child: Padding(
                                           padding: EdgeInsets.only(
@@ -1047,16 +1112,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                               ),
                                               onPressed: () {
                                                 // do onpressed...
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //     builder: (context) =>
-                                                //         PilihPembayaran(),
-                                                //   ),
-                                                // );
-                                                // Navigator.of(context).push(
-                                                //     _routeAnimate(
-                                                //         PilihPembayaran()));
                                                 Navigator.push(
                                                   context,
                                                   PageTransition(
@@ -1111,9 +1166,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                                                       Align(
                                                         alignment: Alignment
                                                             .centerRight,
-                                                        child: Icon(
-                                                          Icons
-                                                              .arrow_circle_right_outlined,
+                                                        child: FaIcon(
+                                                          FontAwesomeIcons
+                                                              .caretRight,
                                                           color: const Color
                                                               .fromARGB(
                                                               255, 96, 96, 96),
@@ -1138,9 +1193,6 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                       ),
                     ),
                   ),
-                  // ),r
-                  // ),
-                  // ),
                 ),
               ),
             ),

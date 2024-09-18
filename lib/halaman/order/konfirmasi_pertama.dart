@@ -167,13 +167,16 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -195,7 +198,9 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                   Container(
                     height: width * 0.025,
                     width: width * 1,
-                    color: Color.fromARGB(255, 155, 61, 93),
+                    color: bg_warna_main != ""
+                        ? HexColor(bg_warna_main)
+                        : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.025,
@@ -258,11 +263,20 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
+                        colors: [
+                          bg_warna_main != ""
+                              ? HexColor(warna1)
+                              : Colors.transparent,
+                          bg_warna_main != ""
+                              ? HexColor(warna2)
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -435,15 +449,6 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                                             ),
                                             onPressed: () {
                                               // do onpressed...
-                                              // Navigator.push(
-                                              //   context,
-                                              //   // MaterialPageRoute(
-                                              //   //   builder: (context) =>
-                                              //   //       ReviewWidget(),
-                                              //   // ),
-                                              // );
-                                              // Navigator.of(context).push(
-                                              //     _routeAnimate(OrderWidget()));
 
                                               Navigator.push(
                                                 context,

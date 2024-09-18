@@ -274,7 +274,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
         port: 3306,
         user: 'root',
         db: 'foto_selfi',
-        password: 'rama4422',
+        password: 'root4422',
       ),
     ).whenComplete(
       // ignore: avoid_print
@@ -307,7 +307,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
         port: 3306,
         user: 'root',
         db: 'foto_selfi',
-        password: 'rama4422',
+        password: 'root4422',
       ),
     ).whenComplete(
       // ignore: avoid_print
@@ -1258,13 +1258,15 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bg_image != ""
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Visibility(
           visible: !isVisibleMainView,
           child: Column(
@@ -1274,7 +1276,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                 // tambah background image ...
 
                 color: bg_warna_main != ""
-                    ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.95)
+                    ? HexColor(bg_warna_main).withOpacity(0.95)
                     : Colors.transparent,
                 // end background image ...
                 height: height * 0.12,
@@ -1393,8 +1395,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.4)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -1444,8 +1447,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.4)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -1495,8 +1499,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                             Color.fromARGB(255, 155, 61, 93).withOpacity(0.9),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.9)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
                               // ...
@@ -1545,16 +1550,18 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                           border: Border.all(
                               width: 1,
                               color: Color.fromARGB(255, 255, 255, 255)),
-                          color:
-                             Color.fromARGB(255, 155, 61, 93).withOpacity(1),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main)
+                              : Colors.transparent.withOpacity(1),
                         ),
                         width: width * 1,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Card(
-                              color:Color.fromARGB(255, 155, 61, 93)
-                                  .withOpacity(1),
+                              color: bg_warna_main != ""
+                                  ? HexColor(bg_warna_main)
+                                  : Colors.transparent.withOpacity(1),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -1594,8 +1601,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                             ),
                             Card(
-                              color:Color.fromARGB(255, 155, 61, 93)
-                                  .withOpacity(0.9),
+                              color: bg_warna_main != ""
+                                  ? HexColor(bg_warna_main).withOpacity(0.9)
+                                  : Colors.transparent,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -1605,8 +1613,10 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                                         width: 1,
                                         color:
                                             Color.fromARGB(255, 255, 255, 255)),
-                                    color:Color.fromARGB(255, 155, 61, 93)
-                                        .withOpacity(0.9),
+                                    color: bg_warna_main != ""
+                                        ? HexColor(bg_warna_main)
+                                            .withOpacity(0.9)
+                                        : Colors.transparent,
                                   ),
                                   width: width * 0.25,
                                   child: Row(
@@ -1671,8 +1681,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               border: Border.all(
                                   width: 1,
                                   color: Color.fromARGB(255, 255, 255, 255)),
-                              color:Color.fromARGB(255, 155, 61, 93)
-                                  .withOpacity(0.9),
+                              color: bg_warna_main != ""
+                                  ? HexColor(bg_warna_main).withOpacity(0.9)
+                                  : Colors.transparent,
                             ),
                             width: width * 1,
                             height: invoices.isEmpty || invoices.length == 1
@@ -1992,10 +2003,6 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                                 ),
                               ],
                             ),
-                            // height: height * 1,
-                            // child: DataTable(
-                            //     columns: DataColumn(label: Text("text")),
-                            //     rows: DataRow(cells: [])),
                           ),
                         ),
                       ),
@@ -2090,14 +2097,6 @@ Future<void> _dialogBuilder(BuildContext context, title, content, stage) {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.of(context).pop();
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const ReportWidget(),
-                    //   ),
-                    // );
-
                     _dialogPin(context);
                   },
                 ),
@@ -2217,15 +2216,6 @@ Future<void> _dialogPin(BuildContext context) {
                         ),
                       ),
                       onPressed: () {
-                        // Navigator.of(context).pop();
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const ReportWidget(),
-                        //   ),
-                        // );
-                        // Navigator.of(context)
-                        //     .push(_routeAnimate(ReportWidget()));
                         Navigator.push(
                           context,
                           PageTransition(

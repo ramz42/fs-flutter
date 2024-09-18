@@ -11,7 +11,7 @@ class Mysql {
   static String host = "localhost",
       user = "root",
       db = "foto_selfi",
-      password = "rama4422";
+      password = "root4422";
   static int port = 3306;
 
   Mysql();

@@ -424,13 +424,16 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -441,7 +444,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -511,11 +516,20 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
+                        colors: [
+                          bg_warna_main != ""
+                              ? HexColor(warna1)
+                              : Colors.transparent,
+                          bg_warna_main != ""
+                              ? HexColor(warna2)
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -529,7 +543,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
             // ---------------------
             Container(
               // color: Colors.white,
-              height: width * 0.46,
+              height: width * 0.49,
               width: width * 1,
               child: Padding(
                 padding: EdgeInsets.all(width * 0.01),
@@ -554,7 +568,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                         children: [
                           // container
                           SizedBox(
-                            height: width * 0.01,
+                            height: width * 0.04,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(22.0),
@@ -588,7 +602,7 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                               // },
                                               child: Card(
                                                 color: Color.fromARGB(
-                                                    255, 255, 255, 255),
+                                                    151, 255, 255, 255),
                                                 elevation: 12,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
@@ -691,45 +705,21 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                             size: 140,
                                                           )
                                                         : Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          35),
-                                                              border: Border.all(
-                                                                  width: 5,
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          255)),
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      155,
-                                                                      61,
-                                                                      93),
-                                                            ),
-                                                            // color:
-                                                            //     Color.fromARGB(
-                                                            //         255,
-                                                            //         251,
-                                                            //         142,
-                                                            //         178),
                                                             height:
                                                                 width * 0.15,
                                                             width:
                                                                 double.infinity,
                                                             child: Center(
-                                                                child: FaIcon(
-                                                              FontAwesomeIcons
-                                                                  .rupiahSign,
-                                                              color:
-                                                                  Colors.white,
-                                                              size: width * 0.1,
-                                                            ))),
+                                                              child: FaIcon(
+                                                                FontAwesomeIcons
+                                                                    .rupiahSign,
+                                                                color: Colors
+                                                                    .white,
+                                                                size:
+                                                                    width * 0.1,
+                                                              ),
+                                                            ),
+                                                          ),
                                               ),
                                             ),
                                           ),
@@ -743,77 +733,32 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                         child: Padding(
                                           padding:
                                               const EdgeInsets.only(left: 0),
-                                          child: InkWell(
-                                            // ...
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(35),
-                                                border: Border.all(
-                                                    width: 5,
-                                                    color: Color.fromARGB(
-                                                        255, 255, 255, 255)),
-                                                color: Color.fromARGB(
-                                                    255, 155, 61, 93),
-                                              ),
-                                              child: InkWell(
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                                onTap: () {
-                                                  //  ...
-                                                },
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    // Padding(
-                                                    //   padding: const EdgeInsets.all(25.0),
-                                                    //   child: Icon(
-                                                    //     Icons.arrow_circle_left,
-                                                    //     color: Colors.white,
-                                                    //     size: width * 0.0225,
-                                                    //   ),
-                                                    // ),
-                                                    Column(
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(15.0),
-                                                          child: Text(
-                                                            "Masa Berlaku"
-                                                                .toUpperCase(),
-                                                            style: TextStyle(
-                                                              fontSize: 40,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  bottom: 15.0),
-                                                          child: Countdown(
-                                                            animation:
-                                                                StepTween(
-                                                              begin:
-                                                                  levelClock, // THIS IS A USER ENTERED NUMBER
-                                                              end: 0,
-                                                            ).animate(
-                                                                    _controller),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                          child: Column(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(15.0),
+                                                child: Text(
+                                                  "Masa Berlaku".toUpperCase(),
+                                                  style: TextStyle(
+                                                    fontSize: 40,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 15.0),
+                                                child: Countdown(
+                                                  animation: StepTween(
+                                                    begin:
+                                                        levelClock, // THIS IS A USER ENTERED NUMBER
+                                                    end: 0,
+                                                  ).animate(_controller),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -1173,17 +1118,10 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                 ),
                               ],
                             ),
-
-                            // Padding(
-                            //   padding: const EdgeInsets.all(45.0),
-                            //   child:
-                            // ),
-                            //   ],
-                            // ),
                           ),
 
                           SizedBox(
-                            height: width * 0.02,
+                            height: width * 0.05,
                           ),
                           Container(
                             // color: Colors.green,
@@ -1250,9 +1188,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                   Align(
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: Icon(
-                                                      Icons
-                                                          .arrow_circle_left_outlined,
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .caretLeft,
                                                       color:
                                                           const Color.fromARGB(
                                                               255, 96, 96, 96),
@@ -1350,9 +1288,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
                                                   Align(
                                                     alignment:
                                                         Alignment.centerRight,
-                                                    child: Icon(
-                                                      Icons
-                                                          .check_circle_rounded,
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons
+                                                          .checkCircle,
                                                       color:
                                                           const Color.fromARGB(
                                                               255, 96, 96, 96),

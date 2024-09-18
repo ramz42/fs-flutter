@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fs_dart/halaman/awal/halaman_awal.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:fs_dart/halaman/edit/layout.dart';
 import 'package:localstorage/localstorage.dart';
@@ -193,7 +194,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
       background.addAll(result);
       for (var element in background) {
         setState(() {
-          headerImg = element["header_image"];
+          // headerImg = element["header_image"];
           bgImg = element["background_image"];
         });
       }
@@ -7409,13 +7410,15 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -7431,13 +7434,13 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                       height: width * 0.012,
                       width: width * 1,
                       color: bg_warna_main != ""
-                          ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
+                          ? HexColor(bg_warna_main).withOpacity(0.7)
                           : Colors.transparent),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
+                        ? HexColor(bg_warna_main).withOpacity(0.7)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -7520,19 +7523,16 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                     child: WaveWidget(
                       config: CustomConfig(
                         colors: [
-                          warna1 != ""
-                              ? Colors.transparent
-                              : Colors.transparent,
+                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
                           warna2 != ""
-                              ? Color.fromARGB(255, 155, 61, 93)
-                                  .withOpacity(0.7)
+                              ? HexColor(warna2).withOpacity(0.7)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
+                          ? HexColor(bg_warna_main).withOpacity(0.7)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -7563,7 +7563,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.7)
+                        ? HexColor(bg_warna_main).withOpacity(0.7)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -18342,7 +18342,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                     width: width * 0.25,
                     color: bg_warna_main != ""
-                        ? Color.fromARGB(255, 155, 61, 93)
+                        ? HexColor(bg_warna_main)
                         : Colors.transparent,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

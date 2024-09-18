@@ -1,13 +1,14 @@
 // ignore_for_file: unused_import, must_call_super, override_on_non_overriding_member
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/order/konfirmasi_kedua.dart';
 import 'package:flutter/material.dart';
 import 'package:fs_dart/halaman/order/order.dart';
-import 'package:fs_dart/konfigurasi/database/db.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+import '../../src/database/db.dart';
 import '../../src/variables.g.dart';
 import '../awal/halaman_awal.dart';
 import 'pilih_pembayaran.dart';
@@ -169,13 +170,16 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -186,7 +190,9 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -256,11 +262,20 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                     width: width * 1,
                     child: WaveWidget(
                       config: CustomConfig(
-                        colors: [Colors.transparent, Colors.transparent],
+                        colors: [
+                          bg_warna_main != ""
+                              ? HexColor(warna1)
+                              : Colors.transparent,
+                          bg_warna_main != ""
+                              ? HexColor(warna2)
+                              : Colors.transparent
+                        ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -272,7 +287,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
             // end header page view
             // ---------------------
             Container(
-              height: width * 0.46,
+              height: width * 0.493,
               width: width * 1,
               child: Padding(
                 padding: EdgeInsets.all(width * 0.018),
@@ -300,10 +315,13 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           // container
-
+                          SizedBox(
+                            height: 25,
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 45.0),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 0),
@@ -318,25 +336,25 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 15,
                                 ),
                                 Container(
                                   width: width * 0.8,
                                   child: Padding(
                                     padding: const EdgeInsets.all(25),
                                     child: Text(
-                                      "Terima kasih telah berbelanja produk di selly time. bukti pembayaran Qr Code kami kirimkan melalui email yang sudah anda daftarkan, periksa folder spam atau junk pada email anda jika pada beberapa saat ini anda belum juga menerima email dari kami.",
+                                      "Terima kasih telah berbelanja produk di photobooth. bukti pembayaran Qr Code kami kirimkan melalui email yang sudah anda daftarkan, periksa folder spam atau junk pada email anda jika pada beberapa saat ini anda belum juga menerima email dari kami.",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: width * 0.015,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                      textAlign: TextAlign.start,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 15,
                                 ),
                                 Container(
                                   width: width * 0.8,
@@ -349,7 +367,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                         fontSize: width * 0.015,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                      textAlign: TextAlign.start,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ),
@@ -358,7 +376,7 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                           ),
 
                           SizedBox(
-                            height: width * 0.03,
+                            height: width * 0.072,
                           ),
                           Container(
                             // width: width * 1,
@@ -411,9 +429,8 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                                             children: <Widget>[
                                               Align(
                                                 alignment: Alignment.centerLeft,
-                                                child: Icon(
-                                                  Icons
-                                                      .arrow_circle_left_outlined,
+                                                child: FaIcon(
+                                                  FontAwesomeIcons.caretLeft,
                                                   color: const Color.fromARGB(
                                                       255, 96, 96, 96),
                                                   size: width * 0.025,

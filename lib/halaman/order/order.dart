@@ -3,6 +3,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fs_dart/halaman/order/review.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:fs_dart/src/variables.g.dart';
@@ -132,7 +133,7 @@ class _OrderWidgetState extends State<OrderWidget> {
         port: 3306,
         user: 'root',
         db: 'foto_selfi',
-        password: 'rama4422',
+        password: 'root4422',
       ),
     ).whenComplete(
       () {
@@ -204,13 +205,16 @@ class _OrderWidgetState extends State<OrderWidget> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bgImg != "" && backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -221,7 +225,9 @@ class _OrderWidgetState extends State<OrderWidget> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -299,7 +305,7 @@ class _OrderWidgetState extends State<OrderWidget> {
 
             Container(
               color: Colors.transparent,
-              height: height * 0.85,
+              height: height * 0.87,
               width: width * 1,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
@@ -338,8 +344,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                       shaderCallback: (Rect bounds) {
                                         return LinearGradient(
                                           colors: [
-                                            Color.fromARGB(255, 155, 61, 93),
-                                            Color.fromARGB(255, 155, 61, 93),
+                                            Color.fromARGB(255, 255, 255, 255),
+                                            Color.fromARGB(255, 255, 255, 255),
                                           ],
                                           stops: [
                                             0.0,
@@ -353,14 +359,14 @@ class _OrderWidgetState extends State<OrderWidget> {
                                   width: 25,
                                 ),
                                 Container(
-                                  width: width * 0.775,
+                                  width: width * 0.85,
                                   height: height * 0.8,
                                   child: Center(
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Wrap(
                                         alignment: WrapAlignment.center,
-                                        spacing: width * 0.01,
+                                        spacing: width * 0.025,
                                         runSpacing: width * 0.15,
                                         children: [
                                           if (menu != null)
@@ -370,20 +376,20 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(35),
                                                   border: Border.all(
-                                                      width: 5,
+                                                      width: 10,
                                                       color: Color.fromARGB(
                                                           255, 255, 255, 255)),
-                                                  color: Color.fromARGB(
-                                                      255, 155, 61, 93),
+                                                  color: bg_warna_main != ""
+                                                      ? HexColor(bg_warna_main)
+                                                      : Colors.transparent,
                                                 ),
-                                                width: width * 0.25,
-                                                height: height * 0.6,
+                                                width: width * 0.14,
+                                                height: height * 0.4,
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
-                                                    color: Color.fromARGB(
-                                                        255, 155, 61, 93),
+                                                    color: HexColor(warna1),
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(
@@ -423,7 +429,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                .all(15.0),
+                                                                .all(5.0),
                                                         child: Column(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -450,67 +456,163 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                            Text(
-                                                              item["title"]
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                fontSize:
-                                                                    width *
-                                                                        0.02,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        255,
-                                                                        255,
-                                                                        255),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              item["deskripsi"],
-                                                              style: TextStyle(
-                                                                fontSize:
-                                                                    width *
-                                                                        0.014,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic,
-                                                              ),
-                                                              textAlign:
-                                                                  TextAlign
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
                                                                       .center,
+                                                              children: [
+                                                                Text(
+                                                                  item["title"]
+                                                                      .toString(),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.012,
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            255,
+                                                                            255,
+                                                                            255),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w800,
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                            Text(
-                                                              "Harga : Rp. ${item["harga"]},-"
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                fontSize:
-                                                                    width *
-                                                                        0.014,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic,
-                                                              ),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.015,
+                                                                ),
+                                                                Container(
+                                                                  child:
+                                                                      const FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .fileText,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 18,
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.007,
+                                                                ),
+                                                                Text(
+                                                                  item[
+                                                                      "deskripsi"],
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.008,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .normal,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                ),
+                                                              ],
                                                             ),
-                                                            Text(
-                                                              "Waktu Sesi : ${item["waktu"]} Menit"
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                fontSize:
-                                                                    width *
-                                                                        0.014,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic,
-                                                              ),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.015,
+                                                                ),
+                                                                Container(
+                                                                  child:
+                                                                      const FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .rupiahSign,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 18,
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.007,
+                                                                ),
+                                                                Text(
+                                                                  "Harga : Rp. ${item["harga"]},-"
+                                                                      .toString(),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.008,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .normal,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.015,
+                                                                ),
+                                                                Container(
+                                                                  child:
+                                                                      const FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .clock,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 18,
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: width *
+                                                                      0.007,
+                                                                ),
+                                                                Text(
+                                                                  "Waktu Sesi : ${item["waktu"]} Menit"
+                                                                      .toString(),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        width *
+                                                                            0.008,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .normal,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
@@ -539,8 +641,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                     shaderCallback: (Rect bounds) {
                                       return LinearGradient(
                                         colors: [
-                                          Color.fromARGB(255, 155, 61, 93),
-                                          Color.fromARGB(255, 155, 61, 93),
+                                          Color.fromARGB(255, 255, 255, 255),
+                                          Color.fromARGB(255, 255, 255, 255),
                                         ],
                                         stops: [
                                           0.0,
@@ -556,7 +658,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                           ),
                         ),
                         SizedBox(
-                          height: width * 0.035,
+                          height: width * 0.064,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: width * 0.015),
@@ -606,8 +708,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                     children: <Widget>[
                                       Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Icon(
-                                          Icons.arrow_circle_left_outlined,
+                                        child: FaIcon(
+                                          FontAwesomeIcons.caretLeft,
                                           color: const Color.fromARGB(
                                               255, 96, 96, 96),
                                           size: width * 0.025,

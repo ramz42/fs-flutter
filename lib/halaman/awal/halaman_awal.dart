@@ -94,7 +94,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
   }
 
   getSettings() async {
-    // print("get sesi data");
+    print("get settings data");
     db.getConnection().then(
       (value) {
         String sql = "select * from `settings`";
@@ -104,7 +104,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               pin = row[3];
             });
           } // Finally, close the connection
-        }).then((value) => print("object pin : $pin"));
+        }).then((value) => print("object pin ===== : $pin"));
         return value.close();
       },
     );
@@ -120,8 +120,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
       serial_key_storage = await storage.getItem('serial_keys');
       bgImg = await storage.getItem('background_images');
 
-      print("serial_key_storage : $serial_key_storage");
-      print("background_storage : $bgImg");
+      // print("serial_key_storage : $serial_key_storage");
+      // print("background_storage : $bgImg");
       if (serial_key_storage == null || bgImg == "") {
         getSerialKey();
         getOrderSettings();
@@ -141,7 +141,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
       for (var element in serial_key) {
         key.add(element["serial_key"]);
       }
-      print("element serial key : ${key}");
+      // print("element serial key : ${key}");
     } else {
       print(response.reasonPhrase);
     }
@@ -177,10 +177,10 @@ class _HalamanAwalState extends State<HalamanAwal> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       background.addAll(result);
-      print("background : ${background}");
+      // print("background : ${background}");
 
       for (var element in background) {
-        print("background_image : ${element["background_image"]}");
+        // print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
@@ -409,12 +409,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
   }
 
   _saveStorage(key) async {
-    print("save storage serial keys : $key");
+    // print("save storage serial keys : $key");
     await storage.setItem('serial_keys', "$key");
   }
 
   _saveStorageBg(element, element2) async {
-    print("save storage background : $element");
+    // print("save storage background : $element");
     // print("save storage serial keys : $key");
     // await storage.setItem('serial_keys', "$key");
     await storage.setItem('background_images', "$element");
@@ -470,14 +470,14 @@ class _HalamanAwalState extends State<HalamanAwal> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: bgImg != "" ? BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(bgImg == ""
                 ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
                 : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
             fit: BoxFit.cover,
           ),
-        ),
+        ) : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -488,7 +488,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 155, 61, 93),
+                color: bg_warna_main != ""
+                    ? HexColor(bg_warna_main)
+                    : Colors.transparent,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -499,14 +501,13 @@ class _HalamanAwalState extends State<HalamanAwal> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
-                          height: width * 0.005,
+                          height: width * 0.007,
                         ),
                         Container(
-                          height: width * 0.035,
+                          height: width * 0.03,
                           width: width * 1,
                           color: bg_warna_main != ""
-                              ? Color.fromARGB(255, 155, 61, 93)
-                                  .withOpacity(0.7)
+                              ? HexColor(bg_warna_main).withOpacity(0.7)
                               : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -589,24 +590,30 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         Container(
-                          height: height * 0.035,
+                          height: height * 0.03,
                           width: width * 1,
                           child: WaveWidget(
                             config: CustomConfig(
                               colors: [
-                                const Color.fromARGB(255, 249, 146, 181),
-                                const Color.fromARGB(255, 215, 85, 128),
+                                bg_warna_main != ""
+                                    ? HexColor(warna1)
+                                    : Colors.transparent,
+                                bg_warna_main != ""
+                                    ? HexColor(warna2)
+                                    : Colors.transparent,
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
-                            backgroundColor: const Color.fromARGB(255, 249, 98, 149),
+                            backgroundColor: bg_warna_main != ""
+                                ? HexColor(bg_warna_main)
+                                : Colors.transparent,
                             size: const Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
                         ),
                         SizedBox(
-                          height: width * 0.005,
+                          height: width * 0.007,
                         ),
                       ],
                     ),
@@ -637,8 +644,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         elevation: 1,
-                        color: const Color.fromARGB(255, 155, 61, 93)
-                            .withOpacity(0.9),
+                        color: bg_warna_main != ""
+                            ? HexColor(bg_warna_main).withOpacity(0.9)
+                            : Colors.transparent,
                         child: InkWell(
                           borderRadius: const BorderRadius.all(
                             Radius.circular(
@@ -660,18 +668,28 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           },
                           child: Padding(
                             padding: EdgeInsets.only(
-                              top: width * 0.055,
-                              bottom: width * 0.055,
-                              left: width * 0.016,
-                              right: width * 0.016,
+                              top: width * 0.03,
+                              bottom: width * 0.03,
+                              left: width * 0.07,
+                              right: width * 0.07,
                             ),
-                            child: Text(
-                              "   ORDER   ",
-                              style: TextStyle(
-                                fontSize: width * 0.035,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                              ),
+                            child: Column(
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.bookOpen,
+                                  color: Colors.white,
+                                  size: 140,
+                                ),
+                                Text(
+                                  "Order\nMenu",
+                                  style: TextStyle(
+                                    fontSize: width * 0.03,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -689,8 +707,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: const Color.fromARGB(255, 155, 61, 93)
-                          .withOpacity(0.9),
+                      color: bg_warna_main != ""
+                          ? HexColor(bg_warna_main).withOpacity(0.9)
+                          : Colors.transparent,
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");
@@ -714,17 +733,26 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           padding: EdgeInsets.only(
                             top: width * 0.03,
                             bottom: width * 0.03,
-                            left: width * 0.05,
-                            right: width * 0.05,
+                            left: width * 0.07,
+                            right: width * 0.07,
                           ),
-                          child: Text(
-                            "SESI\nPHOTO",
-                            style: TextStyle(
-                              fontSize: width * 0.035,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                            ),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.camera,
+                                color: Colors.white,
+                                size: 140,
+                              ),
+                              Text(
+                                "Sesi\nPhoto",
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -741,8 +769,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         ),
                       ),
                       elevation: 1,
-                      color: const Color.fromARGB(255, 155, 61, 93)
-                          .withOpacity(0.9),
+                      color: bg_warna_main != ""
+                          ? HexColor(bg_warna_main).withOpacity(0.9)
+                          : Colors.transparent,
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");
@@ -766,17 +795,26 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           padding: EdgeInsets.only(
                             top: width * 0.03,
                             bottom: width * 0.03,
-                            left: width * 0.05,
-                            right: width * 0.05,
+                            left: width * 0.07,
+                            right: width * 0.07,
                           ),
-                          child: Text(
-                            "EDIT\nPHOTO",
-                            style: TextStyle(
-                              fontSize: width * 0.035,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                            ),
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.photoFilm,
+                                color: Colors.white,
+                                size: 140,
+                              ),
+                              Text(
+                                "Edit\nPhoto",
+                                style: TextStyle(
+                                  fontSize: width * 0.03,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -800,8 +838,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
-          surfaceTintColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
+          backgroundColor: bg_warna_main != ""
+              ? HexColor(bg_warna_main).withOpacity(0.7)
+              : Colors.transparent,
+          surfaceTintColor: bg_warna_main != ""
+              ? HexColor(bg_warna_main).withOpacity(0.7)
+              : Colors.transparent,
           title: Text(
             title,
             style: const TextStyle(
@@ -861,13 +903,9 @@ class _HalamanAwalState extends State<HalamanAwal> {
                 }
                 if (stage == 2) {
                   // ...
-                  print("pin dialog");
-                  _showMyDialogPin(pin);
-                  Navigator.of(context).pop();
-                } else {
                   Navigator.of(context).pop();
                   exit(0);
-
+                } else {
                   // ...
                 }
                 // Navigator.of(context).pop();
@@ -885,8 +923,12 @@ class _HalamanAwalState extends State<HalamanAwal> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
-          surfaceTintColor: Color.fromARGB(255, 251, 142, 178).withOpacity(0.7),
+          backgroundColor: bg_warna_main != ""
+              ? HexColor(bg_warna_main).withOpacity(0.7)
+              : Colors.transparent,
+          surfaceTintColor: bg_warna_main != ""
+              ? HexColor(bg_warna_main).withOpacity(0.7)
+              : Colors.transparent,
           title: const Text(
             'Masukkan Pin',
             style: TextStyle(
@@ -1083,3 +1125,15 @@ final submittedPinTheme = defaultPinTheme.copyWith(
     color: const Color.fromRGBO(234, 239, 243, 1),
   ),
 );
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}

@@ -220,7 +220,7 @@ class _MenuWidgetState extends State<MenuWidget> {
         port: 3306,
         user: 'root',
         db: 'foto_selfi',
-        password: 'rama4422',
+        password: 'root4422',
 
         // host: "217.21.72.2",
         // port: 3306,
@@ -547,13 +547,15 @@ class _MenuWidgetState extends State<MenuWidget> {
 
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: bg_image != ""
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Visibility(
           visible: !isVisibleMainView,
           child: Column(
@@ -563,7 +565,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 height: height * 0.12,
                 width: width * 1,
                 color: bg_warna_main != ""
-                    ? Color.fromARGB(255, 155, 61, 93).withOpacity(0.95)
+                    ? HexColor(bg_warna_main).withOpacity(0.95)
                     : Colors.transparent,
                 // tambah background image ...
 
@@ -691,17 +693,16 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.4)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: HalamanAwal(
-                                      backgrounds: null,
-                                      header: null,
+                                    child: SettingsWidget(
                                     ),
                                     inheritTheme: true,
                                     ctx: context),
@@ -747,8 +748,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.9),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.9)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
                               // Navigator.push(
@@ -798,20 +800,11 @@ class _MenuWidgetState extends State<MenuWidget> {
                             ),
                           ),
                           elevation: 1,
-                          color:
-                              Color.fromARGB(255, 155, 61, 93).withOpacity(0.4),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main).withOpacity(0.4)
+                              : Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => const ReportWidget(
-                              //         // camera: camera,
-                              //         ),
-                              //   ),
-                              // );
-                              // Navigator.of(context)
-                              //     .push(_routeAnimate(ReportWidget()));
                               Navigator.push(
                                 context,
                                 PageTransition(
@@ -932,12 +925,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                           TextInputType.number,
                                                       decoration:
                                                           InputDecoration(
-                                                        // border: new OutlineInputBorder(
-                                                        //     borderSide:
-                                                        //         new BorderSide(
-                                                        //             color: Colors
-                                                        //                 .transparent)),
-
                                                         border:
                                                             InputBorder.none,
                                                         focusedBorder:

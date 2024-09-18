@@ -705,51 +705,41 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
 
   void countTakePicture() async {
     if (title.toString().contains(" A") ||
-        title.toString().contains(" a") ||
-        title.toString().contains("collage a") ||
-        title.toString().contains("Collage A") ||
-        title.toString().contains("Strip A") ||
-        title.toString().contains("Paket A") ||
-        title.toString().contains("Foto Book A")) {
+        title.toString().contains("Paket A")) {
+      setState(() {
+        countTakePictures = 6;
+      });
+    }
+    if (title.toString().contains(" B") ||
+        title.toString().contains("Paket B")) {
       setState(() {
         countTakePictures = 8;
       });
-    } else
-    // (title.toString().contains(" B") ||
-    //     title.toString().contains(" b") ||
-    //     title.toString().contains("collage b") ||
-    //     title.toString().contains("Collage B") ||
-    //     title.toString().contains("Strip B") ||
-    // title.toString().contains("Paket B"))
-    {
+    }
+    if (title.toString().contains(" C") ||
+        title.toString().contains("Paket C")) {
+      setState(() {
+        countTakePictures = 12;
+      });
+    }
+    if (title.toString().contains(" D") ||
+        title.toString().contains("Paket D")) {
       setState(() {
         countTakePictures = 16;
       });
-      print("take picture 16x");
     }
-    // if (title.toString().contains(" E") ||
-    //     title.toString().contains(" e") ||
-    //     title.toString().contains("collage e") ||
-    //     title.toString().contains("Collage F") ||
-    //     title.toString().contains("Strip E") ||
-    //     title.toString().contains("Paket E")) {
-    //   setState(() {
-    //     countTakePictures = 20;
-    //   });
-    //   print("take picture 20x");
-    // }
-
-    // if (title.toString().contains(" F") ||
-    //     title.toString().contains(" f") ||
-    //     title.toString().contains("collage f") ||
-    //     title.toString().contains("Collage F") ||
-    //     title.toString().contains("Strip F") ||
-    //     title.toString().contains("Paket F")) {
-    //   setState(() {
-    //     countTakePictures = 25;
-    //   });
-    //   print("take picture 25x");
-    // }
+    if (title.toString().contains(" E") ||
+        title.toString().contains("Paket E")) {
+      setState(() {
+        countTakePictures = 20;
+      });
+    }
+    if (title.toString().contains(" F") ||
+        title.toString().contains("Paket F")) {
+      setState(() {
+        countTakePictures = 25;
+      });
+    }
   }
 
   Future<void> _dialogRetake(BuildContext context, filename, index) {
@@ -894,10 +884,12 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
           width: 200,
           height: 150,
           child: AlertDialog(
-            backgroundColor:
-                const Color.fromARGB(255, 251, 142, 178).withOpacity(0.9),
-            surfaceTintColor:
-                const Color.fromARGB(255, 251, 142, 178).withOpacity(0.9),
+            backgroundColor: bg_warna_main == ""
+                ? Colors.transparent
+                : HexColor(bg_warna_main).withOpacity(0.9),
+            surfaceTintColor: bg_warna_main == ""
+                ? Colors.transparent
+                : HexColor(bg_warna_main).withOpacity(0.9),
             title: Padding(
               padding: const EdgeInsets.only(top: 25, bottom: 10),
               child: Text(
@@ -1025,7 +1017,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
 
     return Material(
       child: Container(
-        color: Color.fromARGB(255, 155, 61, 93),
+        color:
+            bg_warna_main != "" ? HexColor(bg_warna_main) : Colors.transparent,
         child: Stack(
           children: [
             // Positioned(
@@ -1050,7 +1043,7 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                             width: width * 1,
                             color: bg_warna_main == ""
                                 ? Colors.transparent
-                                : Color.fromARGB(255, 251, 142, 178)),
+                                : HexColor(bg_warna_main)),
                         Container(
                           height: height * 0.025,
                           width: width * 1,
@@ -1059,17 +1052,17 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                               colors: [
                                 warna1 == ""
                                     ? Colors.transparent
-                                    : Color.fromARGB(255, 155, 61, 93),
+                                    : HexColor(bg_warna_main),
                                 warna2 == ""
                                     ? Colors.transparent
-                                    : Color.fromARGB(255, 155, 61, 93),
+                                    : HexColor(bg_warna_main),
                               ],
                               durations: _durations,
                               heightPercentages: _heightPercentages,
                             ),
                             backgroundColor: bg_warna_main == ""
                                 ? Colors.transparent
-                                : Color.fromARGB(255, 155, 61, 93),
+                                : HexColor(bg_warna_main),
                             size: Size(double.infinity, double.infinity),
                             waveAmplitude: 0,
                           ),
@@ -1123,21 +1116,6 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        // Text(
-                                        //   "Hasil Photo",
-                                        //   style: TextStyle(
-                                        //     fontWeight: FontWeight.bold,
-                                        //     fontSize: width * 0.02,
-                                        //     color: Colors.white,
-                                        //   ),
-                                        // ),
-                                        // SizedBox(
-                                        //   height: list.length <= 8
-                                        //       ? width * 0.08
-                                        //       : width * 0.12,
-                                        // ),
-                                        // Column(
-                                        //   children: [
                                         Container(
                                           width: width * 0.08,
                                           height: width * 0.08,
@@ -1150,10 +1128,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                             shaderCallback: (Rect bounds) {
                                               return LinearGradient(
                                                 colors: [
-                                                  Color.fromARGB(
-                                                      255, 155, 61, 93),
-                                                  Color.fromARGB(
-                                                      255, 155, 61, 93),
+                                                  Colors.black,
+                                                  Colors.black,
                                                 ],
                                                 stops: [
                                                   0.0,
@@ -1195,12 +1171,6 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                                         elevation: 5,
                                                         child: InkWell(
                                                           onTap: () {
-                                                            // ...
-                                                            // _dialogRetake(
-                                                            //     context,
-                                                            //     list[i],
-                                                            //     i);
-
                                                             _dialogBuilderRetake(
                                                                 context,
                                                                 list[i],
@@ -1242,10 +1212,8 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                             shaderCallback: (Rect bounds) {
                                               return LinearGradient(
                                                 colors: [
-                                                  Color.fromARGB(
-                                                      255, 155, 61, 93),
-                                                  Color.fromARGB(
-                                                      255, 155, 61, 93),
+                                                  Colors.black,
+                                                  Colors.black,
                                                 ],
                                                 stops: [
                                                   0.0,
@@ -1316,8 +1284,9 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                         : Container(
                                             width: width * 0.5,
                                             height: width * 0.25,
-                                            color: Color.fromARGB(
-                                                255, 251, 142, 178),
+                                            color: bg_warna_main == ""
+                                                ? Colors.transparent
+                                                : HexColor(bg_warna_main),
                                           ),
                                   ],
                                 ),
@@ -1337,9 +1306,10 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(65),
-                                            color:
-                                                Color.fromARGB(255, 155, 61, 93)
-                                                    .withOpacity(0.7),
+                                            color: bg_warna_main != ""
+                                                ? HexColor(bg_warna_main)
+                                                    .withOpacity(0.7)
+                                                : Colors.transparent,
                                             boxShadow: [],
                                           ),
                                           // child: Card(
@@ -1384,8 +1354,12 @@ class _FotoSesiWidgetState extends State<FotoSesiWidget>
                                             ? ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
                                                     backgroundColor:
-                                                        Color.fromARGB(255, 155, 61, 93)
-                                                            .withOpacity(0.7),
+                                                        bg_warna_main == ""
+                                                            ? Colors.transparent
+                                                            : HexColor(
+                                                                    bg_warna_main)
+                                                                .withOpacity(
+                                                                    0.7),
                                                     textStyle: TextStyle(
                                                         fontSize: 30,
                                                         fontWeight:
@@ -1771,7 +1745,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                 child: Padding(
                   padding: const EdgeInsets.all(0),
                   child: AlertDialog(
-                    backgroundColor: Color.fromARGB(255, 155, 61, 93),
+                    backgroundColor: bg_warna_main != ""
+                        ? HexColor(bg_warna_main)
+                        : Colors.transparent,
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
                       child: Text(
@@ -1810,8 +1786,12 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                     top: 5,
                                     right: 5,
                                   ),
-                                  focusColor: Color.fromARGB(255, 155, 61, 93),
-                                  fillColor: Color.fromARGB(255, 155, 61, 93),
+                                  focusColor: bg_warna_main != ""
+                                      ? HexColor(bg_warna_main)
+                                      : Colors.transparent,
+                                  fillColor: bg_warna_main != ""
+                                      ? HexColor(bg_warna_main)
+                                      : Colors.transparent,
                                   label: Text(
                                     "Kode",
                                     style: TextStyle(
@@ -1856,9 +1836,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                               padding: const EdgeInsets.all(15.0),
                               child: Text(
                                 'Batal',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Color.fromARGB(255, 155, 61, 93),
+                                  color: HexColor(bg_warna_main),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1884,9 +1864,11 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                               padding: const EdgeInsets.all(15.0),
                               child: Text(
                                 'Input',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Color.fromARGB(255, 155, 61, 93),
+                                  color: bg_warna_main != ""
+                                      ? HexColor(bg_warna_main)
+                                      : Colors.transparent,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1917,13 +1899,15 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
     double height = MediaQuery.of(context).size.height;
     return Material(
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           children: [
             SizedBox(
@@ -1938,7 +1922,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: Color.fromARGB(255, 155, 61, 93),
+                    color: bg_warna_main == ""
+                        ? Colors.transparent
+                        : HexColor(bg_warna_main),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -1984,11 +1970,20 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                       width: width * 1,
                       child: WaveWidget(
                         config: CustomConfig(
-                          colors: [Colors.transparent, Colors.transparent],
+                          colors: [
+                            bg_warna_main == ""
+                                ? Colors.transparent
+                                : HexColor(warna1),
+                            bg_warna_main == ""
+                                ? Colors.transparent
+                                : HexColor(warna2)
+                          ],
                           durations: _durations,
                           heightPercentages: _heightPercentages,
                         ),
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: bg_warna_main == ""
+                            ? Colors.transparent
+                            : HexColor(bg_warna_main),
                         size: const Size(double.infinity, double.infinity),
                         waveAmplitude: 0,
                       ),
@@ -2018,7 +2013,9 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                         ),
                       ),
                       elevation: 1,
-                      color: Color.fromARGB(255, 155, 61, 93),
+                      color: bg_warna_main == ""
+                          ? Colors.transparent
+                          : HexColor(bg_warna_main),
                       child: InkWell(
                         borderRadius: const BorderRadius.all(
                           Radius.circular(

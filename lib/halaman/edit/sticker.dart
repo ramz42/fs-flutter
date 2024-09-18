@@ -7863,13 +7863,15 @@ class _StickerWidgetState extends State<StickerWidget> {
       child: Screenshot(
         controller: screenshotController,
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: backgrounds != null
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
           child: Stack(
             children: [
               Container(
@@ -7891,13 +7893,13 @@ class _StickerWidgetState extends State<StickerWidget> {
                                 height: width * 0.015,
                                 width: width * 1,
                                 color: bg_warna_main != ""
-                                    ? Color.fromARGB(255, 155, 61, 93)
+                                    ? HexColor(bg_warna_main)
                                     : Colors.transparent),
                             Container(
                               height: width * 0.035,
                               width: width * 1,
                               color: bg_warna_main != ""
-                                  ? Color.fromARGB(255, 155, 61, 93)
+                                  ? HexColor(bg_warna_main)
                                   : Colors.transparent,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -7981,17 +7983,17 @@ class _StickerWidgetState extends State<StickerWidget> {
                                 config: CustomConfig(
                                   colors: [
                                     warna1 != ""
-                                        ? Color(int.parse(warna1))
+                                        ? HexColor(warna1)
                                         : Colors.transparent,
                                     warna2 != ""
-                                        ? Color(int.parse(warna2))
+                                        ? HexColor(warna2)
                                         : Colors.transparent
                                   ],
                                   durations: _durations,
                                   heightPercentages: _heightPercentages,
                                 ),
                                 backgroundColor: bg_warna_main != ""
-                                    ? Color.fromARGB(255, 155, 61, 93)
+                                    ? HexColor(bg_warna_main)
                                     : Colors.transparent,
                                 size: Size(double.infinity, double.infinity),
                                 waveAmplitude: 0,
@@ -8032,7 +8034,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             child: Container(
                               width: width * 0.25,
                               color: bg_warna_main != ""
-                                  ? Color.fromARGB(255, 155, 61, 93)
+                                  ? HexColor(bg_warna_main)
                                   : Colors.transparent,
                               child: Column(
                                 children: [
@@ -17470,7 +17472,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                             child: Container(
                               width: width * 0.25,
                               color: bg_warna_main != ""
-                                  ? Color.fromARGB(255, 155, 61, 93)
+                                  ? HexColor(bg_warna_main)
                                   : Colors.transparent,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
