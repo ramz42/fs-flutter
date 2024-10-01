@@ -429,9 +429,7 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: bg_warna_main != ""
-                    ? HexColor(bg_warna_main)
-                    : Colors.transparent,
+                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
               ),
               height: height * 0.12,
               width: width * 1,
@@ -508,15 +506,14 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                               ? HexColor(warna1)
                               : Colors.transparent,
                           bg_warna_main != ""
-                              ? HexColor(warna2)
+                              ? HexColor(bg_warna_main)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != ""
-                          ? HexColor(bg_warna_main)
-                          : Colors.transparent,
+                      backgroundColor:
+                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),

@@ -7633,14 +7633,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   Container(
                       height: width * 0.012,
                       width: width * 1,
-                      color: bg_warna_main != ""
-                          ? HexColor(bg_warna_main).withOpacity(0.7)
+                      color: warna1 != ""
+                          ? HexColor(warna1).withOpacity(0.99)
                           : Colors.transparent),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? HexColor(bg_warna_main).withOpacity(0.7)
+                    color: warna1 != ""
+                        ? HexColor(warna1).withOpacity(0.99)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -7725,14 +7725,14 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                         colors: [
                           warna1 != "" ? HexColor(warna1) : Colors.transparent,
                           warna2 != ""
-                              ? HexColor(warna2).withOpacity(0.7)
+                              ? HexColor(warna1).withOpacity(0.9)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != ""
-                          ? HexColor(bg_warna_main).withOpacity(0.7)
+                      backgroundColor: warna1 != ""
+                          ? HexColor(warna1).withOpacity(0.9)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -7762,8 +7762,8 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
                   // ..........................................
                   Container(
                     width: width * 0.25,
-                    color: bg_warna_main != ""
-                        ? HexColor(bg_warna_main).withOpacity(0.7)
+                    color: warna2 != ""
+                        ? HexColor(bg_warna_main).withOpacity(0.9)
                         : Colors.transparent,
                     child: Column(
                       children: [
@@ -14790,57 +14790,57 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
 
                                                                                   // ============
                                                                                   // kolom card 3
-                                                                                  Container(
-                                                                                    width: width * 0.07,
-                                                                                    height: width * 0.07,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                      color: Colors.white,
-                                                                                    ),
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsets.all(
-                                                                                        width * 0.0001,
-                                                                                      ),
-                                                                                      child: Container(
-                                                                                        width: width * 0.07,
-                                                                                        height: height * 0.07,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                      // ),
-                                                                                    ),
-                                                                                  ),
+                                                                                  // Container(
+                                                                                  //   width: width * 0.07,
+                                                                                  //   height: width * 0.07,
+                                                                                  //   decoration: BoxDecoration(
+                                                                                  //     borderRadius: BorderRadius.circular(5),
+                                                                                  //     color: Colors.white,
+                                                                                  //   ),
+                                                                                  //   child: Padding(
+                                                                                  //     padding: EdgeInsets.all(
+                                                                                  //       width * 0.0001,
+                                                                                  //     ),
+                                                                                  //     child: Container(
+                                                                                  //       width: width * 0.07,
+                                                                                  //       height: height * 0.07,
+                                                                                  //       decoration: BoxDecoration(
+                                                                                  //         borderRadius: BorderRadius.circular(12),
+                                                                                  //         image: DecorationImage(
+                                                                                  //           image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                  //           fit: BoxFit.cover,
+                                                                                  //         ),
+                                                                                  //       ),
+                                                                                  //     ),
+                                                                                  //     // ),
+                                                                                  //   ),
+                                                                                  // ),
 
-                                                                                  Container(
-                                                                                    width: width * 0.07,
-                                                                                    height: width * 0.07,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                      color: Colors.white,
-                                                                                    ),
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsets.all(
-                                                                                        width * 0.0001,
-                                                                                      ),
-                                                                                      child: Container(
-                                                                                        width: width * 0.07,
-                                                                                        height: height * 0.07,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                          image: DecorationImage(
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                      // ),
-                                                                                    ),
-                                                                                  ),
+                                                                                  // Container(
+                                                                                  //   width: width * 0.07,
+                                                                                  //   height: width * 0.07,
+                                                                                  //   decoration: BoxDecoration(
+                                                                                  //     borderRadius: BorderRadius.circular(5),
+                                                                                  //     color: Colors.white,
+                                                                                  //   ),
+                                                                                  //   child: Padding(
+                                                                                  //     padding: EdgeInsets.all(
+                                                                                  //       width * 0.0001,
+                                                                                  //     ),
+                                                                                  //     child: Container(
+                                                                                  //       width: width * 0.07,
+                                                                                  //       height: height * 0.07,
+                                                                                  //       decoration: BoxDecoration(
+                                                                                  //         borderRadius: BorderRadius.circular(12),
+                                                                                  //         image: DecorationImage(
+                                                                                  //           image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                                  //           fit: BoxFit.cover,
+                                                                                  //         ),
+                                                                                  //       ),
+                                                                                  //     ),
+                                                                                  //     // ),
+                                                                                  //   ),
+                                                                                  // ),
                                                                                 ],
                                                                               ),
 

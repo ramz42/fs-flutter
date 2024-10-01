@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   dynamic_color
   printing
+  rive_common
   screen_retriever
   smart_auth
   window_manager

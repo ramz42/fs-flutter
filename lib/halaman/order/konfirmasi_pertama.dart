@@ -198,9 +198,7 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                   Container(
                     height: width * 0.025,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? HexColor(bg_warna_main)
-                        : Colors.transparent,
+                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.025,

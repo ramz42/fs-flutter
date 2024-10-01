@@ -8001,14 +8001,14 @@ class _StickerWidgetState extends State<StickerWidget> {
                             Container(
                                 height: width * 0.015,
                                 width: width * 1,
-                                color: bg_warna_main != ""
-                                    ? HexColor(bg_warna_main)
+                                color: warna1 != ""
+                                    ? HexColor(warna1)
                                     : Colors.transparent),
                             Container(
                               height: width * 0.035,
                               width: width * 1,
-                              color: bg_warna_main != ""
-                                  ? HexColor(bg_warna_main)
+                              color: warna1 != ""
+                                  ? HexColor(warna1)
                                   : Colors.transparent,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -8094,15 +8094,15 @@ class _StickerWidgetState extends State<StickerWidget> {
                                     warna1 != ""
                                         ? HexColor(warna1)
                                         : Colors.transparent,
-                                    warna2 != ""
-                                        ? HexColor(warna2)
+                                    warna1 != ""
+                                        ? HexColor(warna1)
                                         : Colors.transparent
                                   ],
                                   durations: _durations,
                                   heightPercentages: _heightPercentages,
                                 ),
-                                backgroundColor: bg_warna_main != ""
-                                    ? HexColor(bg_warna_main)
+                                backgroundColor: warna1 != ""
+                                    ? HexColor(warna1)
                                     : Colors.transparent,
                                 size: Size(double.infinity, double.infinity),
                                 waveAmplitude: 0,

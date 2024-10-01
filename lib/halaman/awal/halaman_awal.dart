@@ -470,14 +470,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
 
     return Material(
       child: Container(
-        decoration: bgImg != "" ? BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(bgImg == ""
-                ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
-                : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
-            fit: BoxFit.cover,
-          ),
-        ) : BoxDecoration(),
+        decoration: bgImg != ""
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(bgImg == ""
+                      ? "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"
+                      : "${Variables.ipv4_local}/storage/order/background-image/$bgImg"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -485,18 +487,15 @@ class _HalamanAwalState extends State<HalamanAwal> {
             // header page view
             // ----------------
             Container(
-              height: height * 0.12,
+              height: height * 0.11,
               width: width * 1,
               decoration: BoxDecoration(
-                color: bg_warna_main != ""
-                    ? HexColor(bg_warna_main)
-                    : Colors.transparent,
+                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    // color: Color.fromARGB(255, 24, 116, 59),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -506,8 +505,8 @@ class _HalamanAwalState extends State<HalamanAwal> {
                         Container(
                           height: width * 0.03,
                           width: width * 1,
-                          color: bg_warna_main != ""
-                              ? HexColor(bg_warna_main).withOpacity(0.7)
+                          color: warna1 != ""
+                              ? HexColor(warna1).withOpacity(0.7)
                               : Colors.transparent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -518,8 +517,6 @@ class _HalamanAwalState extends State<HalamanAwal> {
                                 child: InkWell(
                                   onTap: () {
                                     _showMyDialogPin(pin);
-                                    // _dialogBuilder(context, "Foto Sesi",
-                                    //     "Foto Sesi Shots Telah Habis.");
                                     setState(() {
                                       isVisibleContentMenu =
                                           !isVisibleContentMenu;
@@ -590,31 +587,23 @@ class _HalamanAwalState extends State<HalamanAwal> {
                           ),
                         ),
                         Container(
-                          height: height * 0.03,
+                          height: height * 0.035,
                           width: width * 1,
-                          child: WaveWidget(
-                            config: CustomConfig(
-                              colors: [
-                                bg_warna_main != ""
-                                    ? HexColor(warna1)
-                                    : Colors.transparent,
-                                bg_warna_main != ""
-                                    ? HexColor(warna2)
-                                    : Colors.transparent,
-                              ],
-                              durations: _durations,
-                              heightPercentages: _heightPercentages,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                  width: 16.0,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255)),
                             ),
-                            backgroundColor: bg_warna_main != ""
-                                ? HexColor(bg_warna_main)
+                            color: warna1 != ""
+                                ? HexColor(warna1)
                                 : Colors.transparent,
-                            size: const Size(double.infinity, double.infinity),
-                            waveAmplitude: 0,
                           ),
                         ),
-                        SizedBox(
-                          height: width * 0.007,
-                        ),
+                        // SizedBox(
+                        //   height: width * 0.007,
+                        // ),
                       ],
                     ),
                   ),
@@ -635,18 +624,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
                   runSpacing: width * 0.025,
                   children: [
                     Container(
-                      child: Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              55,
-                            ),
-                          ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(65),
+                          border: Border.all(
+                              width: 20,
+                              color: Color.fromARGB(255, 255, 255, 255)),
+                          color: bg_warna_main != ""
+                              ? HexColor(bg_warna_main)
+                              : Colors.transparent,
                         ),
-                        elevation: 1,
-                        color: bg_warna_main != ""
-                            ? HexColor(bg_warna_main).withOpacity(0.9)
-                            : Colors.transparent,
                         child: InkWell(
                           borderRadius: const BorderRadius.all(
                             Radius.circular(
@@ -698,18 +685,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
                     // SizedBox(
                     //   width: width * 0.034,
                     // ),
-                    Card(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            55,
-                          ),
-                        ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(65),
+                        border: Border.all(
+                            width: 20,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                        color: bg_warna_main != ""
+                            ? HexColor(bg_warna_main)
+                            : Colors.transparent,
                       ),
-                      elevation: 1,
-                      color: bg_warna_main != ""
-                          ? HexColor(bg_warna_main).withOpacity(0.9)
-                          : Colors.transparent,
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");
@@ -760,18 +745,16 @@ class _HalamanAwalState extends State<HalamanAwal> {
                     // SizedBox(
                     //   width: width * 0.034,
                     // ),
-                    Card(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            55,
-                          ),
-                        ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(65),
+                        border: Border.all(
+                            width: 20,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                        color: bg_warna_main != ""
+                            ? HexColor(bg_warna_main)
+                            : Colors.transparent,
                       ),
-                      elevation: 1,
-                      color: bg_warna_main != ""
-                          ? HexColor(bg_warna_main).withOpacity(0.9)
-                          : Colors.transparent,
                       child: InkWell(
                         onTap: () {
                           print("edit foto page");

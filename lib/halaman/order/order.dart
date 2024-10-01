@@ -225,9 +225,7 @@ class _OrderWidgetState extends State<OrderWidget> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: bg_warna_main != ""
-                    ? HexColor(bg_warna_main)
-                    : Colors.transparent,
+                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -389,7 +387,8 @@ class _OrderWidgetState extends State<OrderWidget> {
                                                   padding:
                                                       const EdgeInsets.all(1.0),
                                                   child: Card(
-                                                    color: HexColor(warna1),
+                                                    color:
+                                                        HexColor(bg_warna_main),
                                                     child: InkWell(
                                                       onTap: () {
                                                         print(

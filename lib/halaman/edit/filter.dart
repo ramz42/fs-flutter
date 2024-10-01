@@ -151,20 +151,20 @@ class _FilterWidgetState extends State<FilterWidget> {
     // init get all images from functions
     _getAllImages();
 
-    print(
-        "title contains a pada filter page : ${title.toString().contains("Collage A")}");
+    // print(
+    //     "title contains a pada filter page : ${title.toString().contains("Collage A")}");
 
     // init get filter from functions
     getFilter();
     getWarnaBg();
     getOrderSettings();
 
-    print(
-        "object date time now : $nama-${DateTime.now().day}-${DateTime.now().hour}");
+    // print(
+    //     "object date time now : $nama-${DateTime.now().day}-${DateTime.now().hour}");
 
     // test print logger nama dan tittle user
-    print("nama initstate filterwidget : $nama");
-    print("title pada initstate filterwidget : $title");
+    // print("nama initstate filterwidget : $nama");
+    // print("title pada initstate filterwidget : $title");
 
     super.initState();
   }
@@ -246,7 +246,7 @@ class _FilterWidgetState extends State<FilterWidget> {
     if (response.statusCode == 200) {
       print(await response.stream.bytesToString());
 
-      // filter beauty methods
+      // Paket A Menu
       if (title.toString().contains("collage a") ||
           title.toString().contains("Collage A") ||
           title.toString().contains(" a") ||
@@ -262,7 +262,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-1"}.png",
+          fileName: "a.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -273,7 +273,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-2"}.png",
+          fileName: "b.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -284,7 +284,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-3"}.png",
+          fileName: "c.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -295,7 +295,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-4"}.png",
+          fileName: "d.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -306,7 +306,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-5"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -317,7 +317,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-6"}.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -331,7 +331,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-1"}.png",
+          fileName: "a.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -342,7 +342,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-2"}.png",
+          fileName: "b.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -353,7 +353,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-3"}.png",
+          fileName: "c.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -364,7 +364,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-4"}.png",
+          fileName: "d.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -375,7 +375,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-5"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -386,7 +386,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-6"}.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -394,6 +394,8 @@ class _FilterWidgetState extends State<FilterWidget> {
           print(onError);
         });
       }
+
+      // Paket B Menu
       if (title.toString().contains("collage b") ||
           title.toString().contains("Collage B") ||
           title.toString().contains(" b") ||
@@ -412,7 +414,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-1"}.png",
+          fileName: "a.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -423,7 +425,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-2"}.png",
+          fileName: "b.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -434,7 +436,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-3"}.png",
+          fileName: "c.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -445,7 +447,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-4"}.png",
+          fileName: "d.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -456,7 +458,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-5"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -467,7 +469,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-6"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -478,7 +480,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController7
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-7"}.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -489,7 +491,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController8
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-8"}.png",
+          fileName: "g.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -503,7 +505,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-1"}.png",
+          fileName: "a.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -514,7 +516,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-2"}.png",
+          fileName: "b.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -525,7 +527,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-3"}.png",
+          fileName: "c.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -536,7 +538,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-4"}.png",
+          fileName: "d.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -547,7 +549,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-5"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -558,7 +560,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-6"}.png",
+          fileName: "e.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -569,7 +571,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController7
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-7"}.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -580,7 +582,641 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController8
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "${"\\${DateTime.now().day}-8"}.png",
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // Paket C Menu
+      if (title.toString().contains("collage c") ||
+          title.toString().contains("Collage C") ||
+          title.toString().contains(" c") ||
+          title.toString().contains(" C") ||
+          title.toString().contains("Paket C")) {
+        // =========================
+        //  screenshot images normal
+        // ========================
+        final directory =
+            (await getApplicationDocumentsDirectory()); //from path_provide package
+
+        var fileName = "";
+        var path = '$directory';
+
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ========================
+        // ====== edit path =======
+        // ========================
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // Paket D Menu
+      if (title.toString().contains("collage d") ||
+          title.toString().contains("Collage D") ||
+          title.toString().contains(" d") ||
+          title.toString().contains(" D") ||
+          title.toString().contains("Paket D")) {
+        // =========================
+        //  screenshot images normal
+        // ========================
+        final directory =
+            (await getApplicationDocumentsDirectory()); //from path_provide package
+
+        var fileName = "";
+        var path = '$directory';
+
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+        // ...
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ========================
+        // ====== edit path =======
+        // ========================
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -630,7 +1266,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController1
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-1"}.png",
+        fileName: "a.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -643,7 +1279,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController2
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-2"}.png",
+        fileName: "b.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -657,7 +1293,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController3
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-3"}.png",
+        fileName: "c.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -671,7 +1307,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController4
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-4"}.png",
+        fileName: "d.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -685,7 +1321,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController5
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-5"}.png",
+        fileName: "e.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -699,7 +1335,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController6
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-6"}.png",
+        fileName: "e.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -713,7 +1349,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController7
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-7"}.png",
+        fileName: "f.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -727,7 +1363,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController8
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-8"}.png",
+        fileName: "g.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -741,7 +1377,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController9
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-9"}.png",
+        fileName: "h.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -755,7 +1391,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController10
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-10"}.png",
+        fileName: "i.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -771,7 +1407,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController11
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-11"}.png",
+        fileName: "j.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -785,7 +1421,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController12
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-12"}.png",
+        fileName: "k.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -799,7 +1435,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController13
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-13"}.png",
+        fileName: "m.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -813,7 +1449,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController14
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-14"}.png",
+        fileName: "n.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -827,7 +1463,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController15
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-15"}.png",
+        fileName: "o.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -992,7 +1628,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController1
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-1"}.png",
+        fileName: "a.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1005,7 +1641,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController2
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-2"}.png",
+        fileName: "b.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1019,7 +1655,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController3
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-3"}.png",
+        fileName: "c.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1033,7 +1669,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController4
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-4"}.png",
+        fileName: "d.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1047,7 +1683,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController5
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-5"}.png",
+        fileName: "e.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1061,7 +1697,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController6
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-6"}.png",
+        fileName: "e.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1075,7 +1711,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController7
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-7"}.png",
+        fileName: "f.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1089,7 +1725,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController8
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-8"}.png",
+        fileName: "g.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1103,7 +1739,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController9
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-9"}.png",
+        fileName: "h.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1117,7 +1753,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController10
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-10"}.png",
+        fileName: "i.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1133,7 +1769,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController11
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-11"}.png",
+        fileName: "j.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1147,7 +1783,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController12
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-12"}.png",
+        fileName: "k.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1161,7 +1797,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController13
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-13"}.png",
+        fileName: "m.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1175,7 +1811,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController14
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-14"}.png",
+        fileName: "n.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1189,7 +1825,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       screenshotController15
           .captureAndSave(
         '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-15"}.png",
+        fileName: "o.png",
       )
           .then((capturedImage) async {
         print("object : $capturedImage");
@@ -1413,8 +2049,8 @@ class _FilterWidgetState extends State<FilterWidget> {
             setState(() {
               isVisibleFotoImage = true;
             });
-            print(
-                "list a is not empty now, dan isVisibleFotoImage == $isVisibleFotoImage");
+            // print(
+            //     "list a is not empty now, dan isVisibleFotoImage == $isVisibleFotoImage");
           }
         }
       }
@@ -1435,7 +2071,7 @@ class _FilterWidgetState extends State<FilterWidget> {
 
       if (title.toString().contains("Collage C") ||
           title.toString().contains("Paket C")) {
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 12; i++) {
           // ...
           print("object _list collage B $i ${_list[i]}");
           list.add(_list[i]);
@@ -1450,7 +2086,7 @@ class _FilterWidgetState extends State<FilterWidget> {
 
       if (title.toString().contains("Collage D") ||
           title.toString().contains("Paket D")) {
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 15; i++) {
           // ...
           print("object _list collage B $i ${_list[i]}");
           list.add(_list[i]);
@@ -1465,7 +2101,7 @@ class _FilterWidgetState extends State<FilterWidget> {
 
       if (title.toString().contains("Collage E") ||
           title.toString().contains("Paket E")) {
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 20; i++) {
           // ...
           print("object _list collage E $i ${_list[i]}");
           list.add(_list[i]);
@@ -1480,9 +2116,37 @@ class _FilterWidgetState extends State<FilterWidget> {
 
       if (title.toString().contains("Collage F") ||
           title.toString().contains("Paket F")) {
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 25; i++) {
           // ...
           print("object _list collage F $i ${_list[i]}");
+          list.add(_list[i]);
+
+          if (list.isNotEmpty) {
+            setState(() {
+              isVisibleFotoImage = true;
+            });
+          }
+        }
+      }
+
+      if (title.toString().contains("Paket G")) {
+        for (var i = 0; i < 1; i++) {
+          // ...
+          print("object _list collage g $i ${_list[i]}");
+          list.add(_list[i]);
+
+          if (list.isNotEmpty) {
+            setState(() {
+              isVisibleFotoImage = true;
+            });
+          }
+        }
+      }
+
+      if (title.toString().contains("Paket H")) {
+        for (var i = 0; i < 1; i++) {
+          // ...
+          print("object _list collage h $i ${_list[i]}");
           list.add(_list[i]);
 
           if (list.isNotEmpty) {
@@ -1515,7 +2179,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                 image: DecorationImage(
                   image: NetworkImage(
                       "${Variables.ipv4_local}/storage/order/background-image/$backgrounds"),
-                  fit: BoxFit.contain,
+                  fit: BoxFit.fill,
                 ),
               )
             : BoxDecoration(),
@@ -1534,15 +2198,15 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? HexColor(bg_warna_main)
+                    color: warna1 != ""
+                        ? HexColor(warna1)
                         : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main != ""
-                        ? HexColor(bg_warna_main)
+                    color: warna1 != ""
+                        ? HexColor(warna1)
                         : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1623,13 +2287,13 @@ class _FilterWidgetState extends State<FilterWidget> {
                       config: CustomConfig(
                         colors: [
                           warna1 != "" ? HexColor(warna1) : Colors.transparent,
-                          warna2 != "" ? HexColor(warna2) : Colors.transparent
+                          warna1 != "" ? HexColor(warna1) : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: bg_warna_main != ""
-                          ? HexColor(bg_warna_main)
+                      backgroundColor: warna1 != ""
+                          ? HexColor(warna1)
                           : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
@@ -1687,32 +2351,50 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                     .toString()
                                                     .contains("Paket A")
                                             ? 2
-                                            : title.toString().contains(
-                                                        "Collage B") ||
+                                            : title.toString().contains("Collage B") ||
                                                     title
                                                         .toString()
                                                         .contains("Paket B")
                                                 ? 2
-                                                : title.toString().contains(
-                                                            "Collage C") ||
+                                                : title.toString().contains("Collage C") ||
                                                         title
                                                             .toString()
                                                             .contains("Paket C")
                                                     ? 3
                                                     : title.toString().contains(
-                                                                "Collage E") ||
+                                                                "Collage D") ||
                                                             title
                                                                 .toString()
                                                                 .contains(
-                                                                    "Paket E")
+                                                                    "Paket D")
                                                         ? 5
-                                                        : 5,
+                                                        : title.toString().contains("Collage E") ||
+                                                                title
+                                                                    .toString()
+                                                                    .contains(
+                                                                        "Paket E")
+                                                            ? 3
+                                                            : title.toString().contains("Collage F") ||
+                                                                    title
+                                                                        .toString()
+                                                                        .contains("Paket F")
+                                                                ? 1
+                                                                : title.toString().contains("Collage G") || title.toString().contains("Paket G")
+                                                                    ? 1
+                                                                    : 1,
                                         scrollDirection: Axis.vertical,
                                         shrinkWrap: true,
                                         itemBuilder: (context, i) {
                                           // ...
                                           return Container(
                                             width: width * 1,
+                                            height: title.toString().contains(
+                                                        "Collage G") ||
+                                                    title
+                                                        .toString()
+                                                        .contains("Paket G")
+                                                ? width * 0.4
+                                                : null,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
@@ -1750,12 +2432,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                                             "Paket C")
                                                                 ? 4
                                                                 : title.toString().contains(
-                                                                            "Collage E") ||
-                                                                        title
-                                                                            .toString()
-                                                                            .contains("Paket E")
-                                                                    ? 4
-                                                                    : 5,
+                                                                        "Paket D")
+                                                                    ? 3
+                                                                    : title.toString().contains("Collage E") ||
+                                                                            title.toString().contains("Paket E")
+                                                                        ? 4
+                                                                        : title.toString().contains("Collage F") || title.toString().contains("Paket F")
+                                                                            ? 4
+                                                                            : title.toString().contains("Collage G") || title.toString().contains("Paket G")
+                                                                                ? 1
+                                                                                : 1,
                                                     itemBuilder:
                                                         (BuildContext context,
                                                             int j) {
@@ -2535,7 +3221,1441 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                                                                                 ),
                                                                                                               )
                                                                                                             : Container())
-                                                                            : Container(),
+                                                                            : title.toString().contains("Paket C")
+                                                                                ? (i == 0 && j == 0
+                                                                                    ? Screenshot(
+                                                                                        controller: screenshotController1,
+                                                                                        child: Container(
+                                                                                          width: width * 0.1,
+                                                                                          height: height * 0.3,
+                                                                                          child: ColorFiltered(
+                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                ? const ColorFilter.mode(
+                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                    BlendMode.saturation,
+                                                                                                  )
+                                                                                                : nama_filter == 'classic negative'
+                                                                                                    ? const ColorFilter.mode(
+                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'black white blur'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'mute'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'webcore'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  ),
+                                                                                            child: Container(
+                                                                                              child: FadeInImage(
+                                                                                                width: width * 0.08,
+                                                                                                height: height * 0.15,
+                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[0].toString()}", scale: 1),
+                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                },
+                                                                                                fit: BoxFit.contain,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      )
+                                                                                    : i == 0 && j == 1
+                                                                                        ? Screenshot(
+                                                                                            controller: screenshotController2,
+                                                                                            child: Container(
+                                                                                              width: width * 0.1,
+                                                                                              height: height * 0.3,
+                                                                                              child: ColorFiltered(
+                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                    ? const ColorFilter.mode(
+                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'classic negative'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'black white blur'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'mute'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'webcore'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      ),
+                                                                                                child: Container(
+                                                                                                  child: FadeInImage(
+                                                                                                    width: width * 0.08,
+                                                                                                    height: height * 0.15,
+                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[1].toString()}", scale: 1),
+                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                    },
+                                                                                                    fit: BoxFit.contain,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          )
+                                                                                        : i == 0 && j == 2
+                                                                                            ? Screenshot(
+                                                                                                controller: screenshotController3,
+                                                                                                child: Container(
+                                                                                                  width: width * 0.1,
+                                                                                                  height: height * 0.3,
+                                                                                                  child: ColorFiltered(
+                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'classic negative'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'mute'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          ),
+                                                                                                    child: Container(
+                                                                                                      child: FadeInImage(
+                                                                                                        width: width * 0.08,
+                                                                                                        height: height * 0.15,
+                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[2].toString()}", scale: 1),
+                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                        },
+                                                                                                        fit: BoxFit.contain,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              )
+                                                                                            : i == 0 && j == 3
+                                                                                                ? Screenshot(
+                                                                                                    controller: screenshotController4,
+                                                                                                    child: Container(
+                                                                                                      width: width * 0.1,
+                                                                                                      height: height * 0.3,
+                                                                                                      child: ColorFiltered(
+                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'mute'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              ),
+                                                                                                        child: Container(
+                                                                                                          child: FadeInImage(
+                                                                                                            width: width * 0.08,
+                                                                                                            height: height * 0.15,
+                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[3].toString()}", scale: 1),
+                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                            },
+                                                                                                            fit: BoxFit.contain,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  )
+                                                                                                : i == 1 && j == 0
+                                                                                                    ? Screenshot(
+                                                                                                        controller: screenshotController5,
+                                                                                                        child: Container(
+                                                                                                          width: width * 0.1,
+                                                                                                          height: height * 0.3,
+                                                                                                          child: ColorFiltered(
+                                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'classic negative'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'black white blur'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'mute'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'webcore'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  ),
+                                                                                                            child: Container(
+                                                                                                              child: FadeInImage(
+                                                                                                                width: width * 0.08,
+                                                                                                                height: height * 0.15,
+                                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[4].toString()}", scale: 1),
+                                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                },
+                                                                                                                fit: BoxFit.contain,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      )
+                                                                                                    : i == 1 && j == 1
+                                                                                                        ? Screenshot(
+                                                                                                            controller: screenshotController6,
+                                                                                                            child: Container(
+                                                                                                              width: width * 0.1,
+                                                                                                              height: height * 0.3,
+                                                                                                              child: ColorFiltered(
+                                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'classic negative'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'black white blur'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'mute'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'webcore'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      ),
+                                                                                                                child: Container(
+                                                                                                                  child: FadeInImage(
+                                                                                                                    width: width * 0.08,
+                                                                                                                    height: height * 0.15,
+                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[5].toString()}", scale: 1),
+                                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                    },
+                                                                                                                    fit: BoxFit.contain,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          )
+                                                                                                        : i == 1 && j == 2
+                                                                                                            ? Screenshot(
+                                                                                                                controller: screenshotController7,
+                                                                                                                child: Container(
+                                                                                                                  width: width * 0.1,
+                                                                                                                  height: height * 0.3,
+                                                                                                                  child: ColorFiltered(
+                                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'classic negative'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'mute'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          ),
+                                                                                                                    child: Container(
+                                                                                                                      child: FadeInImage(
+                                                                                                                        width: width * 0.08,
+                                                                                                                        height: height * 0.15,
+                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[6].toString()}", scale: 1),
+                                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                        },
+                                                                                                                        fit: BoxFit.contain,
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              )
+                                                                                                            : i == 1 && j == 3
+                                                                                                                ? Screenshot(
+                                                                                                                    controller: screenshotController8,
+                                                                                                                    child: Container(
+                                                                                                                      width: width * 0.1,
+                                                                                                                      height: height * 0.3,
+                                                                                                                      child: ColorFiltered(
+                                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'mute'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              ),
+                                                                                                                        child: Container(
+                                                                                                                          child: FadeInImage(
+                                                                                                                            width: width * 0.08,
+                                                                                                                            height: height * 0.15,
+                                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[7].toString()}", scale: 1),
+                                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                            },
+                                                                                                                            fit: BoxFit.contain,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  )
+                                                                                                                : i == 2 && j == 0
+                                                                                                                    ? Screenshot(
+                                                                                                                        controller: screenshotController9,
+                                                                                                                        child: Container(
+                                                                                                                          width: width * 0.1,
+                                                                                                                          height: height * 0.3,
+                                                                                                                          child: ColorFiltered(
+                                                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'classic negative'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'black white blur'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'mute'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'webcore'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  ),
+                                                                                                                            child: Container(
+                                                                                                                              child: FadeInImage(
+                                                                                                                                width: width * 0.08,
+                                                                                                                                height: height * 0.15,
+                                                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[8].toString()}", scale: 1),
+                                                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                },
+                                                                                                                                fit: BoxFit.contain,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )
+                                                                                                                    : i == 2 && j == 1
+                                                                                                                        ? Screenshot(
+                                                                                                                            controller: screenshotController10,
+                                                                                                                            child: Container(
+                                                                                                                              width: width * 0.1,
+                                                                                                                              height: height * 0.3,
+                                                                                                                              child: ColorFiltered(
+                                                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'classic negative'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'black white blur'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'mute'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'webcore'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      ),
+                                                                                                                                child: Container(
+                                                                                                                                  child: FadeInImage(
+                                                                                                                                    width: width * 0.08,
+                                                                                                                                    height: height * 0.15,
+                                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[9].toString()}", scale: 1),
+                                                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                    },
+                                                                                                                                    fit: BoxFit.contain,
+                                                                                                                                  ),
+                                                                                                                                ),
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          )
+                                                                                                                        : i == 2 && j == 2
+                                                                                                                            ? Screenshot(
+                                                                                                                                controller: screenshotController11,
+                                                                                                                                child: Container(
+                                                                                                                                  width: width * 0.1,
+                                                                                                                                  height: height * 0.3,
+                                                                                                                                  child: ColorFiltered(
+                                                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'classic negative'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'mute'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          ),
+                                                                                                                                    child: Container(
+                                                                                                                                      child: FadeInImage(
+                                                                                                                                        width: width * 0.08,
+                                                                                                                                        height: height * 0.15,
+                                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[10].toString()}", scale: 1),
+                                                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                        },
+                                                                                                                                        fit: BoxFit.contain,
+                                                                                                                                      ),
+                                                                                                                                    ),
+                                                                                                                                  ),
+                                                                                                                                ),
+                                                                                                                              )
+                                                                                                                            : i == 2 && j == 3
+                                                                                                                                ? Screenshot(
+                                                                                                                                    controller: screenshotController12,
+                                                                                                                                    child: Container(
+                                                                                                                                      width: width * 0.1,
+                                                                                                                                      height: height * 0.3,
+                                                                                                                                      child: ColorFiltered(
+                                                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'mute'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              ),
+                                                                                                                                        child: Container(
+                                                                                                                                          child: FadeInImage(
+                                                                                                                                            width: width * 0.08,
+                                                                                                                                            height: height * 0.15,
+                                                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[11].toString()}", scale: 1),
+                                                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                            },
+                                                                                                                                            fit: BoxFit.contain,
+                                                                                                                                          ),
+                                                                                                                                        ),
+                                                                                                                                      ),
+                                                                                                                                    ),
+                                                                                                                                  )
+                                                                                                                                : Container())
+                                                                                : title.toString().contains("Paket D")
+                                                                                    ? (i == 0 && j == 0
+                                                                                        ? Screenshot(
+                                                                                            controller: screenshotController1,
+                                                                                            child: Container(
+                                                                                              width: width * 0.1,
+                                                                                              height: height * 0.3,
+                                                                                              child: ColorFiltered(
+                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                    ? const ColorFilter.mode(
+                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                        BlendMode.saturation,
+                                                                                                      )
+                                                                                                    : nama_filter == 'classic negative'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'black white blur'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'mute'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'webcore'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      ),
+                                                                                                child: Container(
+                                                                                                  child: FadeInImage(
+                                                                                                    width: width * 0.08,
+                                                                                                    height: height * 0.15,
+                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[0].toString()}", scale: 1),
+                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                    },
+                                                                                                    fit: BoxFit.contain,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          )
+                                                                                        : i == 0 && j == 1
+                                                                                            ? Screenshot(
+                                                                                                controller: screenshotController2,
+                                                                                                child: Container(
+                                                                                                  width: width * 0.1,
+                                                                                                  height: height * 0.3,
+                                                                                                  child: ColorFiltered(
+                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'classic negative'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'mute'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          ),
+                                                                                                    child: Container(
+                                                                                                      child: FadeInImage(
+                                                                                                        width: width * 0.08,
+                                                                                                        height: height * 0.15,
+                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[1].toString()}", scale: 1),
+                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                        },
+                                                                                                        fit: BoxFit.contain,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              )
+                                                                                            : i == 0 && j == 2
+                                                                                                ? Screenshot(
+                                                                                                    controller: screenshotController3,
+                                                                                                    child: Container(
+                                                                                                      width: width * 0.1,
+                                                                                                      height: height * 0.3,
+                                                                                                      child: ColorFiltered(
+                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'mute'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              ),
+                                                                                                        child: Container(
+                                                                                                          child: FadeInImage(
+                                                                                                            width: width * 0.08,
+                                                                                                            height: height * 0.15,
+                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[2].toString()}", scale: 1),
+                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                            },
+                                                                                                            fit: BoxFit.contain,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  )
+                                                                                                : i == 1 && j == 0
+                                                                                                    ? Screenshot(
+                                                                                                        controller: screenshotController4,
+                                                                                                        child: Container(
+                                                                                                          width: width * 0.1,
+                                                                                                          height: height * 0.3,
+                                                                                                          child: ColorFiltered(
+                                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'classic negative'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'black white blur'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'mute'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'webcore'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  ),
+                                                                                                            child: Container(
+                                                                                                              child: FadeInImage(
+                                                                                                                width: width * 0.08,
+                                                                                                                height: height * 0.15,
+                                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[3].toString()}", scale: 1),
+                                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                },
+                                                                                                                fit: BoxFit.contain,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      )
+                                                                                                    : i == 1 && j == 1
+                                                                                                        ? Screenshot(
+                                                                                                            controller: screenshotController5,
+                                                                                                            child: Container(
+                                                                                                              width: width * 0.1,
+                                                                                                              height: height * 0.3,
+                                                                                                              child: ColorFiltered(
+                                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'classic negative'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'black white blur'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'mute'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'webcore'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      ),
+                                                                                                                child: Container(
+                                                                                                                  child: FadeInImage(
+                                                                                                                    width: width * 0.08,
+                                                                                                                    height: height * 0.15,
+                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[4].toString()}", scale: 1),
+                                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                    },
+                                                                                                                    fit: BoxFit.contain,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          )
+                                                                                                        : i == 1 && j == 2
+                                                                                                            ? Screenshot(
+                                                                                                                controller: screenshotController6,
+                                                                                                                child: Container(
+                                                                                                                  width: width * 0.1,
+                                                                                                                  height: height * 0.3,
+                                                                                                                  child: ColorFiltered(
+                                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : nama_filter == 'classic negative'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'mute'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          ),
+                                                                                                                    child: Container(
+                                                                                                                      child: FadeInImage(
+                                                                                                                        width: width * 0.08,
+                                                                                                                        height: height * 0.15,
+                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[5].toString()}", scale: 1),
+                                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                        },
+                                                                                                                        fit: BoxFit.contain,
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              )
+                                                                                                            : i == 2 && j == 0
+                                                                                                                ? Screenshot(
+                                                                                                                    controller: screenshotController7,
+                                                                                                                    child: Container(
+                                                                                                                      width: width * 0.1,
+                                                                                                                      height: height * 0.3,
+                                                                                                                      child: ColorFiltered(
+                                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                BlendMode.saturation,
+                                                                                                                              )
+                                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'mute'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              ),
+                                                                                                                        child: Container(
+                                                                                                                          child: FadeInImage(
+                                                                                                                            width: width * 0.08,
+                                                                                                                            height: height * 0.15,
+                                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[6].toString()}", scale: 1),
+                                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                            },
+                                                                                                                            fit: BoxFit.contain,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  )
+                                                                                                                : i == 2 && j == 1
+                                                                                                                    ? Screenshot(
+                                                                                                                        controller: screenshotController8,
+                                                                                                                        child: Container(
+                                                                                                                          width: width * 0.1,
+                                                                                                                          height: height * 0.3,
+                                                                                                                          child: ColorFiltered(
+                                                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                    BlendMode.saturation,
+                                                                                                                                  )
+                                                                                                                                : nama_filter == 'classic negative'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'black white blur'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'mute'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'webcore'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  ),
+                                                                                                                            child: Container(
+                                                                                                                              child: FadeInImage(
+                                                                                                                                width: width * 0.08,
+                                                                                                                                height: height * 0.15,
+                                                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[7].toString()}", scale: 1),
+                                                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                },
+                                                                                                                                fit: BoxFit.contain,
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )
+                                                                                                                    : i == 2 && j == 2
+                                                                                                                        ? Screenshot(
+                                                                                                                            controller: screenshotController9,
+                                                                                                                            child: Container(
+                                                                                                                              width: width * 0.1,
+                                                                                                                              height: height * 0.3,
+                                                                                                                              child: ColorFiltered(
+                                                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                        BlendMode.saturation,
+                                                                                                                                      )
+                                                                                                                                    : nama_filter == 'classic negative'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'black white blur'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'mute'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'webcore'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      ),
+                                                                                                                                child: Container(
+                                                                                                                                  child: FadeInImage(
+                                                                                                                                    width: width * 0.08,
+                                                                                                                                    height: height * 0.15,
+                                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[8].toString()}", scale: 1),
+                                                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                    },
+                                                                                                                                    fit: BoxFit.contain,
+                                                                                                                                  ),
+                                                                                                                                ),
+                                                                                                                              ),
+                                                                                                                            ),
+                                                                                                                          )
+                                                                                                                        : i == 3 && j == 0
+                                                                                                                            ? Screenshot(
+                                                                                                                                controller: screenshotController10,
+                                                                                                                                child: Container(
+                                                                                                                                  width: width * 0.1,
+                                                                                                                                  height: height * 0.3,
+                                                                                                                                  child: ColorFiltered(
+                                                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                            BlendMode.saturation,
+                                                                                                                                          )
+                                                                                                                                        : nama_filter == 'classic negative'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'mute'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          ),
+                                                                                                                                    child: Container(
+                                                                                                                                      child: FadeInImage(
+                                                                                                                                        width: width * 0.08,
+                                                                                                                                        height: height * 0.15,
+                                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[9].toString()}", scale: 1),
+                                                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                        },
+                                                                                                                                        fit: BoxFit.contain,
+                                                                                                                                      ),
+                                                                                                                                    ),
+                                                                                                                                  ),
+                                                                                                                                ),
+                                                                                                                              )
+                                                                                                                            : i == 3 && j == 1
+                                                                                                                                ? Screenshot(
+                                                                                                                                    controller: screenshotController11,
+                                                                                                                                    child: Container(
+                                                                                                                                      width: width * 0.1,
+                                                                                                                                      height: height * 0.3,
+                                                                                                                                      child: ColorFiltered(
+                                                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                BlendMode.saturation,
+                                                                                                                                              )
+                                                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'mute'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              ),
+                                                                                                                                        child: Container(
+                                                                                                                                          child: FadeInImage(
+                                                                                                                                            width: width * 0.08,
+                                                                                                                                            height: height * 0.15,
+                                                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[10].toString()}", scale: 1),
+                                                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                            },
+                                                                                                                                            fit: BoxFit.contain,
+                                                                                                                                          ),
+                                                                                                                                        ),
+                                                                                                                                      ),
+                                                                                                                                    ),
+                                                                                                                                  )
+                                                                                                                                : i == 3 && j == 2
+                                                                                                                                    ? Screenshot(
+                                                                                                                                        controller: screenshotController12,
+                                                                                                                                        child: Container(
+                                                                                                                                          width: width * 0.1,
+                                                                                                                                          height: height * 0.3,
+                                                                                                                                          child: ColorFiltered(
+                                                                                                                                            colorFilter: nama_filter == 'greyscale'
+                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                    Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                  )
+                                                                                                                                                : nama_filter == 'classic negative'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'black white blur'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : nama_filter == 'mute'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : nama_filter == 'webcore'
+                                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                                    Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                                  )
+                                                                                                                                                                : const ColorFilter.mode(
+                                                                                                                                                                    Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                                  ),
+                                                                                                                                            child: Container(
+                                                                                                                                              child: FadeInImage(
+                                                                                                                                                width: width * 0.08,
+                                                                                                                                                height: height * 0.15,
+                                                                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${list[11].toString()}", scale: 1),
+                                                                                                                                                placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                                imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                                  return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                                },
+                                                                                                                                                fit: BoxFit.contain,
+                                                                                                                                              ),
+                                                                                                                                            ),
+                                                                                                                                          ),
+                                                                                                                                        ),
+                                                                                                                                      )
+                                                                                                                                    : i == 4 && j == 0
+                                                                                                                                        ? Screenshot(
+                                                                                                                                            controller: screenshotController13,
+                                                                                                                                            child: Container(
+                                                                                                                                              width: width * 0.1,
+                                                                                                                                              height: height * 0.3,
+                                                                                                                                              child: ColorFiltered(
+                                                                                                                                                colorFilter: nama_filter == 'greyscale'
+                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                        Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                      )
+                                                                                                                                                    : nama_filter == 'classic negative'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : nama_filter == 'black white blur'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : nama_filter == 'mute'
+                                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                                    Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                                  )
+                                                                                                                                                                : nama_filter == 'webcore'
+                                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                                        Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                                      )
+                                                                                                                                                                    : const ColorFilter.mode(
+                                                                                                                                                                        Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                                      ),
+                                                                                                                                                child: Container(
+                                                                                                                                                  child: FadeInImage(
+                                                                                                                                                    width: width * 0.08,
+                                                                                                                                                    height: height * 0.15,
+                                                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${list[12].toString()}", scale: 1),
+                                                                                                                                                    placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                                    imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                                      return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                                    },
+                                                                                                                                                    fit: BoxFit.contain,
+                                                                                                                                                  ),
+                                                                                                                                                ),
+                                                                                                                                              ),
+                                                                                                                                            ),
+                                                                                                                                          )
+                                                                                                                                        : i == 4 && j == 1
+                                                                                                                                            ? Screenshot(
+                                                                                                                                                controller: screenshotController14,
+                                                                                                                                                child: Container(
+                                                                                                                                                  width: width * 0.1,
+                                                                                                                                                  height: height * 0.3,
+                                                                                                                                                  child: ColorFiltered(
+                                                                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                          )
+                                                                                                                                                        : nama_filter == 'classic negative'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                                  )
+                                                                                                                                                                : nama_filter == 'mute'
+                                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                                      )
+                                                                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                                          )
+                                                                                                                                                                        : const ColorFilter.mode(
+                                                                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                                          ),
+                                                                                                                                                    child: Container(
+                                                                                                                                                      child: FadeInImage(
+                                                                                                                                                        width: width * 0.08,
+                                                                                                                                                        height: height * 0.15,
+                                                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[13].toString()}", scale: 1),
+                                                                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                                        },
+                                                                                                                                                        fit: BoxFit.contain,
+                                                                                                                                                      ),
+                                                                                                                                                    ),
+                                                                                                                                                  ),
+                                                                                                                                                ),
+                                                                                                                                              )
+                                                                                                                                            : i == 4 && j == 2
+                                                                                                                                                ? Screenshot(
+                                                                                                                                                    controller: screenshotController15,
+                                                                                                                                                    child: Container(
+                                                                                                                                                      width: width * 0.1,
+                                                                                                                                                      height: height * 0.3,
+                                                                                                                                                      child: ColorFiltered(
+                                                                                                                                                        colorFilter: nama_filter == 'greyscale'
+                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                Color.fromARGB(255, 139, 139, 139),
+                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                              )
+                                                                                                                                                            : nama_filter == 'classic negative'
+                                                                                                                                                                ? const ColorFilter.mode(
+                                                                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                                    BlendMode.saturation,
+                                                                                                                                                                  )
+                                                                                                                                                                : nama_filter == 'black white blur'
+                                                                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                                                                        Color.fromARGB(229, 255, 247, 220),
+                                                                                                                                                                        BlendMode.saturation,
+                                                                                                                                                                      )
+                                                                                                                                                                    : nama_filter == 'mute'
+                                                                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                                                                            Color.fromARGB(228, 151, 151, 151),
+                                                                                                                                                                            BlendMode.saturation,
+                                                                                                                                                                          )
+                                                                                                                                                                        : nama_filter == 'webcore'
+                                                                                                                                                                            ? const ColorFilter.mode(
+                                                                                                                                                                                Color.fromARGB(228, 112, 89, 130),
+                                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                                              )
+                                                                                                                                                                            : const ColorFilter.mode(
+                                                                                                                                                                                Color.fromARGB(0, 255, 255, 255),
+                                                                                                                                                                                BlendMode.saturation,
+                                                                                                                                                                              ),
+                                                                                                                                                        child: Container(
+                                                                                                                                                          child: FadeInImage(
+                                                                                                                                                            width: width * 0.08,
+                                                                                                                                                            height: height * 0.15,
+                                                                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${list[14].toString()}", scale: 1),
+                                                                                                                                                            placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                                                                            imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                                                                              return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                                                                            },
+                                                                                                                                                            fit: BoxFit.contain,
+                                                                                                                                                          ),
+                                                                                                                                                        ),
+                                                                                                                                                      ),
+                                                                                                                                                    ),
+                                                                                                                                                  )
+                                                                                                                                                : Container())
+                                                                                    : title.toString().contains("Paket G") || title.toString().contains("Paket H")
+                                                                                        ? (i == 0 && j == 0
+                                                                                            ? Screenshot(
+                                                                                                controller: screenshotController1,
+                                                                                                child: Container(
+                                                                                                  width: width * 0.1,
+                                                                                                  height: height * 0.3,
+                                                                                                  child: ColorFiltered(
+                                                                                                    colorFilter: nama_filter == 'greyscale'
+                                                                                                        ? const ColorFilter.mode(
+                                                                                                            Color.fromARGB(255, 139, 139, 139),
+                                                                                                            BlendMode.saturation,
+                                                                                                          )
+                                                                                                        : nama_filter == 'classic negative'
+                                                                                                            ? const ColorFilter.mode(
+                                                                                                                Color.fromARGB(229, 255, 247, 220),
+                                                                                                                BlendMode.saturation,
+                                                                                                              )
+                                                                                                            : nama_filter == 'black white blur'
+                                                                                                                ? const ColorFilter.mode(
+                                                                                                                    Color.fromARGB(229, 255, 247, 220),
+                                                                                                                    BlendMode.saturation,
+                                                                                                                  )
+                                                                                                                : nama_filter == 'mute'
+                                                                                                                    ? const ColorFilter.mode(
+                                                                                                                        Color.fromARGB(228, 151, 151, 151),
+                                                                                                                        BlendMode.saturation,
+                                                                                                                      )
+                                                                                                                    : nama_filter == 'webcore'
+                                                                                                                        ? const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(228, 112, 89, 130),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          )
+                                                                                                                        : const ColorFilter.mode(
+                                                                                                                            Color.fromARGB(0, 255, 255, 255),
+                                                                                                                            BlendMode.saturation,
+                                                                                                                          ),
+                                                                                                    child: Container(
+                                                                                                      child: FadeInImage(
+                                                                                                        width: width * 0.08,
+                                                                                                        height: height * 0.15,
+                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${list[0].toString()}", scale: 1),
+                                                                                                        placeholder: AssetImage("assets/props/shapes/16_shapes_v1.png"),
+                                                                                                        imageErrorBuilder: (context, error, stackTrace) {
+                                                                                                          return Image.asset('assets/props/shapes/16_shapes_v1.png', fit: BoxFit.contain);
+                                                                                                        },
+                                                                                                        fit: BoxFit.contain,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              )
+                                                                                            : Container())
+                                                                                        : Container(),
                                                                   ),
                                                                 ),
                                                               ),
@@ -2880,9 +5000,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body) as List<dynamic>;
       backgrounds.addAll(result);
-      // print("background : ${backgrounds}");
       for (var element in background) {
-        // print("background_image : ${element["background_image"]}");
         setState(() {
           headerImg = element["header_image"];
           bgImg = element["background_image"];
@@ -2894,7 +5012,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
   }
 
   getWarnaBg() async {
-    // print("get sesi data");
     db.getConnection().then(
       (value) {
         String sql = "select * from `main_color`";
@@ -2913,65 +5030,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
       },
     );
   }
-
-  // Future<void> timerPeriodFunc() async {
-  //   // ...
-  //   // new timer periodic
-  //   Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     // ignore: avoid_print
-  //     print('timer : ${timer.tick}');
-  //     counter--;
-  //     if (counter == 0) {
-  //       print('Cancel timer');
-  //       timer.cancel();
-  //     } else {
-  //       // ...
-  //       // getEditData();
-  //     }
-  //   });
-  // }
-
-  // get data edit foto lock - open page
-  // getEditData() async {
-  //   // print("get edit data");
-  //   db.getConnection().then(
-  //     (value) {
-  //       String sql = "select * from `edit_photo`";
-  //       value.query(sql).then((value) {
-  //         for (var row in value) {
-  //           setState(() {
-  //             edit = row;
-  //           });
-  //           if (edit[1] == "buka") {
-  //             isNavigate == true
-  //                 ? {
-  //                     setState(() {
-  //                       counter = 0;
-  //                       nama = edit[2];
-  //                       title = edit[3];
-  //                       isNavigate = false;
-  //                     }),
-  //                     Navigator.push(
-  //                       context,
-  //                       PageTransition(
-  //                           type: PageTransitionType.fade,
-  //                           child: FilterWidget(
-  //                             nama: nama,
-  //                             title: title,
-  //                             backgrounds: background,
-  //                           ),
-  //                           inheritTheme: true,
-  //                           ctx: context),
-  //                     ),
-  //                   }
-  //                 : null;
-  //           }
-  //         }
-  //       });
-  //       return value.close();
-  //     },
-  //   );
-  // }
 
   _updateVoucher(nama, voucher) async {
     db.getConnection().then(
@@ -3032,11 +5090,15 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
             color: Colors.transparent,
             child: Card(
               color: Colors.transparent,
-              // color: Colors.lightBlue,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(0),
                   child: AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
                     backgroundColor: bg_warna_main != ""
                         ? HexColor(bg_warna_main)
                         : Colors.transparent,
@@ -3071,7 +5133,11 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   hintText: 'Masukkan Kode',
-                                  hintStyle: TextStyle(color: Colors.grey),
+                                  hintStyle: TextStyle(
+                                    color: bg_warna_main != ""
+                                        ? HexColor(bg_warna_main)
+                                        : Colors.transparent,
+                                  ),
                                   contentPadding: EdgeInsets.only(
                                     left: 5,
                                     bottom: 5,
@@ -3087,13 +5153,17 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                   label: Text(
                                     "Kode",
                                     style: TextStyle(
-                                      color: Color.fromARGB(255, 53, 53, 53),
+                                      color: bg_warna_main != ""
+                                          ? HexColor(bg_warna_main)
+                                          : Colors.transparent,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                style: const TextStyle(
-                                  color: Color.fromARGB(255, 53, 53, 53),
+                                style: TextStyle(
+                                  color: bg_warna_main != ""
+                                      ? HexColor(bg_warna_main)
+                                      : Colors.transparent,
                                 ),
                                 // The validator receives the text that the user has entered.
                                 validator: (value) {
@@ -3141,8 +5211,6 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                               Navigator.of(context).pop();
                               setState(() {
                                 isVisibleTapCard = !isVisibleTapCard;
-                                // isVisibleModalInput = !isVisibleModalInput;
-                                // isVisibleTapDialog = !isVisibleTapDialog;
                               });
                             },
                           ),
@@ -3257,7 +5325,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
           image: DecorationImage(
             image: NetworkImage(
                 "${Variables.ipv4_local}/storage/order/background-image/$background"),
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
           ),
         ),
         child: Column(
@@ -3274,9 +5342,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: bg_warna_main == ""
-                        ? Colors.transparent
-                        : HexColor(bg_warna_main),
+                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -3322,11 +5388,20 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                       width: width * 1,
                       child: WaveWidget(
                         config: CustomConfig(
-                          colors: [Colors.transparent, Colors.transparent],
+                          colors: [
+                            bg_warna_main != ""
+                                ? HexColor(bg_warna_main)
+                                : Colors.transparent,
+                            bg_warna_main != ""
+                                ? HexColor(bg_warna_main)
+                                : Colors.transparent,
+                          ],
                           durations: _durations,
                           heightPercentages: _heightPercentages,
                         ),
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: bg_warna_main != ""
+                            ? HexColor(bg_warna_main)
+                            : Colors.transparent,
                         size: const Size(double.infinity, double.infinity),
                         waveAmplitude: 0,
                       ),
@@ -3344,52 +5419,47 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
               child: Container(
                 // color: Color.fromARGB(255, 255, 123, 145),
                 height: height * 0.55,
-                child: Container(
-                  child: Center(
-                    child: Card(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            45,
-                          ),
+
+                child: Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(45),
+                      border: Border.all(
+                          width: 20, color: Color.fromARGB(255, 255, 255, 255)),
+                      color:
+                          bg_warna_main != "" ? HexColor(bg_warna_main) : Colors.transparent,
+                    ),
+                    child: InkWell(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(
+                          25,
                         ),
                       ),
-                      elevation: 1,
-                      color: bg_warna_main == ""
-                          ? Colors.transparent
-                          : HexColor(bg_warna_main),
-                      child: InkWell(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(
-                            25,
-                          ),
+                      onTap: () {
+                        print("scan qr code tap");
+                        // _dialogBuilder(context);
+                        _dialogBuilderVoucher(context, width);
+                        setState(() {
+                          isVisibleTapCard = !isVisibleTapCard;
+                          isVisibleTapDialog = !isVisibleTapDialog;
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: width * 0.02,
+                          bottom: width * 0.02,
+                          left: width * 0.2,
+                          right: width * 0.2,
                         ),
-                        onTap: () {
-                          print("scan qr code tap");
-                          // _dialogBuilder(context);
-                          _dialogBuilderVoucher(context, width);
-                          setState(() {
-                            isVisibleTapCard = !isVisibleTapCard;
-                            isVisibleTapDialog = !isVisibleTapDialog;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: width * 0.02,
-                            bottom: width * 0.02,
-                            left: width * 0.2,
-                            right: width * 0.2,
+                        child: Text(
+                          "Input Kode - Edit Photo",
+                          style: TextStyle(
+                            fontSize: width * 0.022,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                            fontStyle: FontStyle.italic,
                           ),
-                          child: Text(
-                            "Input Kode - Edit Photo",
-                            style: TextStyle(
-                              fontSize: width * 0.022,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontStyle: FontStyle.italic,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
