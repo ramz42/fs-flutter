@@ -291,10 +291,6 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
     String password = 'wkzgszlpcwcoemzm';
 
     final smtpServer = gmail(username, password);
-    // Use the SmtpServer class to configure an SMTP server:
-    // final smtpServer = SmtpServer('smtp.domain.com');
-    // See the named arguments of SmtpServer for further configuration
-    // options.
 
     // Create our message.
     final message = Message()

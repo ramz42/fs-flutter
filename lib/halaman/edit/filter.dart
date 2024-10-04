@@ -159,13 +159,6 @@ class _FilterWidgetState extends State<FilterWidget> {
     getWarnaBg();
     getOrderSettings();
 
-    // print(
-    //     "object date time now : $nama-${DateTime.now().day}-${DateTime.now().hour}");
-
-    // test print logger nama dan tittle user
-    // print("nama initstate filterwidget : $nama");
-    // print("title pada initstate filterwidget : $title");
-
     super.initState();
   }
 
@@ -247,11 +240,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       print(await response.stream.bytesToString());
 
       // Paket A Menu
-      if (title.toString().contains("collage a") ||
-          title.toString().contains("Collage A") ||
-          title.toString().contains(" a") ||
-          title.toString().contains(" A") ||
-          title.toString().contains("Paket A")) {
+      if (title.toString().contains("Paket A")) {
         final directory =
             (await getApplicationDocumentsDirectory()); //from path_provide package
 
@@ -262,62 +251,67 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "a.png",
+          fileName: "${"\\${DateTime.now().day}-1"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
+
         // ...
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "b.png",
+          fileName: "${"\\${DateTime.now().day}-2"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
+
         // ...
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "c.png",
+          fileName: "${"\\${DateTime.now().day}-3"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
+
         // ...
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "d.png",
+          fileName: "${"\\${DateTime.now().day}-4"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
+
         // ...
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "e.png",
+          fileName: "${"\\${DateTime.now().day}-5"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
+
         // ...
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "f.png",
+          fileName: "${"\\${DateTime.now().day}-6"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -331,7 +325,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController1
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "a.png",
+          fileName: "${"\\${DateTime.now().day}-1"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -342,7 +336,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController2
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "b.png",
+          fileName: "${"\\${DateTime.now().day}-2"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -353,7 +347,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController3
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "c.png",
+          fileName: "${"\\${DateTime.now().day}-3"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -364,7 +358,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController4
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "d.png",
+          fileName: "${"\\${DateTime.now().day}-4"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -375,7 +369,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController5
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "e.png",
+          fileName: "${"\\${DateTime.now().day}-5"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -386,7 +380,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "f.png",
+          fileName: "${"\\${DateTime.now().day}-6"}.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -469,7 +463,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "e.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -480,7 +474,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController7
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "f.png",
+          fileName: "g.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -491,7 +485,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController8
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "g.png",
+          fileName: "h.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -560,7 +554,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController6
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "e.png",
+          fileName: "f.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -571,7 +565,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController7
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "f.png",
+          fileName: "g.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -582,7 +576,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         screenshotController8
             .captureAndSave(
           '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-          fileName: "g.png",
+          fileName: "h.png",
         )
             .then((capturedImage) async {
           print("object : $capturedImage");
@@ -1225,6 +1219,1079 @@ class _FilterWidgetState extends State<FilterWidget> {
         });
       }
 
+      // Paket E Menu
+      if (title.toString().contains("collage e") ||
+          title.toString().contains("Collage E") ||
+          title.toString().contains(" e") ||
+          title.toString().contains(" E") ||
+          title.toString().contains("Paket E")) {
+        // =========================
+        //  screenshot images normal
+        // ========================
+        final directory =
+            (await getApplicationDocumentsDirectory()); //from path_provide package
+
+        var fileName = "";
+        var path = '$directory';
+
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController16
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "p.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController17
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "q.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController18
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "r.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController19
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "s.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController20
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "t.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ========================
+        // ====== edit path =======
+        // ========================
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController16
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "p.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController17
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "q.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController18
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "r.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController19
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "s.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController20
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "t.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
+      // Paket F Menu
+      if (title.toString().contains("collage f") ||
+          title.toString().contains("Collage F") ||
+          title.toString().contains(" f") ||
+          title.toString().contains(" F") ||
+          title.toString().contains("Paket F")) {
+        // =========================
+        //  screenshot images normal
+        // ========================
+        final directory =
+            (await getApplicationDocumentsDirectory()); //from path_provide package
+
+        var fileName = "";
+        var path = '$directory';
+
+        // ...
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController16
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "p.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController17
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "q.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController18
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "r.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController19
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "s.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController20
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "t.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController21
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "u.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController22
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "v.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController23
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "w.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController24
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "x.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ...
+        screenshotController25
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "y.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        // ========================
+        // ====== edit path =======
+        // ========================
+        screenshotController1
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "a.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController2
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "b.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController3
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "c.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController4
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "d.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController5
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "e.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController6
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "f.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController7
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "g.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController8
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "h.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController9
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "i.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController10
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "j.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController11
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "k.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController12
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "l.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController13
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "m.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController14
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "n.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController15
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "o.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController16
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "p.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController17
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "q.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController18
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "r.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController19
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "s.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController20
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "t.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController21
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "u.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController22
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "v.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController23
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "w.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController24
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "x.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+
+        screenshotController25
+            .captureAndSave(
+          '${directory.path}/${Variables.folder_img_path_edit}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
+          fileName: "y.png",
+        )
+            .then((capturedImage) async {
+          print("object : $capturedImage");
+        }).catchError((onError) {
+          print(onError);
+        });
+      }
+
       // ...
       var counter = 4;
       Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -1251,729 +2318,6 @@ class _FilterWidgetState extends State<FilterWidget> {
       });
     } else {
       print(response.reasonPhrase);
-    }
-  }
-
-  screenCaptureImages(i, j) async {
-    final directory =
-        (await getApplicationDocumentsDirectory()); //from path_provide package
-
-    var fileName = "\\${DateTime.now().day}-1";
-    var path = '$directory';
-
-    if ((i == 0 && j == 0)) {
-      // ...
-      screenshotController1
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "a.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-    if ((i == 0 && j == 1)) {
-      // ...
-      screenshotController2
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "b.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 2)) {
-      // ...
-      screenshotController3
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "c.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 3)) {
-      // ...
-      screenshotController4
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "d.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 4)) {
-      // ...
-      screenshotController5
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "e.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 0)) {
-      // ...
-      screenshotController6
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "e.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 1)) {
-      // ...
-      screenshotController7
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "f.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 2)) {
-      // ...
-      screenshotController8
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "g.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 3)) {
-      // ...
-      screenshotController9
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "h.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 4)) {
-      // ...
-      screenshotController10
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "i.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris pertama
-    if ((i == 2 && j == 0)) {
-      // ...
-
-      screenshotController11
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "j.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 1)) {
-      // ...
-      screenshotController12
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "k.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 2)) {
-      // ...
-      screenshotController13
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "m.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 3)) {
-      // ...
-      screenshotController14
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "n.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 4)) {
-      // ...
-      screenshotController15
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "o.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris ke 2
-    if ((i == 3 && j == 0)) {
-      // ...
-      screenshotController16
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-16"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 1)) {
-      // ...
-      screenshotController17
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-17"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 2)) {
-      // ...
-      screenshotController18
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-18"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 3)) {
-      // ...
-      screenshotController19
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-19"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 4)) {
-      // ...
-      screenshotController20
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-20"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris ke 5
-    if ((i == 4 && j == 0)) {
-      // ...
-      screenshotController21
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-21"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 1)) {
-      // ...
-      screenshotController22
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-22"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 2)) {
-      // ...
-      screenshotController23
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-23"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 3)) {
-      // ...
-      screenshotController24
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-24"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 4)) {
-      // ...
-      screenshotController25
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path}/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-25"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-  }
-
-  screenCaptureImagesEdit(i, j) async {
-    final directory =
-        (await getApplicationDocumentsDirectory()); //from path_provide package
-
-    var fileName = "\\${DateTime.now().day}-1";
-    var path = '$directory';
-
-    //
-    if ((i == 0 && j == 0)) {
-      // ...
-      screenshotController1
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "a.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-    if ((i == 0 && j == 1)) {
-      // ...
-      screenshotController2
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "b.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 2)) {
-      // ...
-      screenshotController3
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "c.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 3)) {
-      // ...
-      screenshotController4
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "d.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 0 && j == 4)) {
-      // ...
-      screenshotController5
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "e.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 0)) {
-      // ...
-      screenshotController6
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "e.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 1)) {
-      // ...
-      screenshotController7
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "f.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 2)) {
-      // ...
-      screenshotController8
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "g.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 3)) {
-      // ...
-      screenshotController9
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "h.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 1 && j == 4)) {
-      // ...
-      screenshotController10
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "i.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris pertama
-    if ((i == 2 && j == 0)) {
-      // ...
-
-      screenshotController11
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "j.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 1)) {
-      // ...
-      screenshotController12
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "k.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 2)) {
-      // ...
-      screenshotController13
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "m.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 3)) {
-      // ...
-      screenshotController14
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "n.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 2 && j == 4)) {
-      // ...
-      screenshotController15
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "o.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris ke 2
-    if ((i == 3 && j == 0)) {
-      // ...
-      screenshotController16
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-16"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 1)) {
-      // ...
-      screenshotController17
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-17"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 2)) {
-      // ...
-      screenshotController18
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-18"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 3)) {
-      // ...
-      screenshotController19
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-19"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 3 && j == 4)) {
-      // ...
-      screenshotController20
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-20"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    // baris ke 5
-    if ((i == 4 && j == 0)) {
-      // ...
-      screenshotController21
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-21"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 1)) {
-      // ...
-      screenshotController22
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-22"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 2)) {
-      // ...
-      screenshotController23
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-23"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 3)) {
-      // ...
-      screenshotController24
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-24"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
-    }
-
-    if ((i == 4 && j == 4)) {
-      // ...
-      screenshotController25
-          .captureAndSave(
-        '${directory.path}/${Variables.folder_img_path_edit}/edit/$nama-${DateTime.now().day}-${DateTime.now().hour}/', //set path where screenshot will be saved
-        fileName: "${"\\${DateTime.now().day}-25"}.png",
-      )
-          .then((capturedImage) async {
-        print("object : $capturedImage");
-      }).catchError((onError) {
-        print(onError);
-      });
     }
   }
 
@@ -2198,16 +2542,12 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Container(
                     height: width * 0.015,
                     width: width * 1,
-                    color: warna1 != ""
-                        ? HexColor(warna1)
-                        : Colors.transparent,
+                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: warna1 != ""
-                        ? HexColor(warna1)
-                        : Colors.transparent,
+                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -2292,9 +2632,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
-                      backgroundColor: warna1 != ""
-                          ? HexColor(warna1)
-                          : Colors.transparent,
+                      backgroundColor:
+                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
                       size: Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),
@@ -2409,13 +2748,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                     padding:
                                                         const EdgeInsets.all(8),
                                                     itemCount: title
-                                                                .toString()
-                                                                .contains(
-                                                                    "Collage A") ||
-                                                            title
-                                                                .toString()
-                                                                .contains(
-                                                                    "Paket A")
+                                                            .toString()
+                                                            .contains("Paket A")
                                                         ? 3
                                                         : title.toString().contains(
                                                                     "Collage B") ||
@@ -2431,13 +2765,17 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                                         .contains(
                                                                             "Paket C")
                                                                 ? 4
-                                                                : title.toString().contains(
-                                                                        "Paket D")
+                                                                : title
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "Paket D")
                                                                     ? 3
                                                                     : title.toString().contains("Collage E") ||
-                                                                            title.toString().contains("Paket E")
+                                                                            title.toString().contains(
+                                                                                "Paket E")
                                                                         ? 4
-                                                                        : title.toString().contains("Collage F") || title.toString().contains("Paket F")
+                                                                        : title.toString().contains("Collage F") ||
+                                                                                title.toString().contains("Paket F")
                                                                             ? 4
                                                                             : title.toString().contains("Collage G") || title.toString().contains("Paket G")
                                                                                 ? 1
@@ -4701,7 +5039,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                                 );
                               },
                               child: SizedBox(
-                                // color: Colors.transparent,
                                 width: width * 0.15,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
@@ -5052,6 +5389,8 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
         String sql = "SELECT * FROM `user_fotos` WHERE `voucher` = '$voucher';";
         value.query(sql).then((value) {
           for (var row in value) {
+            // if() {
+            // }
             print(row);
             setState(() {
               title = row[4];
@@ -5061,14 +5400,15 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
             Navigator.push(
               context,
               PageTransition(
-                  type: PageTransitionType.fade,
-                  child: FilterWidget(
-                    nama: row[1],
-                    title: row[4],
-                    backgrounds: background,
-                  ),
-                  inheritTheme: true,
-                  ctx: context),
+                type: PageTransitionType.fade,
+                child: FilterWidget(
+                  nama: row[1],
+                  title: row[4],
+                  backgrounds: background,
+                ),
+                inheritTheme: true,
+                ctx: context,
+              ),
             );
           }
         });
@@ -5426,8 +5766,9 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                       borderRadius: BorderRadius.circular(45),
                       border: Border.all(
                           width: 20, color: Color.fromARGB(255, 255, 255, 255)),
-                      color:
-                          bg_warna_main != "" ? HexColor(bg_warna_main) : Colors.transparent,
+                      color: bg_warna_main != ""
+                          ? HexColor(bg_warna_main)
+                          : Colors.transparent,
                     ),
                     child: InkWell(
                       borderRadius: const BorderRadius.all(
