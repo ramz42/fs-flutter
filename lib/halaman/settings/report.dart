@@ -112,6 +112,9 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
   var bg_warna_main = "";
   var db = new Mysql();
 
+  var warna_1 = "";
+  var warna_2 = "";
+
   int total_harga = 0;
 
   String judul = '';
@@ -344,6 +347,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
   }
 
   // dialog edit menu
+
   Future<void> _dialogAddMenuEdit(
       BuildContext context, title, content, stage, pin) {
     // route animate on dialog
@@ -357,12 +361,10 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
           color: Colors.transparent,
           child: Card(
             color: Colors.transparent,
-            // color: Colors.lightBlue,
             child: Padding(
               padding: const EdgeInsets.all(0),
               child: AlertDialog(
-                backgroundColor:
-                    const Color.fromARGB(255, 24, 116, 59).withOpacity(0.4),
+                backgroundColor: HexColor(bg_warna_main).withOpacity(0.95),
                 title: Padding(
                   padding: const EdgeInsets.only(top: 40, bottom: 50),
                   child: Text(
@@ -394,9 +396,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                       Center(
                         child: OutlinedButton(
                           style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Padding(
@@ -406,23 +407,16 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                               child: Text(
                                 'Filter'.toUpperCase(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddFilter(),
-                            //   ),
-                            // );
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddFilter()));
                             Navigator.push(
                               context,
                               PageTransition(
@@ -443,7 +437,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                         child: OutlinedButton(
                           style: TextButton.styleFrom(
                             textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
+                            backgroundColor: Colors.white,
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -454,25 +448,16 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                               child: Text(
                                 'Layout'.toUpperCase(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddLayout(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddLayout()));
-
                             Navigator.push(
                               context,
                               PageTransition(
@@ -491,31 +476,21 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                       Center(
                         child: OutlinedButton(
                           style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Text(
                               'Background'.toUpperCase(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 30,
-                                color: Colors.white,
+                                color:
+                                    HexColor(bg_warna_main).withOpacity(0.95),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddBackground(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddBackground()));
-
                             Navigator.push(
                               context,
                               PageTransition(
@@ -534,9 +509,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                       Center(
                         child: OutlinedButton(
                           style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
                           child: Padding(
                             padding: const EdgeInsets.all(14.0),
                             child: Padding(
@@ -546,24 +520,16 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                               child: Text(
                                 'Sticker'.toUpperCase(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddSticker(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddSticker()));
                             Navigator.push(
                               context,
                               PageTransition(
@@ -572,7 +538,6 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                                   inheritTheme: true,
                                   ctx: context),
                             );
-                            // Navigator.of(context).pop();
                           },
                         ),
                       ),
@@ -582,9 +547,8 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                       Center(
                         child: OutlinedButton(
                           style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.redAccent.withOpacity(0.4),
-                          ),
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Padding(
@@ -594,9 +558,10 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                               child: Text(
                                 'Kembali'.toUpperCase(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -607,7 +572,6 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                             setState(() {
                               isVisibleMainView = !isVisibleMainView;
                             });
-                            // ...
                           },
                         ),
                       ),
@@ -1302,15 +1266,15 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            Text(
-                              deskripsi.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.01,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                            // Text(
+                            //   deskripsi.toUpperCase(),
+                            //   style: TextStyle(
+                            //     fontSize: width * 0.01,
+                            //     color: Colors.white,
+                            //     fontWeight: FontWeight.bold,
+                            //   ),
+                            //   textAlign: TextAlign.center,
+                            // ),
                           ],
                         ),
                       ),
@@ -1325,7 +1289,7 @@ class _ReportWidgetState extends State<ReportWidget> with RestorationMixin {
                                 _dialogAddMenuEdit(
                                   context,
                                   "Menu",
-                                  "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
+                                  "Ke Settings Edit Photo ?",
                                   1,
                                   "",
                                 );

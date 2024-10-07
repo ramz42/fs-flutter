@@ -14,6 +14,7 @@ import 'package:pinput/pinput.dart';
 import 'package:fs_dart/src/variables.g.dart';
 
 import '../../../src/database/db.dart';
+import '../../awal/halaman_awal.dart';
 import 'add-background.dart';
 import 'add-layout.dart';
 import 'add-sticker.dart';
@@ -32,6 +33,10 @@ class _AddFilterState extends State<AddFilter> {
   // ...
   // final CameraDescription camera;
   final LocalStorage storage = LocalStorage('parameters');
+
+  var bg_warna_main = "";
+  var warna_1 = "";
+  var warna_2 = "";
 
   var users;
 
@@ -55,7 +60,267 @@ class _AddFilterState extends State<AddFilter> {
     _clearStorage();
     getSettings();
     getUsers();
+    getWarnaBg();
     super.initState();
+  }
+
+  getWarnaBg() async {
+    db.getConnection().then(
+      (value) {
+        String sql = "select * from `main_color`";
+        value.query(sql).then((value) {
+          for (var row in value) {
+            setState(() {
+              bg_warna_main = row[1];
+              warna_1 = row[2];
+              warna_2 = row[3];
+            });
+          } // Finally, close the connection
+        }).then((value) {
+          // ...
+          print("bg main color : $bg_warna_main");
+        });
+        return value.close();
+      },
+    );
+  }
+
+  Future<void> _dialogAddMenuEdit(
+      BuildContext context, title, content, stage, pin) {
+    // route animate on dialog
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          width: 100,
+          height: 100,
+          color: Colors.transparent,
+          child: Card(
+            color: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.all(0),
+              child: AlertDialog(
+                backgroundColor: HexColor(bg_warna_main).withOpacity(0.95),
+                title: Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 50),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 56,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                content: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Text(
+                    content,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                actions: <Widget>[
+                  // MainAxisAlignment.spaceAround,
+                  Column(
+                    children: [
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Filter'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddFilter(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Layout'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddLayout(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Background'.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color:
+                                    HexColor(bg_warna_main).withOpacity(0.95),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddBackground(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Sticker'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddSticker(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Kembali'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            setState(() {
+                              // isVisibleMainView = !isVisibleMainView;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Route _routeAnimate(halaman) {
@@ -204,21 +469,13 @@ class _AddFilterState extends State<AddFilter> {
         port: 3306,
         user: 'root',
         db: 'foto_selfi',
-        password: 'rama4422',
-
-        // host: "217.21.72.2",
-        // port: 3306,
-        // user: 'n1575196_foto_selfie_flutter',
-        // db: 'n1575196_foto_selfie_flutter',
-        // password: '%;Eq}m3Wjy{&',
+        password: 'root4422',
       ),
     ).whenComplete(
       () {
-        // ignore: avoid_print
         print('');
       },
     );
-    // // Query again database using a parameterized query
     var results2 = await conn.query('SELECT * FROM `user_fotos`');
 
     for (var row in results2) {
@@ -226,7 +483,6 @@ class _AddFilterState extends State<AddFilter> {
         users = row;
         // jumlahVoucher = count as int;
       });
-      // print('Name: ${users[0]}, email: ${users[1]} age: ${users[2]}');
     }
   }
 
@@ -255,25 +511,24 @@ class _AddFilterState extends State<AddFilter> {
 
     return Material(
       child: Container(
-        decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //   image: AssetImage("assets/images/bg2.jpeg"),
-            //   fit: BoxFit.contain,
-            // ),
-            ),
+        decoration: bg_image != ""
+            ? BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
+                  fit: BoxFit.cover,
+                ),
+              )
+            : BoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: height * 0.12,
               width: width * 1,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "${Variables.ipv4_local}/storage/background-image/main/$bg_image"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              color: bg_warna_main != ""
+                  ? HexColor(bg_warna_main).withOpacity(0.95)
+                  : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -286,7 +541,7 @@ class _AddFilterState extends State<AddFilter> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            judul.toUpperCase(),
+                            "Filter",
                             style: TextStyle(
                               fontSize: width * 0.0275,
                               color: Colors.white,
@@ -294,15 +549,15 @@ class _AddFilterState extends State<AddFilter> {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            deskripsi.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: width * 0.01,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                          // Text(
+                          //   deskripsi.toUpperCase(),
+                          //   style: TextStyle(
+                          //     fontSize: width * 0.01,
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          //   textAlign: TextAlign.center,
+                          // ),
                         ],
                       ),
                     ),
@@ -317,7 +572,7 @@ class _AddFilterState extends State<AddFilter> {
                               _dialogAddMenuEdit(
                                   context,
                                   "Menu",
-                                  "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
+                                  "Ke Settings Edit Photo ?",
                                   1,
                                   pin.toString());
                             },
@@ -335,16 +590,6 @@ class _AddFilterState extends State<AddFilter> {
                           padding: const EdgeInsets.all(15.0),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const HalamanAwalSettings(),
-                              //   ),
-                              // );
-                              // Navigator.of(context)
-                              //     .push(_routeAnimate(HalamanAwalSettings()));
-
                               Navigator.push(
                                 context,
                                 PageTransition(
@@ -369,24 +614,11 @@ class _AddFilterState extends State<AddFilter> {
               ),
             ),
             SizedBox(
-              height: height * 0.12,
-            ),
-            SizedBox(
-              height: height * 0.065,
-              child: Text(
-                "Pilih Filter",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 58, 58, 58),
-                  fontSize: 52,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: height * 0.15,
+              height: height * 0.27,
             ),
             Container(
               // height: height * 0.4,
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

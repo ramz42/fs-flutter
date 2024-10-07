@@ -38,6 +38,10 @@ class _MenuWidgetState extends State<MenuWidget> {
   final LocalStorage storage = LocalStorage('parameters');
   var db = new Mysql();
 
+  var bg_warna_main = "";
+
+  var warna_1 = "";
+  var warna_2 = "";
   var users;
   var filePick;
 
@@ -67,7 +71,243 @@ class _MenuWidgetState extends State<MenuWidget> {
     super.initState();
   }
 
-  var bg_warna_main = "";
+  Future<void> _dialogAddMenuEdit(
+      BuildContext context, title, content, stage, pin) {
+    // route animate on dialog
+
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          width: 100,
+          height: 100,
+          color: Colors.transparent,
+          child: Card(
+            color: Colors.transparent,
+            child: Padding(
+              padding: const EdgeInsets.all(0),
+              child: AlertDialog(
+                backgroundColor: HexColor(bg_warna_main).withOpacity(0.95),
+                title: Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 50),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 56,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                content: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Text(
+                    content,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                actions: <Widget>[
+                  // MainAxisAlignment.spaceAround,
+                  Column(
+                    children: [
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Filter'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddFilter(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Layout'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddLayout(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Background'.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color:
+                                    HexColor(bg_warna_main).withOpacity(0.95),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddBackground(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                            // Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                left: 55,
+                                right: 55,
+                              ),
+                              child: Text(
+                                'Sticker'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: AddSticker(),
+                                  inheritTheme: true,
+                                  ctx: context),
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: OutlinedButton(
+                          style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              backgroundColor: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 45,
+                                right: 45,
+                              ),
+                              child: Text(
+                                'Kembali'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.95),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            setState(() {
+                              isVisibleMainView = !isVisibleMainView;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   getWarnaBg() async {
     // print("get sesi data");
@@ -260,285 +500,6 @@ class _MenuWidgetState extends State<MenuWidget> {
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
 
-  // dialog edit menu
-  Future<void> _dialogAddMenuEdit(
-      BuildContext context, title, content, stage, pin) {
-    // route animate on dialog
-
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          width: 100,
-          height: 100,
-          color: Colors.transparent,
-          child: Card(
-            color: Colors.transparent,
-            // color: Colors.lightBlue,
-            child: Padding(
-              padding: const EdgeInsets.all(0),
-              child: AlertDialog(
-                backgroundColor:
-                    const Color.fromARGB(255, 24, 116, 59).withOpacity(0.4),
-                title: Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 50),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 56,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                content: Padding(
-                  padding: const EdgeInsets.all(40.0),
-                  child: Text(
-                    content,
-                    style: const TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                actions: <Widget>[
-                  // MainAxisAlignment.spaceAround,
-                  Column(
-                    children: [
-                      Center(
-                        child: OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                left: 55,
-                                right: 55,
-                              ),
-                              child: Text(
-                                'Filter'.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddFilter(),
-                            //   ),
-                            // );
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddFilter()));
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: AddFilter(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-
-                            // Navigator.of(context).pop();
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
-                        child: OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 45,
-                                right: 45,
-                              ),
-                              child: Text(
-                                'Layout'.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddLayout(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddLayout()));
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: AddLayout(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                            // Navigator.of(context).pop();
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
-                        child: OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Background'.toUpperCase(),
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddBackground(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddBackground()));
-
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: AddBackground(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                            // Navigator.of(context).pop();
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
-                        child: OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.orange.withOpacity(0.4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                left: 55,
-                                right: 55,
-                              ),
-                              child: Text(
-                                'Sticker'.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const AddSticker(),
-                            //   ),
-                            // );
-
-                            // Navigator.of(context)
-                            //     .push(_routeAnimate(AddSticker()));
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: AddSticker(),
-                                  inheritTheme: true,
-                                  ctx: context),
-                            );
-                            // Navigator.of(context).pop();
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      Center(
-                        child: OutlinedButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            backgroundColor: Colors.redAccent.withOpacity(0.4),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 45,
-                                right: 45,
-                              ),
-                              child: Text(
-                                'Kembali'.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            setState(() {
-                              isVisibleMainView = !isVisibleMainView;
-                            });
-                            // ...
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 100.0);
   Widget build(BuildContext context) {
     // ...
@@ -590,15 +551,15 @@ class _MenuWidgetState extends State<MenuWidget> {
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            Text(
-                              deskripsi_nav.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: width * 0.01,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                            // Text(
+                            //   deskripsi_nav.toUpperCase(),
+                            //   style: TextStyle(
+                            //     fontSize: width * 0.01,
+                            //     color: Colors.white,
+                            //     fontWeight: FontWeight.bold,
+                            //   ),
+                            //   textAlign: TextAlign.center,
+                            // ),
                           ],
                         ),
                       ),
@@ -613,7 +574,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 _dialogAddMenuEdit(
                                   context,
                                   "Menu",
-                                  "Apakah Anda Ingin Ke Menu\nSettings Edit Page ?",
+                                  "Ke Settings Edit Photo ?",
                                   1,
                                   "",
                                 );
@@ -702,8 +663,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: SettingsWidget(
-                                    ),
+                                    child: SettingsWidget(),
                                     inheritTheme: true,
                                     ctx: context),
                               );
@@ -898,7 +858,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                   child: Text(
                                                     "Menu Buat",
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Colors.grey,
                                                       fontSize: width * 0.012,
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -1472,7 +1432,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                   child: Text(
                                                     "Menu Update",
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Colors.grey,
                                                       fontSize: width * 0.012,
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -2047,7 +2007,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                                   child: Text(
                                                     "Menu Delete",
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Colors.grey,
                                                       fontSize: width * 0.012,
                                                       fontWeight:
                                                           FontWeight.bold,
