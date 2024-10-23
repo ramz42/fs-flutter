@@ -1,5 +1,6 @@
 // ignore_for_file: duplicate_import, unused_import, unused_local_variable
 
+import 'package:fs_dart/halaman/contoh/layout-kostum.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -241,6 +242,7 @@ class _FilterWidgetState extends State<FilterWidget> {
 
       // Paket A Menu
       if (title.toString().contains("Paket A")) {
+        print("Delete Folder Paket A");
         final directory =
             (await getApplicationDocumentsDirectory()); //from path_provide package
 
@@ -254,7 +256,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-1"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -266,7 +268,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-2"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -278,7 +280,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-3"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -290,7 +292,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-4"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -302,7 +304,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-5"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -314,7 +316,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-6"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -328,7 +330,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-1"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -339,7 +341,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-2"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -350,7 +352,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-3"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -361,7 +363,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-4"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -372,7 +374,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-5"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -383,7 +385,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "${"\\${DateTime.now().day}-6"}.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -411,7 +413,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -422,7 +424,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -433,7 +435,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -444,7 +446,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -455,7 +457,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -466,7 +468,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -477,7 +479,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -488,7 +490,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -502,7 +504,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -513,7 +515,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -524,7 +526,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -535,7 +537,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -546,7 +548,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -557,7 +559,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -568,7 +570,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -579,7 +581,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -607,7 +609,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -618,7 +620,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -629,7 +631,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -640,7 +642,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -651,7 +653,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -662,7 +664,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -673,7 +675,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -684,7 +686,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -695,7 +697,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -706,7 +708,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -717,7 +719,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -728,7 +730,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -742,7 +744,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -753,7 +755,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -764,7 +766,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -775,7 +777,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -786,7 +788,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -797,7 +799,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -808,7 +810,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -819,7 +821,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -830,7 +832,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -841,7 +843,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -852,7 +854,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -863,7 +865,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -891,7 +893,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -902,7 +904,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -913,7 +915,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -924,7 +926,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -935,7 +937,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -946,7 +948,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -957,7 +959,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -968,7 +970,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -979,7 +981,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -990,7 +992,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1001,7 +1003,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1012,7 +1014,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1023,7 +1025,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1034,7 +1036,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1045,7 +1047,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1059,7 +1061,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1070,7 +1072,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1081,7 +1083,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1092,7 +1094,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1103,7 +1105,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1114,7 +1116,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1125,7 +1127,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1136,7 +1138,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1147,7 +1149,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1158,7 +1160,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1169,7 +1171,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1180,7 +1182,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1191,7 +1193,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1202,7 +1204,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1213,7 +1215,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1241,7 +1243,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1253,7 +1255,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1265,7 +1267,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1277,7 +1279,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1289,7 +1291,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1301,7 +1303,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1313,7 +1315,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1325,7 +1327,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1337,7 +1339,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1349,7 +1351,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1361,7 +1363,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1373,7 +1375,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1385,7 +1387,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1397,7 +1399,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1409,7 +1411,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1421,7 +1423,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "p.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1433,7 +1435,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "q.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1445,7 +1447,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "r.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1457,7 +1459,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "s.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1469,7 +1471,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "t.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1483,7 +1485,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1494,7 +1496,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1505,7 +1507,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1516,7 +1518,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1527,7 +1529,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1538,7 +1540,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1549,7 +1551,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1560,7 +1562,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1571,7 +1573,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1582,7 +1584,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1593,7 +1595,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1604,7 +1606,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1615,7 +1617,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1626,7 +1628,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1637,7 +1639,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1648,7 +1650,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "p.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1659,7 +1661,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "q.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1670,7 +1672,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "r.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1681,7 +1683,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "s.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1692,7 +1694,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "t.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1720,7 +1722,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1732,7 +1734,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1744,7 +1746,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1756,7 +1758,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1768,7 +1770,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1780,7 +1782,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1792,7 +1794,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1804,7 +1806,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1816,7 +1818,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1828,7 +1830,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1840,7 +1842,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1852,7 +1854,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1864,7 +1866,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1876,7 +1878,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1888,7 +1890,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1900,7 +1902,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "p.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1912,7 +1914,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "q.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1924,7 +1926,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "r.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1936,7 +1938,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "s.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1948,7 +1950,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "t.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1960,7 +1962,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "u.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1972,7 +1974,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "v.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1984,7 +1986,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "w.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -1996,7 +1998,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "x.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2008,7 +2010,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "y.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2022,7 +2024,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "a.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2033,7 +2035,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "b.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2044,7 +2046,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "c.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2055,7 +2057,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "d.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2066,7 +2068,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "e.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2077,7 +2079,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "f.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2088,7 +2090,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "g.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2099,7 +2101,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "h.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2110,7 +2112,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "i.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2121,7 +2123,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "j.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2132,7 +2134,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "k.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2143,7 +2145,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "l.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2154,7 +2156,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "m.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2165,7 +2167,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "n.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2176,7 +2178,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "o.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2187,7 +2189,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "p.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2198,7 +2200,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "q.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2209,7 +2211,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "r.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2220,7 +2222,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "s.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2231,7 +2233,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "t.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2242,7 +2244,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "u.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2253,7 +2255,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "v.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2264,7 +2266,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "w.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2275,7 +2277,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "x.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2286,7 +2288,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           fileName: "y.png",
         )
             .then((capturedImage) async {
-          print("object : $capturedImage");
+          print("object capturedImage : $capturedImage");
         }).catchError((onError) {
           print(onError);
         });
@@ -2303,16 +2305,16 @@ class _FilterWidgetState extends State<FilterWidget> {
           Navigator.push(
             context,
             PageTransition(
-                type: PageTransitionType.fade,
-                child: LayoutWidget(
-                  nama: nama,
-                  title: title,
-                  nama_filter: nama_filter, // parameter dari filter
-
-                  backgrounds: backgrounds,
-                ),
-                inheritTheme: true,
-                ctx: context),
+              type: PageTransitionType.fade,
+              child: LayoutWidget(
+                nama: nama,
+                title: title,
+                nama_filter: nama_filter, // parameter dari filter
+                backgrounds: backgrounds,
+              ),
+              inheritTheme: true,
+              ctx: context,
+            ),
           );
         }
       });

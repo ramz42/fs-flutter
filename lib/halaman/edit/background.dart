@@ -181,7 +181,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
 
   getOrderSettings() async {
     var request =
-        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/order-get'));
+        http.Request('GET', Uri.parse('${Variables.ipv4_local}/api/order-get'));
     var streamedResponse = await request.send();
     var response = await http.Response.fromStream(streamedResponse);
     if (response.statusCode == 200) {
@@ -218,7 +218,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
   // get background from api
   getBackground() async {
     var request =
-        http.Request('GET', Uri.parse('http://127.0.0.1:8000/api/background'));
+        http.Request('GET', Uri.parse('${Variables.ipv4_local}/api/background'));
     var streamedResponse = await request.send();
     var response = await http.Response.fromStream(streamedResponse);
     if (response.statusCode == 200) {
@@ -255,7 +255,7 @@ class _LayoutWidgetState extends State<BackgroundWidget> {
   // delete functions
   Future<void> deleteFolderEditImages() async {
     var request = http.MultipartRequest(
-        'POST', Uri.parse('http://127.0.0.1:8000/api/delete-folder-edit'));
+        'POST', Uri.parse('${Variables.ipv4_local}/api/delete-folder-edit'));
     request.fields.addAll({
       'folder_name':
           'uploads/images/$nama-${DateTime.now().day}-${DateTime.now().hour}'

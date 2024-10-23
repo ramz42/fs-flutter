@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:fs_dart/halaman/contoh/layout-kostum.dart';
 import 'package:fs_dart/halaman/settings/halaman_awal.dart';
 import 'package:fs_dart/halaman/settings/settings.dart';
 import 'package:window_manager/window_manager.dart';
@@ -8,6 +9,7 @@ import 'halaman/contoh/contoh-slider-horizontal.dart';
 import 'package:fs_dart/halaman/order/order.dart';
 import 'package:fs_dart/halaman/edit/filter.dart';
 import 'halaman/awal/halaman_awal.dart';
+import 'halaman/contoh/layout-new.dart';
 import 'halaman/foto-sesi/foto_sesi.dart';
 import 'halaman/foto-sesi/qr_scan.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +60,8 @@ Future<void> main() async {
           MyCustomScrollBehavior(), // add custom scroll behavior class pada material app main app untuk dipakai global
       theme: ThemeData.light(),
       home: HalamanAwal(
+        // nama: null, title: null, nama_filter: null, backgrounds: null,
+        // nama: '', title: '', nama_filter: '', backgrounds: '',
         backgrounds: "1719751112-background.jpg",
         header: "1719751112-background.jpg",
       ), // ubah route dengan mengetik halaman
