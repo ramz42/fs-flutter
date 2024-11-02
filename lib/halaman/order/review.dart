@@ -429,7 +429,9 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
             // ----------------
             Container(
               decoration: BoxDecoration(
-                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                color: warna1 != ""
+                    ? HexColor(warna1).withOpacity(0.8)
+                    : Colors.transparent,
               ),
               height: height * 0.12,
               width: width * 1,
@@ -503,10 +505,10 @@ class _ReviewPaymentWidgetState extends State<ReviewPaymentWidget> {
                       config: CustomConfig(
                         colors: [
                           bg_warna_main != ""
-                              ? HexColor(warna1)
+                              ? HexColor(warna1).withOpacity(0.8)
                               : Colors.transparent,
                           bg_warna_main != ""
-                              ? HexColor(bg_warna_main)
+                              ? HexColor(bg_warna_main).withOpacity(0.8)
                               : Colors.transparent
                         ],
                         durations: _durations,

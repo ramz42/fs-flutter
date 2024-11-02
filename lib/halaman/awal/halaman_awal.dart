@@ -490,7 +490,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
               height: height * 0.11,
               width: width * 1,
               decoration: BoxDecoration(
-                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                color: warna1 != "" ? HexColor(warna1).withOpacity(0.8) : Colors.transparent,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -631,7 +631,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                               width: 20,
                               color: Color.fromARGB(255, 255, 255, 255)),
                           color: bg_warna_main != ""
-                              ? HexColor(bg_warna_main)
+                              ? HexColor(bg_warna_main).withOpacity(0.8)
                               : Colors.transparent,
                         ),
                         child: InkWell(
@@ -692,7 +692,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                             width: 20,
                             color: Color.fromARGB(255, 255, 255, 255)),
                         color: bg_warna_main != ""
-                            ? HexColor(bg_warna_main)
+                            ? HexColor(bg_warna_main).withOpacity(0.8)
                             : Colors.transparent,
                       ),
                       child: InkWell(
@@ -752,7 +752,7 @@ class _HalamanAwalState extends State<HalamanAwal> {
                             width: 20,
                             color: Color.fromARGB(255, 255, 255, 255)),
                         color: bg_warna_main != ""
-                            ? HexColor(bg_warna_main)
+                            ? HexColor(bg_warna_main).withOpacity(0.8)
                             : Colors.transparent,
                       ),
                       child: InkWell(

@@ -190,7 +190,9 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                color: warna1 != ""
+                    ? HexColor(warna1).withOpacity(0.8)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -262,17 +264,17 @@ class _KonfirmasiKetigaState extends State<KonfirmasiKetiga> {
                       config: CustomConfig(
                         colors: [
                           bg_warna_main != ""
-                              ? HexColor(bg_warna_main)
+                              ? HexColor(bg_warna_main).withOpacity(0.8)
                               : Colors.transparent,
                           warna1 != ""
-                              ? HexColor(bg_warna_main)
+                              ? HexColor(bg_warna_main).withOpacity(0.8)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor:
-                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                          warna1 != "" ? HexColor(warna1).withOpacity(0.8) : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,
                     ),

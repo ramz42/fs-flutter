@@ -479,7 +479,9 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                color: warna1 != ""
+                    ? HexColor(warna1).withOpacity(0.8)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [
@@ -550,9 +552,11 @@ class _ReviewKonfirmasiPertamaState extends State<PilihPembayaran> {
                     child: WaveWidget(
                       config: CustomConfig(
                         colors: [
-                          warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                          warna1 != ""
+                              ? HexColor(warna1).withOpacity(0.8)
+                              : Colors.transparent,
                           warna2 != ""
-                              ? HexColor(bg_warna_main)
+                              ? HexColor(bg_warna_main).withOpacity(0.8)
                               : Colors.transparent
                         ],
                         durations: _durations,

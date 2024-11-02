@@ -440,7 +440,9 @@ class _KonfirmasiKeduaState extends State<KonfirmasiKedua>
               height: height * 0.12,
               width: width * 1,
               decoration: BoxDecoration(
-                color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                color: warna1 != ""
+                    ? HexColor(warna1).withOpacity(0.8)
+                    : Colors.transparent,
               ),
               child: Column(
                 children: [

@@ -5442,7 +5442,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                       ),
                     ),
                     backgroundColor: bg_warna_main != ""
-                        ? HexColor(bg_warna_main)
+                        ? HexColor(bg_warna_main).withOpacity(0.8)
                         : Colors.transparent,
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
@@ -5478,6 +5478,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                   hintStyle: TextStyle(
                                     color: bg_warna_main != ""
                                         ? HexColor(bg_warna_main)
+                                            .withOpacity(0.8)
                                         : Colors.transparent,
                                   ),
                                   contentPadding: EdgeInsets.only(
@@ -5487,16 +5488,17 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                     right: 5,
                                   ),
                                   focusColor: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   fillColor: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   label: Text(
                                     "Kode",
                                     style: TextStyle(
                                       color: bg_warna_main != ""
                                           ? HexColor(bg_warna_main)
+                                              .withOpacity(0.8)
                                           : Colors.transparent,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -5504,7 +5506,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                 ),
                                 style: TextStyle(
                                   color: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                 ),
                                 // The validator receives the text that the user has entered.
@@ -5543,7 +5545,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                 style: TextStyle(
                                   fontSize: 30,
                                   color: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -5571,7 +5573,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                                 style: TextStyle(
                                   fontSize: 30,
                                   color: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -5684,7 +5686,9 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                   Container(
                     height: width * 0.035,
                     width: width * 1,
-                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                    color: warna1 != ""
+                        ? HexColor(warna1).withOpacity(0.8)
+                        : Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -5732,17 +5736,17 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                         config: CustomConfig(
                           colors: [
                             bg_warna_main != ""
-                                ? HexColor(bg_warna_main)
+                                ? HexColor(bg_warna_main).withOpacity(0.8)
                                 : Colors.transparent,
                             bg_warna_main != ""
-                                ? HexColor(bg_warna_main)
+                                ? HexColor(bg_warna_main).withOpacity(0.8)
                                 : Colors.transparent,
                           ],
                           durations: _durations,
                           heightPercentages: _heightPercentages,
                         ),
                         backgroundColor: bg_warna_main != ""
-                            ? HexColor(bg_warna_main)
+                            ? HexColor(bg_warna_main).withOpacity(0.8)
                             : Colors.transparent,
                         size: const Size(double.infinity, double.infinity),
                         waveAmplitude: 0,
@@ -5769,7 +5773,7 @@ class _LockScreenFotoEditWidgetState extends State<LockScreenFotoEditWidget> {
                       border: Border.all(
                           width: 20, color: Color.fromARGB(255, 255, 255, 255)),
                       color: bg_warna_main != ""
-                          ? HexColor(bg_warna_main)
+                          ? HexColor(bg_warna_main).withOpacity(0.8)
                           : Colors.transparent,
                     ),
                     child: InkWell(

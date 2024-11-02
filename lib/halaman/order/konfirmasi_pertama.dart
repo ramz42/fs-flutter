@@ -198,7 +198,9 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                   Container(
                     height: width * 0.025,
                     width: width * 1,
-                    color: warna1 != "" ? HexColor(warna1) : Colors.transparent,
+                    color: warna1 != ""
+                        ? HexColor(warna1).withOpacity(0.8)
+                        : Colors.transparent,
                   ),
                   Container(
                     height: width * 0.025,
@@ -263,17 +265,17 @@ class _ReviewKonfirmasiPertamaState extends State<ReviewKonfirmasiPertama> {
                       config: CustomConfig(
                         colors: [
                           bg_warna_main != ""
-                              ? HexColor(warna1)
+                              ? HexColor(warna1).withOpacity(0.8)
                               : Colors.transparent,
                           bg_warna_main != ""
-                              ? HexColor(warna2)
+                              ? HexColor(warna2).withOpacity(0.8)
                               : Colors.transparent
                         ],
                         durations: _durations,
                         heightPercentages: _heightPercentages,
                       ),
                       backgroundColor: bg_warna_main != ""
-                          ? HexColor(bg_warna_main)
+                          ? HexColor(bg_warna_main).withOpacity(0.8)
                           : Colors.transparent,
                       size: const Size(double.infinity, double.infinity),
                       waveAmplitude: 0,

@@ -1780,7 +1780,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                   padding: const EdgeInsets.all(0),
                   child: AlertDialog(
                     backgroundColor: bg_warna_main != ""
-                        ? HexColor(bg_warna_main)
+                        ? HexColor(bg_warna_main).withOpacity(0.8)
                         : Colors.transparent,
                     title: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 50),
@@ -1816,6 +1816,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                   hintStyle: TextStyle(
                                     color: bg_warna_main != ""
                                         ? HexColor(bg_warna_main)
+                                            .withOpacity(0.8)
                                         : Colors.transparent,
                                   ),
                                   contentPadding: EdgeInsets.only(
@@ -1825,16 +1826,17 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                     right: 5,
                                   ),
                                   focusColor: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   fillColor: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   label: Text(
                                     "Kode",
                                     style: TextStyle(
                                       color: bg_warna_main != ""
                                           ? HexColor(bg_warna_main)
+                                              .withOpacity(0.8)
                                           : Colors.transparent,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -1842,7 +1844,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                 ),
                                 style: TextStyle(
                                   color: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                 ),
                                 // The validator receives the text that the user has entered.
@@ -1880,7 +1882,8 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                 'Batal',
                                 style: TextStyle(
                                   fontSize: 30,
-                                  color: HexColor(bg_warna_main),
+                                  color:
+                                      HexColor(bg_warna_main).withOpacity(0.8),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1909,7 +1912,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                                 style: TextStyle(
                                   fontSize: 30,
                                   color: bg_warna_main != ""
-                                      ? HexColor(bg_warna_main)
+                                      ? HexColor(bg_warna_main).withOpacity(0.8)
                                       : Colors.transparent,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -1966,7 +1969,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                     width: width * 1,
                     color: warna1 == ""
                         ? Colors.transparent
-                        : HexColor(warna1),
+                        : HexColor(warna1).withOpacity(0.8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -2042,7 +2045,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                             color: const Color.fromARGB(255, 255, 255, 255)),
                       ),
                       color: bg_warna_main != ""
-                          ? HexColor(bg_warna_main)
+                          ? HexColor(bg_warna_main).withOpacity(0.8)
                           : Colors.transparent,
                     ),
                   ),
@@ -2073,7 +2076,7 @@ class _LockScreenFotoSesiWidgetState extends State<LockScreenFotoSesiWidget> {
                           ),
                         ),
                         color: bg_warna_main != ""
-                            ? HexColor(bg_warna_main)
+                            ? HexColor(bg_warna_main).withOpacity(0.8)
                             : Colors.transparent,
                       ),
                       child: InkWell(

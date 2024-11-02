@@ -207,7 +207,11 @@ class _StickerWidgetState extends State<StickerWidget> {
   bool isPrintB1 = false;
   bool isPrintB2 = false;
 
+  List<dynamic> layouts = [];
   bool isVisibleAnimatedOpacity = false;
+
+  late Timer _timer;
+  int _start = 2;
 
   final LocalStorage storage = new LocalStorage('serial_key');
 
@@ -248,6 +252,9 @@ class _StickerWidgetState extends State<StickerWidget> {
     getStorage();
     getSettings();
 
+    getLayout();
+    startTimer();
+
     // visible animate opacity widget
     setState(() {
       isVisibleAnimatedOpacity = !isVisibleAnimatedOpacity;
@@ -259,6 +266,45 @@ class _StickerWidgetState extends State<StickerWidget> {
       ..outputScaleStateStream.listen(onScaleState);
 
     super.initState();
+  }
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+          print("_start : $_start");
+        } else {
+          setState(() {
+            _start--;
+          });
+          print("_start : $_start");
+        }
+      },
+    );
+  }
+
+  // get layout
+  getLayout() async {
+    var request = http.Request(
+        'GET', Uri.parse('${Variables.ipv4_local}/api/layout-kostum'));
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body) as List<dynamic>;
+      layouts.addAll(result);
+      for (var element in layouts) {
+        if (element['status'] == 'Aktif') {
+          print("object : ${element['nama']}");
+        }
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 
   getSettings() async {
@@ -326,6 +372,7 @@ class _StickerWidgetState extends State<StickerWidget> {
   void dispose() {
     controller?.dispose();
     scaleStateController?.dispose();
+    _timer.cancel();
     super.dispose();
   }
 
@@ -6209,13 +6256,14 @@ class _StickerWidgetState extends State<StickerWidget> {
         }
       }
 
+      // Paket A
       // ..........................................
       if (title.toString().contains("Collage A") ||
           title.toString().contains("Paket A")) {
         if (list.isNotEmpty) {
           if (drag_item.isNotEmpty) {
-            // layout 1 dan 2
-            if (choose_layout == "layout 1") {
+            // Tipe 1
+            if (choose_layout.toString().contains("1 Kotak")) {
               // ......
               // card 1
               // ......
@@ -6257,8 +6305,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 2
-            if (choose_layout == "layout 2") {
+            // Tipe 2
+            if (choose_layout.toString().contains("2 Kotak")) {
               // ......
               // card 1
               // ......
@@ -6349,8 +6397,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 3
-            if (choose_layout == "layout 3") {
+            // Tipe 3
+            if (choose_layout.toString().contains("3 Kotak")) {
               // ......
               // card 1
               // ......
@@ -6440,92 +6488,6 @@ class _StickerWidgetState extends State<StickerWidget> {
                   print("url_image : $url_image");
                 }
               }
-            }
-
-            // layout 4
-            if (choose_layout == "layout 4") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].isNotEmpty) {
-                if (drag_item[0].toString().contains("00") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("01") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("02") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("10") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("11") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("12") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
 
               // ......
               // card 3
@@ -6533,7 +6495,6 @@ class _StickerWidgetState extends State<StickerWidget> {
               if (drag_item[2].isNotEmpty) {
                 if (drag_item[2].toString().contains("00") &&
                     drag_item[2].toString().isNotEmpty) {
-                  // ...
                   url_image.add(list[0]);
                   print("url_image : $url_image");
                 }
@@ -6549,19 +6510,22 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("10") &&
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
@@ -6570,136 +6534,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 5
-            if (choose_layout == "layout 5") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].isNotEmpty) {
-                if (drag_item[0].toString().contains("00") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("01") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("02") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("10") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("11") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("12") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 3
-              // ......
-              if (drag_item[2].isNotEmpty) {
-                if (drag_item[2].toString().contains("00") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("01") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("02") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("10") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("11") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("12") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-            }
-
-            // layout 6
-            if (choose_layout == "layout 6") {
+            // Tipe 4
+            if (choose_layout.toString().contains("4 Kotak")) {
               // ......
               // card 1
               // ......
@@ -6868,496 +6704,47 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 7
-            if (choose_layout == "layout 7") {
+            // Tipe 5
+            if (choose_layout.toString().contains("5 Kotak")) {
               // ......
               // card 1
               // ......
-              if (drag_item[0].toString().contains("00") &&
-                  drag_item[0].toString().isNotEmpty) {
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("01") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("02") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (list[3].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("10") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (list[4].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("11") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (list[5].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("12") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
+              if (drag_item[0].isNotEmpty) {
+                if (drag_item[0].toString().contains("00") &&
+                    drag_item[0].toString().isNotEmpty) {
                   url_image.add(list[0]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
+                if (drag_item[0].toString().contains("01") &&
+                    drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[1]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
+                if (drag_item[0].toString().contains("02") &&
+                    drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
+                if (drag_item[0].toString().contains("10") &&
+                    drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
+                if (drag_item[0].toString().contains("11") &&
+                    drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
+                if (drag_item[0].toString().contains("12") &&
+                    drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-              }
-
-              // ......
-              // card 3
-              // ......
-              if (drag_item[2].isNotEmpty) {
-                if (drag_item[2].toString().contains("00") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("01") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("02") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("10") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("11") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("12") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 4
-              // ......
-              if (drag_item[3].isNotEmpty) {
-                if (drag_item[3].toString().contains("00") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("01") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("02") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("10") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("11") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("12") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 5
-              // ......
-              if (drag_item[4].isNotEmpty) {
-                if (drag_item[4].toString().contains("00") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("01") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("02") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("10") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("11") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("12") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-            }
-
-            // layout 8
-            if (choose_layout == "layout 8") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].toString().contains("00") &&
-                  drag_item[0].toString().isNotEmpty) {
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("01") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("02") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (list[3].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("10") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (list[4].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("11") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (list[5].toString().isNotEmpty &&
-                  drag_item[0].toString().contains("12") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 3
-              // ......
-              if (drag_item[2].isNotEmpty) {
-                if (drag_item[2].toString().contains("00") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("01") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("02") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("10") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("11") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("12") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 4
-              // ......
-              if (drag_item[3].isNotEmpty) {
-                if (drag_item[3].toString().contains("00") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("01") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("02") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("10") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("11") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("12") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 5
-              // ......
-              if (drag_item[4].isNotEmpty) {
-                if (drag_item[4].toString().contains("00") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("01") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("02") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (list[3].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("10") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (list[4].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("11") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("12") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-            }
-
-            // layout 9
-            if (choose_layout == "layout 9") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].toString().contains("00") &&
-                  drag_item[0].toString().isNotEmpty) {
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("01") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("02") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-
-              if (drag_item[0].toString().contains("10") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("11") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("12") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
               }
 
               // ......
@@ -7394,8 +6781,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[1].toString().contains("12") &&
+                if (drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
@@ -7437,8 +6823,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[2].toString().contains("12") &&
+                if (drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
@@ -7480,8 +6865,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[3].toString().contains("12") &&
+                if (drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
@@ -7523,52 +6907,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[4].toString().contains("12") &&
+                if (drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 6
-              // ......
-              if (drag_item[5].isNotEmpty) {
-                if (drag_item[5].toString().contains("00") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("01") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("02") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("10") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("11") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (list[5].toString().isNotEmpty &&
-                    drag_item[5].toString().contains("12") &&
-                    drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
@@ -7576,45 +6916,47 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 11
-            if (choose_layout == "layout 11") {
+            // Tipe 6
+            if (choose_layout.toString().contains("6 Kotak")) {
               // ......
               // card 1
               // ......
-              if (drag_item[0].toString().contains("00") &&
-                  drag_item[0].toString().isNotEmpty) {
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("01") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("02") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("10") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("11") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[0].toString().contains("12") &&
-                  drag_item[0].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
+              if (drag_item[0].isNotEmpty) {
+                if (drag_item[0].toString().contains("00") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[0].toString().contains("01") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[0].toString().contains("02") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[0].toString().contains("10") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[0].toString().contains("11") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[0].toString().contains("12") &&
+                    drag_item[0].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
               }
 
               // ......
@@ -7788,162 +7130,43 @@ class _StickerWidgetState extends State<StickerWidget> {
               // ......
               // card 6
               // ......
-              if (drag_item[5].toString().contains("00") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[5].toString().contains("01") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[5].toString().contains("02") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[5].toString().contains("10") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[5].toString().contains("11") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[5].toString().contains("12") &&
-                  drag_item[5].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
-              }
-
-              // ......
-              // card 7
-              // ......
-              // // if (title.toString().contains("A") == false) {
-              if (drag_item[6].toString().contains("00") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[6].toString().contains("01") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[6].toString().contains("02") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[6].toString().contains("10") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[6].toString().contains("11") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[6].toString().contains("12") &&
-                  drag_item[6].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
-              }
-
-              // // ......
-              // // card 8
-              // // ......
-              if (drag_item[7].toString().contains("00") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[7].toString().contains("01") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[7].toString().contains("02") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[7].toString().contains("10") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[7].toString().contains("11") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[7].toString().contains("12") &&
-                  drag_item[7].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
-              }
-
-              // // ......
-              // // card 9
-              // // ......
-              if (drag_item[8].toString().contains("00") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[0]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[8].toString().contains("01") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[1]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[8].toString().contains("02") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[2]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[8].toString().contains("10") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[3]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[8].toString().contains("11") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[4]);
-                print("url_image : $url_image");
-              }
-              if (drag_item[8].toString().contains("12") &&
-                  drag_item[8].toString().isNotEmpty) {
-                // ...
-                url_image.add(list[5]);
-                print("url_image : $url_image");
+              if (drag_item[5].isNotEmpty) {
+                if (drag_item[5].toString().contains("00") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[5].toString().contains("01") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[5].toString().contains("02") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[5].toString().contains("10") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[5].toString().contains("11") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[5].toString().contains("12") &&
+                    drag_item[5].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
               }
             }
           }
@@ -7957,7 +7180,8 @@ class _StickerWidgetState extends State<StickerWidget> {
         if (list.isNotEmpty) {
           if (drag_item.isNotEmpty) {
             // layout 1 dan 2
-            if (choose_layout == "layout 1") {
+            // Tipe 1
+            if (choose_layout.toString().contains("1 Kotak")) {
               // ......
               // card 1
               // ......
@@ -7978,6 +7202,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                 url_image.add(list[2]);
                 print("url_image : $url_image");
               }
+
               if (drag_item[0].toString().contains("03") &&
                   drag_item[0].toString().isNotEmpty) {
                 // ...
@@ -8011,8 +7236,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 2 dan 3
-            if (choose_layout == "layout 2" || choose_layout == "layout 3") {
+            // Tipe 2
+            if (choose_layout.toString().contains("2 Kotak")) {
               // ......
               // card 1
               // ......
@@ -8034,6 +7259,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[0].toString().contains("03") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
@@ -8041,28 +7267,29 @@ class _StickerWidgetState extends State<StickerWidget> {
                   print("url_image : $url_image");
                 }
 
-                if (list[4].toString().isNotEmpty &&
+                if (list[3].toString().isNotEmpty &&
                     drag_item[0].toString().contains("10") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
+                if (list[4].toString().isNotEmpty &&
                     drag_item[0].toString().contains("11") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (list[6].toString().isNotEmpty &&
+                if (list[5].toString().isNotEmpty &&
                     drag_item[0].toString().contains("12") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (list[7].toString().isNotEmpty &&
+
+                if (list[6].toString().isNotEmpty &&
                     drag_item[0].toString().contains("13") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
@@ -8092,6 +7319,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
@@ -8106,21 +7334,22 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
+                if (list[4].toString().isNotEmpty &&
                     drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (list[6].toString().isNotEmpty &&
+                if (list[5].toString().isNotEmpty &&
                     drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (list[7].toString().isNotEmpty &&
+
+                if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
@@ -8130,8 +7359,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 4
-            if (choose_layout == "layout 4" || choose_layout == "layout 5") {
+            // Tipe 3
+            if (choose_layout.toString().contains("3 Kotak")) {
               // ......
               // card 1
               // ......
@@ -8153,6 +7382,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[0].toString().contains("03") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
@@ -8181,7 +7411,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
+
+                if (list[6].toString().isNotEmpty &&
                     drag_item[0].toString().contains("13") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
@@ -8211,6 +7442,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
@@ -8239,7 +7471,8 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (list[5].toString().isNotEmpty &&
+
+                if (list[6].toString().isNotEmpty &&
                     drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
@@ -8269,6 +7502,7 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
@@ -8276,28 +7510,29 @@ class _StickerWidgetState extends State<StickerWidget> {
                   print("url_image : $url_image");
                 }
 
-                if (list[2].toString().isNotEmpty &&
+                if (list[3].toString().isNotEmpty &&
                     drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (list[2].toString().isNotEmpty &&
+                if (list[4].toString().isNotEmpty &&
                     drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (list[2].toString().isNotEmpty &&
+                if (list[5].toString().isNotEmpty &&
                     drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (list[2].toString().isNotEmpty &&
+
+                if (list[6].toString().isNotEmpty &&
                     drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
@@ -8307,8 +7542,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 6
-            if (choose_layout == "layout 6") {
+            // Tipe 4
+            if (choose_layout.toString().contains("4 Kotak")) {
               // ......
               // card 1
               // ......
@@ -8330,31 +7565,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[0].toString().contains("03") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("10") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("11") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("12") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("13") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8383,31 +7625,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8436,31 +7685,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8489,31 +7745,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8522,8 +7785,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 7
-            if (choose_layout == "layout 7" || choose_layout == "layout 8") {
+            // Tipe 5
+            if (choose_layout.toString().contains("5 Kotak")) {
               // ......
               // card 1
               // ......
@@ -8545,31 +7808,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[0].toString().contains("03") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("10") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("11") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("12") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("13") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8598,31 +7868,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8651,31 +7928,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8704,31 +7988,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8757,31 +8048,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8790,8 +8088,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 9
-            if (choose_layout == "layout 9" || choose_layout == "layout 10") {
+            // Tipe 6
+            if (choose_layout.toString().contains("6 Kotak")) {
               // ......
               // card 1
               // ......
@@ -8813,31 +8111,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[0].toString().contains("03") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("10") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("11") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("12") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[0].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[0].toString().contains("13") &&
                     drag_item[0].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8866,31 +8171,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[1].toString().contains("03") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("10") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("11") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("12") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[1].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[1].toString().contains("13") &&
                     drag_item[1].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8919,31 +8231,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[2].toString().contains("03") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("10") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("11") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("12") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[2].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[2].toString().contains("13") &&
                     drag_item[2].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -8972,31 +8291,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[3].toString().contains("03") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("10") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("11") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("12") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[3].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[3].toString().contains("13") &&
                     drag_item[3].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -9025,31 +8351,38 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[4].toString().contains("03") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("10") &&
+
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("10") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("11") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("12") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[4].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[4].toString().contains("13") &&
                     drag_item[4].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
@@ -9058,7 +8391,7 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
 
               // ......
-              // card 6
+              // card 5
               // ......
               if (drag_item[5].isNotEmpty) {
                 if (drag_item[5].toString().contains("00") &&
@@ -9078,512 +8411,39 @@ class _StickerWidgetState extends State<StickerWidget> {
                   url_image.add(list[2]);
                   print("url_image : $url_image");
                 }
+
                 if (drag_item[5].toString().contains("03") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[3]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[5].toString().contains("10") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("11") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("12") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("13") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-            }
 
-            // layout 11
-            if (choose_layout == "layout 11") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].isNotEmpty) {
-                if (drag_item[0].toString().contains("00") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("01") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("02") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("03") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("10") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("11") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("12") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("13") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("03") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("13") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 3
-              // ......
-              if (drag_item[2].isNotEmpty) {
-                if (drag_item[2].toString().contains("00") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("01") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("02") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("03") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("10") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("11") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("12") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("13") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 4
-              // ......
-              if (drag_item[3].isNotEmpty) {
-                if (drag_item[3].toString().contains("00") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("01") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("02") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("03") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("10") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("11") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("12") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("13") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 5
-              // ......
-              if (drag_item[4].isNotEmpty) {
-                if (drag_item[4].toString().contains("00") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("01") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("02") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("03") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("10") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("11") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("12") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("13") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 6
-              // ......
-              if (drag_item[5].isNotEmpty) {
-                if (drag_item[5].toString().contains("00") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("01") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("02") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("03") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("10") &&
+                if (list[3].toString().isNotEmpty &&
+                    drag_item[5].toString().contains("10") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[4]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[5].toString().contains("11") &&
+                if (list[4].toString().isNotEmpty &&
+                    drag_item[5].toString().contains("11") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[5]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[5].toString().contains("12") &&
+                if (list[5].toString().isNotEmpty &&
+                    drag_item[5].toString().contains("12") &&
                     drag_item[5].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[6]);
                   print("url_image : $url_image");
                 }
-                if (drag_item[5].toString().contains("13") &&
+
+                if (list[6].toString().isNotEmpty &&
+                    drag_item[5].toString().contains("13") &&
                     drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 7
-              // ......
-              if (drag_item[6].isNotEmpty) {
-                if (drag_item[6].toString().contains("00") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("01") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("02") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("03") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("10") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("11") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("12") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("13") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 8
-              // ......
-              if (drag_item[7].isNotEmpty) {
-                if (drag_item[7].toString().contains("00") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("01") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("02") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("03") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("10") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("11") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("12") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("13") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 9
-              // ......
-              if (drag_item[8].isNotEmpty) {
-                if (drag_item[8].toString().contains("00") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("01") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("02") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("03") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("10") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("11") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("12") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("13") &&
-                    drag_item[8].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
                   print("url_image : $url_image");
@@ -9596,12 +8456,12 @@ class _StickerWidgetState extends State<StickerWidget> {
 
       // Paket C
       // ..........................................
-      if (title.toString().contains("Collage C") ||
+      if (title.toString().contains("Collage c") ||
           title.toString().contains("Paket C")) {
         if (list.isNotEmpty) {
           if (drag_item.isNotEmpty) {
-            // layout 1 dan 2
-            if (choose_layout == "layout 1") {
+            // Tipe 1 Kotak
+            if (choose_layout == "1 Kotak") {
               // ......
               // card 1
               // ......
@@ -9679,8 +8539,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 2 dan 3
-            if (choose_layout == "layout 2" || choose_layout == "layout 3") {
+            // Tipe 2 Kotak
+            if (choose_layout == "2 Kotak") {
               // ......
               // card 1
               // ......
@@ -9838,8 +8698,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 4
-            if (choose_layout == "layout 4" || choose_layout == "layout 5") {
+            // Tipe 3 Kotak
+            if (choose_layout == "3 Kotak") {
               // ......
               // card 1
               // ......
@@ -9922,8 +8782,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               // card 2
               // ......
               if (drag_item[1].isNotEmpty) {
-                if (drag_item[0].toString().contains("00") &&
-                    drag_item[0].toString().isNotEmpty) {
+                if (drag_item[1].toString().contains("00") &&
+                    drag_item[1].toString().isNotEmpty) {
                   url_image.add(list[0]);
                   print("url_image : $url_image");
                 }
@@ -9999,11 +8859,84 @@ class _StickerWidgetState extends State<StickerWidget> {
               // ......
               // card 3
               // ......
-              if (drag_item[2].isNotEmpty) {}
+              if (drag_item[2].isNotEmpty) {
+                if (drag_item[2].toString().contains("00") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  url_image.add(list[0]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("01") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[1]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("02") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[2]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("03") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[3]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("04") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[4]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("05") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[5]);
+                  print("url_image : $url_image");
+                }
+
+                if (drag_item[2].toString().contains("10") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[6]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("11") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[7]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("12") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[8]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("13") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[9]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("14") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[10]);
+                  print("url_image : $url_image");
+                }
+                if (drag_item[2].toString().contains("15") &&
+                    drag_item[2].toString().isNotEmpty) {
+                  // ...
+                  url_image.add(list[11]);
+                  print("url_image : $url_image");
+                }
+              }
             }
 
-            // layout 6
-            if (choose_layout == "layout 6") {
+            // Tipe 4 Kotak
+            if (choose_layout == "4 Kotak") {
               // ......
               // card 1
               // ......
@@ -10217,8 +9150,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 7
-            if (choose_layout == "layout 7" || choose_layout == "layout 8") {
+            // Tipe 5 Kotak
+            if (choose_layout == "5 Kotak") {
               // ......
               // card 1
               // ......
@@ -10485,8 +9418,8 @@ class _StickerWidgetState extends State<StickerWidget> {
               }
             }
 
-            // layout 9
-            if (choose_layout == "layout 9" || choose_layout == "layout 10") {
+            // Tipe 6 Kotak
+            if (choose_layout == "6 Kotak") {
               // ......
               // card 1
               // ......
@@ -10799,486 +9732,6 @@ class _StickerWidgetState extends State<StickerWidget> {
                 }
                 if (drag_item[5].toString().contains("13") &&
                     drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-            }
-
-            // layout 11
-            if (choose_layout == "layout 11") {
-              // ......
-              // card 1
-              // ......
-              if (drag_item[0].isNotEmpty) {
-                if (drag_item[0].toString().contains("00") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("01") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("02") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("03") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("10") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("11") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("12") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[0].toString().contains("13") &&
-                    drag_item[0].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 2
-              // ......
-              if (drag_item[1].isNotEmpty) {
-                if (drag_item[1].toString().contains("00") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("01") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("02") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("03") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("10") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("11") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("12") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[1].toString().contains("13") &&
-                    drag_item[1].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 3
-              // ......
-              if (drag_item[2].isNotEmpty) {
-                if (drag_item[2].toString().contains("00") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("01") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("02") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("03") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("10") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("11") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("12") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[2].toString().contains("13") &&
-                    drag_item[2].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 4
-              // ......
-              if (drag_item[3].isNotEmpty) {
-                if (drag_item[3].toString().contains("00") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("01") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("02") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("03") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("10") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("11") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("12") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[3].toString().contains("13") &&
-                    drag_item[3].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 5
-              // ......
-              if (drag_item[4].isNotEmpty) {
-                if (drag_item[4].toString().contains("00") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("01") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("02") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("03") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("10") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("11") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("12") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[4].toString().contains("13") &&
-                    drag_item[4].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 6
-              // ......
-              if (drag_item[5].isNotEmpty) {
-                if (drag_item[5].toString().contains("00") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("01") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("02") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("03") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("10") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("11") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("12") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[5].toString().contains("13") &&
-                    drag_item[5].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 7
-              // ......
-              if (drag_item[6].isNotEmpty) {
-                if (drag_item[6].toString().contains("00") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("01") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("02") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("03") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("10") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("11") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("12") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[6].toString().contains("13") &&
-                    drag_item[6].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 8
-              // ......
-              if (drag_item[7].isNotEmpty) {
-                if (drag_item[7].toString().contains("00") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("01") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("02") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("03") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("10") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("11") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("12") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[7].toString().contains("13") &&
-                    drag_item[7].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[7]);
-                  print("url_image : $url_image");
-                }
-              }
-
-              // ......
-              // card 9
-              // ......
-              if (drag_item[8].isNotEmpty) {
-                if (drag_item[8].toString().contains("00") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  url_image.add(list[0]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("01") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[1]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("02") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[2]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("03") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[3]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("10") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[4]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("11") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[5]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("12") &&
-                    drag_item[8].toString().isNotEmpty) {
-                  // ...
-                  url_image.add(list[6]);
-                  print("url_image : $url_image");
-                }
-                if (drag_item[8].toString().contains("13") &&
-                    drag_item[8].toString().isNotEmpty) {
                   // ...
                   url_image.add(list[7]);
                   print("url_image : $url_image");
@@ -11544,1768 +9997,351 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                       // tipe collage a atau strip a
                                                       // ...
 
-                                                      // Layout 1 A, Kecil Atas
-                                                      choose_layout ==
-                                                                  "layout 1" &&
-                                                              url_image
-                                                                  .isNotEmpty
-                                                          ? Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(
-                                                                      12.0),
-                                                              child: InkWell(
-                                                                onTap:
-                                                                    () async {
-                                                                  // ---
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  width: width *
-                                                                      0.0925,
-                                                                  height:
-                                                                      height *
-                                                                          0.23,
-                                                                  decoration:
-                                                                      choose_background !=
-                                                                              ""
-                                                                          ? BoxDecoration(
+                                                      for (var element
+                                                          in layouts)
+                                                        if (element['tipe'] ==
+                                                            choose_layout)
+                                                          Container(
+                                                            decoration:
+                                                                choose_background !=
+                                                                        ""
+                                                                    ? BoxDecoration(
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          // last visit code here
+                                                                          image:
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        color: Colors
+                                                                            .white,
+                                                                      )
+                                                                    : BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(0.7),
+                                                                      ),
+                                                            // ...
+                                                            width: 600 / 3.6,
+                                                            height: 900 / 3.6,
+                                                            // color: Color.fromARGB(
+                                                            //     255, 202, 145, 74),
+                                                            child: Center(
+                                                              child: Stack(
+                                                                children: [
+                                                                  choose_layout
+                                                                              .toString()
+                                                                              .contains(
+                                                                                  "1 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "2 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "3 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "4 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak1_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak1_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            // color: Color
+                                                                            //     .fromARGB(
+                                                                            //         255,
+                                                                            //         234,
+                                                                            //         197,
+                                                                            //         167),
+                                                                            width:
+                                                                                int.parse(element['kotak1_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak1_height'].toString()).toDouble() / 3.6,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(12),
                                                                               image: DecorationImage(
-                                                                                // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
+                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
                                                                                 fit: BoxFit.cover,
                                                                               ),
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.white,
-                                                                            )
-                                                                          : BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
                                                                             ),
-                                                                  child: Column(
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(
-                                                                          width *
-                                                                              0.01,
-                                                                        ),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              width * 0.0725,
-                                                                          height:
-                                                                              width * 0.0725,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                            color:
-                                                                                Colors.white,
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              image: NetworkImage(
-                                                                                "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                scale: 1,
-                                                                              ),
-                                                                              fit: BoxFit.contain,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            )
-                                                          :
-
-                                                          // Layout 2 A, Kecil Atas
-                                                          choose_layout ==
-                                                                      "layout 2" &&
-                                                                  url_image
-                                                                      .isNotEmpty
-                                                              ? Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(
-                                                                          12.0),
-                                                                  child:
-                                                                      InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      // ---
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      width: width *
-                                                                          0.0925,
-                                                                      height:
-                                                                          height *
-                                                                              0.23,
-                                                                      decoration: choose_background !=
-                                                                              ""
-                                                                          ? BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.white,
-                                                                            )
-                                                                          : BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
-                                                                            ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(
-                                                                          width *
-                                                                              0.0,
-                                                                        ),
-                                                                        child:
-                                                                            // .................................
-                                                                            // layout row drag target main view
-                                                                            // .................................
-                                                                            Row(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
-                                                                          children: [
-                                                                            // .............................
-                                                                            // layout drag target main view
-                                                                            // .............................
-
-                                                                            // ============
-                                                                            // kolom card 0
-                                                                            Container(
-                                                                              width: width * 0.035,
-                                                                              height: width * 0.035,
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0,
-                                                                                ),
-                                                                                child: Container(
-                                                                                  width: width * 0.035,
-                                                                                  height: width * 0.035,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    image: DecorationImage(
-                                                                                      image: NetworkImage(
-                                                                                        "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                        scale: 1,
-                                                                                      ),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                // ),
-                                                                              ),
-                                                                            ),
-
-                                                                            // ============
-                                                                            // kolom card 1
-                                                                            Container(
-                                                                              width: width * 0.035,
-                                                                              height: width * 0.035,
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0,
-                                                                                ),
-                                                                                child: Container(
-                                                                                  width: width * 0.035,
-                                                                                  height: width * 0.035,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                    image: DecorationImage(
-                                                                                      image: NetworkImage(
-                                                                                        "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                        scale: 1,
-                                                                                      ),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                // ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                )
-                                                              :
-
-                                                              // Layout 3 A, Kecil Atas
-                                                              choose_layout ==
-                                                                          "layout 3" &&
-                                                                      url_image
-                                                                          .isNotEmpty
-                                                                  ? Padding(
-                                                                      padding: const EdgeInsets
-                                                                          .all(
-                                                                          12.0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () async {
-                                                                          // ---
-                                                                        },
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              width * 0.092,
-                                                                          height:
-                                                                              height * 0.23,
-                                                                          decoration: choose_background != ""
-                                                                              ? BoxDecoration(
-                                                                                  image: DecorationImage(
-                                                                                    // last visit code here
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                    fit: BoxFit.cover,
-                                                                                  ),
-                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                  color: Colors.white,
-                                                                                )
-                                                                              : BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                  color: Colors.black.withOpacity(0.7),
-                                                                                ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                EdgeInsets.all(
-                                                                              width * 0.0,
-                                                                            ),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                              children: [
-                                                                                Column(
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                  children: [
-                                                                                    // ---
-                                                                                    Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.042,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.white,
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0,
-                                                                                        ),
-                                                                                        child: Container(
-                                                                                          width: width * 0.042,
-                                                                                          height: width * 0.042,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage(
-                                                                                                "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                scale: 1,
-                                                                                              ),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Container(
-                                                                                      width: width * 0.042,
-                                                                                      height: width * 0.042,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.white,
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0,
-                                                                                        ),
-                                                                                        child: Container(
-                                                                                          width: width * 0.042,
-                                                                                          height: width * 0.042,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage(
-                                                                                                "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                scale: 1,
-                                                                                              ),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    )
-                                                                  :
-
-                                                                  // Layout 4 A, Kecil Atas
-                                                                  choose_layout ==
-                                                                              "layout 4" &&
-                                                                          url_image
-                                                                              .isNotEmpty
-                                                                      ? Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .all(
-                                                                              12.0),
-                                                                          child:
-                                                                              InkWell(
-                                                                            onTap:
-                                                                                () async {
-                                                                              // ---
-                                                                            },
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.092,
-                                                                              height: height * 0.24,
-                                                                              decoration: choose_background != ""
-                                                                                  ? BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(15),
-                                                                                      image: DecorationImage(
-                                                                                        // last visit code here
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                      color: Colors.white,
-                                                                                    )
-                                                                                  : BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                      color: Colors.black.withOpacity(0.7),
-                                                                                    ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsets.all(
-                                                                                  width * 0.0025,
-                                                                                ),
-                                                                                child: Row(
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                  children: [
-                                                                                    // .............................
-                                                                                    // layout drag target main view
-                                                                                    // .............................
-
-                                                                                    // ============
-                                                                                    // kolom card 0
-                                                                                    Container(
-                                                                                      width: width * 0.025,
-                                                                                      height: width * 0.025,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.white,
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0,
-                                                                                        ),
-                                                                                        child: Container(
-                                                                                          width: width * 0.034,
-                                                                                          height: width * 0.042,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage(
-                                                                                                "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                scale: 1,
-                                                                                              ),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    // ============
-                                                                                    // kolom card 1
-                                                                                    Container(
-                                                                                      width: width * 0.025,
-                                                                                      height: width * 0.025,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.white,
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0,
-                                                                                        ),
-                                                                                        child: Container(
-                                                                                          width: width * 0.034,
-                                                                                          height: width * 0.042,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage(
-                                                                                                "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                scale: 1,
-                                                                                              ),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    Container(
-                                                                                      width: width * 0.025,
-                                                                                      height: width * 0.025,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                        color: Colors.white,
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0,
-                                                                                        ),
-                                                                                        child: Container(
-                                                                                          width: width * 0.034,
-                                                                                          height: width * 0.042,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                            image: DecorationImage(
-                                                                                              image: NetworkImage(
-                                                                                                "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                scale: 1,
-                                                                                              ),
-                                                                                              fit: BoxFit.cover,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                            ),
+                                                                            // ...
                                                                           ),
                                                                         )
-                                                                      :
+                                                                      : Container(),
 
-                                                                      // Layout 5 A, Kecil Atas
-                                                                      choose_layout == "layout 5" &&
-                                                                              url_image.isNotEmpty
-                                                                          ? Padding(
-                                                                              padding: const EdgeInsets.all(12.0),
-                                                                              child: InkWell(
-                                                                                onTap: () async {
-                                                                                  // ---
-                                                                                },
-                                                                                child: Container(
-                                                                                  width: width * 0.092,
-                                                                                  height: height * 0.23,
-                                                                                  decoration: choose_background != ""
-                                                                                      ? BoxDecoration(
-                                                                                          image: DecorationImage(
-                                                                                            // last visit code here
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        )
-                                                                                      : BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.black.withOpacity(0.7),
-                                                                                        ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0,
-                                                                                    ),
-                                                                                    child: Column(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        // .............................
-                                                                                        // layout drag target main view
-                                                                                        // .............................
-
-                                                                                        // ============
-                                                                                        // kolom card 0
-                                                                                        Container(
-                                                                                          width: width * 0.035,
-                                                                                          height: width * 0.035,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.035,
-                                                                                              height: width * 0.035,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage(
-                                                                                                    "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                    scale: 1,
-                                                                                                  ),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ============
-                                                                                        // kolom card 1
-                                                                                        Container(
-                                                                                          width: width * 0.035,
-                                                                                          height: width * 0.035,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.035,
-                                                                                              height: width * 0.035,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage(
-                                                                                                    "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                    scale: 1,
-                                                                                                  ),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            // ),
-                                                                                          ),
-                                                                                        ),
-
-                                                                                        // ============
-                                                                                        // kolom card 2
-                                                                                        Container(
-                                                                                          width: width * 0.035,
-                                                                                          height: width * 0.035,
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: Container(
-                                                                                              width: width * 0.035,
-                                                                                              height: width * 0.035,
-                                                                                              decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                image: DecorationImage(
-                                                                                                  image: NetworkImage(
-                                                                                                    "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                    scale: 1,
-                                                                                                  ),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            )
-                                                                          :
-
-                                                                          // Layout 6 A, Kecil Atas
-                                                                          choose_layout == "layout 6" && url_image.isNotEmpty
-                                                                              ? Padding(
-                                                                                  padding: const EdgeInsets.all(12.0),
-                                                                                  child: InkWell(
-                                                                                    onTap: () async {
-                                                                                      // ---
-                                                                                    },
-                                                                                    child: Container(
-                                                                                      width: width * 0.0925,
-                                                                                      height: height * 0.23,
-                                                                                      decoration: choose_background != ""
-                                                                                          ? BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                // last visit code here
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                              color: Colors.white,
-                                                                                            )
-                                                                                          : BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                              color: Colors.black.withOpacity(0.7),
-                                                                                            ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0025,
-                                                                                        ),
-                                                                                        child: Row(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          children: [
-                                                                                            // .................................
-                                                                                            // layout row drag target main view
-                                                                                            // .................................
-                                                                                            Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              children: [
-                                                                                                // .............................
-                                                                                                // layout drag target main view
-                                                                                                // .............................
-
-                                                                                                // ============
-                                                                                                // kolom card 0
-                                                                                                Container(
-                                                                                                  width: width * 0.017,
-                                                                                                  height: width * 0.017,
-                                                                                                  decoration: choose_background != ""
-                                                                                                      ? BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        )
-                                                                                                      : null,
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsets.all(
-                                                                                                      width * 0.0,
-                                                                                                    ),
-                                                                                                    child: Container(
-                                                                                                      width: width * 0.017,
-                                                                                                      height: width * 0.017,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                                        image: DecorationImage(
-                                                                                                          image: NetworkImage(
-                                                                                                            "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                            scale: 1,
-                                                                                                          ),
-                                                                                                          fit: BoxFit.cover,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    // ),
-                                                                                                  ),
-                                                                                                ),
-
-                                                                                                // ============
-                                                                                                // kolom card 1
-                                                                                                Container(
-                                                                                                  width: width * 0.017,
-                                                                                                  height: width * 0.017,
-                                                                                                  decoration: choose_background != ""
-                                                                                                      ? BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        )
-                                                                                                      : null,
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsets.all(
-                                                                                                      width * 0.0,
-                                                                                                    ),
-                                                                                                    child: Container(
-                                                                                                      width: width * 0.017,
-                                                                                                      height: width * 0.017,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                                        image: DecorationImage(
-                                                                                                          image: NetworkImage(
-                                                                                                            "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                            scale: 1,
-                                                                                                          ),
-                                                                                                          fit: BoxFit.cover,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-
-                                                                                            Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              children: [
-                                                                                                // .............................
-                                                                                                // layout drag target main view
-                                                                                                // .............................
-
-                                                                                                // ============
-                                                                                                // kolom card 2
-                                                                                                Container(
-                                                                                                  width: width * 0.017,
-                                                                                                  height: width * 0.017,
-                                                                                                  decoration: choose_background != ""
-                                                                                                      ? BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        )
-                                                                                                      : null,
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsets.all(
-                                                                                                      width * 0.0,
-                                                                                                    ),
-                                                                                                    child: Container(
-                                                                                                      width: width * 0.017,
-                                                                                                      height: width * 0.017,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                                        image: DecorationImage(
-                                                                                                          image: NetworkImage(
-                                                                                                            "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                            scale: 1,
-                                                                                                          ),
-                                                                                                          fit: BoxFit.cover,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    // ),
-                                                                                                  ),
-                                                                                                ),
-
-                                                                                                // ============
-                                                                                                // kolom card 3
-                                                                                                Container(
-                                                                                                  width: width * 0.017,
-                                                                                                  height: width * 0.017,
-                                                                                                  decoration: choose_background != ""
-                                                                                                      ? BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        )
-                                                                                                      : null,
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsets.all(
-                                                                                                      width * 0.0,
-                                                                                                    ),
-                                                                                                    child: Container(
-                                                                                                      width: width * 0.017,
-                                                                                                      height: width * 0.017,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                                        image: DecorationImage(
-                                                                                                          image: NetworkImage(
-                                                                                                            "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                            scale: 1,
-                                                                                                          ),
-                                                                                                          fit: BoxFit.cover,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    // ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
+                                                                  // ...
+                                                                  choose_layout
+                                                                              .toString()
+                                                                              .contains(
+                                                                                  "1 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "2 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "3 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "4 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak2_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak2_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            // color: Color
+                                                                            //     .fromARGB(
+                                                                            //         255,
+                                                                            //         234,
+                                                                            //         197,
+                                                                            //         167),
+                                                                            width:
+                                                                                int.parse(element['kotak2_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak2_height'].toString()).toDouble() / 3.6,
+                                                                            child: choose_layout.toString().contains("1 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak2_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak2_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                                        fit: BoxFit.cover,
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                )
-                                                                              :
+                                                                            // ...
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
 
-                                                                              // Layout 7 A, Kecil Atas
-                                                                              choose_layout == "layout 7" && url_image.isNotEmpty
-                                                                                  ? Padding(
-                                                                                      padding: const EdgeInsets.all(12.0),
-                                                                                      child: InkWell(
-                                                                                        onTap: () async {
-                                                                                          // ---
-                                                                                        },
-                                                                                        child: Container(
-                                                                                          width: width * 0.092,
-                                                                                          height: height * 0.23,
-                                                                                          decoration: choose_background != ""
-                                                                                              ? BoxDecoration(
-                                                                                                  image: DecorationImage(
-                                                                                                    // last visit code here
-                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                  color: Colors.white,
-                                                                                                )
-                                                                                              : BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                  color: Colors.black.withOpacity(0.7),
-                                                                                                ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(
-                                                                                              width * 0.0,
-                                                                                            ),
-                                                                                            child: Row(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                              children: [
-                                                                                                Column(
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                  children: [
-                                                                                                    // ---
-                                                                                                    Container(
-                                                                                                      width: width * 0.025,
-                                                                                                      height: width * 0.025,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsets.all(
-                                                                                                          width * 0.0,
-                                                                                                        ),
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.034,
-                                                                                                          height: width * 0.042,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                            image: DecorationImage(
-                                                                                                              image: NetworkImage(
-                                                                                                                "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                                scale: 1,
-                                                                                                              ),
-                                                                                                              fit: BoxFit.cover,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Container(
-                                                                                                      width: width * 0.025,
-                                                                                                      height: width * 0.025,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsets.all(
-                                                                                                          width * 0.0,
-                                                                                                        ),
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.034,
-                                                                                                          height: width * 0.042,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                            image: DecorationImage(
-                                                                                                              image: NetworkImage(
-                                                                                                                "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                                scale: 1,
-                                                                                                              ),
-                                                                                                              fit: BoxFit.cover,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                                Column(
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                  children: [
-                                                                                                    // ---
-                                                                                                    Container(
-                                                                                                      width: width * 0.025,
-                                                                                                      height: width * 0.025,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsets.all(
-                                                                                                          width * 0.0,
-                                                                                                        ),
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.034,
-                                                                                                          height: width * 0.042,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                            image: DecorationImage(
-                                                                                                              image: NetworkImage(
-                                                                                                                "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                                scale: 1,
-                                                                                                              ),
-                                                                                                              fit: BoxFit.cover,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Container(
-                                                                                                      width: width * 0.025,
-                                                                                                      height: width * 0.025,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsets.all(
-                                                                                                          width * 0.0,
-                                                                                                        ),
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.034,
-                                                                                                          height: width * 0.042,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                            image: DecorationImage(
-                                                                                                              image: NetworkImage(
-                                                                                                                "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                                scale: 1,
-                                                                                                              ),
-                                                                                                              fit: BoxFit.cover,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Container(
-                                                                                                      width: width * 0.025,
-                                                                                                      height: width * 0.025,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsets.all(
-                                                                                                          width * 0.0,
-                                                                                                        ),
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.034,
-                                                                                                          height: width * 0.042,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                            image: DecorationImage(
-                                                                                                              image: NetworkImage(
-                                                                                                                "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                                                scale: 1,
-                                                                                                              ),
-                                                                                                              fit: BoxFit.cover,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
+                                                                  // ...
+                                                                  element['kotak3_top'] != null &&
+                                                                              choose_layout.toString().contains(
+                                                                                  "2 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "3 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "4 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak3_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak3_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            // color: Color
+                                                                            //     .fromARGB(
+                                                                            //         255,
+                                                                            //         234,
+                                                                            //         197,
+                                                                            //         167),
+                                                                            width:
+                                                                                int.parse(element['kotak3_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak3_height'].toString()).toDouble() / 3.6,
+                                                                            // ...
+                                                                            child: choose_layout.toString().contains("2 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak3_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak3_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                        fit: BoxFit.cover,
                                                                                       ),
-                                                                                    )
-                                                                                  :
+                                                                                    ),
+                                                                                  ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
 
-                                                                                  // Layout 8 A, Kecil Atas
-                                                                                  choose_layout == "layout 8" && url_image.isNotEmpty
-                                                                                      ? Padding(
-                                                                                          padding: const EdgeInsets.all(12.0),
-                                                                                          child: InkWell(
-                                                                                            onTap: () async {
-                                                                                              // ---
-                                                                                            },
-                                                                                            child: Container(
-                                                                                              width: width * 0.092,
-                                                                                              height: height * 0.23,
-                                                                                              decoration: choose_background != ""
-                                                                                                  ? BoxDecoration(
-                                                                                                      image: DecorationImage(
-                                                                                                        // last visit code here
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    )
-                                                                                                  : BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.black.withOpacity(0.7),
-                                                                                                    ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(
-                                                                                                  width * 0.0,
-                                                                                                ),
-                                                                                                child: Row(
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                  children: [
-                                                                                                    Column(
-                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                      children: [
-                                                                                                        // ---
-                                                                                                        Container(
-                                                                                                          width: width * 0.025,
-                                                                                                          height: width * 0.025,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                                            color: Colors.white,
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0,
-                                                                                                            ),
-                                                                                                            child: Container(
-                                                                                                              width: width * 0.034,
-                                                                                                              height: width * 0.042,
-                                                                                                              decoration: BoxDecoration(
-                                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                                image: DecorationImage(
-                                                                                                                  image: NetworkImage(
-                                                                                                                    "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                                    scale: 1,
-                                                                                                                  ),
-                                                                                                                  fit: BoxFit.cover,
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          width: width * 0.025,
-                                                                                                          height: width * 0.025,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                                            color: Colors.white,
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0,
-                                                                                                            ),
-                                                                                                            child: Container(
-                                                                                                              width: width * 0.034,
-                                                                                                              height: width * 0.042,
-                                                                                                              decoration: BoxDecoration(
-                                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                                image: DecorationImage(
-                                                                                                                  image: NetworkImage(
-                                                                                                                    "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                                    scale: 1,
-                                                                                                                  ),
-                                                                                                                  fit: BoxFit.cover,
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                    Column(
-                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                      children: [
-                                                                                                        // ---
-                                                                                                        Container(
-                                                                                                          width: width * 0.025,
-                                                                                                          height: width * 0.025,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                                            color: Colors.white,
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0,
-                                                                                                            ),
-                                                                                                            child: Container(
-                                                                                                              width: width * 0.034,
-                                                                                                              height: width * 0.042,
-                                                                                                              decoration: BoxDecoration(
-                                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                                image: DecorationImage(
-                                                                                                                  image: NetworkImage(
-                                                                                                                    "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                                    scale: 1,
-                                                                                                                  ),
-                                                                                                                  fit: BoxFit.cover,
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          width: width * 0.025,
-                                                                                                          height: width * 0.025,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                                            color: Colors.white,
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0,
-                                                                                                            ),
-                                                                                                            child: Container(
-                                                                                                              width: width * 0.034,
-                                                                                                              height: width * 0.042,
-                                                                                                              decoration: BoxDecoration(
-                                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                                image: DecorationImage(
-                                                                                                                  image: NetworkImage(
-                                                                                                                    "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                                    scale: 1,
-                                                                                                                  ),
-                                                                                                                  fit: BoxFit.cover,
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          width: width * 0.025,
-                                                                                                          height: width * 0.025,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(5),
-                                                                                                            color: Colors.white,
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0,
-                                                                                                            ),
-                                                                                                            child: Container(
-                                                                                                              width: width * 0.034,
-                                                                                                              height: width * 0.042,
-                                                                                                              decoration: BoxDecoration(
-                                                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                                                image: DecorationImage(
-                                                                                                                  image: NetworkImage(
-                                                                                                                    "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                                                    scale: 1,
-                                                                                                                  ),
-                                                                                                                  fit: BoxFit.cover,
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        )
-                                                                                      :
+                                                                  // ...
+                                                                  element['kotak4_top'] != null &&
+                                                                              choose_layout.toString().contains(
+                                                                                  "3 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "4 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak4_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak4_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            // color: Color
+                                                                            //     .fromARGB(
+                                                                            //         255,
+                                                                            //         234,
+                                                                            //         197,
+                                                                            //         167),
+                                                                            width:
+                                                                                int.parse(element['kotak4_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak4_height'].toString()).toDouble() / 3.6,
+                                                                            // ...
+                                                                            child: choose_layout.toString().contains("3 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak4_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak4_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
 
-                                                                                      // Layout 9 A, Kecil Atas
-                                                                                      choose_layout == "layout 9" && url_image.isNotEmpty
-                                                                                          ? Padding(
-                                                                                              padding: const EdgeInsets.all(12.0),
-                                                                                              child: InkWell(
-                                                                                                onTap: () async {
-                                                                                                  // ---
-                                                                                                  setState(() {});
-                                                                                                },
-                                                                                                child: Container(
-                                                                                                  width: width * 0.0925,
-                                                                                                  height: height * 0.23,
-                                                                                                  decoration: choose_background != ""
-                                                                                                      ? BoxDecoration(
-                                                                                                          image: DecorationImage(
-                                                                                                            // last visit code here
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        )
-                                                                                                      : BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                                          color: Colors.white,
-                                                                                                        ),
-                                                                                                  child: Padding(
-                                                                                                    padding: EdgeInsets.all(
-                                                                                                      width * 0.0025,
-                                                                                                    ),
-                                                                                                    child: Column(
-                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                      children: [
-                                                                                                        // .................................
-                                                                                                        // layout row drag target main view
-                                                                                                        // .................................
-                                                                                                        Row(
-                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                          children: [
-                                                                                                            // .............................
-                                                                                                            // layout drag target main view
-                                                                                                            // .............................
+                                                                  // ...
+                                                                  element['kotak5_top'] != null &&
+                                                                              choose_layout.toString().contains(
+                                                                                  "4 Kotak") ||
+                                                                          choose_layout.toString().contains(
+                                                                              "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak5_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak5_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            // color: Color
+                                                                            //     .fromARGB(
+                                                                            //         255,
+                                                                            //         234,
+                                                                            //         197,
+                                                                            //         167),
+                                                                            width:
+                                                                                int.parse(element['kotak5_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak5_height'].toString()).toDouble() / 3.6,
+                                                                            // ...
+                                                                            child: choose_layout.toString().contains("4 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak5_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak5_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
 
-                                                                                                            // ============
-                                                                                                            // kolom card 0
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                // ),
-                                                                                                              ),
-                                                                                                            ),
+                                                                  // ...
+                                                                  element['kotak6_top'] != null &&
+                                                                              choose_layout.toString().contains(
+                                                                                  "5 Kotak") ||
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak6_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak6_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                int.parse(element['kotak6_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak6_height'].toString()).toDouble() / 3.6,
+                                                                            // ...
+                                                                            child: choose_layout.toString().contains("5 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak6_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak6_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
 
-                                                                                                            // ============
-                                                                                                            // kolom card 1
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        ),
-
-                                                                                                        Row(
-                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                          children: [
-                                                                                                            // .............................
-                                                                                                            // layout drag target main view
-                                                                                                            // .............................
-
-                                                                                                            // ============
-                                                                                                            // kolom card 2
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                // ),
-                                                                                                              ),
-                                                                                                            ),
-
-                                                                                                            // ============
-                                                                                                            // kolom card 3
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                // ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        ),
-                                                                                                        Row(
-                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                          children: [
-                                                                                                            // .............................
-                                                                                                            // layout drag target main view
-                                                                                                            // .............................
-
-                                                                                                            // ============
-                                                                                                            // kolom card 4
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                // ),
-                                                                                                              ),
-                                                                                                            ),
-
-                                                                                                            // ======================
-                                                                                                            // kolom card 6 main view
-                                                                                                            // ======================
-                                                                                                            Container(
-                                                                                                              width: width * 0.025,
-                                                                                                              height: width * 0.025,
-                                                                                                              decoration: choose_background != ""
-                                                                                                                  ? BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                                      color: Colors.white,
-                                                                                                                    )
-                                                                                                                  : null,
-                                                                                                              child: Padding(
-                                                                                                                padding: EdgeInsets.all(
-                                                                                                                  width * 0.0,
-                                                                                                                ),
-                                                                                                                child: Container(
-                                                                                                                  width: width * 0.042,
-                                                                                                                  height: width * 0.0375,
-                                                                                                                  decoration: BoxDecoration(
-                                                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                                                    image: DecorationImage(
-                                                                                                                      image: NetworkImage(
-                                                                                                                        "${Variables.ipv4_local}/storage/${url_image[5].toString()}",
-                                                                                                                        scale: 1,
-                                                                                                                      ),
-                                                                                                                      fit: BoxFit.cover,
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                // ),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            )
-                                                                                          :
-
-                                                                                          // Layout 10 A, Kecil Atas
-                                                                                          choose_layout == "layout 10" && url_image.isNotEmpty
-                                                                                              ? Container()
-                                                                                              : choose_layout == "layout 11" && url_image.isNotEmpty
-                                                                                                  ? Padding(
-                                                                                                      padding: const EdgeInsets.all(12.0),
-                                                                                                      child: InkWell(
-                                                                                                        onTap: () async {
-                                                                                                          // ---
-                                                                                                        },
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.0925,
-                                                                                                          height: height * 0.23,
-                                                                                                          decoration: choose_background != ""
-                                                                                                              ? BoxDecoration(
-                                                                                                                  image: DecorationImage(
-                                                                                                                    // last visit code here
-                                                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                                    fit: BoxFit.cover,
-                                                                                                                  ),
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                )
-                                                                                                              : BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.black.withOpacity(0.7),
-                                                                                                                ),
-                                                                                                          child: Padding(
-                                                                                                            padding: EdgeInsets.all(
-                                                                                                              width * 0.0025,
-                                                                                                            ),
-                                                                                                            child: Row(
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                              children: [
-                                                                                                                // .................................
-                                                                                                                // layout row drag target main view
-                                                                                                                // .................................
-                                                                                                                Column(
-                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                                  children: [
-                                                                                                                    // .............................
-                                                                                                                    // layout drag target main view
-                                                                                                                    // .............................
-
-                                                                                                                    // ============
-                                                                                                                    // kolom card 0
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    // ============
-                                                                                                                    // kolom card 1
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[1].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[2].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ],
-                                                                                                                ),
-
-                                                                                                                Column(
-                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                                  children: [
-                                                                                                                    // .............................
-                                                                                                                    // layout drag target main view
-                                                                                                                    // .............................
-
-                                                                                                                    // ============
-                                                                                                                    // kolom card 2
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[3].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    // ============
-                                                                                                                    // kolom card 3
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[4].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[5].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ],
-                                                                                                                ),
-
-                                                                                                                Column(
-                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                                  children: [
-                                                                                                                    // .............................
-                                                                                                                    // layout drag target main view
-                                                                                                                    // .............................
-
-                                                                                                                    // ============
-                                                                                                                    // kolom card 4
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[6].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    // ======================
-                                                                                                                    // kolom card 6 main view
-                                                                                                                    // ======================
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[7].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-
-                                                                                                                    Container(
-                                                                                                                      width: width * 0.017,
-                                                                                                                      height: width * 0.017,
-                                                                                                                      decoration: choose_background != ""
-                                                                                                                          ? BoxDecoration(
-                                                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                                                              color: Colors.white,
-                                                                                                                            )
-                                                                                                                          : null,
-                                                                                                                      child: Padding(
-                                                                                                                        padding: EdgeInsets.all(
-                                                                                                                          width * 0.0,
-                                                                                                                        ),
-                                                                                                                        child: Container(
-                                                                                                                          width: width * 0.017,
-                                                                                                                          height: width * 0.017,
-                                                                                                                          decoration: BoxDecoration(
-                                                                                                                            borderRadius: BorderRadius.circular(10),
-                                                                                                                            image: DecorationImage(
-                                                                                                                              image: NetworkImage(
-                                                                                                                                "${Variables.ipv4_local}/storage/${url_image[8].toString()}",
-                                                                                                                                scale: 1,
-                                                                                                                              ),
-                                                                                                                              fit: BoxFit.cover,
-                                                                                                                            ),
-                                                                                                                          ),
-                                                                                                                        ),
-                                                                                                                        // ),
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ],
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    )
-                                                                                                  : Container(),
+                                                                  // ...
+                                                                  element['kotak7_top'] !=
+                                                                              null &&
+                                                                          choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                      ? Positioned(
+                                                                          top: int.parse(element['kotak7_top'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          left: int.parse(element['kotak7_left'].toString()).toDouble() /
+                                                                              3.6,
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                int.parse(element['kotak7_width'].toString()).toDouble() / 3.6,
+                                                                            height:
+                                                                                int.parse(element['kotak7_height'].toString()).toDouble() / 3.6,
+                                                                            // ...
+                                                                            child: choose_layout.toString().contains("6 Kotak")
+                                                                                ? Container()
+                                                                                : Container(
+                                                                                    width: int.parse(element['kotak7_width'].toString()).toDouble() / 3.6,
+                                                                                    height: int.parse(element['kotak7_height'].toString()).toDouble() / 3.6,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(12),
+                                                                                      image: DecorationImage(
+                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
                                                     ]
                                                   : [
                                                       // ...
@@ -17000,1846 +14036,467 @@ class _StickerWidgetState extends State<StickerWidget> {
                                                 // layout main view
                                                 // ..................
 
-                                                choose_layout == "layout 1" &&
-                                                        url_image.isNotEmpty
-                                                    ? Container(
-                                                        width: 600,
-                                                        height: 900,
-                                                        decoration:
-                                                            choose_background !=
-                                                                    ""
-                                                                ? BoxDecoration(
-                                                                    image:
-                                                                        DecorationImage(
-                                                                      // last visit code here
-                                                                      image:
-                                                                          NetworkImage(
-                                                                        "${Variables.ipv4_local}/storage/background/${choose_background.toString()}",
-                                                                      ),
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Colors
-                                                                        .white,
-                                                                  )
-                                                                : BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Colors
-                                                                        .black
-                                                                        .withOpacity(
-                                                                            0.7),
+                                                for (var element in layouts)
+                                                  if (element['tipe'] ==
+                                                      choose_layout)
+                                                    Container(
+                                                      decoration:
+                                                          choose_background !=
+                                                                  ""
+                                                              ? BoxDecoration(
+                                                                  image:
+                                                                      DecorationImage(
+                                                                    // last visit code here
+                                                                    image: NetworkImage(
+                                                                        "${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                            width * 0.0025,
-                                                          ),
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              // .................................
-                                                              // layout row drag target main view
-                                                              // .................................
-                                                              Container(
-                                                                width: 600,
-                                                                height: 600,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  color: Colors
+                                                                      .white,
+                                                                )
+                                                              : BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  color: Colors
+                                                                      .black
+                                                                      .withOpacity(
+                                                                          0.7),
+                                                                ),
+                                                      // ...
+                                                      width: 600,
+                                                      height: 900,
+                                                      child: Center(
+                                                        child: Stack(
+                                                          children: [
+                                                            choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "1 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "2 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "3 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "4 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(
+                                                                            element['kotak1_top'].toString())
+                                                                        .toDouble(),
+                                                                    left: int.parse(
+                                                                            element['kotak1_left'].toString())
+                                                                        .toDouble(),
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak1_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak1_height'].toString())
+                                                                          .toDouble(),
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12),
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          image:
+                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                      // ...
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "1 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "2 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "3 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "4 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(
+                                                                            element['kotak2_top'].toString())
+                                                                        .toDouble(),
+                                                                    left: int.parse(
+                                                                            element['kotak2_left'].toString())
+                                                                        .toDouble(),
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak2_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak2_height'].toString())
+                                                                          .toDouble(),
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("1 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak2_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak2_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                      // ...
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            element['kotak3_top'] !=
+                                                                            null &&
+                                                                        choose_layout
+                                                                            .toString()
+                                                                            .contains(
+                                                                                "2 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "3 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "4 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(
+                                                                            element['kotak3_top'].toString())
+                                                                        .toDouble(),
+                                                                    left: int.parse(
+                                                                            element['kotak3_left'].toString())
+                                                                        .toDouble(),
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak3_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak3_height'].toString())
+                                                                          .toDouble(),
+                                                                      // ...
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("2 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak3_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak3_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            element['kotak4_top'] !=
+                                                                            null &&
+                                                                        choose_layout
+                                                                            .toString()
+                                                                            .contains(
+                                                                                "3 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "4 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(
+                                                                            element['kotak4_top'].toString())
+                                                                        .toDouble(),
+                                                                    left: int.parse(
+                                                                            element['kotak4_left'].toString())
+                                                                        .toDouble(),
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak4_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak4_height'].toString())
+                                                                          .toDouble(),
+                                                                      // ...
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("3 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak4_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak4_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            element['kotak5_top'] !=
+                                                                            null &&
+                                                                        choose_layout
+                                                                            .toString()
+                                                                            .contains(
+                                                                                "4 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(element['kotak5_top'].toString())
+                                                                            .toDouble() /
+                                                                        1,
+                                                                    left: int.parse(element['kotak5_left'].toString())
+                                                                            .toDouble() /
+                                                                        1,
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak5_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak5_height'].toString())
+                                                                          .toDouble(),
+                                                                      // ...
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("4 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak5_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak5_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            element['kotak6_top'] !=
+                                                                            null &&
+                                                                        choose_layout
+                                                                            .toString()
+                                                                            .contains(
+                                                                                "5 Kotak") ||
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(element['kotak6_top'].toString())
+                                                                            .toDouble() /
+                                                                        1,
+                                                                    left: int.parse(element['kotak6_left'].toString())
+                                                                            .toDouble() /
+                                                                        1,
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak6_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak6_height'].toString())
+                                                                          .toDouble(),
+                                                                      // ...
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("5 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak6_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak6_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            // ...
+                                                            element['kotak7_top'] !=
+                                                                        null &&
+                                                                    choose_layout
+                                                                        .toString()
+                                                                        .contains(
+                                                                            "6 Kotak")
+                                                                ? Positioned(
+                                                                    top: int.parse(
+                                                                            element['kotak7_top'].toString())
+                                                                        .toDouble(),
+                                                                    left: int.parse(
+                                                                            element['kotak7_left'].toString())
+                                                                        .toDouble(),
+                                                                    child:
+                                                                        Container(
+                                                                      width: int.parse(
+                                                                              element['kotak7_width'].toString())
+                                                                          .toDouble(),
+                                                                      height: int.parse(
+                                                                              element['kotak7_height'].toString())
+                                                                          .toDouble(),
+                                                                      // ...
+                                                                      child: choose_layout
+                                                                              .toString()
+                                                                              .contains("6 Kotak")
+                                                                          ? Container()
+                                                                          : Container(
+                                                                              width: int.parse(element['kotak7_width'].toString()).toDouble(),
+                                                                              height: int.parse(element['kotak7_height'].toString()).toDouble(),
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(12),
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                    ),
+                                                                  )
+                                                                : Container(),
+
+                                                            Center(
+                                                              child: Container(
+                                                                 margin: EdgeInsets.only(top: height * 0.57),
+                                                                width: width *
+                                                                    0.25,
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              5),
+                                                                              15),
+                                                                  color: Color.fromARGB(
+                                                                          255,
+                                                                          80,
+                                                                          133,
+                                                                          123)
+                                                                      .withOpacity(
+                                                                          0.4),
                                                                 ),
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                    width *
-                                                                        0.0001,
-                                                                  ),
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        width *
-                                                                            0.12,
-                                                                    height:
-                                                                        height *
-                                                                            0.12,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              45),
-                                                                      image:
-                                                                          DecorationImage(
-                                                                        image: NetworkImage(
-                                                                            "${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  // ),
-                                                                ),
-                                                              ),
-
-                                                              SizedBox(
-                                                                  height: 12),
-                                                              Center(
-                                                                child:
-                                                                    Container(
-                                                                  width: width *
-                                                                      0.25,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            45),
-                                                                    color: Color.fromARGB(
-                                                                            255,
-                                                                            80,
-                                                                            133,
-                                                                            123)
-                                                                        .withOpacity(
-                                                                            0.4),
-                                                                  ),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                            .all(
-                                                                            25.0),
-                                                                    child: Text(
-                                                                      string_logo !=
-                                                                              ""
-                                                                          ? string_logo
-                                                                              .toString()
-                                                                              .toUpperCase()
-                                                                          : "Photobooth Text",
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            35,
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontWeight:
-                                                                            FontWeight.w900,
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                  height:
-                                                                      height *
-                                                                          0.01),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      )
-                                                    :
-
-                                                    // ..................
-                                                    // layout 2 main view
-                                                    // ..................
-                                                    choose_layout ==
-                                                                "layout 2" &&
-                                                            url_image.isNotEmpty
-                                                        ? Container(
-                                                            width: 600,
-                                                            height: 900,
-                                                            decoration:
-                                                                choose_background !=
-                                                                        ""
-                                                                    ? BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          // last visit code here
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                        color: Colors
-                                                                            .white,
-                                                                      )
-                                                                    : BoxDecoration(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                        color: Colors
-                                                                            .black
-                                                                            .withOpacity(0.7),
-                                                                      ),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              children: [
-                                                                // .................................
-                                                                // layout row drag target main view
-                                                                // .................................
-                                                                Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceEvenly,
-                                                                  children: [
-                                                                    // .............................
-                                                                    // layout drag target main view
-                                                                    // .............................
-
-                                                                    // ============
-                                                                    // dragtarget 1
-                                                                    Container(
-                                                                      width: width *
-                                                                          0.14,
-                                                                      height:
-                                                                          width *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Colors
-                                                                            .white
-                                                                            .withOpacity(0.3),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage(
-                                                                            "${Variables.ipv4_local}/storage/${url_image[0].toString()}",
-                                                                            // "${Variables.ipv4_local}/storage/background/1720117923_bg1.jpg",
-                                                                            scale:
-                                                                                1,
-                                                                          ),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-
-                                                                    // ============
-                                                                    // dragtarget 2
-                                                                    Container(
-                                                                      width: width *
-                                                                          0.14,
-                                                                      height:
-                                                                          width *
-                                                                              0.14,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                        color: Colors
-                                                                            .white
-                                                                            .withOpacity(0.3),
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          image:
-                                                                              NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-
-                                                                SizedBox(
-                                                                    height: 12),
-                                                                Center(
-                                                                  child:
-                                                                      Container(
-                                                                    width:
-                                                                        width *
-                                                                            0.25,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              45),
-                                                                      color: Color.fromARGB(
-                                                                              255,
-                                                                              80,
-                                                                              133,
-                                                                              123)
-                                                                          .withOpacity(
-                                                                              0.4),
-                                                                    ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: const EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                           25.0),
-                                                                      child:
-                                                                          Text(
-                                                                        string_logo !=
-                                                                                ""
-                                                                            ? string_logo.toString().toUpperCase()
-                                                                            : "Photobooth Text",
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              35,
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontWeight:
-                                                                              FontWeight.w900,
-                                                                        ),
-                                                                        textAlign:
-                                                                            TextAlign.center,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                    height:
-                                                                        height *
-                                                                            0.01),
-                                                              ],
-                                                            ),
-                                                          )
-                                                        :
-
-                                                        // ..................
-                                                        // layout 3 main view
-                                                        // ..................
-                                                        choose_layout ==
-                                                                    "layout 3" &&
-                                                                url_image
-                                                                    .isNotEmpty
-                                                            ? Center(
-                                                                child:
-                                                                    Container(
-                                                                  width: 600,
-                                                                  height: 900,
-                                                                  decoration:
-                                                                      choose_background !=
-                                                                              ""
-                                                                          ? BoxDecoration(
-                                                                              image: DecorationImage(
-                                                                                // last visit code here
-                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.white,
-                                                                            )
-                                                                          : BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(5),
-                                                                              color: Colors.black.withOpacity(0.7),
-                                                                            ),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets
-                                                                            .all(
-                                                                      width *
-                                                                          0.0025,
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceEvenly,
-                                                                      children: [
-                                                                        Column(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceAround,
-                                                                          children: [
-                                                                            // ---
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.all(2.0),
-                                                                              child: Container(
-                                                                                width: width * 0.18,
-                                                                                height: width * 0.18,
-                                                                                decoration: BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(12),
-                                                                                  color: Colors.transparent,
-                                                                                  image: DecorationImage(
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                    fit: BoxFit.cover,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.all(2.0),
-                                                                              child: Container(
-                                                                                width: width * 0.18,
-                                                                                height: width * 0.18,
-                                                                                decoration: BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(12),
-                                                                                  color: Colors.transparent,
-                                                                                  image: DecorationImage(
-                                                                                    image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                    fit: BoxFit.cover,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                        SizedBox(
-                                                                            height:
-                                                                                12),
-                                                                        Center(
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                width * 0.25,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              borderRadius: BorderRadius.circular(45),
-                                                                              color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsets.all(25.0),
-                                                                              child: Text(
-                                                                                string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                style: TextStyle(
-                                                                                  fontSize: 35,
-                                                                                  color: Colors.white,
-                                                                                  fontWeight: FontWeight.w900,
-                                                                                ),
-                                                                                textAlign: TextAlign.center,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        SizedBox(
-                                                                            height:
-                                                                                height * 0.01),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            :
-
-                                                            // ..................
-                                                            // layout 4 main view
-                                                            // ..................
-                                                            choose_layout ==
-                                                                        "layout 4" &&
-                                                                    url_image
-                                                                        .isNotEmpty
-                                                                ? Container(
-                                                                    width: 600,
-                                                                    height: 900,
-                                                                    decoration: choose_background !=
+                                                                  child: Text(
+                                                                    string_logo !=
                                                                             ""
-                                                                        ? BoxDecoration(
-                                                                            image:
-                                                                                DecorationImage(
-                                                                              // last visit code here
-                                                                              image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                            color:
-                                                                                Colors.white,
-                                                                          )
-                                                                        : BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5),
-                                                                            color:
-                                                                                Colors.white,
-                                                                          ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          EdgeInsets
-                                                                              .all(
-                                                                        width *
-                                                                            0.0025,
-                                                                      ),
-                                                                      child:
-                                                                          Column(
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.center,
-                                                                        children: [
-                                                                          SizedBox(
-                                                                            height:
-                                                                                width * 0.1,
-                                                                          ),
-                                                                          // .................................
-                                                                          // layout row drag target main view
-                                                                          // .................................
-                                                                          Row(
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceEvenly,
-                                                                            children: [
-                                                                              // .............................
-                                                                              // layout drag target main view
-                                                                              // .............................
-
-                                                                              // ============
-                                                                              // kolom card 0
-                                                                              Container(
-                                                                                width: width * 0.1,
-                                                                                height: width * 0.1,
-                                                                                child: Padding(
-                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                  child: Container(
-                                                                                    width: width * 0.1,
-                                                                                    height: width * 0.1,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                      image: DecorationImage(
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-
-                                                                              // ============
-                                                                              // kolom card 1
-                                                                              Container(
-                                                                                width: width * 0.1,
-                                                                                height: width * 0.1,
-                                                                                child: Padding(
-                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                  child: Container(
-                                                                                    width: width * 0.1,
-                                                                                    height: width * 0.1,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                      image: DecorationImage(
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-
-                                                                              // ============
-                                                                              // kolom card 3
-                                                                              Container(
-                                                                                width: width * 0.1,
-                                                                                height: width * 0.1,
-                                                                                child: Padding(
-                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                  child: Container(
-                                                                                    width: width * 0.1,
-                                                                                    height: width * 0.1,
-                                                                                    decoration: BoxDecoration(
-                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                      image: DecorationImage(
-                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-
-                                                                          SizedBox(
-                                                                            height:
-                                                                                width * 0.15,
-                                                                          ),
-                                                                          Center(
-                                                                            child:
-                                                                                Container(
-                                                                              width: width * 0.25,
-                                                                              decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(15),
-                                                                                color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: const EdgeInsets.all(25.0),
-                                                                                child: Text(
-                                                                                  string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 35,
-                                                                                    color: Colors.white,
-                                                                                    fontWeight: FontWeight.w900,
-                                                                                  ),
-                                                                                  textAlign: TextAlign.center,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          SizedBox(
-                                                                              height: height * 0.01),
-                                                                        ],
-                                                                      ),
+                                                                        ? string_logo
+                                                                            .toString()
+                                                                            .toUpperCase()
+                                                                        : "Photobooth Text",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          35,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w900,
                                                                     ),
-                                                                  )
-                                                                :
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: height *
+                                                                    0.01),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
 
-                                                                // ..................
-                                                                // layout 5 main view
-                                                                // ..................
-                                                                choose_layout ==
-                                                                            "layout 5" &&
-                                                                        url_image
-                                                                            .isNotEmpty
-                                                                    ? Container(
-                                                                        width:
-                                                                            600,
-                                                                        height:
-                                                                            900,
-                                                                        decoration: choose_background !=
-                                                                                ""
-                                                                            ? BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                                  // last visit code here
-                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                color: Colors.white,
-                                                                              )
-                                                                            : BoxDecoration(
-                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                color: Colors.black.withOpacity(0.7),
-                                                                              ),
-                                                                        child:
-                                                                            Column(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
-                                                                          children: [
-                                                                            Column(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                              children: [
-                                                                                Container(
-                                                                                  width: width * 0.1,
-                                                                                  height: width * 0.1,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0001,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.07,
-                                                                                      height: height * 0.07,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(12),
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-
-                                                                                SizedBox(
-                                                                                  height: 25,
-                                                                                ),
-                                                                                Container(
-                                                                                  width: width * 0.1,
-                                                                                  height: width * 0.1,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0001,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.07,
-                                                                                      height: height * 0.07,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(12),
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-
-                                                                                SizedBox(
-                                                                                  height: 25,
-                                                                                ),
-                                                                                Container(
-                                                                                  width: width * 0.1,
-                                                                                  height: width * 0.1,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0001,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      width: width * 0.07,
-                                                                                      height: height * 0.07,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(12),
-                                                                                        image: DecorationImage(
-                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                          fit: BoxFit.cover,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    // ),
-                                                                                  ),
-                                                                                ),
-                                                                                // .................................
-                                                                                // layout row drag target main view
-                                                                                // .................................
-                                                                              ],
-                                                                            ),
-                                                                            Center(
-                                                                              child: Container(
-                                                                                width: width * 0.25,
-                                                                                decoration: BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(15),
-                                                                                  color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                ),
-                                                                                child: Padding(
-                                                                                  padding: const EdgeInsets.all(25.0),
-                                                                                  child: Text(
-                                                                                    string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 35,
-                                                                                      color: Colors.white,
-                                                                                      fontWeight: FontWeight.w900,
-                                                                                    ),
-                                                                                    textAlign: TextAlign.center,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(height: height * 0.025),
-                                                                          ],
-                                                                        ),
-                                                                      )
-                                                                    :
-
-                                                                    // ..................
-                                                                    // layout 6 main view
-                                                                    // ..................
-                                                                    choose_layout ==
-                                                                                "layout 6" &&
-                                                                            url_image
-                                                                                .isNotEmpty
-                                                                        ? Container(
-                                                                            width:
-                                                                                600,
-                                                                            height:
-                                                                                900,
-                                                                            decoration: choose_background != ""
-                                                                                ? BoxDecoration(
-                                                                                    image: DecorationImage(
-                                                                                      // last visit code here
-                                                                                      image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                      fit: BoxFit.cover,
-                                                                                    ),
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.white,
-                                                                                  )
-                                                                                : BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    color: Colors.black.withOpacity(0.7),
-                                                                                  ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsets.all(
-                                                                                width * 0.0025,
-                                                                              ),
-                                                                              child: Column(
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                children: [
-                                                                                  Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      // .................................
-                                                                                      // layout row drag target main view
-                                                                                      // .................................
-                                                                                      // ============
-                                                                                      // kolom card 0
-                                                                                      Container(
-                                                                                        width: width * 0.1,
-                                                                                        height: width * 0.1,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(
-                                                                                            width * 0.0001,
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.07,
-                                                                                            height: height * 0.07,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(12),
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                          // ),
-                                                                                        ),
-                                                                                      ),
-
-                                                                                      // ============
-                                                                                      // kolom card 1
-                                                                                      Container(
-                                                                                        width: width * 0.1,
-                                                                                        height: width * 0.1,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(
-                                                                                            width * 0.0001,
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.07,
-                                                                                            height: height * 0.07,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(12),
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                          // ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                  Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      // .................................
-                                                                                      // layout row drag target main view
-                                                                                      // .................................
-                                                                                      // ============
-                                                                                      // kolom card 0
-                                                                                      Container(
-                                                                                        width: width * 0.1,
-                                                                                        height: width * 0.1,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(
-                                                                                            width * 0.0001,
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.07,
-                                                                                            height: height * 0.07,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(12),
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                          // ),
-                                                                                        ),
-                                                                                      ),
-
-                                                                                      // ============
-                                                                                      // kolom card 1
-                                                                                      Container(
-                                                                                        width: width * 0.1,
-                                                                                        height: width * 0.1,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(
-                                                                                            width * 0.0001,
-                                                                                          ),
-                                                                                          child: Container(
-                                                                                            width: width * 0.07,
-                                                                                            height: height * 0.07,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(12),
-                                                                                              image: DecorationImage(
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                          // ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                  SizedBox(height: 12),
-                                                                                  Center(
-                                                                                    child: Container(
-                                                                                      width: width * 0.25,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.circular(15),
-                                                                                        color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: const EdgeInsets.all(25.0),
-                                                                                        child: Text(
-                                                                                          string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 35,
-                                                                                            color: Colors.white,
-                                                                                            fontWeight: FontWeight.w900,
-                                                                                          ),
-                                                                                          textAlign: TextAlign.center,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(height: height * 0.01),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          )
-                                                                        :
-
-                                                                        // ..................
-                                                                        // layout 7 main view
-                                                                        // ..................
-                                                                        choose_layout == "layout 7" &&
-                                                                                url_image.isNotEmpty
-                                                                            ? Center(
-                                                                                child: Container(
-                                                                                  width: 600,
-                                                                                  height: 900,
-                                                                                  decoration: choose_background != ""
-                                                                                      ? BoxDecoration(
-                                                                                          image: DecorationImage(
-                                                                                            // last visit code here
-                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                            fit: BoxFit.cover,
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.white,
-                                                                                        )
-                                                                                      : BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(5),
-                                                                                          color: Colors.blueGrey,
-                                                                                        ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      width * 0.0025,
-                                                                                    ),
-                                                                                    child: Column(
-                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                      children: [
-                                                                                        Row(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                          children: [
-                                                                                            Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                              children: [
-                                                                                                // ---
-                                                                                                Padding(
-                                                                                                  padding: const EdgeInsets.all(2.0),
-                                                                                                  child: Container(
-                                                                                                    width: width * 0.12,
-                                                                                                    height: width * 0.12,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                      color: Colors.transparent,
-                                                                                                      image: DecorationImage(
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Padding(
-                                                                                                  padding: const EdgeInsets.all(2.0),
-                                                                                                  child: Container(
-                                                                                                    width: width * 0.12,
-                                                                                                    height: width * 0.12,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                      color: Colors.transparent,
-                                                                                                      image: DecorationImage(
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            Column(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                              children: [
-                                                                                                // ---
-
-                                                                                                // ...
-                                                                                                Padding(
-                                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                                  child: Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                      color: Colors.transparent,
-                                                                                                      image: DecorationImage(
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-
-                                                                                                // ...
-                                                                                                Padding(
-                                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                                  child: Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                      color: Colors.transparent,
-                                                                                                      image: DecorationImage(
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-
-                                                                                                // ...
-                                                                                                Padding(
-                                                                                                  padding: const EdgeInsets.all(5.0),
-                                                                                                  child: Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                      color: Colors.transparent,
-                                                                                                      image: DecorationImage(
-                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                        fit: BoxFit.cover,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                        SizedBox(height: 12),
-                                                                                        Center(
-                                                                                          child: Container(
-                                                                                            width: width * 0.25,
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(15),
-                                                                                              color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                            ),
-                                                                                            child: Padding(
-                                                                                              padding: const EdgeInsets.all(25.0),
-                                                                                              child: Text(
-                                                                                                string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                                style: TextStyle(
-                                                                                                  fontSize: 35,
-                                                                                                  color: Colors.white,
-                                                                                                  fontWeight: FontWeight.w900,
-                                                                                                ),
-                                                                                                textAlign: TextAlign.center,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                        SizedBox(height: height * 0.01),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              )
-                                                                            :
-
-                                                                            // ..................
-                                                                            // layout 8 main view
-                                                                            // ..................
-                                                                            choose_layout == "layout 8" && url_image.isNotEmpty
-                                                                                ? Center(
-                                                                                    child: Container(
-                                                                                      width: 600,
-                                                                                      height: 900,
-                                                                                      decoration: choose_background != ""
-                                                                                          ? BoxDecoration(
-                                                                                              image: DecorationImage(
-                                                                                                // last visit code here
-                                                                                                image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                fit: BoxFit.cover,
-                                                                                              ),
-                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                              color: Colors.white,
-                                                                                            )
-                                                                                          : BoxDecoration(
-                                                                                              borderRadius: BorderRadius.circular(5),
-                                                                                              color: Colors.blueGrey,
-                                                                                            ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(
-                                                                                          width * 0.0025,
-                                                                                        ),
-                                                                                        child: Column(
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          children: [
-                                                                                            Row(
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                              children: [
-                                                                                                Column(
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                                  children: [
-                                                                                                    // ---
-
-                                                                                                    // ...
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.all(5.0),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.10,
-                                                                                                        height: width * 0.10,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          color: Colors.transparent,
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-
-                                                                                                    // ...
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.all(5.0),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.10,
-                                                                                                        height: width * 0.10,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          color: Colors.transparent,
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-
-                                                                                                    // ...
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.all(5.0),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.10,
-                                                                                                        height: width * 0.10,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          color: Colors.transparent,
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                                Column(
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                                  children: [
-                                                                                                    // ---
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.all(2.0),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: width * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          color: Colors.transparent,
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.all(2.0),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: width * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          color: Colors.transparent,
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            SizedBox(height: 12),
-                                                                                            Center(
-                                                                                              child: Container(
-                                                                                                width: width * 0.25,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  borderRadius: BorderRadius.circular(15),
-                                                                                                  color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                                ),
-                                                                                                child: Padding(
-                                                                                                  padding: const EdgeInsets.all(25.0),
-                                                                                                  child: Text(
-                                                                                                    string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                                    style: TextStyle(
-                                                                                                      fontSize: 35,
-                                                                                                      color: Colors.white,
-                                                                                                      fontWeight: FontWeight.w900,
-                                                                                                    ),
-                                                                                                    textAlign: TextAlign.center,
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            SizedBox(height: height * 0.01),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  )
-                                                                                :
-
-                                                                                // ..................
-                                                                                // layout 9 main view
-                                                                                // ..................
-                                                                                choose_layout == "layout 9" && url_image.isNotEmpty
-                                                                                    ? Container(
-                                                                                        width: 600,
-                                                                                        height: 900,
-                                                                                        decoration: choose_background != ""
-                                                                                            ? BoxDecoration(
-                                                                                                image: DecorationImage(
-                                                                                                  // last visit code here
-                                                                                                  image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                  fit: BoxFit.cover,
-                                                                                                ),
-                                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                                color: Colors.white,
-                                                                                              )
-                                                                                            : BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                                color: Colors.blueGrey,
-                                                                                              ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(
-                                                                                            width * 0.0025,
-                                                                                          ),
-                                                                                          child: Column(
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                            children: [
-                                                                                              // .................................
-                                                                                              // layout row drag target main view
-                                                                                              // .................................
-                                                                                              Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                children: [
-                                                                                                  // .............................
-                                                                                                  // layout drag target main view
-                                                                                                  // .............................
-
-                                                                                                  // ============
-                                                                                                  // kolom card 0
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-
-                                                                                                  // ============
-                                                                                                  // kolom card 1
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-
-                                                                                              Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                children: [
-                                                                                                  // .............................
-                                                                                                  // layout drag target main view
-                                                                                                  // .............................
-
-                                                                                                  // ============
-                                                                                                  // kolom card 2
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-
-                                                                                                  // ============
-                                                                                                  // kolom card 3
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                              Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                children: [
-                                                                                                  // .............................
-                                                                                                  // layout drag target main view
-                                                                                                  // .............................
-
-                                                                                                  // ============
-                                                                                                  // kolom card 4
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-
-                                                                                                  // ======================
-                                                                                                  // kolom card 6 main view
-                                                                                                  // ======================
-                                                                                                  Container(
-                                                                                                    width: width * 0.10,
-                                                                                                    height: width * 0.10,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      borderRadius: BorderRadius.circular(5),
-                                                                                                      color: Colors.white,
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsets.all(
-                                                                                                        width * 0.0001,
-                                                                                                      ),
-                                                                                                      child: Container(
-                                                                                                        width: width * 0.12,
-                                                                                                        height: height * 0.12,
-                                                                                                        decoration: BoxDecoration(
-                                                                                                          borderRadius: BorderRadius.circular(12),
-                                                                                                          image: DecorationImage(
-                                                                                                            image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                                            fit: BoxFit.cover,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      // ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-
-                                                                                              SizedBox(height: 12),
-                                                                                              Center(
-                                                                                                child: Container(
-                                                                                                  width: width * 0.25,
-                                                                                                  decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(15),
-                                                                                                    color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                                  ),
-                                                                                                  child: Padding(
-                                                                                                    padding: const EdgeInsets.all(25.0),
-                                                                                                    child: Text(
-                                                                                                      string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                                      style: TextStyle(
-                                                                                                        fontSize: 35,
-                                                                                                        color: Colors.white,
-                                                                                                        fontWeight: FontWeight.w900,
-                                                                                                      ),
-                                                                                                      textAlign: TextAlign.center,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                              SizedBox(height: height * 0.01),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      )
-                                                                                    :
-
-                                                                                    // ..................
-                                                                                    // layout 10 main view
-                                                                                    // ..................
-                                                                                    choose_layout == "layout 10" && url_image.isNotEmpty
-                                                                                        ? Container()
-                                                                                        :
-
-                                                                                        // ..................
-                                                                                        // layout 11 main view
-                                                                                        // ..................
-
-                                                                                        choose_layout == "layout 11" && url_image.isNotEmpty
-                                                                                            ? Container(
-                                                                                                width: 600,
-                                                                                                height: 900,
-                                                                                                decoration: choose_background != ""
-                                                                                                    ? BoxDecoration(
-                                                                                                        image: DecorationImage(
-                                                                                                          // last visit code here
-                                                                                                          image: NetworkImage("${Variables.ipv4_local}/storage/background/${choose_background.toString()}"),
-                                                                                                          fit: BoxFit.cover,
-                                                                                                        ),
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.white,
-                                                                                                      )
-                                                                                                    : BoxDecoration(
-                                                                                                        borderRadius: BorderRadius.circular(5),
-                                                                                                        color: Colors.blueGrey,
-                                                                                                      ),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsets.all(
-                                                                                                    width * 0.0025,
-                                                                                                  ),
-                                                                                                  child: Column(
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                    children: [
-                                                                                                      Row(
-                                                                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                        children: [
-                                                                                                          // .................................
-                                                                                                          // layout row drag target main view
-                                                                                                          // .................................
-                                                                                                          Column(
-                                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                            children: [
-                                                                                                              // .............................
-                                                                                                              // layout drag target main view
-                                                                                                              // .............................
-
-                                                                                                              // ============
-                                                                                                              // kolom card 0
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[0].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              // ============
-                                                                                                              // kolom card 1
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[1].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[2].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
-
-                                                                                                          Column(
-                                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                            children: [
-                                                                                                              // .............................
-                                                                                                              // layout drag target main view
-                                                                                                              // .............................
-
-                                                                                                              // ============
-                                                                                                              // kolom card 2
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[3].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              // ============
-                                                                                                              // kolom card 3
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[4].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[5].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
-
-                                                                                                          Column(
-                                                                                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                            children: [
-                                                                                                              // .............................
-                                                                                                              // layout drag target main view
-                                                                                                              // .............................
-
-                                                                                                              // ============
-                                                                                                              // kolom card 4
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[6].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              // ======================
-                                                                                                              // kolom card 6 main view
-                                                                                                              // ======================
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[7].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-
-                                                                                                              Container(
-                                                                                                                width: width * 0.07,
-                                                                                                                height: width * 0.07,
-                                                                                                                decoration: BoxDecoration(
-                                                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                                                  color: Colors.white,
-                                                                                                                ),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsets.all(
-                                                                                                                    width * 0.0001,
-                                                                                                                  ),
-                                                                                                                  child: Container(
-                                                                                                                    width: width * 0.07,
-                                                                                                                    height: height * 0.07,
-                                                                                                                    decoration: BoxDecoration(
-                                                                                                                      borderRadius: BorderRadius.circular(12),
-                                                                                                                      image: DecorationImage(
-                                                                                                                        image: NetworkImage("${Variables.ipv4_local}/storage/${url_image[8].toString()}"),
-                                                                                                                        fit: BoxFit.cover,
-                                                                                                                      ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  // ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      SizedBox(height: 12),
-                                                                                                      Center(
-                                                                                                        child: Container(
-                                                                                                          width: width * 0.25,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            borderRadius: BorderRadius.circular(15),
-                                                                                                            color: Color.fromARGB(255, 80, 133, 123).withOpacity(0.4),
-                                                                                                          ),
-                                                                                                          child: Padding(
-                                                                                                            padding: const EdgeInsets.all(25.0),
-                                                                                                            child: Text(
-                                                                                                              string_logo != "" ? string_logo.toString().toUpperCase() : "Photobooth Text",
-                                                                                                              style: TextStyle(
-                                                                                                                fontSize: 35,
-                                                                                                                color: Colors.white,
-                                                                                                                fontWeight: FontWeight.w900,
-                                                                                                              ),
-                                                                                                              textAlign: TextAlign.center,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      SizedBox(height: height * 0.01),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                              )
-                                                                                            : Container(),
                                                 // ========================
                                                 // ===== end layout 1 =====
                                                 // ========================
